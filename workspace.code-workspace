@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "foodchill",
+			"path": "."
+		},
+		{
+			"name": "admin",
+			"path": "..\\..\\..\\..\\..\\..\\xampp\\htdocs\\admin"
+		}
+	],
+	"settings": {}
+}
