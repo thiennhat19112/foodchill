@@ -18,6 +18,6 @@
     }else{
         require("dashboard/home.php");
     }
-    require("site/footer.php");
+    require("site/footer.php");//nhat test commit 
     //Test Push 11111112222
     ?>
