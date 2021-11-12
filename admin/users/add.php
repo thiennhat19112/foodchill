@@ -9,14 +9,13 @@
                         <input type="text" class="form-control" id="exampleInputName1" placeholder="Tên khách hàng">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail3">Số điện thoại</label>
-                        <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Số điện thoại">
-                    </div>
-                    <div class="form-group">
                         <label for="exampleInputPassword4">Email</label>
                         <input type="email" class="form-control" id="exampleInputPassword4" placeholder="Email">
                     </div>
-                    
+                    <div class="form-group">
+                        <label for="exampleInputCity1">Mật khẩu</label>
+                        <input type="text" class="form-control" id="exampleInputCity1" placeholder="Mật khẩu">
+                    </div>
                     <div class="form-group">
                         <label>Hình đại diện</label>
                         <input type="file" name="img[]" class="file-upload-default">
@@ -27,19 +26,6 @@
                             </span>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputCity1">Địa chỉ</label>
-                        <input type="text" class="form-control" id="exampleInputCity1" placeholder="Địa chỉ">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputCity1">Tài khoảng</label>
-                        <input type="text" class="form-control" id="exampleInputCity1" placeholder="Tài khoảng">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputCity1">Mật khẩu</label>
-                        <input type="text" class="form-control" id="exampleInputCity1" placeholder="Mật khẩu">
-                    </div>
-
                     <div class="form-group">
                         <label for="exampleSelectGender">Phân quyền</label>
                         <select class="form-control" id="exampleSelectGender">

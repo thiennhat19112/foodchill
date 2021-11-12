@@ -8,10 +8,7 @@
                 <thead>
                     <tr class="text-xs font-semibold whitespace-no-wrap tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                         <th class="px-3 py-3">Tên Khách hàng</th>
-                        <th class="px-3 py-3">Số điện thoại</th>
                         <th class="px-3 py-3">Email</th>
-                        <th class="px-3 py-3">Địa chỉ</th>
-                        <th class="px-3 py-3">Tài khoảng</th>
                         <th class="px-3 py-3">Phân quyền</th>
                         <th class="px-3 py-3">Thao tác</th>
                     </tr>
@@ -30,17 +27,8 @@
                                 </div>
                             </div>
                         </td>
-                        <td class="px-3 py-3 text-sm">
-                            0900
-                        </td>
-                        <td class="px-3 py-3 whitespace-wrap">
-                            Lorem ipsum dolor sit amet.
-                        </td>
                         <td class="px-3 py-3 whitespace-wrap" >
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, maiores! </td>
-                        <td class="px-3 py-3 text-sm">
-                            6/10/2020
-                        </td>
                         <td class="px-3 py-3 text-xs">
                             <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
                                 Hiện

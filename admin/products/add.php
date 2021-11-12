@@ -9,8 +9,12 @@
                         <input type="text" class="form-control" id="exampleInputName1" placeholder="Tên sản phẩm">
                     </div>
                     <div class="form-group">
+                        <label for="exampleInputEmail3">Số lượng</label>
+                        <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Số lượng">
+                    </div>
+                    <div class="form-group">
                         <label for="exampleInputEmail3">Giá</label>
-                        <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Giá">
+                        <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Giá">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword4">Khối lượng</label>

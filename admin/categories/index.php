@@ -1,4 +1,5 @@
 <?php
+    require("models/categories.php");
     if (isset($_GET['act'])) {
         $act = $_GET['act'];
         if($act =="listCat") {
