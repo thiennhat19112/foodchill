@@ -16,19 +16,9 @@
                         <label for="exampleInputCity1">Mật khẩu</label>
                         <input type="text" class="form-control" id="exampleInputCity1" placeholder="Mật khẩu">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group relative">
                         <label>Hình đại diện</label>
-                        <input type="file" name="img[]" class="file-upload-default">
-                        <div class="input-group col-xs-12">
-                            <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
-                            <span class="input-group-append">
-                                <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
-                            </span>
-                            <span class="relative hidden w-6 h-1 ml-3 md:block">
-                                <img class="object-cover w-full h-full " src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ" alt="" loading="lazy" />
-                                <div class="absolute inset-0  shadow-inner" aria-hidden="true"></div>
-                            </span>
-                        </div>
+                        <input type="file" name="" class="dropify" data-max-file-size="2M" data-max-height="2000" data-default-file="https://cdn.vox-cdn.com/thumbor/R0gjxzdZsHHv0Km21KdLNaDWsVQ=/0x0:2048x870/920x613/filters:focal(729x260:1055x586):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/70106450/Vi_fight.0.jpeg">
                     </div>
                     <div class="form-group">
                         <label for="exampleSelectGender">Phân quyền</label>

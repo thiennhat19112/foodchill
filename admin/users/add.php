@@ -17,14 +17,8 @@
                         <input type="text" class="form-control" id="exampleInputCity1" placeholder="Mật khẩu">
                     </div>
                     <div class="form-group">
-                        <label>Hình đại diện</label>
-                        <input type="file" name="img[]" class="file-upload-default">
-                        <div class="input-group col-xs-12">
-                            <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
-                            <span class="input-group-append">
-                                <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
-                            </span>
-                        </div>
+                        <label>Hình ảnh</label>
+                        <input type="file" name="" data-max-file-size="2M" data-max-height="2000" class="dropify">
                     </div>
                     <div class="form-group">
                         <label for="exampleSelectGender">Phân quyền</label>

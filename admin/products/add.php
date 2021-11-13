@@ -1,10 +1,3 @@
-<?php
-    print_r($_POST);
-
-
-?>
-
-
 
 <div class="container px-6 mx-auto grid">
     <div class="col-12 grid-margin stretch-card">
@@ -18,11 +11,11 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail3">Số lượng</label>
-                        <input type="text" name="soluong" class="form-control" id="exampleInputEmail3" placeholder="Số lượng">
+                        <input type="text" name="soluong" class="form-control"  placeholder="Số lượng">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail3">Giá</label>
-                        <input type="text" name="gia" class="form-control" id="exampleInputEmail3" placeholder="Giá">
+                        <input type="text" name="gia" class="form-control"  placeholder="Giá">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword4">Khối lượng</label>
@@ -36,13 +29,7 @@
                     </div>
                     <div class="form-group">
                         <label>Hình ảnh</label>
-                        <input type="file" name="img[]" class="file-upload-default">
-                        <div class="input-group col-xs-12">
-                            <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
-                            <span class="input-group-append">
-                                <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
-                            </span>
-                        </div>
+                        <input type="file" name="" data-max-file-size="2M" data-max-height="2000" class="dropify">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputCity1">Khuyến mãi</label>

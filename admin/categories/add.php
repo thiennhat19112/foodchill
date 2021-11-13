@@ -1,18 +1,10 @@
 <?php
-  include '../models/pdo.php';
-  include '../models/categories.php';
  if (isset($_POST['btnthem'])==true) {
     $category_name = $_POST['tendm'];
     $ordinal_numbers = $_POST['vitri'];
     $status = $_POST['trangthai'];
     insert_categories($category_name, $ordinal_numbers,$status);
-
  }
-
-
-
-
-
 ?>
 
 <div class="col-12 grid-margin stretch-card">
