@@ -12,16 +12,7 @@ function data() {
     )
   }
 
-  function setThemeToLocalStorage(value) {
-    window.localStorage.setItem('dark', value)
-  }
-
   return {
-    dark: getThemeFromLocalStorage(),
-    toggleTheme() {
-      this.dark = !this.dark
-      setThemeToLocalStorage(this.dark)
-    },
     isSideMenuOpen: false,
     toggleSideMenu() {
       this.isSideMenuOpen = !this.isSideMenuOpen
