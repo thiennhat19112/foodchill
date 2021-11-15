@@ -1,5 +1,5 @@
 <?php
-if (isset($_POST['btnthem'])) {
+if (isset($_POST['btnsua'])) {
   $category_id = $_POST['id'];
   $category_name = $_POST['tendm'];
   $ordinal_numbers = $_POST['vitri'];
@@ -32,7 +32,7 @@ if (isset($_POST['btnthem'])) {
             <option value="0">Ẩn</option>
           </select>
         </div>
-        <input type="submit" name="btnthem" value="Sửa" class="btn btn-primary mr-2">
+        <input type="submit" name="btnsua" value="Sửa" class="btn btn-primary mr-2">
         <a href="?v=categories&act=listCat" class="btn btn-light">Hủy</a>
       </form>
     </div>
