@@ -91,7 +91,9 @@
                         <i class="fa fa-star-half-o"></i>
                         <span>(18 reviews)</span>
                      </div>
-                     <div class="product__details__price"><?=$value['price']?> VND</div>
+                     <div class="product__details__price">
+                        <?=number_format($value['price']*((100-$value['discount'])/100), 0, ',', '.')?> VND
+                     </div>
                      <p>Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam
                         vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet
                         quam vehicula elementum sed sit amet dui. Proin eget tortor risus.</p>
