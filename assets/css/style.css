@@ -2730,7 +2730,6 @@ ol {
 }
 
 .footer__copyright {
-	border-top: 1px solid #ebebeb;
 	padding: 15px 0;
 	overflow: hidden;
 	margin-top: 20px;
@@ -2741,10 +2740,6 @@ ol {
 	color: #1c1c1c;
 	float: left;
 	line-height: 25px;
-}
-
-.footer__copyright__payment {
-	float: right;
 }
 
 /*---------------------
