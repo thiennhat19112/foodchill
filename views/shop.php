@@ -179,7 +179,7 @@
                      <div class="row">
                         <div class="product__discount__slider owl-carousel">
                            <?PHP 
-                              foreach($discProd as $key => $value){
+                              foreach($discProds as $key => $value){
                            ?>
                            <div class="col-lg-4">
                               <div class="product__discount__item">

@@ -6,6 +6,6 @@ require_once("../models/category.php");
 require_once("../models/product.php");
 $cates = getAllCate();
 $prods = getAllProd();
-$discProd = getDiscountProd();
+$discProds = getDiscountProd();
 require("../views/shop.php");
 require("../views/public/footer.php");
