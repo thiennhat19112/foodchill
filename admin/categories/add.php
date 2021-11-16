@@ -1,10 +1,10 @@
 <?php
- if (isset($_POST['btnthem'])) {
-    $category_name = $_POST['tendm'];
-    $ordinal_numbers = $_POST['vitri'];
-    $status = $_POST['trangthai'];
-    insert_categories($category_name, $ordinal_numbers,$status);
- }
+if (isset($_POST['btnthem'])) {
+  $category_name = $_POST['tendm'];
+  $ordinal_numbers = $_POST['vitri'];
+  $status = $_POST['trangthai'];
+  insert_categories($category_name, $ordinal_numbers, $status);
+}
 ?>
 
 <div class="col-12 grid-margin stretch-card">
@@ -27,7 +27,7 @@
             <option value="0" checked>Ẩn</option>
           </select>
         </div>
-        <a href="?v=categories&act=listCat"><input type="submit" name="btnthem" value="Thêm" class="btn btn-primary mr-2"></a> 
+        <a href="?v=categories&act=listCat"><input type="submit" name="btnthem" value="Thêm" class="btn btn-primary mr-2"></a>
         <a href="?v=categories&act=listCat" class="btn btn-light">Cancel</a>
       </form>
     </div>
