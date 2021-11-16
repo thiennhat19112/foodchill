@@ -4,7 +4,6 @@ if (isset($_POST['category_id'])) {
     require("pdo.php");
     $id =$_POST['category_id'];
     delete_category($id);
-    echo 'success';
 }
 
 if (isset($_POST['user_id'])) {
@@ -12,5 +11,11 @@ if (isset($_POST['user_id'])) {
     require("pdo.php");
     $id =$_POST['user_id'];
     delete_user($id);
-    echo 'success';
+}
+
+if (isset($_POST['product_id'])) {
+    require("products.php");
+    require("pdo.php");
+    $id =$_POST['product_id'];
+    delete_product($id);
 }

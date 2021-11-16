@@ -45,8 +45,8 @@ if (isset($_POST['btnsua'])==true){
                     <div class="form-group">
                         <label for="exampleSelectGender">Tình trạng</label>
                         <select class="form-control" name="status" id="exampleSelectGender">
-                            <option value="0">Ẩn</option>
                             <option value="1">Hiện</option>
+                            <option value="0">Ẩn</option>
                         </select>
                     </div>
                     <button type="submit" name="btnsua" class="btn btn-primary mr-2">Sửa</button>

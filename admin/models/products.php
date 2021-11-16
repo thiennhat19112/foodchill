@@ -27,22 +27,30 @@ function insert_product($product_name, $quantity, $price, $weight, $descriptions
     pdo_execute($sql,$product_name, $quantity, $price, $weight, $descriptions, $image,   $create_date, $category_id, $discount, $saled, $view, $rating, $status);
 }
 //sửa danh mục
-function update_category($category_name, $ordinal_numbers, $status, $category_id)
-{
-    $sql = "UPDATE categories SET category_name=?,ordinal_numbers=?,status=? 
-    where category_id= ?";
-    pdo_execute($sql, $category_name, $ordinal_numbers, $status, $category_id);
+function  update_product($product_name, $quantity, $price, $weight, $descriptions, $image,  $category_id, $discount, $status, $product_id){
+    $sql = "UPDATE products SET 
+    product_name= ?,
+    quantity= ?, 
+    price= ?, 
+    weight= ?,
+    descriptions= ?,
+    image= ?,
+    category_id= ?,
+    discount= ?,
+    status=? 
+    where product_id= ?";
+    pdo_execute($sql, $product_name, $quantity, $price, $weight, $descriptions, $image,  $category_id, $discount, $status , $product_id);
 }
 //xóa danh mục
-function delete_category($id)
+function delete_product($id)
 {
-    $sql = "DELETE FROM `categories` WHERE `categories`.`category_id` = ?";
+    $sql = "DELETE FROM `products` WHERE `products`.`product_id` = ?";
     pdo_execute($sql, $id);
 }
 //xem 1 sản phẩm
-function load_one_category($id)
+function load_one_product($id)
 {
-    $sql = "SELECT * FROM categories WHERE category_id=?";
+    $sql = "SELECT * FROM products WHERE product_id=?";
     return pdo_query_one($sql, $id);
 }
 

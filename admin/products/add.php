@@ -43,7 +43,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword4">Khối lượng</label>
-                        <input type="password" name="weight" class="form-control" id="exampleInputPassword4" placeholder="Khối lượng">
+                        <input type="text" name="weight" class="form-control" id="exampleInputPassword4" placeholder="Khối lượng">
                     </div>
                     <div class="form-group">
                         <label for="exampleSelectGender">Danh mục</label>
