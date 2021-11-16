@@ -71,7 +71,7 @@
                                     </a>
                                 </div>
                             </td>
-                            </tr>
+                        </tr>
         </div>
         </td>
         </tr>
@@ -85,7 +85,7 @@
                     var id = $(this).data('user_id')
                     $.ajax({
                         type: 'POST',
-                        url: 'models/ajax_user.php',
+                        url: 'models/ajax_action.php',
                         data: {
                             'user_id': id
                         },
