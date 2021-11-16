@@ -40,7 +40,23 @@
                             <td><?= $email ?></td>
                             <td><?= $password ?></td>
                             <td class="px-3 py-3 whitespace-wrap">
-                                <?= $permission ?> </td>
+                                <?php if ($permission == 0) {
+                                    echo '<span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full ">
+                                        Admin
+                                    </span>';
+                                } else if ($permission == 1) {
+                                    echo  '<span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full ">
+                                            User
+                                        </span>';
+                                } else {
+                                    echo   '<span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full ">
+                                            Shipper
+                                        </span>';
+                                }
+
+
+                                ?>
+                            </td>
                             <td class="px-3 py-3 text-xs">
                                 <?php if ($status == '1') {
                                     echo '<span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full ">
@@ -53,8 +69,6 @@
                                 }
                                 ?>
                             </td>
-
-                            <td class="px-3 py-3">
                             <td class="px-4 py-3">
                                 <div class="flex items-center space-x-4 text-sm">
                                     <!-- sưa -->

@@ -2,7 +2,7 @@
 //hiện tất cả các sản phẩm
 function load_all_products()
 {
-    $sql = "SELECT * FROM products order by product_id desc";
+    $sql = "SELECT * FROM products order by product_id desc LIMIT 10";
     return pdo_query($sql);
 }
 //thêm sản phẩm

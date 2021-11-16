@@ -7,18 +7,9 @@ if (isset($_POST['btnsua'])==true){
     $permission = $_POST['phanquyen'];
     $status = $_POST['status'];
     update_user($user_name, $email, $password,$permission,$status,$user_id);
-
-
-
-
 }
 
 ?>
-
-
-
-
-
 
 <div class="container px-6 mx-auto grid">
     <div class="col-12 grid-margin stretch-card">
