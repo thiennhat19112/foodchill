@@ -138,6 +138,6 @@
 <!-- Header Section End -->
 
 <!-- Page Preloder -->
-<div id="preloder">
+<div id="preloader">
    <div class="loader"></div>
 </div>
