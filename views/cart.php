@@ -33,72 +33,42 @@
                      </tr>
                   </thead>
                   <tbody>
-                     <tr>
-                        <td class="shoping__cart__item">
-                           <img src="../assets/img/cart/cart-1.jpg" alt="">
-                           <h5>Vegetable’s Package</h5>
-                        </td>
-                        <td class="shoping__cart__price">
-                           $55.00
-                        </td>
-                        <td class="shoping__cart__quantity">
-                           <div class="quantity">
-                              <div class="pro-qty">
-                                 <input type="text" value="1">
-                              </div>
-                           </div>
-                        </td>
-                        <td class="shoping__cart__total">
-                           $110.00
-                        </td>
-                        <td class="shoping__cart__item__close">
-                           <span class="icon_close"></span>
-                        </td>
-                     </tr>
-                     <tr>
-                        <td class="shoping__cart__item">
-                           <img src="../assets/img/cart/cart-2.jpg" alt="">
-                           <h5>Fresh Garden Vegetable</h5>
-                        </td>
-                        <td class="shoping__cart__price">
-                           $39.00
-                        </td>
-                        <td class="shoping__cart__quantity">
-                           <div class="quantity">
-                              <div class="pro-qty">
-                                 <input type="text" value="1">
-                              </div>
-                           </div>
-                        </td>
-                        <td class="shoping__cart__total">
-                           $39.99
-                        </td>
-                        <td class="shoping__cart__item__close">
-                           <span class="icon_close"></span>
-                        </td>
-                     </tr>
-                     <tr>
-                        <td class="shoping__cart__item">
-                           <img src="../assets/img/cart/cart-3.jpg" alt="">
-                           <h5>Organic Bananas</h5>
-                        </td>
-                        <td class="shoping__cart__price">
-                           $69.00
-                        </td>
-                        <td class="shoping__cart__quantity">
-                           <div class="quantity">
-                              <div class="pro-qty">
-                                 <input type="text" value="1">
-                              </div>
-                           </div>
-                        </td>
-                        <td class="shoping__cart__total">
-                           $69.99
-                        </td>
-                        <td class="shoping__cart__item__close">
-                           <span class="icon_close"></span>
-                        </td>
-                     </tr>
+                     <?php
+                     $tong = 0;
+                     if (isset($_SESSION["cart"])) {
+                        foreach ($_SESSION["cart"] as $key => $value) {
+                           $product = getProd($key);
+                           extract($product);
+                           $thanhtien = ($product["price"] * $value["sl"]);
+                           $tong += $thanhtien;
+                           $giasp = number_format($product["price"]);
+                     ?>
+                           <tr>
+                              <td class="shoping__cart__item">
+                                 <img src="<?= $image; ?>" alt="" style="height: 7vw;">
+                                 <h5><?= $product["product_name"] ?></h5>
+                              </td>
+                              <td class="shoping__cart__price">
+                                 <?= $giasp; ?>
+                              </td>
+                              <td class="shoping__cart__quantity">
+                                 <div class="quantity">
+                                    <div class="pro-qty">
+                                       <input type="text" value="<?= $value["sl"]; ?>">
+                                    </div>
+                                 </div>
+                              </td>
+                              <td class="shoping__cart__total">
+                                 <?= number_format($thanhtien); ?>
+                              </td>
+                              <td class="shoping__cart__item__close">
+                                 <span class="icon_close"></span>
+                              </td>
+                           </tr>
+                     <?php
+                        }
+                     }
+                     ?>
                   </tbody>
                </table>
             </div>
@@ -127,8 +97,8 @@
             <div class="shoping__checkout">
                <h5>Thanh toán</h5>
                <ul>
-                  <li>Tổng tiền hàng <span>$454.98</span></li>
-                  <li>Thành tiền <span>$454.98</span></li>
+                  <li>Tổng tiền hàng <span><?= number_format($tong) ?></span></li>
+                  <li>Thành tiền <span><?= number_format($tong) ?></span></li>
                </ul>
                <a href="#" class="primary-btn">Thanh toán</a>
             </div>
