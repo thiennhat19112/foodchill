@@ -62,7 +62,7 @@
                                  <?= number_format($thanhtien); ?>
                               </td>
                               <td class="shoping__cart__item__close">
-                                 <span class="icon_close"></span>
+                                 <a href="?act=delitem&iddel=<?= $product_id; ?>"><span class="icon_close"></span></a>
                               </td>
                            </tr>
                      <?php
