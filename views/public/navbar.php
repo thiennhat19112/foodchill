@@ -37,7 +37,7 @@
                      <li><a href="../blog-details.html">Blog Details</a></li>
                   </ul>
                </li> -->
-         <li><a href="../blog">Blog</a></li>
+         <li><a href="../blog">Bài viết</a></li>
          <li><a href="../contact">Liên hệ</a></li>
       </ul>
    </nav>
@@ -78,7 +78,7 @@
                      <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
                      <a href="#" target="_blank"><i class="fa fa-pinterest-p"></i></a>
                   </div>
-                  <div class="header__top__right__language">
+                  <!-- <div class="header__top__right__language">
                      <img src="../assets/img/language.jpg" alt="">
                      <div>Tiếng việt</div>
                      <span class="arrow_carrot-down"></span>
@@ -86,7 +86,7 @@
                         <li><a href="#">Spanis</a></li>
                         <li><a href="#">English</a></li>
                      </ul>
-                  </div>
+                  </div> -->
                   <?php
                   if (!isset($_SESSION["username"])) {
                   ?>

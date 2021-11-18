@@ -1,14 +1,5 @@
 <?php
 session_start();
-require("../views/public/header.php");
-require("../views/public/navbar.php");
-require_once("../models/pdo.php");
-require_once("../models/category.php");
-require_once("../models/product.php");
-$cates = getAllCate();
-require("../views/home.php");
-require("../views/public/footer.php");
-
 if (isset($_GET['act'])) {
     $act = $_GET['act'];
 } else {
@@ -52,9 +43,18 @@ switch ($act) {
         break;
     case 'logout':
         session_destroy();
-        header("location:./index.php");
+        header("location:./");
         break;
     default:
         // header("location: ../home");
         break;
 }
+
+require("../views/public/header.php");
+require("../views/public/navbar.php");
+require_once("../models/pdo.php");
+require_once("../models/category.php");
+require_once("../models/product.php");
+$cates = getAllCate();
+require("../views/home.php");
+require("../views/public/footer.php");
