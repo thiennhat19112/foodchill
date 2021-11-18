@@ -14,7 +14,7 @@ if (isset($_POST["btnLogin"])) {
         if ($_SESSION["phanquyen"] == 1) {
             header("location: ../admin/index.php");
         } else {
-            header("location: index.php");
+            header("location: ../index.php");
         }
     } else {
         $message = "Tên người dùng hoặc mật khẩu không đúng!";

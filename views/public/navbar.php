@@ -87,9 +87,32 @@
                         <li><a href="#">English</a></li>
                      </ul>
                   </div>
-                  <div class="header__top__right__auth">
-                     <a href="../login"><i class="fa fa-user"></i> Đăng nhập</a>
-                  </div>
+                  <?php
+                  if (!isset($_SESSION["username"])) {
+                  ?>
+                     <div class="header__top__right__auth" style="margin-right: 20px;">
+                        <a href="../login"><i class="fa fa-user"></i> Đăng nhập</a>
+                     </div>
+                     <div class="header__top__right__auth">
+                        <a href="../signup"><i class="fa fa-user"></i> Đăng ký</a>
+                     </div>
+                  <?php
+                  } else {
+                     $usernameDisplay = $_SESSION["username"];
+                  ?>
+                     <div class="header__top__right__language">
+                        <div><?= $usernameDisplay ?></div>
+                        <span class="arrow_carrot-down"></span>
+                        <ul style="width:120px;">
+                           <li><a href="#">Tài khoản</a></li>
+                           <li><a href="#">Đổi mật khẩu</a></li>
+                           <li><a href="#">Đơn hàng</a></li>
+                           <li><a href="?act=logout">Đăng xuất</a></li>
+                        </ul>
+                     </div>
+                  <?php
+                  }
+                  ?>
                </div>
             </div>
          </div>
@@ -108,13 +131,13 @@
                   <li class="active"><a href="../home">Home</a></li>
                   <li><a href="../shop">Shop</a></li>
                   <!-- <li><a href="#">Pages</a>
-                           <ul class="header__menu__dropdown">
-                              <li><a href="./shop-details.html">Shop Details</a></li>
-                              <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                              <li><a href="./checkout.html">Check Out</a></li>
-                              <li><a href="./blog-details.html">Blog Details</a></li>
-                           </ul>
-                        </li> -->
+                     <ul class="header__menu__dropdown">
+                        <li><a href="./shop-details.html">Shop Details</a></li>
+                        <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                        <li><a href="./checkout.html">Check Out</a></li>
+                        <li><a href="./blog-details.html">Blog Details</a></li>
+                     </ul>
+                  </li> -->
                   <li><a href="../blog">Blog</a></li>
                   <li><a href="../contact">Liên hệ</a></li>
                </ul>

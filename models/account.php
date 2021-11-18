@@ -1,17 +1,14 @@
 <?php
-function loadall_taikhoan()
-{
+function loadall_taikhoan() {
     $sql = "select * from users order by user_id desc;";
     $listtaikhoan = pdo_query($sql);
     return $listtaikhoan;
 }
-// function insert_taikhoan($email, $user, $pass, $address, $tel, $role)
-// {
-//     $sql = "insert into taikhoan(email,user,pass,address,tel, role) values('$email','$user',MD5('$pass'), '$address', '$tel', '$role')";
-//     pdo_execute($sql);
-// }
-function checkuser($user_name, $password)
-{
+function insert_taikhoan($user_name, $email, $password) {
+    $sql = "INSERT INTO `users` (`user_id`, `user_name`, `email`, `password`, `join_date`, `permission`, `status`) VALUES (NULL, '$user_name', '$email', MD5('$password'), CURRENT_TIMESTAMP, '0', '1')";
+    pdo_execute($sql);
+}
+function checkuser($user_name, $password) {
     $sql = "select * from users where user_name='" . $user_name . "' AND  password= MD5('$password');";
     $user = pdo_query_one($sql);
     return $user;

@@ -21,7 +21,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-sm-12">
-                    <form class="card auth_form">
+                    <form class="card auth_form" action="./" method="POST">
                         <div class="header">
                             <img class="logo" src="../assets/img/logo.png" alt="">
                             <!-- <img class="logo" src="./logo.png" alt=""> -->
@@ -30,37 +30,38 @@
                         </div>
                         <div class="body">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Tên người dùng">
+                                <input type="text" class="form-control" placeholder="Tên người dùng" name="username">
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="zmdi zmdi-account-circle"></i></span>
                                 </div>
                             </div>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Hộp thư">
+                                <input type="email" class="form-control" placeholder="Hộp thư" name="email">
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="zmdi zmdi-email"></i></span>
                                 </div>
                             </div>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Mật khẩu">
+                                <input type="password" class="form-control" placeholder="Mật khẩu" name="password">
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="zmdi zmdi-lock"></i></span>
                                 </div>
                             </div>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Nhập lại mật khẩu">
+                                <input type="password" class="form-control" placeholder="Nhập lại mật khẩu" name="2checkpass">
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="zmdi zmdi-lock"></i></span>
                                 </div>
                             </div>
-                            <div class="checkbox">
+                            <!-- <div class="checkbox">
                                 <input id="remember_me" type="checkbox">
                                 <label for="remember_me">Đồng ý với <a href="javascript:void(0);">điều khoản sử
                                         dụng</a></label>
-                            </div>
-                            <a href="index.html" class="btn btn-primary btn-block waves-effect waves-light">ĐĂNG KÝ</a>
+                            </div> -->
+                            <button class="btn btn-primary btn-block waves-effect waves-light" name="btnSignup">Đăng ký</button>
+                            <!-- <a href="index.html" class="btn btn-primary btn-block waves-effect waves-light" name="btnSignup">ĐĂNG KÝ</a> -->
                             <div class="signin_with mt-3">
-                                <a class="link" href="sign-in.html">Bạn đã có tài khoản?</a>
+                                <a class="link" href="../login">Bạn đã có tài khoản?</a>
                             </div>
                         </div>
                     </form>

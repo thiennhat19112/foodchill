@@ -16,12 +16,11 @@
 </head>
 
 <body class="theme-blush">
-
     <div class="authentication">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-sm-12">
-                    <form class="card auth_form" action="./index.php" method="POST">
+                    <form class="card auth_form" action="./" method="POST">
                         <div class="header">
                             <img class="logo" src="../assets/img/logo.png" alt="">
                             <!-- <img class="logo" src="./logo.png" alt=""> -->
@@ -35,20 +34,23 @@
                                 </div>
                             </div>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" name="txtPassword" placeholder="Mật khẩu">
+                                <input type="password" class="form-control" name="txtPassword" placeholder="Mật khẩu">
                                 <div class="input-group-append">
                                     <span class="input-group-text"><a href="forgot-password.html" class="forgot" title="Forgot Password"><i class="zmdi zmdi-lock"></i></a></span>
                                 </div>
                             </div>
-                            <div class="checkbox">
+                            <div class="input-group mb-3" style="text-align: right;">
+                                <a href="../resetpwd">Quên mật khẩu?</a>
+                            </div>
+                            <!-- <div class="checkbox">
                                 <input id="remember_me" type="checkbox">
                                 <label for="remember_me">Tự động đăng nhập</label>
-                            </div>
+                            </div> -->
                             <button class="btn btn-primary btn-block waves-effect waves-light" name="btnLogin">Đăng nhập</button>
                             <!-- <a href="index.html" class="btn btn-primary btn-block waves-effect waves-light" name="btnLogin">ĐĂNG
                                 NHẬP</a> -->
                             <div class="signin_with mt-3">
-                                <p class="mb-0">hoặc Đăng ký với</p>
+                                <p class="mb-0">hoặc đăng nhập với</p>
                                 <button class="btn btn-primary btn-icon btn-icon-mini btn-round facebook"><i class="zmdi zmdi-facebook"></i></button>
                                 <button class="btn btn-primary btn-icon btn-icon-mini btn-round twitter"><i class="zmdi zmdi-twitter"></i></button>
                                 <button class="btn btn-primary btn-icon btn-icon-mini btn-round google"><i class="zmdi zmdi-google-plus"></i></button>
@@ -73,6 +75,11 @@
     <!-- Jquery Core Js -->
     <script src="../assets/scripts/libscripts.bundle.js"></script>
     <script src="../assets/scripts/vendorscripts.bundle.js"></script>
+    <script>
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+    </script>
 </body>
 
 </html>
