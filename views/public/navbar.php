@@ -91,10 +91,12 @@
                   if (!isset($_SESSION["username"])) {
                   ?>
                      <div class="header__top__right__auth" style="margin-right: 20px;">
-                        <a href="../login"><i class="fa fa-user"></i> Đăng nhập</a>
+                        <!-- <a href="../login"><i class="fa fa-user"></i> Đăng nhập</a> -->
+                        <a href="../login"><i></i> Đăng nhập</a>
                      </div>
                      <div class="header__top__right__auth">
-                        <a href="../signup"><i class="fa fa-user"></i> Đăng ký</a>
+                        <!-- <a href="../signup"><i class="fa fa-user"></i> Đăng ký</a> -->
+                        <a href="../signup"><i></i> Đăng ký</a>
                      </div>
                   <?php
                   } else {
