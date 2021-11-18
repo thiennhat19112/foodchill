@@ -21,7 +21,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-sm-12">
-                    <form class="card auth_form">
+                    <form class="card auth_form" action="./index.php" method="POST">
                         <div class="header">
                             <img class="logo" src="../assets/img/logo.png" alt="">
                             <!-- <img class="logo" src="./logo.png" alt=""> -->
@@ -29,13 +29,13 @@
                         </div>
                         <div class="body">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Tên tài khoản">
+                                <input type="text" class="form-control" name="txtUsername" placeholder="Tên tài khoản">
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="zmdi zmdi-account-circle"></i></span>
                                 </div>
                             </div>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Mật khẩu">
+                                <input type="text" class="form-control" name="txtPassword" placeholder="Mật khẩu">
                                 <div class="input-group-append">
                                     <span class="input-group-text"><a href="forgot-password.html" class="forgot" title="Forgot Password"><i class="zmdi zmdi-lock"></i></a></span>
                                 </div>
@@ -44,8 +44,9 @@
                                 <input id="remember_me" type="checkbox">
                                 <label for="remember_me">Tự động đăng nhập</label>
                             </div>
-                            <a href="index.html" class="btn btn-primary btn-block waves-effect waves-light">ĐĂNG
-                                NHẬP</a>
+                            <button class="btn btn-primary btn-block waves-effect waves-light" name="btnLogin">Đăng nhập</button>
+                            <!-- <a href="index.html" class="btn btn-primary btn-block waves-effect waves-light" name="btnLogin">ĐĂNG
+                                NHẬP</a> -->
                             <div class="signin_with mt-3">
                                 <p class="mb-0">hoặc Đăng ký với</p>
                                 <button class="btn btn-primary btn-icon btn-icon-mini btn-round facebook"><i class="zmdi zmdi-facebook"></i></button>
