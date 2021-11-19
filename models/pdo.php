@@ -1,49 +1,67 @@
 <?php
-function pdo_get_connection()
-{
-   // $serverName = "localhost:3325";
-   $serverName = "localhost";
-   $databaseName = "foodchill";
-   $username = "root";
-   $password = "";
-   $options = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
+function pdo_get_connection() {
+   $dburl = "mysql:host=localhost;dbname=foodchill;charset=utf8";
+   $username = 'root';
+   $password = '';
+   $conn = new PDO($dburl, $username, $password);
+   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+   return $conn;
+}
 
+function pdo_execute($sql) {
+   $sql_args = array_slice(func_get_args(), 1);
    try {
-      $conn = new PDO("mysql:host=$serverName; dbname=$databaseName", $username, $password, $options);
-
-      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      return $conn;
-      echo "Connection successfully";
+      $conn = pdo_get_connection();
+      $stmt = $conn->prepare($sql);
+      $stmt->execute($sql_args);
    } catch (PDOException $e) {
-      echo "Connection failed: " . $e->getMessage();
+      throw $e;
+   } finally {
+      unset($conn);
    }
 }
-//Add Del Update
-function pdo_execute($sql)
-{
+
+function pdo_query($sql) {
    $sql_args = array_slice(func_get_args(), 1);
-   $conn = pdo_get_connection();
-   $stmt = $conn->prepare($sql);
-   $stmt->execute($sql_args);
-   //return $stmt;
+   try {
+      $conn = pdo_get_connection();
+      $stmt = $conn->prepare($sql);
+      $stmt->execute($sql_args);
+      $rows = $stmt->fetchAll();
+      return $rows;
+   } catch (PDOException $e) {
+      throw $e;
+   } finally {
+      unset($conn);
+   }
 }
-//See all
-function pdo_query($sql)
-{
+
+function pdo_query_one($sql) {
    $sql_args = array_slice(func_get_args(), 1);
-   $conn = pdo_get_connection();
-   $stmt = $conn->prepare($sql);
-   $stmt->execute($sql_args);
-   $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-   return $result;
+   try {
+      $conn = pdo_get_connection();
+      $stmt = $conn->prepare($sql);
+      $stmt->execute($sql_args);
+      $row = $stmt->fetch(PDO::FETCH_ASSOC);
+      return $row;
+   } catch (PDOException $e) {
+      throw $e;
+   } finally {
+      unset($conn);
+   }
 }
-//See one
-function pdo_query_one($sql)
-{
+
+function pdo_query_value($sql) {
    $sql_args = array_slice(func_get_args(), 1);
-   $conn = pdo_get_connection();
-   $stmt = $conn->prepare($sql);
-   $stmt->execute($sql_args);
-   $result = $stmt->fetch(PDO::FETCH_ASSOC);
-   return $result;
+   try {
+      $conn = pdo_get_connection();
+      $stmt = $conn->prepare($sql);
+      $stmt->execute($sql_args);
+      $row = $stmt->fetch(PDO::FETCH_ASSOC);
+      return array_values($row)[0];
+   } catch (PDOException $e) {
+      throw $e;
+   } finally {
+      unset($conn);
+   }
 }

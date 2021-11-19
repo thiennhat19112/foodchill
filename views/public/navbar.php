@@ -27,8 +27,8 @@
    </div>
    <nav class="humberger__menu__nav mobile-menu">
       <ul>
-         <li class="active"><a href="../home">Home</a></li>
-         <li><a href="../shop">Shop</a></li>
+         <li class="active"><a href="?act=home">Home</a></li>
+         <li><a href="?act=shop">Shop</a></li>
          <!-- <li><a href="#">Pages</a>
                   <ul class="header__menu__dropdown">
                      <li><a href="../shop-details.html">Shop Details</a></li>
@@ -130,8 +130,8 @@
          <div class="col-lg-6">
             <nav class="header__menu">
                <ul>
-                  <li class="active"><a href="../home">Home</a></li>
-                  <li><a href="../shop">Shop</a></li>
+                  <li class="active"><a href="?act=home">Home</a></li>
+                  <li><a href="?act=shop">Shop</a></li>
                   <!-- <li><a href="#">Pages</a>
                      <ul class="header__menu__dropdown">
                         <li><a href="./shop-details.html">Shop Details</a></li>
@@ -140,8 +140,8 @@
                         <li><a href="./blog-details.html">Blog Details</a></li>
                      </ul>
                   </li> -->
-                  <li><a href="../blog">Blog</a></li>
-                  <li><a href="../contact">Liên hệ</a></li>
+                  <li><a href="?act=blog">Blog</a></li>
+                  <li><a href="?act=contact">Liên hệ</a></li>
                </ul>
             </nav>
          </div>
@@ -149,9 +149,9 @@
             <div class="header__cart">
                <ul>
                   <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                  <li><a href="../cart"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                  <li><a href="?act=cart"><i class="fa fa-shopping-bag"></i> <span><?php /*count($_SESSION["cart"])*/ ?>10</span></a></li>
                </ul>
-               <div class="header__cart__price">item: <span>$150.00</span></div>
+               <!-- <div class="header__cart__price">item: <span>$150.00</span></div> -->
             </div>
          </div>
       </div>
