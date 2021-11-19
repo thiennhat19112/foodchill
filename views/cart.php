@@ -6,7 +6,7 @@
             <div class="breadcrumb__text">
                <h2>Shopping Cart</h2>
                <div class="breadcrumb__option">
-                  <a href="../home">Home</a>
+                  <a href="?act=home">Home</a>
                   <span>Shopping Cart</span>
                </div>
             </div>
@@ -62,7 +62,7 @@
                                  <?= number_format($thanhtien); ?>
                               </td>
                               <td class="shoping__cart__item__close">
-                                 <a href="?act=delitem&iddel=<?= $product_id; ?>"><span class="icon_close"></span></a>
+                                 <a href="?act=cart&iddel=<?= $product_id; ?>"><span class="icon_close"></span></a>
                               </td>
                            </tr>
                      <?php
