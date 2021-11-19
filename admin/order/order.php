@@ -17,11 +17,26 @@
                     <th class="px-1 py-3">Ngày giao</th>
                 </tr>
             </thead>
+               
+            
             <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+            <?php
+              
+        
+              foreach ($items as $item){
+                  extract($item);
+                  
+                 
+             
+
+
+
+              ?>
                 <tr class="text-gray-700 dark:text-gray-400">
                     <td class="px-1 py-3">
                         <!-- tên khách hàng -->
                         <div class="flex items-center text-sm">
+                         
                             <!-- Avatar with inset shadow -->
                             <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
                                 <img class="object-cover w-full h-full rounded-full" src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ" alt="" loading="lazy" />
@@ -30,31 +45,31 @@
                             <div>
                                 <p class="font-semibold">Hans Burger</p>
                                 <p class="text-xs text-gray-600 dark:text-gray-400">
-                                    10x Developer
+                                    <?=$user_id?>
                                 </p>
                             </div>
                         </div>
                     </td>
                     <!-- Giá -->
                     <td class="px-1 py-3 text-sm">
-                        $ 863.45
+                        <?=$total_amount?>
                     </td>
                     <!-- Tên người nhận -->
                     <td class="px-1 py-3 text-sm">
-                        Nguyễn Van A
+                    <?=$receiver?>
                     </td>
                     <!-- Địa điểm -->
                     <td class="px-1 py-3 text-sm">
-                        TPHCM
+                    <?=$address?>
                     </td>
                     <!-- sdt -->
                     <td class="px-1 py-3 text-sm">
-                        0972xxxx
+                    <?=$phone?>
                     </td>
                     <!-- tình trạng -->
                     <td class="px-1 py-3 text-xs">
                         <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
-                            Đã giao
+                        <?=$status?>
                         </span>
                         <!-- <span class="px-2 py-1 font-semibold leading-tight text-orange-700 bg-orange-100 rounded-full dark:text-white dark:bg-orange-600">
                   Đang giao
@@ -65,13 +80,14 @@
                     </td>
                     <!-- ngày đặt -->
                     <td class="px-1 py-3 text-sm">
-                        6/10/2020
+                    <?=$order_date?>
                     </td>
                     <!-- Ngày giao -->
                     <td class="px-1 py-3 text-sm">
-                        6/10/2020
+                    <?=$shipping_date?>
                     </td>
                 </tr>
+                <?php }?>
             </tbody>
         </table>
     </div>

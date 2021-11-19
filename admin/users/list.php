@@ -20,6 +20,7 @@
                     <?php
                     foreach ($items as $item) {
                         extract($item);
+                        
 
                     ?>
                         <tr id="user-tr<?= $user_id ?>" class="text-gray-700 dark:text-gray-400">
