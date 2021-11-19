@@ -1,4 +1,4 @@
 # foodchill
-····# Tài khoản đăng nhập
-····1. admin, admin
-····2. user1, user1
+Tài khoản đăng nhập (username/password):
+- admin, admin
+- user1, user1
