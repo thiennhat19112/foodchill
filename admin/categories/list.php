@@ -30,7 +30,7 @@
                                 <?= $category_name ?>
                             </td>
                             <td class="px-4 py-3 text-sm">
-                                <?= $ordinal_numbers ?>
+                                <?= $ordinal_number ?>
                             </td>
                             <td class=" px-4 py-3 text-xs">
                                 <?php if ($status == '1') {
