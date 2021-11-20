@@ -1,7 +1,7 @@
 <?php
-$cates = getAllCate();
-$prods = getAllProd();
+$cates = getAllShowCate();
 $discProds = getDiscountProd();
+$prods = getAllShowProd();
 if (isset($_GET["act"]) && isset($_GET["productid"])) {
    $productid = $_GET["productid"];
    if (isset($_SESSION["cart"][$productid])) {

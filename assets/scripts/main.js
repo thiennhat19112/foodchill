@@ -158,32 +158,11 @@
         autoHeight: false,
         autoplay: true
     });
-
-    /*-----------------------
-		Price Range Slider
-	------------------------ */
-    var rangeSlider = $(".price-range"),
-        minamount = $("#minamount"),
-        maxamount = $("#maxamount"),
-        minPrice = rangeSlider.data('min'),
-        maxPrice = rangeSlider.data('max');
-    rangeSlider.slider({
-        range: true,
-        min: minPrice,
-        max: maxPrice,
-        values: [minPrice, maxPrice],
-        slide: function (event, ui) {
-            minamount.val('$' + ui.values[0]);
-            maxamount.val('$' + ui.values[1]);
-        }
-    });
-    minamount.val('$' + rangeSlider.slider("values", 0));
-    maxamount.val('$' + rangeSlider.slider("values", 1));
-
+    
     /*--------------------------
         Select
     ----------------------------*/
-    $("select").niceSelect();
+    $("select#sort_option").niceSelect();
 
     /*------------------
 		Single Product
@@ -220,5 +199,70 @@
         }
         $button.parent().find('input').val(newVal);
     });
-
 })(jQuery);
+
+$(document).ready(function(){
+
+    filter_data();
+
+    function filter_data()
+    {
+        $('.sort--prod').html('<div id="loading" style="" ></div>');
+        var action = 'fetch_data';
+        var minimum_price = $('#hidden_minimum_price').val();
+        var maximum_price = $('#hidden_maximum_price').val();
+        var category = get_filter('category');
+        var ram = get_filter('ram');
+        var sort = get_filter('sort');
+        // console.log(category);
+        // console.log(sort);
+        $.ajax({
+            url:"./models/ajax.php",
+            method:"POST",
+            data:{action:action, minimum_price:minimum_price, maximum_price:maximum_price, category:category, ram:ram, sort:sort},
+            success:function(result){
+                var jsonResult = $.parseJSON(result);
+                var data1 = jsonResult[0];
+                var data2 = jsonResult[1];
+                $('#foundedProd').html(data2);
+                $('.sort--prod').html(data1);
+                $('.set-bg').each(function () {
+                    var bg = $(this).data('setbg');
+                    $(this).css('background-image', 'url(' + bg + ')');
+                });
+            }
+        });
+    }
+
+    function get_filter(class_name)
+    {
+        var filter = [];
+        $('.'+class_name+':checked').each(function(){
+            filter.push($(this).val());
+        });
+        return filter;
+    }
+
+    $('.common_selector').click(function(){
+        // console.log('clicked');
+        filter_data();
+    });
+
+    var minPrice = $(".price-range").data('min'),
+        maxPrice = $(".price-range").data('max');
+    $(".price-range").slider({
+        range: true,
+        min: minPrice,
+        max: maxPrice,
+        values: [minPrice, maxPrice],
+        step: 1000,
+        slide:function(event, ui){
+            $('.range-slider').html('<span id="minimum_price">' + ui.values[0] + '</span>₫ - <span id="maximum_price">' + ui.values[1] + '</span>₫');
+        },
+        stop: function (event, ui) {
+            $('#hidden_minimum_price').val(ui.values[0]);
+            $('#hidden_maximum_price').val(ui.values[1]);
+            filter_data();
+        }
+    });
+});
