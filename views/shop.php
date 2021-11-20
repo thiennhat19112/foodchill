@@ -195,7 +195,7 @@
                                        <?php
                                        } else {
                                        ?>
-                                          <!-- <li><a onclick="return false;"><i class="fa fa-shopping-cart"></i></a></li> -->
+                                          <li><a onclick="window.location.replace('login/');"><i class="fa fa-shopping-cart"></i></a></li>
                                        <?php
                                        }
                                        ?>
@@ -261,7 +261,7 @@
                                  <?php
                                  } else {
                                  ?>
-                                    <!-- <li><a onclick="return false;"><i class="fa fa-shopping-cart"></i></a></li> -->
+                                    <li><a onclick="window.location.replace('login/');"><i class="fa fa-shopping-cart"></i></a></li>
                                  <?php
                                  }
                                  ?>
