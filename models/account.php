@@ -8,8 +8,8 @@ function insert_taikhoan($user_name, $email, $password) {
     $sql = "INSERT INTO `users` (`user_id`, `user_name`, `email`, `password`, `join_date`, `permission`, `status`) VALUES (NULL, '$user_name', '$email', MD5('$password'), CURRENT_TIMESTAMP, '0', '1')";
     pdo_execute($sql);
 }
-function checkuser($user_name, $password) {
-    $sql = "select * from users where user_name='" . $user_name . "' AND  password= MD5('$password');";
+function checkuser($email, $password) {
+    $sql = "select * from users where email='" . $email . "' AND  password= MD5('$password');";
     $user = pdo_query_one($sql);
     return $user;
 }
