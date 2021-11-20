@@ -5,7 +5,7 @@ if (isset($_SESSION["username"])) {
         header("location: ../");
     }
 } else {
-    header("location: ../login");
+    header("location: ../login/");
 }
 
 if (isset($_GET['v'])) {
