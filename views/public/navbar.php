@@ -9,20 +9,14 @@
          <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
          <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
       </ul>
-      <div class="header__cart__price">item: <span>$150.00</span></div>
+      <!-- <div class="header__cart__price">item: <span>$150.00</span></div> -->
    </div>
    <div class="humberger__menu__widget">
-      <div class="header__top__right__language">
-         <img src="./assets/img/language.jpg" alt="">
-         <div>Tiếng Việt</div>
-         <span class="arrow_carrot-down"></span>
-         <ul>
-            <li><a href="#">Spanis</a></li>
-            <li><a href="#">English</a></li>
-         </ul>
+      <div class="header__top__right__auth" style="margin-right: 20px;">
+         <a href="./login"><i class="fa fa-user"></i> Đăng nhập</a>
       </div>
       <div class="header__top__right__auth">
-         <a href="../login"><i class="fa fa-user"></i> Đăng nhập</a>
+         <a href="./signup"><i class="fa fa-user"></i> Đăng ký</a>
       </div>
    </div>
    <nav class="humberger__menu__nav mobile-menu">
@@ -37,8 +31,8 @@
                      <li><a href="../blog-details.html">Blog Details</a></li>
                   </ul>
                </li> -->
-         <li><a href="../blog">Bài viết</a></li>
-         <li><a href="../contact">Liên hệ</a></li>
+         <li><a href="./blog">Bài viết</a></li>
+         <li><a href="./contact">Liên hệ</a></li>
       </ul>
    </nav>
    <div id="mobile-menu-wrap"></div>
@@ -78,25 +72,16 @@
                      <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
                      <a href="#" target="_blank"><i class="fa fa-pinterest-p"></i></a>
                   </div>
-                  <!-- <div class="header__top__right__language">
-                     <img src="./assets/img/language.jpg" alt="">
-                     <div>Tiếng việt</div>
-                     <span class="arrow_carrot-down"></span>
-                     <ul>
-                        <li><a href="#">Spanis</a></li>
-                        <li><a href="#">English</a></li>
-                     </ul>
-                  </div> -->
                   <?php
                   if (!isset($_SESSION["username"])) {
                   ?>
                      <div class="header__top__right__auth" style="margin-right: 20px;">
-                        <!-- <a href="../login"><i class="fa fa-user"></i> Đăng nhập</a> -->
-                        <a href="../login"><i></i> Đăng nhập</a>
+                        <!-- <a href="./login"><i class="fa fa-user"></i> Đăng nhập</a> -->
+                        <a href="./login"><i></i> Đăng nhập</a>
                      </div>
                      <div class="header__top__right__auth">
-                        <!-- <a href="../signup"><i class="fa fa-user"></i> Đăng ký</a> -->
-                        <a href="../signup"><i></i> Đăng ký</a>
+                        <!-- <a href="./signup"><i class="fa fa-user"></i> Đăng ký</a> -->
+                        <a href="./signup"><i></i> Đăng ký</a>
                      </div>
                   <?php
                   } else {
@@ -124,7 +109,7 @@
       <div class="row">
          <div class="col-lg-3">
             <div class="header__logo">
-               <a href="../home"><img src="./assets/img/logo.png" alt=""></a>
+               <a href="?act=home"><img src="./assets/img/logo.png" alt=""></a>
             </div>
          </div>
          <div class="col-lg-6">
