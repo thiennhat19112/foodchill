@@ -1,4 +1,4 @@
 # foodchill
-Tài khoản đăng nhập (username/password):
-- admin, admin
-- user1, user1
+Tài khoản đăng nhập (email / password):
+- admin@localhost.com / admin
+- user1@locahost.com / user1
