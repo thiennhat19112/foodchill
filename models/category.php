@@ -1,6 +1,6 @@
 <?PHP 
-   function getAllCate(){
-      $sql = "SELECT * FROM `categories`";
+   function getAllShowCate(){
+      $sql = "SELECT * FROM `categories` WHERE `status` = 1";
       return pdo_query($sql);
    }
    function getCate($ct_id){

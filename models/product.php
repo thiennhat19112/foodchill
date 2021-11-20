@@ -1,6 +1,6 @@
 <?PHP
-function getAllProd() {
-   $sql = "SELECT * FROM `products`";
+function getAllShowProd(){
+   $sql = "SELECT * FROM `products` WHERE `status` = 1";
    return pdo_query($sql);
 }
 function getProd($p_id) {
@@ -11,7 +11,10 @@ function getDiscountProd() {
    $sql = "SELECT * FROM `products` WHERE `discount` > 0";
    return pdo_query($sql);
 }
-
+function countProd($sql_sort){
+   $sql = str_replace('SELECT *', 'SELECT COUNT(product_id) as total', $sql_sort);
+   return pdo_query_one($sql)['total'];
+}
 function stringProcessor($str) {
    $unicode = array(
       'a' => 'á|à|ả|ã|ạ|ă|ắ|ặ|ằ|ẳ|ẵ|â|ấ|ầ|ẩ|ẫ|ậ',
