@@ -1,14 +1,14 @@
    
    
    <!-- Breadcrumb Section Begin -->
-      <section class="breadcrumb-section set-bg" data-setbg="../assets/img/breadcrumb.jpg">
+      <section class="breadcrumb-section set-bg" data-setbg="./assets/img/breadcrumb.jpg">
          <div class="container">
             <div class="row">
                <div class="col-lg-12 text-center">
                   <div class="breadcrumb__text">
                      <h2>Liên hệ với chúng tôi</h2>
                      <div class="breadcrumb__option">
-                        <a href="../home">Trang chủ</a>
+                        <a href="?act=home">Trang chủ</a>
                         <span>Liên hệ với chúng tôi</span>
                      </div>
                   </div>
