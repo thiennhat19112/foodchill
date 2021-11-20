@@ -24,15 +24,15 @@ if (isset($_POST['btnthem']) == true) {
                     </div>
                     <div class="form-group">
                         <label for="exampleInputCity1">Mật khẩu</label>
-                        <input type="text" name="password" class="form-control" id="exampleInputCity1" placeholder="Mật khẩu">
+                        <input type="password" name="password" class="form-control" id="exampleInputCity1" placeholder="Mật khẩu">
                     </div>
 
                     <div class="form-group">
                         <label for="exampleSelectGender">Phân quyền</label>
                         <select class="form-control" name="phanquyen" id="exampleSelectGender">
-                            <option value="0">Admin</option>
-                            <option value="1">Shipper</option>
-                            <option value="2">Khách hàng    </option>
+                            <option value="1">Admin</option>
+                            <option value="2">Shipper</option>
+                            <option value="0">Khách hàng</option>
                             
                         </select>
                     </div>
