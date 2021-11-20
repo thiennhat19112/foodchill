@@ -179,6 +179,7 @@
                      <div class="product__discount__slider owl-carousel">
                         <?PHP
                         foreach ($discProds as $key => $value) {
+                           $product_name = $value['product_name'];
                         ?>
                            <div class="col-lg-4">
                               <div class="product__discount__item">
@@ -194,7 +195,7 @@
                                        <?php
                                        } else {
                                        ?>
-                                          <li><a onclick="return false;"><i class="fa fa-shopping-cart"></i></a></li>
+                                          <!-- <li><a onclick="return false;"><i class="fa fa-shopping-cart"></i></a></li> -->
                                        <?php
                                        }
                                        ?>
@@ -202,7 +203,7 @@
                                  </div>
                                  <div class="product__discount__item__text">
                                     <span>Dried Fruit</span>
-                                    <h5><a href="?act=prod_detail&prod_id=<?= $value['product_id'] ?>"><?= $value['product_name'] ?></a></h5>
+                                    <h5><a href="shop/product/<?= $value['product_id'] ?>-<?= stringProcessor($product_name) ?>"><?= $product_name ?></a></h5>
                                     <div class="product__item__price">
                                        <?= number_format($value['price'] * ((100 - $value['discount']) / 100), 0, ',', '.') ?> VND
                                        <span><?= number_format($value['price'], 0, ',', '.') ?> VND</span>
@@ -245,6 +246,7 @@
                <div class="row">
                   <?PHP
                   foreach ($prods as $key => $value) {
+                     $product_name = $value['product_name'];
                   ?>
                      <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product__item">
@@ -259,14 +261,14 @@
                                  <?php
                                  } else {
                                  ?>
-                                    <li><a onclick="return false;"><i class="fa fa-shopping-cart"></i></a></li>
+                                    <!-- <li><a onclick="return false;"><i class="fa fa-shopping-cart"></i></a></li> -->
                                  <?php
                                  }
                                  ?>
                               </ul>
                            </div>
                            <div class="product__item__text">
-                              <h6><a href="?act=prod_detail&prod_id=<?= $value['product_id'] ?>"><?= $value['product_name'] ?></a></h6>
+                              <h6><a href="shop/product/<?= $value['product_id'] ?>-<?= stringProcessor($product_name) ?>"><?= $product_name ?></a></h6>
                               <h5><?= number_format($value['price'] * ((100 - $value['discount']) / 100), 0, ',', '.') ?> VND</h5>
                            </div>
                         </div>

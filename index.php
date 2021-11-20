@@ -66,7 +66,7 @@ switch ($act) {
         //     header("location: ./view/taikhoan/update.php");
         //     break;
     default:
-        require("./views/home.php");
+        // require("./views/home.php");
         break;
 }
 require("./views/public/footer.php");

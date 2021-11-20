@@ -3,7 +3,7 @@
 function insert_user($user_name, $email, $password,$permission,$status)
 {
     $sql = "INSERT INTO  users(user_name,email, password,permission,status) 
-        VALUES(?,?,?,?,?)";
+        VALUES(?,?,MD5(?),?,?)";
     pdo_execute($sql,$user_name, $email, $password,$permission,$status);
 }
 // sửa
