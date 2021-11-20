@@ -15,63 +15,79 @@
                     <th class="px-1 py-3">Tình trạng</th>
                     <th class="px-1 py-3">Ngày đặt hàng</th>
                     <th class="px-1 py-3">Ngày giao</th>
+                    <th class="px-1 py-3">Ghi chú khách hàng</th>
+                    <th class="px-1 py-3">Ghi chú admin</th>
                 </tr>
             </thead>
             <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                <tr class="text-gray-700 dark:text-gray-400">
-                    <td class="px-1 py-3">
-                        <!-- tên khách hàng -->
-                        <div class="flex items-center text-sm">
-                            <!-- Avatar with inset shadow -->
-                            <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                                <img class="object-cover w-full h-full rounded-full" src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ" alt="" loading="lazy" />
-                                <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
+                <?php foreach ($items as $item) {
+                    extract($item);
+                ?>
+                    <tr class="text-gray-700 dark:text-gray-400">
+                        <td class="px-1 py-3">
+                            <!-- tên khách hàng -->
+                            <div class="flex items-center text-sm">
+                                <!-- Avatar with inset shadow -->
+                                <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
+                                    <img class="object-cover w-full h-full rounded-full" src="../upload/images/<?= $image ?>" alt="" loading="lazy" />
+                                    <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
+                                </div>
+                                <div>
+                                    <p class="font-semibold"><?= $user_name ?></p>
+                                </div>
                             </div>
-                            <div>
-                                <p class="font-semibold">Hans Burger</p>
-                                <p class="text-xs text-gray-600 dark:text-gray-400">
-                                    10x Developer
-                                </p>
-                            </div>
-                        </div>
-                    </td>
-                    <!-- Giá -->
-                    <td class="px-1 py-3 text-sm">
-                        $ 863.45
-                    </td>
-                    <!-- Tên người nhận -->
-                    <td class="px-1 py-3 text-sm">
-                        Nguyễn Van A
-                    </td>
-                    <!-- Địa điểm -->
-                    <td class="px-1 py-3 text-sm">
-                        TPHCM
-                    </td>
-                    <!-- sdt -->
-                    <td class="px-1 py-3 text-sm">
-                        0972xxxx
-                    </td>
-                    <!-- tình trạng -->
-                    <td class="px-1 py-3 text-xs">
-                        <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
-                            Đã giao
-                        </span>
-                        <!-- <span class="px-2 py-1 font-semibold leading-tight text-orange-700 bg-orange-100 rounded-full dark:text-white dark:bg-orange-600">
-                  Đang giao
-                </span>
-                <span class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-700">
-                  Đã hủy
-                </span> -->
-                    </td>
-                    <!-- ngày đặt -->
-                    <td class="px-1 py-3 text-sm">
-                        6/10/2020
-                    </td>
-                    <!-- Ngày giao -->
-                    <td class="px-1 py-3 text-sm">
-                        6/10/2020
-                    </td>
-                </tr>
+                        </td>
+                        <!-- Giá -->
+                        <td class="px-1 py-3 text-sm">
+                            <?= $total_amount ?>
+                        </td>
+                        <!-- Tên người nhận -->
+                        <td class="px-1 py-3 text-sm">
+                            <?= $receiver ?>
+                        </td>
+                        <!-- Địa điểm -->
+                        <td class="px-1 py-3 text-sm">
+                            <?= $address ?>
+                        </td>
+                        <!-- sdt -->
+                        <td class="px-1 py-3 text-sm">
+                            <?= $phone ?>
+                        </td>
+                        <!-- tình trạng -->
+                        <td class="px-1 py-3 text-xs">
+                            <?php if ($status == '0') {
+                                echo ' <span class="px-2 py-1 font-semibold leading-tight text-orange-700 bg-orange-100 rounded-full dark:text-white dark:bg-orange-600">
+                            Đang giao
+                            </span>';
+                            } else if ($status == '1') {
+                                echo '<span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
+                                    Đã giao
+                                    </span>';
+                            } else {
+                                echo '<span class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-700">
+                                    Đã hủy
+                                    </span>';
+                            }
+                            ?>
+                        </td>
+                        <!-- ngày đặt -->
+                        <td class="px-1 py-3 text-sm">
+                            <?= $order_date ?>
+                        </td>
+                        <!-- Ngày giao -->
+                        <td class="px-1 py-3 text-sm">
+                            <?= $shipping_date ?>
+                        </td>
+                        <!-- ghi chú khách hàng -->
+                        <td class="px-1 py-3 text-sm">
+                            <?= $receiver_note ?>
+                        </td>
+                        <!-- ghi chú admin -->
+                        <td class="px-1 py-3 text-sm">
+                            <?= $admin_note ?>
+                        </td>
+                    </tr>
+                <?php } ?>
             </tbody>
         </table>
     </div>

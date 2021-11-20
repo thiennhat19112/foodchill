@@ -213,14 +213,14 @@
     <div class="grid gap-6 mb-8 md:grid-cols-2">
       <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs ">
         <h4 class="mb-4 font-semibold text-gray-800 dark:text-gray-300">
-          Doanh thu
+          Doanh thu trong tuần
         </h4>
         <canvas id="bars"></canvas>
       </div>
       <!-- Lines chart -->
       <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs ">
         <h4 class="mb-4 font-semibold text-gray-800 ">
-          Lines
+          Khách hàng đã đăng kí 
         </h4>
         <canvas id="line"></canvas>
       </div>

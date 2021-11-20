@@ -5,7 +5,7 @@ if (isset($_SESSION["username"])) {
         header("location: ../home");
     }
 } else {
-    header("location: ../home");
+    header("location: ../login/");
 }
 
 if (isset($_GET['v'])) {
@@ -26,7 +26,7 @@ if (isset($_GET['v'])) {
     } else if ($v == "product") {
         require("products/index.php");
     } else if ($v == "order") {
-        require("order/order.php");
+        require("order/index.php");
     } else if ($v == "user") {
         require("users/index.php");
     } else if ($v == "comment") {
