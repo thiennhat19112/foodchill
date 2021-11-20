@@ -7,6 +7,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="description" content="FoodChill">
    <meta name="keywords" content="FoodChill, Frozen Food">
+   <base href="/mywebsite/foodchill/">
    <title>FoodChill</title>
 
    <!-- Css Styles -->
