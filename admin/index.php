@@ -2,7 +2,7 @@
 session_start();
 if (isset($_SESSION["username"])) {
     if ($_SESSION["phanquyen"] != '1') {
-        header("location: ../home");
+        header("location: ../");
     }
 } else {
     header("location: ../login/");
@@ -12,7 +12,7 @@ if (isset($_GET['v'])) {
     $v = $_GET['v'];
     if ($v == "logout") {
         session_destroy();
-        header("location: ../home");
+        header("location: ../");
     }
 }
 require("models/pdo.php");
