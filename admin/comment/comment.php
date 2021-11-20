@@ -16,6 +16,24 @@
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y ">
+                    <?php
+                    foreach ($items as $item){
+                        extract($item);
+
+
+
+                   
+
+
+
+
+
+                ?>
+
+
+
+
+
                     <tr class="text-gray-700 ">
                         <td class="px-4 py-3">
                             <div class="flex items-center text-sm">
@@ -45,7 +63,7 @@
                             </button>
                         </td>
                     </tr>
-
+                        <?php }?>
                 </tbody>
             </table>
         </div>
