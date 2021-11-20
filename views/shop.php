@@ -202,7 +202,7 @@
                                  </div>
                                  <div class="product__discount__item__text">
                                     <span>Dried Fruit</span>
-                                    <h5><a href="../product/?prod_id=<?= $value['product_id'] ?>"><?= $value['product_name'] ?></a></h5>
+                                    <h5><a href="?act=prod_detail&prod_id=<?= $value['product_id'] ?>"><?= $value['product_name'] ?></a></h5>
                                     <div class="product__item__price">
                                        <?= number_format($value['price'] * ((100 - $value['discount']) / 100), 0, ',', '.') ?> VND
                                        <span><?= number_format($value['price'], 0, ',', '.') ?> VND</span>
@@ -266,7 +266,7 @@
                               </ul>
                            </div>
                            <div class="product__item__text">
-                              <h6><a href="../product/?prod_id=<?= $value['product_id'] ?>"><?= $value['product_name'] ?></a></h6>
+                              <h6><a href="?act=prod_detail&prod_id=<?= $value['product_id'] ?>"><?= $value['product_name'] ?></a></h6>
                               <h5><?= number_format($value['price'] * ((100 - $value['discount']) / 100), 0, ',', '.') ?> VND</h5>
                            </div>
                         </div>

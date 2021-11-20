@@ -35,6 +35,10 @@ switch ($act) {
     case "contact":
         require("../views/contact.php");
         break;
+    case "prod_detail":
+        require("../product/index.php");
+        require("../views/product.php");
+        break;
         // case 'listsp':
         //     if (isset($_POST['listok']) && ($_POST['listok'])) {
         //         $kyw = $_POST['kyw'];
