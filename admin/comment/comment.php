@@ -12,6 +12,7 @@
                         <th class="px-4 py-3">Bình luận</th>
                         <th class="px-4 py-3">Ngày bình luận</th>
                         <th class="px-4 py-3">Sản phẩm bình luận</th>
+                        <th class="px-4 py-3">Trạng thái</th>
                         <th class="px-4 py-3">Thao tác</th>
                     </tr>
                 </thead>
@@ -52,6 +53,9 @@
                         <td class="px-4 py-3 text-sm">
                         <?=$create_date?>
                         </td>
+                        <td class="px-4 py-3 text-sm">
+                        <?=$product_name?>
+                        </td>
                         <td class="px-4 py-3 text-xs">
                         <?php if ($status == '0') {
                                 echo ' <span class="px-2 py-1 font-semibold leading-tight text-orange-700 bg-orange-100 rounded-full dark:text-white dark:bg-orange-600">
@@ -68,6 +72,7 @@
                             }
                             ?>
                         </td>
+                        <td></td>
                         <td class="px-4 py-3 text-sm">
                             <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray" aria-label="Delete">
                                 <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
