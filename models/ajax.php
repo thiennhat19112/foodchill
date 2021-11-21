@@ -27,6 +27,7 @@ if (isset($_POST["action"])) {
    if ($total_row > 0) {
       foreach ($result as $row) {
          $product_name = $row['product_name'];
+         $product_id = $row['product_id'];
          $output .= '
             <div class="col-lg-4 col-md-6 col-sm-6">
                <div class="product__item">
@@ -34,11 +35,11 @@ if (isset($_POST["action"])) {
                      <ul class="product__item__pic__hover">
                         <li><a href="#"><i class="fa fa-heart"></i></a></li>
                         <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                        <li><a href="?act=shop&productid=' . $row['product_id'] . '"><i class="fa fa-shopping-cart"></i></a></li>
+                        <li><a href="?act=shop&productid=' . $product_id . '"><i class="fa fa-shopping-cart"></i></a></li>
                      </ul>
                   </div>
                   <div class="product__item__text">
-                     <h6><a href="shop/product/' . $row['product_id'] . '-' . stringProcessor($product_name) . '">' . $product_name . '</a></h6>
+                     <h6><a href="shop/product/' . $product_id . '-' . stringProcessor($product_name) . '">' . $product_name . '</a></h6>
                      <h5>' . number_format($row['price'] * ((100 - $row['discount']) / 100), 0, ',', '.') . ' VND</h5>
                   </div>
                </div>
