@@ -13,9 +13,9 @@ if (isset($_POST["btnLogin"])) {
             $_SESSION["phanquyen"] = $sql_u["permission"];
         }
         if ($_SESSION["phanquyen"] == 1) {
-            header("location: ../admin/index.php");
+            header("location: ../admin/");
         } else {
-            header("location: ../index.php");
+            header("location: ../");
         }
     } else {
         $message = "Email mật khẩu không đúng!";
