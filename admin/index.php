@@ -30,7 +30,7 @@ if (isset($_GET['v'])) {
     } else if ($v == "user") {
         require("users/index.php");
     } else if ($v == "comment") {
-        require("comment/comment.php");
+        require("comment/index.php");
     } else if ($v == "order_detail") {
         require("order_details/order_details.php");
     }

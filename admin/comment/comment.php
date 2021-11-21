@@ -43,17 +43,30 @@
                                     <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
                                 </div>
                                 <div>
-                                    <p class="font-semibold whitespace-no-wrap">Hans Burger</p>
+                                    <p class="font-semibold whitespace-no-wrap"><?=$user_name?></p>
                                 </div>
                             </div>
                         </td>
                         <td class="px-4 py-3 text-sm">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum dolore quis at culpa perspiciatis porro, vero placeat voluptates omnis ad repellendus delectus quos laboriosam aliquam dignissimos deleniti neque odio voluptatum. Similique rem repellat natus doloribus dolor est non dolorem porro ducimus beatae, eius quisquam soluta, dolore, consectetur nostrum quam repellendus. </td>
+                           <?=$comment_content?> </td>
                         <td class="px-4 py-3 text-sm">
-
+                        <?=$create_date?>
                         </td>
                         <td class="px-4 py-3 text-xs">
-
+                        <?php if ($status == '0') {
+                                echo ' <span class="px-2 py-1 font-semibold leading-tight text-orange-700 bg-orange-100 rounded-full dark:text-white dark:bg-orange-600">
+                            Đang giao
+                            </span>';
+                            } else if ($status == '1') {
+                                echo '<span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
+                                    Đã giao
+                                    </span>';
+                            } else {
+                                echo '<span class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-700">
+                                    Đã hủy
+                                    </span>';
+                            }
+                            ?>
                         </td>
                         <td class="px-4 py-3 text-sm">
                             <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray" aria-label="Delete">
