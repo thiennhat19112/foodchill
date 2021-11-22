@@ -11,9 +11,17 @@ function getDiscountProd() {
    $sql = "SELECT * FROM `products` WHERE `discount` > 0";
    return pdo_query($sql);
 }
+function getFeaturedProd(){
+   $sql = "SELECT * FROM `products` ORDER BY `rating` DESC LIMIT 8";
+   return pdo_query($sql);
+}
 function countProd($sql_sort){
    $sql = str_replace('SELECT *', 'SELECT COUNT(product_id) as total', $sql_sort);
    return pdo_query_one($sql)['total'];
+}
+function getProdCate($cate_id){
+   $sql = "SELECT category_name FROM `categories` WHERE `category_id` = ?";
+   return pdo_query_one($sql, $cate_id)['category_name'];
 }
 function stringProcessor($str) {
    $unicode = array(

@@ -194,52 +194,6 @@
                </div>
             </div>
             <div class="col-lg-9 col-md-7">
-               <div class="product__discount">
-                  <div class="section-title product__discount__title">
-                     <h2>Giảm giá</h2>
-                  </div>
-                  <div class="row">
-                     <div class="product__discount__slider owl-carousel">
-                        <?PHP
-                        foreach ($discProds as $key => $value) {
-                           $product_name = $value['product_name'];
-                        ?>
-                           <div class="col-lg-4">
-                              <div class="product__discount__item">
-                                 <div class="product__discount__item__pic set-bg" data-setbg="<?= $value['image'] ?>">
-                                    <div class="product__discount__percent">-<?= $value['discount'] ?>%</div>
-                                    <ul class="product__item__pic__hover">
-                                       <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                       <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                       <?php
-                                       if (isset($_SESSION["username"])) {
-                                       ?>
-                                          <li><a href="?act=shop&productid=<?= $value['product_id'] ?>"><i class="fa fa-shopping-cart"></i></a></li>
-                                       <?php
-                                       } else {
-                                       ?>
-                                          <li><a onclick="window.location.replace('login/');"><i class="fa fa-shopping-cart"></i></a></li>
-                                       <?php
-                                       }
-                                       ?>
-                                    </ul>
-                                 </div>
-                                 <div class="product__discount__item__text">
-                                    <span>Dried Fruit</span>
-                                    <h5><a href="shop/product/<?= $value['product_id'] ?>-<?= stringProcessor($product_name) ?>"><?= $product_name ?></a></h5>
-                                    <div class="product__item__price">
-                                       <?= number_format($value['price'] * ((100 - $value['discount']) / 100), 0, ',', '.') ?> VND
-                                       <span><?= number_format($value['price'], 0, ',', '.') ?> VND</span>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        <?PHP
-                        }
-                        ?>
-                     </div>
-                  </div>
-               </div>
                <div class="filter__item">
                   <div class="row">
                      <div class="col-lg-4 col-md-5">

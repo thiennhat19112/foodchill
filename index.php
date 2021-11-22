@@ -17,6 +17,8 @@ require("./models/product.php");
 require("./views/public/header.php");
 require("./views/public/navbar.php");
 $cates = getAllShowCate();
+$discProds = getDiscountProd();
+$featuredProds = getFeaturedProd();
 switch ($act) {
    case "home":
       require("./views/home.php");
