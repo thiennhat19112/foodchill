@@ -3,13 +3,12 @@
          <div class="container">
             <div class="row">
                <div class="col-lg-12">
-                  
                   <div class="hero__item set-bg" data-setbg="./assets/images/hero/banner.jpg">
                      <div class="hero__text">
-                        <span>FRUIT FRESH</span>
-                        <h2>Vegetable <br />100% Organic</h2>
-                        <p>Free Pickup and Delivery Available</p>
-                        <a href="?act=shop" class="primary-btn">SHOP NOW</a>
+                        <span>TRÁI CÂY ĐÔNG LẠNH</span>
+                        <h2>Trái cây <br />100% tươi ngon</h2>
+                        <p>Được đông lạnh ngay lúc hái.</p>
+                        <a href="shop/" class="primary-btn">MUA NGAY</a>
                      </div>
                   </div>
                </div>
