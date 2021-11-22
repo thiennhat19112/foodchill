@@ -78,9 +78,8 @@
                         foreach ($cates as $key => $v) {
                         ?>
                            <div class="form-check">
-                              <input class="form-check-input common_selector category" type="checkbox" value="<?= $v['category_id'] ?>" id="cate<?= $v['category_id'] ?>">
-                              <label class="form-check-label" for="cate<?= $v['category_id'] ?>">
-                                 <?= $v['category_name'] ?>
+                              <label><input class="form-check-input common_selector category" type="checkbox" value="<?=$v['category_id']?>">
+                              <?=$v['category_name']?>
                               </label>
                            </div>
                         <?PHP
