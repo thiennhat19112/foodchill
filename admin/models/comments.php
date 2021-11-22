@@ -1,7 +1,13 @@
-<?php 
-    function select_all_comments(){
-        $sql = "SELECT comments.comment_content,users.user_name, products.product_name, comments.create_date FROM ((comments INNER JOIN products ON comments.product_id = products.product_id) INNER JOIN users ON comments.user_id = users.user_id)";
-        return pdo_query($sql);
-    }
-    
-?>
+<?php
+function select_all_comments()
+{
+    $sql = "SELECT * FROM ((comments INNER JOIN products ON comments.product_id = products.product_id) INNER JOIN users ON comments.user_id = users.user_id)";
+    return pdo_query($sql);
+}
+
+//xóa sản phẩm
+function delete_comment($id)
+{
+    $sql = "DELETE FROM `comments` WHERE `comments`.`comment_id` = ?";
+    pdo_execute($sql, $id);
+}

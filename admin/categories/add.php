@@ -6,7 +6,6 @@ if (isset($_POST['btnthem'])) {
   insert_categories($category_name, $ordinal_numbers, $status);
 }
 ?>
-
 <div class="col-12 grid-margin stretch-card">
   <div class="card">
     <div class="card-body">

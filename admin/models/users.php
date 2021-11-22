@@ -9,7 +9,7 @@ function insert_user($user_name, $email, $password,$permission,$status)
 // sửa
 function update_user($user_name, $email, $password,$permission,$status,$user_id)
 {
-    $sql = "UPDATE users SET user_name=?,email=?,password=?,permission=?,status=? 
+    $sql = "UPDATE users SET user_name=?,email=?,password=MD5(?),permission=?,status=? 
     where user_id= ?";
     pdo_execute($sql,$user_name, $email, $password,$permission,$status,$user_id);
 }

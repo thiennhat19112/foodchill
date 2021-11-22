@@ -30581,6 +30581,11 @@ div.tagsinput span.tag a {
   left: 30px;
 }
 
+.ck-editor__editable_inline {
+  min-height: 250px;
+  max-height: 450px;
+}
+
 @media (max-width: 991px) {
   #settings-trigger {
     display: none;

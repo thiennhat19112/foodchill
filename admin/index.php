@@ -35,6 +35,6 @@ if (isset($_GET['v'])) {
         require("order_details/order_details.php");
     }
 } else {
-    require("dashboard/home.php");
+    require("dashboard/index.php");
 }
 require("site/footer.php");

@@ -40,7 +40,7 @@
 
                             <td><?= $email ?></td>
                             <td><?= $password ?></td>
-                            <td class="px-3 py-3 whitespace-wrap">
+                            <td class="px-3 py-3 whitespace-wrap text-xs">
                                 <?php if ($permission == 0) {
                                     echo '<span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full ">
                                         Admin
@@ -54,8 +54,6 @@
                                             Shipper
                                         </span>';
                                 }
-
-
                                 ?>
                             </td>
                             <td class="px-3 py-3 text-xs">

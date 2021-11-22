@@ -18,4 +18,13 @@ if (isset($_POST['product_id'])) {
     require("pdo.php");
     $id =$_POST['product_id'];
     delete_product($id);
+    $img = $_POST['img'];
+    unlink("../../upload/images/".$img."");
+}
+
+if(isset($_POST['comment_id'])) {
+    require("comments.php");
+    require("pdo.php");
+    $id =$_POST['comment_id'];
+    delete_comment($id);
 }
