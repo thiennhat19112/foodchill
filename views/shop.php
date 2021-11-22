@@ -69,7 +69,7 @@
    <section class="product spad">
       <div class="container">
          <div class="row">
-            <div class="col-lg-3 col-md-5">
+            <div class="col-lg-3 col-md-4">
                <div class="sidebar">
                   <div class="sidebar__item">
                      <h4>Danh mục</h4>
@@ -192,7 +192,7 @@
                      </div> -->
                </div>
             </div>
-            <div class="col-lg-9 col-md-7">
+            <div class="col-lg-9 col-md-8">
                <div class="filter__item">
                   <div class="row">
                      <div class="col-lg-4 col-md-5">
@@ -200,10 +200,11 @@
                            <span>Sắp xếp theo</span>
                            <select id="sort_option">
                               <option class="" value="">Chưa xài được</option>
-                              <option class="common_selector sort" value="create_date DESC">Mới nhất</option>
+                              <option class="" value="">Dùng ở bên trái</option>
+                              <!-- <option class="common_selector sort" value="create_date DESC">Mới nhất</option>
                               <option class="common_selector sort" value="saled DESC">Bán chạy</option>
                               <option class="common_selector sort" value="price">Giá thấp</option>
-                              <option class="common_selector sort" value="price DESC">Giá cao</option>
+                              <option class="common_selector sort" value="price DESC">Giá cao</option> -->
                            </select>
                         </div>
                      </div>
