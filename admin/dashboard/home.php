@@ -187,13 +187,6 @@
         </h4>
         <canvas id="bars"></canvas>
       </div>
-      <!-- Lines chart -->
-      <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs ">
-        <h4 class="mb-4 font-semibold text-gray-800 ">
-          Khách hàng đã đăng kí 
-        </h4>
-        <canvas id="line"></canvas>
-      </div>
     </div>
   </div>
 </main>
