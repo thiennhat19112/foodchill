@@ -267,19 +267,19 @@ $(document).ready(function(){
     });
 });
 $(document).ready(function(){
-    $("button.addToCart").click(function() {
-        var prod_id = $(this).val();
-        $.ajax({
-            url:"./models/ajax.php",
-            method:"POST",
-            data:{
-                "addToCart": prod_id,
-            },
-            success:function(data){
-                console.log(data);
-            }
-        });
-     });
+    // $("button.addToCart").click(function() {
+    //     var prod_id = $(this).val();
+    //     $.ajax({
+    //         url:"./models/ajax.php",
+    //         method:"POST",
+    //         data:{
+    //             "addToCart": prod_id,
+    //         },
+    //         success:function(data){
+    //             console.log(data);
+    //         }
+    //     });
+    // });
     $("button.favorite").click(function() {
         var prod_id = $(this).val();
         var u_id = $("#user_id").val();
