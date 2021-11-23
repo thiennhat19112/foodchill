@@ -133,8 +133,8 @@
          <div class="col-lg-3">
             <div class="header__cart">
                <ul>
-                  <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                  <li><a href="cart/"><i class="fa fa-shopping-bag"></i> <span><?php /*count($_SESSION["cart"])*/ ?>10</span></a></li>
+                  <li><a href="#"><i class="fa fa-heart"></i><?PHP if(isset($_SESSION['u_id'])){echo '<span id="showUserLike">'.countFavorite($_SESSION["u_id"]).'</span>';}?></a></li>
+                  <li><a href="cart/"><i class="fa fa-shopping-bag"></i><?PHP if(isset($_SESSION['u_id'])){echo '<span id="showUserCart">'."00".'</span>';}?></a></li>
                </ul>
                <div class="header__cart__price">item: <span>$150.00</span></div>
             </div>

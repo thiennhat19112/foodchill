@@ -23,6 +23,19 @@ function getProdCate($cate_id){
    $sql = "SELECT category_name FROM `categories` WHERE `category_id` = ?";
    return pdo_query_one($sql, $cate_id)['category_name'];
 }
+function countFavorite($u_id){
+   $sql = "SELECT COUNT(product_id) as total FROM `favorites` WHERE `user_id` = ?";
+   return pdo_query_one($sql, $u_id)['total'];
+}
+function checkFavorite($p_id, $u_id){
+   $sql = "SELECT * FROM `favorites` WHERE `product_id` = ? AND `user_id` = ?";
+   $check = pdo_query_one($sql, $p_id, $u_id);
+   if($check==true){
+      return " liked";
+   } else {
+      return "";
+   }
+}
 function stringProcessor($str) {
    $unicode = array(
       'a' => 'á|à|ả|ã|ạ|ă|ắ|ặ|ằ|ẳ|ẵ|â|ấ|ầ|ẩ|ẫ|ậ',

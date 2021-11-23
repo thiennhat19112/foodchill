@@ -221,38 +221,19 @@
                      </div>
                   </div>
                </div>
-               <div class="row sort--prod">
-                  <?PHP
-                  foreach ($prods as $key => $v) {
-                  ?>
-                     <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="product__item">
-                           <div class="product__item__pic set-bg" data-setbg="<?= $v['image'] ?>">
-                              <ul class="product__item__pic__hover">
-                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                 <?php
-                                 if (isset($_SESSION["username"])) {
-                                 ?>
-                                    <li><a href="?act=shop&productid=<?= $value['product_id'] ?>"><i class="fa fa-shopping-cart"></i></a></li>
-                                 <?php
-                                 } else {
-                                 ?>
-                                    <li><a onclick="window.location.replace('login/');"><i class="fa fa-shopping-cart"></i></a></li>
-                                 <?php
-                                 }
-                                 ?>
-                              </ul>
-                           </div>
-                           <div class="product__item__text">
-                              <h6><a href="shop/product/<?= $value['product_id'] ?>-<?= stringProcessor($product_name) ?>"><?= $product_name ?></a></h6>
-                              <h5><?= number_format($v['price'] * ((100 - $v['discount']) / 100), 0, ',', '.') ?> VND</h5>
-                           </div>
-                        </div>
-                     </div>
-                  <?PHP
+               <?PHP 
+                  if(isset($_SESSION['user'])){
+                     echo '
+                        <input type="hidden" id="user_id" value="'.$_SESSION["u_id"].'">
+                     ';
+                  } else {
+                     echo '
+                        <input type="hidden" id="user_id" value="0">
+                     ';
                   }
-                  ?>
+               ?> <!-- Lấy user_id cho ajax -->
+               <div class="row sort--prod">
+                  <!-- Show các sản phẩm -->
                </div>
                <div class="product__pagination">
                   <a href="#">1</a>

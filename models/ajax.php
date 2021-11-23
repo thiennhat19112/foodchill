@@ -25,29 +25,63 @@ if (isset($_POST["action"])) {
    $total_row = $statement->rowCount();
    $output = '';
    if ($total_row > 0) {
-      foreach ($result as $row) {
-         $product_name = $row['product_name'];
-         $product_id = $row['product_id'];
+      foreach ($result as $v) {
          $output .= '
             <div class="col-lg-4 col-md-6 col-sm-6">
                <div class="product__item">
-                  <div class="product__item__pic set-bg" data-setbg="' . $row['image'] . '">
+                  <div class="product__item__pic set-bg" data-setbg="' . $v['image'] . '">
                      <ul class="product__item__pic__hover">
-                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                        <li><a href="?act=shop&productid=' . $product_id . '"><i class="fa fa-shopping-cart"></i></a></li>
+                        <li><button value="'.$v['product_id'].'" class="favorite"><i class="fa fa-heart"></i></button></li>
+                        <li><button value="'.$v['product_id'].'" class="addToCart"><i class="fa fa-shopping-cart"></i></button></li>
                      </ul>
                   </div>
                   <div class="product__item__text">
-                     <h6><a href="shop/product/' . $product_id . '-' . stringProcessor($product_name) . '">' . $product_name . '</a></h6>
-                     <h5>' . number_format($row['price'] * ((100 - $row['discount']) / 100), 0, ',', '.') . ' VND</h5>
+                     <h6><a href="shop/product/' . $v['product_id'] . '-' . stringProcessor($v['product_name']) . '">' . $v['product_name'] . '</a></h6>
+                     <h5>' . number_format($v['price'] * ((100 - $v['discount']) / 100), 0, ',', '.') . ' VND</h5>
                   </div>
                </div>
             </div>
-            ';
+         ';
       }
    } else {
       $output = '<h3>No Data Found</h3>';
    }
+   $output .= '
+      <script>
+         $("button.favorite").click(function() {
+            var prod_id = $(this).val();
+            var u_id = $("#user_id").val();
+            if(u_id == "0"){
+               alert("Vui lòng đăng nhập để sử dụng chức năng này");
+            }else{
+               $.ajax({
+                  url:"./models/ajax.php",
+                  method:"POST",
+                  data:{
+                     "favorite": prod_id,
+                     "user_id": u_id,
+                  },
+                  success:function(data){
+                     $("#showUserLike").html(data);
+                  }
+               });
+            }
+         });
+      </script>
+   ';
    echo json_encode(array($output, $tProd));
+}  //Sort products on Shop
+
+if (isset($_POST["favorite"])) {
+   $prod_id = $_POST["favorite"];
+   $user_id = $_POST['user_id'];
+   $sql = "SELECT * FROM `favorites` WHERE `product_id` = $prod_id AND`user_id` = $user_id";
+   $check = pdo_query_one($sql);
+   if($check==false){
+      $sql2 = "INSERT INTO `favorites` (`product_id`, `user_id`) VALUES ('$prod_id', '$user_id')";
+   } else {
+      $sql2 = "DELETE FROM `favorites` WHERE `favorites`.`product_id` = $prod_id AND `favorites`.`user_id` = '$user_id'";
+   }
+   pdo_execute($sql2);
+   echo countFavorite($user_id);
 }
