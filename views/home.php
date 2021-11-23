@@ -1,5 +1,5 @@
    <?PHP 
-      if(isset($_SESSION['user'])){
+      if(isset($_SESSION['u_id'])){
          echo '
             <input type="hidden" id="user_id" value="'.$_SESSION["u_id"].'">
          ';
