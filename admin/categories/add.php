@@ -12,16 +12,16 @@ if (isset($_POST['btnthem'])) {
       <h4 class="card-title">Thêm Danh mục</h4>
       <form method="post" class="forms-sample">
         <div class="form-group">
-          <label for="exampleInputName1">Tên danh mục</label>
-          <input value="" type="text" name="tendm" class="form-control" id="exampleInputName1" placeholder="Tên danh mục">
+          <label for="cateName">Tên danh mục</label>
+          <input value="" type="text" name="tendm" class="form-control" id="cateName" placeholder="Tên danh mục">
         </div>
         <div class="form-group">
-          <label for="exampleInputEmail3">Vị trí xuất hiện</label>
-          <input type="text" name="vitri" value="" class="form-control" id="exampleInputEmail3" placeholder="Vị trí xuất hiện">
+          <label for="cateOrdinal">Vị trí xuất hiện</label>
+          <input type="text" name="vitri" value="" class="form-control" id="cateOrdinal" placeholder="Vị trí xuất hiện">
         </div>
         <div class="form-group">
-          <label for="exampleSelectGender">Trạng thái</label>
-          <select class="form-control" name="trangthai" id="exampleSelectGender">
+          <label for="cateStatus">Trạng thái</label>
+          <select class="form-control" name="trangthai" id="cateStatus">
             <option value="1">Hiện</option>
             <option value="0" checked>Ẩn</option>
           </select>

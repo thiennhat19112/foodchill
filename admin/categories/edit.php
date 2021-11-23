@@ -14,20 +14,20 @@ if (isset($_POST['btnsua'])) {
       <h4 class="card-title">Sửa Danh mục</h4>
       <form method="post" class="forms-sample">
         <div class="form-group">
-          <label for="exampleInputName1">ID danh mục</label>
-          <input type="text" value="<?= $category_id ?>" name="id" class="form-control" id="exampleInputName1" placeholder="Tên danh mục">
+          <label for="cateId">ID danh mục</label>
+          <input type="text" value="<?= $category_id ?>" name="id" class="form-control" id="cateId" placeholder="Tên danh mục" disabled>
         </div>
         <div class="form-group">
-          <label for="exampleInputName1">Tên danh mục</label>
-          <input type="text" value="<?= $category_name ?>" name="tendm" class="form-control" id="exampleInputName1" placeholder="Tên danh mục">
+          <label for="cateName">Tên danh mục</label>
+          <input type="text" value="<?= $category_name ?>" name="tendm" class="form-control" id="cateName" placeholder="Tên danh mục">
         </div>
         <div class="form-group">
-          <label for="exampleInputEmail3">Vị trí xuất hiện</label>
-          <input type="text" value="<?= $ordinal_numbers ?>" name="vitri" class="form-control" id="exampleInputEmail3" placeholder="Vị trí xuất hiện">
+          <label for="cateOrdinal">Vị trí xuất hiện</label>
+          <input type="text" value="<?= $ordinal_number ?>" name="vitri" class="form-control" id="cateOrdinal" placeholder="Vị trí xuất hiện">
         </div>
         <div class="form-group">
-          <label for="exampleSelectGender">Trạng thái</label>
-          <select class="form-control" name="trangthai" id="exampleSelectGender">
+          <label for="cateStatus">Trạng thái</label>
+          <select class="form-control" name="trangthai" id="cateStatus">
             <option value="1">Hiện</option>
             <option value="0">Ẩn</option>
           </select>

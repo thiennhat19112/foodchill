@@ -28,23 +28,23 @@ if (isset($_POST['addProduct'])) {
                 <h4 class="card-title">Thêm sản phẩm</h4>
                 <form method="post" enctype="multipart/form-data" class="forms-sample">
                     <div class="form-group">
-                        <label for="exampleInputName1">Tên sản phẩm</label>
-                        <input type="text" name="product_name" class="form-control" id="exampleInputName1" placeholder="Tên sản phẩm">
+                        <label for="prodName">Tên sản phẩm</label>
+                        <input type="text" name="product_name" class="form-control" id="prodName" placeholder="Tên sản phẩm">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail3">Số lượng</label>
-                        <input type="text" name="quantity" class="form-control" placeholder="Số lượng">
+                        <label for="prodQuantity">Số lượng</label>
+                        <input type="text" name="quantity" class="form-control" id="prodQuantity" placeholder="Số lượng">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail3">Giá</label>
-                        <input type="text" name="price" class="form-control" placeholder="Giá">
+                        <label for="prodPrice">Giá</label>
+                        <input type="text" name="price" class="form-control" id="prodPrice" placeholder="Giá">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword4">Khối lượng</label>
-                        <input type="text" name="weight" class="form-control" id="exampleInputPassword4" placeholder="Khối lượng">
+                        <label for="prodWeight">Khối lượng</label>
+                        <input type="text" name="weight" class="form-control" id="prodWeight" placeholder="Khối lượng">
                     </div>
                     <div class="form-group">
-                        <label for="exampleSelectGender">Danh mục</label>
+                        <label for="prodCate">Danh mục</label>
                         <select class="form-control" name="category_id">
                             <?php foreach ($items as $item) {
                                 extract($item);
@@ -54,12 +54,12 @@ if (isset($_POST['addProduct'])) {
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Hình ảnh</label>
-                        <input type="file" name="image" data-max-file-size="2M" data-max-height="2000" class="dropify">
+                        <label for="prodImage">Hình ảnh</label>
+                        <input type="file" name="image" data-max-file-size="2M" data-max-height="2000" class="dropify" id="prodImage">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputCity1">Khuyến mãi</label>
-                        <input type="text" name="discount" class="form-control" id="exampleInputCity1" placeholder="Khuyến mãi">
+                        <label for="prodDiscount">Giảm giá</label>
+                        <input type="text" name="discount" class="form-control" id="exampleInputCity1" placeholder="Giảm giá">
                     </div>
                     <div class="form-group">
                         <label for="exampleTextarea1">Mô tả</label>
