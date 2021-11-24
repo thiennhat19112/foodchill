@@ -1,4 +1,4 @@
 RewriteEngine on
 RewriteBase /PRO1014/foodchill/
-RewriteRule ^(home|shop|blog|contact|cart)/$ ?act=$1
+RewriteRule ^(home|shop|blog|contact|cart|ship)/$ ?act=$1
 RewriteRule ^shop/product/([0-9]+)-([^.]+)$ ?act=prod_detail&prod_id=$1&prod_name=$2
