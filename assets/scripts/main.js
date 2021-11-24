@@ -53,8 +53,8 @@
     });
 
     /*------------------
-		Navigation
-	--------------------*/
+        Navigation
+    --------------------*/
     $(".mobile-menu").slicknav({
         prependTo: '#mobile-menu-wrap',
         allowParentLinks: true
@@ -96,7 +96,7 @@
     });
 
 
-    $('.hero__categories__all').on('click', function(){
+    $('.hero__categories__all').on('click', function () {
         $('.hero__categories ul').slideToggle(400);
     });
 
@@ -158,15 +158,15 @@
         autoHeight: false,
         autoplay: true
     });
-    
+
     /*--------------------------
         Select
     ----------------------------*/
     $("select#sort_option").niceSelect();
 
     /*------------------
-		Single Product
-	--------------------*/
+        Single Product
+    --------------------*/
     $('.product__details__pic__slider img').on('click', function () {
 
         var imgurl = $(this).data('imgbigurl');
@@ -179,8 +179,8 @@
     });
 
     /*-------------------
-		Quantity change
-	--------------------- */
+        Quantity change
+    --------------------- */
     var proQty = $('.pro-qty');
     proQty.prepend('<span class="dec qtybtn">-</span>');
     proQty.append('<span class="inc qtybtn">+</span>');
@@ -201,12 +201,11 @@
     });
 })(jQuery);
 
-$(document).ready(function(){
+$(document).ready(function () {
 
     filter_data();
 
-    function filter_data()
-    {
+    function filter_data() {
         $('.sort--prod').html('<div id="loading" style="" ></div>');
         var action = 'fetch_data';
         var minimum_price = $('#hidden_minimum_price').val();
@@ -217,10 +216,10 @@ $(document).ready(function(){
         // console.log(category);
         // console.log(sort);
         $.ajax({
-            url:"./models/ajax.php",
-            method:"POST",
-            data:{action:action, minimum_price:minimum_price, maximum_price:maximum_price, category:category, ram:ram, sort:sort},
-            success:function(result){
+            url: "./models/ajax.php",
+            method: "POST",
+            data: { action: action, minimum_price: minimum_price, maximum_price: maximum_price, category: category, ram: ram, sort: sort },
+            success: function (result) {
                 var jsonResult = $.parseJSON(result);
                 var data1 = jsonResult[0];
                 var data2 = jsonResult[1];
@@ -234,16 +233,15 @@ $(document).ready(function(){
         });
     }
 
-    function get_filter(class_name)
-    {
+    function get_filter(class_name) {
         var filter = [];
-        $('.'+class_name+':checked').each(function(){
+        $('.' + class_name + ':checked').each(function () {
             filter.push($(this).val());
         });
         return filter;
     }
 
-    $('.common_selector').click(function(){
+    $('.common_selector').click(function () {
         // console.log('clicked');
         filter_data();
     });
@@ -256,7 +254,7 @@ $(document).ready(function(){
         max: maxPrice,
         values: [minPrice, maxPrice],
         step: 1000,
-        slide:function(event, ui){
+        slide: function (event, ui) {
             $('.range-slider').html('<span id="minimum_price">' + ui.values[0] + '</span>₫ - <span id="maximum_price">' + ui.values[1] + '</span>₫');
         },
         stop: function (event, ui) {
@@ -266,7 +264,7 @@ $(document).ready(function(){
         }
     });
 });
-$(document).ready(function(){
+$(document).ready(function () {
     // $("button.addToCart").click(function() {
     //     var prod_id = $(this).val();
     //     $.ajax({
@@ -280,23 +278,44 @@ $(document).ready(function(){
     //         }
     //     });
     // });
-    $("button.favorite").click(function() {
+    $("button.favorite").click(function () {
         var prod_id = $(this).val();
         var u_id = $("#user_id").val();
-        if(u_id == "0"){
+        if (u_id == "0") {
             alert("Vui lòng đăng nhập để sử dụng chức năng này");
-        }else{
+        } else {
             $.ajax({
-                url:"./models/ajax.php",
-                method:"POST",
-                data:{
+                url: "./models/ajax.php",
+                method: "POST",
+                data: {
                     "favorite": prod_id,
                     "user_id": u_id,
                 },
-                success:function(data){
+                success: function (data) {
                     $("#showUserLike").html(data);
                 }
             });
         }
     });
+
+    //tải lại bảng hóa đơn cho Shipper
+    setInterval(reload_table_shipper, 1000);
+
+    function reload_table_shipper() {
+        $('.shipping-table').load('ship/reload_table.php', function () {
+            //cập nhật trạng thái đơn hàng và thời gian shipper
+
+            $("#shipping").click(function () {
+                var id = $(this).data('order-id');
+                $.ajax({
+                    url: "models/ship.php",
+                    type: "POST",
+                    data: {
+                        'id': id
+                    },
+                });
+            });
+
+        });
+    }
 });

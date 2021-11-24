@@ -95,6 +95,9 @@
                            <li><a href="#">Đổi mật khẩu</a></li>
                            <li><a href="#">Đơn hàng</a></li>
                            <li><a href="?act=logout">Đăng xuất</a></li>
+                           <?php if($_SESSION["phanquyen"]==2){
+                              echo '<li><a href="?act=ship">Giao hàng</a></li>';
+                           } ?>
                         </ul>
                      </div>
                   <?php
