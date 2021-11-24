@@ -33,6 +33,8 @@ if (isset($_GET['v'])) {
         require("comment/index.php");
     } else if ($v == "order_detail") {
         require("order_details/order_details.php");
+    } else if ($v == "blogs"){
+        require("blog/index.php");
     }
 } else {
     require("dashboard/index.php");

@@ -45,6 +45,9 @@ switch ($act) {
       require("./ship/index.php");
       require("./views/ship.php");
       break;
+   case "blog-details":
+      require("./views/blog-details.php");
+      break;
       // case 'listsp':
       //     if (isset($_POST['listok']) && ($_POST['listok'])) {
       //         $kyw = $_POST['kyw'];

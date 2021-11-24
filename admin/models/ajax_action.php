@@ -28,3 +28,12 @@ if(isset($_POST['comment_id'])) {
     $id =$_POST['comment_id'];
     delete_comment($id);
 }
+
+if (isset($_POST['blog-id'])) {
+    require("blog.php");
+    require("pdo.php");
+    $id =$_POST['blog-id'];
+    delete_blog($id);
+    $img = $_POST['img'];
+    unlink("../../upload/images/blog/".$img."");
+}
