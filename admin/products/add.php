@@ -3,7 +3,8 @@ if (isset($_POST['addProduct'])) {
     $product_name = $_POST['product_name'];
     $quantity = $_POST['quantity'];
     $price = $_POST['price'];
-    $descriptions = $_POST['descriptions'];
+    $description = $_POST['description'];
+    $infomation = $_POST['infomation'];
     $weight = $_POST['weight'];
     $target = '../upload/images/';
     $image = $_FILES['image']['name'];
@@ -18,7 +19,7 @@ if (isset($_POST['addProduct'])) {
     $view = 0;
     $rating = 0;
     $status = $_POST['status'];
-    insert_product($product_name, $quantity, $price, $weight, $descriptions, $image_data,  $category_id, $discount, $saled, $view, $rating, $status);
+    insert_product($product_name, $quantity, $price, $weight, $description, $infomation, $image_data,  $category_id, $discount, $saled, $view, $rating, $status);
 }
 
 ?>
@@ -46,7 +47,7 @@ if (isset($_POST['addProduct'])) {
                     </div>
                     <div class="form-group">
                         <label for="prodCate">Danh mục</label>
-                        <select class="form-control" name="category_id">
+                        <select class="form-control" name="category_id" id="prodCate">
                             <?php foreach ($items as $item) {
                                 extract($item);
                             ?>
@@ -60,15 +61,15 @@ if (isset($_POST['addProduct'])) {
                     </div>
                     <div class="form-group">
                         <label for="prodDiscount">Giảm giá</label>
-                        <input type="text" name="discount" class="form-control" id="exampleInputCity1" placeholder="Giảm giá">
+                        <input type="number" min="0" name="discount" class="form-control" id="prodDiscount" placeholder="Giảm giá">
                     </div>
                     <div class="form-group">
-                        <label for="exampleTextarea1">Mô tả</label>
-                        <textarea class="form-control ck-editor__editable_inline" name="descriptions" id="mota" rows="4"></textarea>
+                        <label for="prodDescrip">Mô tả</label>
+                        <textarea class="form-control ck-editor__editable_inline" name="description" id="prodDescrip" rows="4"></textarea>
                         <script src="https://cdn.ckeditor.com/ckeditor5/31.0.0/classic/ckeditor.js"></script>
                         <script>
                             ClassicEditor
-                                .create(document.querySelector('#mota'))
+                                .create(document.querySelector('#prodDescrip'))
                                 .then(editor => {
                                     console.log(editor);
                                 })
@@ -78,8 +79,23 @@ if (isset($_POST['addProduct'])) {
                         </script>
                     </div>
                     <div class="form-group">
-                        <label for="exampleSelectGender">Tình trạng</label>
-                        <select class="form-control" name="status" id="exampleSelectGender">
+                        <label for="prodInfo">Thông tin</label>
+                        <textarea class="form-control ck-editor__editable_inline" name="infomation" id="prodInfo" rows="4"></textarea>
+                        <script src="https://cdn.ckeditor.com/ckeditor5/31.0.0/classic/ckeditor.js"></script>
+                        <script>
+                            ClassicEditor
+                                .create(document.querySelector('#prodInfo'))
+                                .then(editor => {
+                                    console.log(editor);
+                                })
+                                .catch(error => {
+                                    console.error(error);
+                                });
+                        </script>
+                    </div>
+                    <div class="form-group">
+                        <label for="prodStatus">Trạng thái</label>
+                        <select class="form-control" name="status" id="prodStatus">
                             <option value="1">Hiện</option>
                             <option value="0">Ẩn</option>
                         </select>

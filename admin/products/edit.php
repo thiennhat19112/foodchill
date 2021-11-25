@@ -6,7 +6,8 @@
         $product_name = $_POST['product_name'];
         $quantity = $_POST['quantity'];
         $price = $_POST['price'];
-        $descriptions = $_POST['descriptions'];
+        $description = $_POST['description'];
+        $infomation = $_POST['infomation'];
         $weight = $_POST['weight'];
         if($image_old ==""){
             $target = '../upload/images/';
@@ -23,7 +24,7 @@
         $category_id = $_POST['category_id'];
         $discount = $_POST['discount'];
         $status = $_POST['status'];
-        update_product($product_name, $quantity, $price, $weight, $descriptions, $image_data,  $category_id, $discount, $status, $product_id);
+        update_product($product_name, $quantity, $price, $weight, $description, $infomation, $image_data,  $category_id, $discount, $status, $product_id);
     }
 
 ?>
@@ -73,7 +74,7 @@
                     </div>
                     <div class="form-group">
                         <label for="prodDiscount">Giảm giá</label>
-                        <input type="text" name="discount" value="<?= $discount ?>" class="form-control" id="prodDiscount" placeholder="Giảm giá">
+                        <input type="number" min="0" name="discount" value="<?= $discount ?>" class="form-control" id="prodDiscount" placeholder="Giảm giá">
                     </div>
                     <div class="form-group">
                         <label for="prodDes">Mô tả</label>

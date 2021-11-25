@@ -6,14 +6,15 @@ function load_all_products()
     return pdo_query($sql);
 }
 //thêm sản phẩm
-function insert_product($product_name, $quantity, $price, $weight, $descriptions, $image_data, $category_id, $discount, $saled, $view, $rating, $status)
+function insert_product($product_name, $quantity, $price, $weight, $description, $infomation, $image_data, $category_id, $discount, $saled, $view, $rating, $status)
 {
     $sql = "INSERT INTO `products`
-            (`product_name`,
+            (            `product_name`,
             `quantity`, 
             `price`, 
             `weight`,
-            `descriptions`,
+            `description`,
+            `infomation`,
             `image`,
             `create_date`,
             `category_id`,
@@ -23,23 +24,24 @@ function insert_product($product_name, $quantity, $price, $weight, $descriptions
             `rating`,
             `status`)
               VALUES 
-              (?,?,?,?,?,?,CURRENT_TIMESTAMP,?,?,?,?,?,?)";
-    pdo_execute($sql,$product_name, $quantity, $price, $weight, $descriptions, $image_data,  $category_id, $discount, $saled, $view, $rating, $status);
+              (?,?,?,?,?,?,?,CURRENT_TIMESTAMP,?,?,?,?,?,?)";
+    pdo_execute($sql,$product_name, $quantity, $price, $weight, $description, $infomation, $image_data,  $category_id, $discount, $saled, $view, $rating, $status);
 }
-//sửa danh mục
-function  update_product($product_name, $quantity, $price, $weight, $descriptions, $image_data,  $category_id, $discount, $status, $product_id){
+//sửa sản phẩm
+function  update_product($product_name, $quantity, $price, $weight, $description, $infomation, $image_data,  $category_id, $discount, $status, $product_id){
     $sql = "UPDATE products SET 
-    product_name= ?,
-    quantity= ?, 
-    price= ?, 
-    weight= ?,
-    descriptions= ?,
-    image= ?,
-    category_id= ?,
-    discount= ?,
-    status=? 
-    where product_id= ?";
-    pdo_execute($sql, $product_name, $quantity, $price, $weight, $descriptions, $image_data,  $category_id, $discount, $status , $product_id);
+    `product_name` = ?,
+    `quantity` = ?, 
+    `price` = ?, 
+    `weight` = ?,
+    `description` = ?,
+    `infomation` = ?,
+    `image` = ?,
+    `category_id` = ?,
+    `discount` = ?,
+    `status` = ? 
+    where `product_id` = ?";
+    pdo_execute($sql, $product_name, $quantity, $price, $weight, $description, $infomation, $image_data,  $category_id, $discount, $status , $product_id);
 }
 //xóa sản phẩm
 function delete_product($id)
@@ -58,6 +60,6 @@ function load_one_product($id)
 //Liệt kê tất cả tên danh mục và id danh mục
 function load_all_name_categories()
 {
-    $sql = "SELECT category_name,category_id FROM categories ";
+    $sql = "SELECT category_name, category_id FROM categories ";
     return pdo_query($sql);
 }
