@@ -95,7 +95,7 @@
                            <li><a href="#">Đổi mật khẩu</a></li>
                            <li><a href="#">Đơn hàng</a></li>
                            <li><a href="?act=logout">Đăng xuất</a></li>
-                           <?php if($_SESSION["phanquyen"]==2){
+                           <?php if ($_SESSION["phanquyen"] == 2) {
                               echo '<li><a href="ship/">Giao hàng</a></li>';
                            } ?>
                         </ul>
@@ -136,8 +136,32 @@
          <div class="col-lg-3">
             <div class="header__cart">
                <ul>
-                  <li><a href="#"><i class="fa fa-heart"></i><?PHP if(isset($_SESSION['u_id'])){echo '<span id="showUserLike">'.countFavorite($_SESSION["u_id"]).'</span>';}?></a></li>
-                  <li><a href="cart/"><i class="fa fa-shopping-bag"></i><?PHP if(isset($_SESSION['u_id'])){echo '<span id="showUserCart">'."00".'</span>';}?></a></li>
+                  <li>
+                     <a href="favorite/">
+                        <i class="fa fa-heart"></i>
+                        <span id="showUserLike">
+                           <?PHP
+                           if (isset($_SESSION['u_id'])) {
+                              echo countFavorite($_SESSION["u_id"]);
+                           }
+                           ?>
+                        </span>
+                     </a>
+                  </li>
+                  <li>
+                     <a href="cart/">
+                        <i class="fa fa-shopping-bag"></i>
+                        <span class="cart-item" id="cart-container">
+                           <?php
+                           if (isset($_SESSION['u_id'])) {
+                              echo countCart($_SESSION['u_id']);
+                           } else {
+                              echo 0;
+                           }
+                           ?>
+                        </span>
+                     </a>
+                  </li>
                </ul>
                <div class="header__cart__price">item: <span>$150.00</span></div>
             </div>

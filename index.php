@@ -14,6 +14,7 @@ switch ($act) {
 require("./models/pdo.php");
 require("./models/category.php");
 require("./models/product.php");
+require("./models/cart.php");
 require("./views/public/header.php");
 require("./views/public/navbar.php");
 $cates = getAllShowCate();

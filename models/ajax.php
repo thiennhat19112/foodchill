@@ -1,6 +1,8 @@
 <?PHP
+session_start();
 require_once('./pdo.php');
 require_once('./product.php');
+require_once('./cart.php');
 
 if (isset($_POST["action"])) {
    $sql = "SELECT * FROM products WHERE `status` = '1'";
@@ -28,11 +30,15 @@ if (isset($_POST["action"])) {
       foreach ($result as $v) {
          $output .= '
             <div class="col-lg-4 col-md-6 col-sm-6">
+            <form class="product-form" onsubmit="return false">
                <div class="product__item">
                   <div class="product__item__pic set-bg" data-setbg="' . $v['image'] . '">
                      <ul class="product__item__pic__hover">
-                        <li><button value="'.$v['product_id'].'" class="favorite"><i class="fa fa-heart"></i></button></li>
-                        <li><button value="'.$v['product_id'].'" class="addToCart"><i class="fa fa-shopping-cart"></i></button></li>
+                        <input name="product_id" type="hidden" value="' . $v["product_id"] . '">
+                        <input name="user_id" type="hidden" value="' . $_SESSION["u_id"] . '">
+                        <input name="product_qty" type="hidden" value="1">
+                        <li><button value="' . $v['product_id'] . '" class="favorite"><i class="fa fa-heart"></i></button></li>
+                        <li><button type="submit"><i class="fa fa-shopping-cart"></i></button></li>
                      </ul>
                   </div>
                   <div class="product__item__text">
@@ -40,7 +46,8 @@ if (isset($_POST["action"])) {
                      <h5>' . number_format($v['price'] * ((100 - $v['discount']) / 100), 0, ',', '.') . ' VND</h5>
                   </div>
                </div>
-            </div>
+            </form>
+         </div>
          ';
       }
    } else {
@@ -67,6 +74,18 @@ if (isset($_POST["action"])) {
                });
             }
          });
+         $(".product-form").submit(function (e) {
+            let form_data = $(this).serialize();
+            $.ajax({
+               url: "./models/ajax.php",
+               type: "POST",
+               dataType: "json",
+               data: form_data
+            }).done(function (data) {
+               $("#cart-container").html(data.products);
+            })
+            e.preventDefault();
+         });
       </script>
    ';
    echo json_encode(array($output, $tProd));
@@ -77,11 +96,25 @@ if (isset($_POST["favorite"])) {
    $user_id = $_POST['user_id'];
    $sql = "SELECT * FROM `favorites` WHERE `product_id` = $prod_id AND`user_id` = $user_id";
    $check = pdo_query_one($sql);
-   if($check==false){
+   if ($check == false) {
       $sql2 = "INSERT INTO `favorites` (`product_id`, `user_id`) VALUES ('$prod_id', '$user_id')";
    } else {
       $sql2 = "DELETE FROM `favorites` WHERE `favorites`.`product_id` = $prod_id AND `favorites`.`user_id` = '$user_id'";
    }
    pdo_execute($sql2);
    echo countFavorite($user_id);
+}
+
+//  Them san pham vao gio hang
+if (isset($_POST["product_id"])) {
+   $product_id = $_POST["product_id"];
+   $product_qty = $_POST["product_qty"];
+   $user_id = $_POST["user_id"];
+   if (checkCart($user_id, $product_id) == 0) {
+      insertCart($user_id, $product_id, $product_qty);
+   } else {
+      updateCartQty($product_qty, $user_id, $product_id);
+   }
+   $total_product = countCart($user_id);
+   die(json_encode(array('products' => $total_product)));
 }
