@@ -35,15 +35,19 @@ if (isset($_POST["action"])) {
       foreach ($result as $v) {
          $output .= '
             <div class="col-lg-4 col-md-6 col-sm-6">
-            <form class="product-form" onsubmit="return false">
+            
                <div class="product__item">
                   <div class="product__item__pic set-bg" data-setbg="' . $v['image'] . '">
                      <ul class="product__item__pic__hover">
-                        <input name="product_id" type="hidden" value="' . $v["product_id"] . '">
-                        <input name="user_id" type="hidden" value="' . $user_id . '">
-                        <input name="product_qty" type="hidden" value="1">
                         <li><button value="' . $v['product_id'] . '" class="favorite"><i class="fa fa-heart"></i></button></li>
-                        <li><button type="submit"><i class="fa fa-shopping-cart"></i></button></li>
+                        <li>
+                           <form class="product-form" onsubmit="return false">
+                              <input name="product_id" type="hidden" value="' . $v["product_id"] . '">
+                              <input name="user_id" type="hidden" value="' . $user_id . '">
+                              <input name="product_qty" type="hidden" value="1">
+                              <button type="submit"><i class="fa fa-shopping-cart"></i></button>
+                           </form>
+                        </li>
                      </ul>
                   </div>
                   <div class="product__item__text">
@@ -51,7 +55,6 @@ if (isset($_POST["action"])) {
                      <h5>' . number_format($v['price'] * ((100 - $v['discount']) / 100), 0, ',', '.') . ' VND</h5>
                   </div>
                </div>
-            </form>
          </div>
          ';
       }
