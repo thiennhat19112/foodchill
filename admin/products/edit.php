@@ -57,10 +57,11 @@
                     <div  class="form-group categories">
                         <label for="prodCate">Danh mục</label>
                         <select name ="category_id" class="form-control categories" id="prodCate">
-                            <?php foreach ($items_categories as $item) {
-                                extract($item);
+                            <?php foreach ($items_categories as $v) {
                             ?>
-                                <option class="category-id-<?= $category_id ?>" value="<?= $category_id ?>"><?= $category_name ?></option>
+                                <option class="category-id-<?= $v['category_id'] ?>" value="<?= $v['category_id'] ?>" 
+                                    <?PHP if($v['category_id']=$category_id){echo "selected";}?>><?= $v['category_name'] ?>
+                                </option>
                             <?php } ?>
                         </select>
                     </div>
