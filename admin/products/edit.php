@@ -77,7 +77,7 @@
                     </div>
                     <div class="form-group">
                         <label for="prodDes">Mô tả</label>
-                        <textarea class="form-control" name="descriptions" <?= $descriptions ?> id="prodDes" rows="4"></textarea>
+                        <textarea class="form-control" name="descriptions"  id="prodDes" rows="4"><?= $descriptions ?></textarea>
                     </div>
                     <div class="form-group">
                         <label for="prodStatus">Tình trạng</label>
