@@ -77,34 +77,8 @@
                         <input type="number" min="0" name="discount" value="<?= $discount ?>" class="form-control" id="prodDiscount" placeholder="Giảm giá">
                     </div>
                     <div class="form-group">
-                        <label for="prodDescrip">Mô tả</label>
-                        <textarea class="form-control ck-editor__editable_inline" name="description" id="prodDescrip" rows="4"></textarea>
-                        <script src="https://cdn.ckeditor.com/ckeditor5/31.0.0/classic/ckeditor.js"></script>
-                        <script>
-                            ClassicEditor
-                                .create(document.querySelector('#prodDescrip'))
-                                .then(editor => {
-                                    console.log(editor);
-                                })
-                                .catch(error => {
-                                    console.error(error);
-                                });
-                        </script>
-                    </div>
-                    <div class="form-group">
-                        <label for="prodInfo">Thông tin</label>
-                        <textarea class="form-control ck-editor__editable_inline" name="infomation" id="prodInfo" rows="4"></textarea>
-                        <script src="https://cdn.ckeditor.com/ckeditor5/31.0.0/classic/ckeditor.js"></script>
-                        <script>
-                            ClassicEditor
-                                .create(document.querySelector('#prodInfo'))
-                                .then(editor => {
-                                    console.log(editor);
-                                })
-                                .catch(error => {
-                                    console.error(error);
-                                });
-                        </script>
+                        <label for="prodDes">Mô tả</label>
+                        <textarea class="form-control" name="descriptions"  id="prodDes" rows="4"><?= $descriptions ?></textarea>
                     </div>
                     <div class="form-group">
                         <label for="prodStatus">Tình trạng</label>
