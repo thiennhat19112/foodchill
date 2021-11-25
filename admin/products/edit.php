@@ -78,7 +78,11 @@
                     </div>
                     <div class="form-group">
                         <label for="prodDes">Mô tả</label>
-                        <textarea class="form-control" name="descriptions"  id="prodDes" rows="4"><?= $descriptions ?></textarea>
+                        <textarea class="form-control" name="description"  id="prodDes" rows="4"><?= $description ?></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="prodInfo">Thông tin</label>
+                        <textarea class="form-control" name="description"  id="prodInfo" rows="4"><?= $infomation ?></textarea>
                     </div>
                     <div class="form-group">
                         <label for="prodStatus">Tình trạng</label>
