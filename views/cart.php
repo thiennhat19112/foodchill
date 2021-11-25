@@ -118,9 +118,9 @@
       <div class="row">
          <div class="col-lg-12">
             <div class="shoping__cart__btns">
-               <a href="../shop" class="primary-btn cart-btn">Tiếp tục mua sắm</a>
-               <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
-                  Upadate Cart</a>
+               <a href="./shop" class="primary-btn cart-btn">Tiếp tục mua sắm</a>
+               <a href="./cart" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
+                  Cập nhật giỏ hàng</a>
             </div>
          </div>
          <div class="col-lg-6">
