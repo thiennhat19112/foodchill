@@ -143,6 +143,8 @@
                            <?PHP
                            if (isset($_SESSION['u_id'])) {
                               echo countFavorite($_SESSION["u_id"]);
+                           } else {
+                              echo 0;
                            }
                            ?>
                         </span>
