@@ -40,15 +40,15 @@
                     </div>
                     <div class="form-group">
                         <label for="prodName">Tên sản phẩm</label>
-                        <input type="text" name = " product_name" value="<?= $product_name ?>" class="form-control" id="prodName" placeholder="Tên sản phẩm">
+                        <input type="text" name = "product_name" value="<?= $product_name ?>" class="form-control" id="prodName" placeholder="Tên sản phẩm">
                     </div>
                     <div class="form-group">
                         <label for="prodQuantity">Số lượng</label>
-                        <input type="text" name = "quantity" value="<?= $quantity ?>" class="form-control" id="prodQuantity" placeholder="Số lượng">
+                        <input type="number" min="0" name = "quantity" value="<?= $quantity ?>" class="form-control" id="prodQuantity" placeholder="Số lượng">
                     </div>
                     <div class="form-group">
                         <label for="prodPrice">Giá</label>
-                        <input type="text" name = "price" value="<?= $price ?>" class="form-control" id="prodPrice" placeholder="Giá">
+                        <input type="number" min="0" name = "price" value="<?= $price ?>" class="form-control" id="prodPrice" placeholder="Giá">
                     </div>
                     <div class="form-group">
                         <label for="prodWeight">Khối lượng</label>
@@ -108,7 +108,7 @@
                         </script>
                     </div>
                     <div class="form-group">
-                        <label for="prodStatus">Tình trạng</label>
+                        <label for="prodStatus">Trạng thái</label>
                         <select name="status" class="form-control" id="prodStatus">
                             <option value="1">Hiện</option>
                             <option value="0">Ẩn</option>
