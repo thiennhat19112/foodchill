@@ -36,7 +36,7 @@
                 <form class="forms-sample" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="prodId">ID sản phẩm</label>
-                        <input type="text" value="<?= $product_id ?>" name="product_id" class="form-control" disabled id="prodId" placeholder="ID sản phẩm">
+                        <input type="text" value="<?= $product_id ?>" name="product_id" class="form-control" id="prodId" placeholder="ID sản phẩm" readonly>
                     </div>
                     <div class="form-group">
                         <label for="prodName">Tên sản phẩm</label>

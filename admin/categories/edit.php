@@ -15,7 +15,7 @@ if (isset($_POST['btnsua'])) {
       <form method="post" class="forms-sample">
         <div class="form-group">
           <label for="cateId">ID danh mục</label>
-          <input type="text" value="<?= $category_id ?>" name="id" class="form-control" id="cateId" placeholder="Tên danh mục" disabled>
+          <input type="text" value="<?= $category_id ?>" name="id" class="form-control" id="cateId" placeholder="Tên danh mục" readonly>
         </div>
         <div class="form-group">
           <label for="cateName">Tên danh mục</label>
