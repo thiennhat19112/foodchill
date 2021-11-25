@@ -211,14 +211,13 @@ $(document).ready(function () {
         var minimum_price = $('#hidden_minimum_price').val();
         var maximum_price = $('#hidden_maximum_price').val();
         var category = get_filter('category');
-        var ram = get_filter('ram');
         var sort = get_filter('sort');
         // console.log(category);
         // console.log(sort);
         $.ajax({
             url: "./models/ajax.php",
             method: "POST",
-            data: { action: action, minimum_price: minimum_price, maximum_price: maximum_price, category: category, ram: ram, sort: sort },
+            data: { action: action, minimum_price: minimum_price, maximum_price: maximum_price, category: category, sort: sort },
             success: function (result) {
                 var jsonResult = $.parseJSON(result);
                 var data1 = jsonResult[0];

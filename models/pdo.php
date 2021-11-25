@@ -65,3 +65,9 @@ function pdo_query_value($sql) {
       unset($conn);
    }
 }
+
+function shortDate($time){
+   //Time settings   
+      date_default_timezone_set('Asia/Ho_Chi_Minh');
+   return date_format(date_create($time), 'd \t\h\á\n\g m, Y');
+}

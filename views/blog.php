@@ -21,7 +21,7 @@
    <div class="container">
       <div class="row">
          <?php foreach ($items as $item) {
-               extract($item);
+            extract($item);
          ?>
          <div class="col-lg-6 col-md-6 col-sm-6">
             <div class="blog__item">
@@ -30,7 +30,7 @@
                </div>
                <div class="blog__item__text">
                   <ul>
-                     <li><i class="fa fa-calendar-o"></i><?=$create_date?></li>
+                     <li><i class="fa fa-calendar-o"></i> <?=shortDate($create_date)?></li>
                   </ul>
                   <h5><a href="#"><?=$title?></a></h5>
                   <p><?=$descriptions?> </p>
