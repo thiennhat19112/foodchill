@@ -18,3 +18,8 @@ function checkCart($u_id, $p_id) {
     $sql = "SELECT count(*) FROM `carts` WHERE `user_id` = ? and `product_id` = ?";
     return pdo_query_value($sql, $u_id, $p_id);
 }
+
+function showProductCart($u_id) {
+    $sql = "SELECT * FROM `carts` WHERE `user_id` = ?";
+    return pdo_query($sql, $u_id);
+}
