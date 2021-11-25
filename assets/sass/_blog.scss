@@ -6,12 +6,14 @@
 }
 
 .blog__item__pic {
+    max-height: 350px;
     position: relative;
-    overflow: hidden;
+    
     img {
         position: absolute;
         width: 100%;
-        height: 100%;       
+        height: 100%;
+        overflow: hidden;       
     }
 }
 

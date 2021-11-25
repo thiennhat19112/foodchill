@@ -25,8 +25,8 @@
          ?>
          <div class="col-lg-6 col-md-6 col-sm-6">
             <div class="blog__item">
-               <div class="blog__item__pic">
-                  <img src="./upload/images/blog/<?=$image?>" alt="<?=$title?>">
+               <div style="max-height : 350px;min-height: 350px;" class="blog__item__pic position-relative overflow-hidden ">
+                  <img class="position-absolute top-0 start-0 w-100 " src="./upload/images/blog/<?=$image?>" alt="<?=$title?>">
                </div>
                <div class="blog__item__text">
                   <ul>

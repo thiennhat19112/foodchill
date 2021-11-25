@@ -9,7 +9,6 @@
    <meta name="keywords" content="FoodChill, Frozen Food">
    <base href="/PRO1014/foodchill/">
    <title>FoodChill</title>
-
    <!-- Css Styles -->
    <link rel="stylesheet" href="./assets/css/bootstrap.min.css" type="text/css">
    <link rel="stylesheet" href="./assets/css/font-awesome.min.css" type="text/css">
@@ -19,6 +18,7 @@
    <link rel="stylesheet" href="./assets/css/owl.carousel.min.css" type="text/css">
    <link rel="stylesheet" href="./assets/css/slicknav.min.css" type="text/css">
    <link rel="stylesheet" href="./assets/css/style.css" type="text/css">
+   
 </head>
 
 <body>
