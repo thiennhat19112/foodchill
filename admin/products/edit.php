@@ -2,11 +2,12 @@
     $image_old = $image;
     if (isset($_POST['editProduct']))
     {
-        $product_id = $_POST['product_id'];
+        $product_id = $_POST['prod_id'];
         $product_name = $_POST['product_name'];
         $quantity = $_POST['quantity'];
         $price = $_POST['price'];
-        $descriptions = $_POST['descriptions'];
+        $description = $_POST['description'];
+        $infomation = $_POST['infomation'];
         $weight = $_POST['weight'];
         if($image_old ==""){
             $target = '../upload/images/';
@@ -22,7 +23,7 @@
         $category_id = $_POST['category_id'];
         $discount = $_POST['discount'];
         $status = $_POST['status'];
-        update_product($product_name, $quantity, $price, $weight, $descriptions, $image_data,  $category_id, $discount, $status, $product_id);
+        update_product($product_name, $quantity, $price, $weight, $description, $infomation, $image_data,  $category_id, $discount, $status, $product_id);
     }
 
 ?>
@@ -34,7 +35,7 @@
                 <form class="forms-sample" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="prodId">ID sản phẩm</label>
-                        <input type="text" value="<?= $product_id ?>" name="product_id" class="form-control" id="prodId" placeholder="ID sản phẩm" disabled>
+                        <input type="text" value="<?= $product_id ?>" name="prod_id" class="form-control" id="prodId" placeholder="ID sản phẩm">
                     </div>
                     <div class="form-group">
                         <label for="prodName">Tên sản phẩm</label>
@@ -72,11 +73,37 @@
                     </div>
                     <div class="form-group">
                         <label for="prodDiscount">Giảm giá</label>
-                        <input type="text" name="discount" value="<?= $discount ?>" class="form-control" id="prodDiscount" placeholder="Giảm giá">
+                        <input type="number" min="0" name="discount" value="<?= $discount ?>" class="form-control" id="prodDiscount" placeholder="Giảm giá">
                     </div>
                     <div class="form-group">
-                        <label for="prodDes">Mô tả</label>
-                        <textarea class="form-control" name="descriptions" <?= $descriptions ?> id="prodDes" rows="4"></textarea>
+                        <label for="prodDescrip">Mô tả</label>
+                        <textarea class="form-control ck-editor__editable_inline" name="description" id="prodDescrip" rows="4"></textarea>
+                        <script src="https://cdn.ckeditor.com/ckeditor5/31.0.0/classic/ckeditor.js"></script>
+                        <script>
+                            ClassicEditor
+                                .create(document.querySelector('#prodDescrip'))
+                                .then(editor => {
+                                    console.log(editor);
+                                })
+                                .catch(error => {
+                                    console.error(error);
+                                });
+                        </script>
+                    </div>
+                    <div class="form-group">
+                        <label for="prodInfo">Thông tin</label>
+                        <textarea class="form-control ck-editor__editable_inline" name="infomation" id="prodInfo" rows="4"></textarea>
+                        <script src="https://cdn.ckeditor.com/ckeditor5/31.0.0/classic/ckeditor.js"></script>
+                        <script>
+                            ClassicEditor
+                                .create(document.querySelector('#prodInfo'))
+                                .then(editor => {
+                                    console.log(editor);
+                                })
+                                .catch(error => {
+                                    console.error(error);
+                                });
+                        </script>
                     </div>
                     <div class="form-group">
                         <label for="prodStatus">Tình trạng</label>

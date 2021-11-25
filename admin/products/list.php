@@ -12,6 +12,7 @@
                         <th class="px-1 py-3">Số lượng</th>
                         <th class="px-1 py-3">Khối lượng</th>
                         <th class="px-1 py-3">Mô tả</th>
+                        <th class="px-1 py-3">Thông tin</th>
                         <th class="px-1 py-3">Thêm ngày</th>
                         <th class="px-1 py-3">Giảm giá</th>
                         <th class="px-1 py-3">Đã bán</th>
@@ -52,7 +53,11 @@
                             </td>
                             <!-- Mô tả -->
                             <td class="px-1 py-3">
-                                <?= $descriptions ?>
+                                <?= $description ?>
+                            </td>
+                            <!-- Thông tin -->
+                            <td class="px-1 py-3">
+                                <?= $infomation ?>
                             </td>
                             <!-- Thêm ngày -->
                             <td class="px-1 py-3 text-sm">
