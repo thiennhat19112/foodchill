@@ -1,5 +1,5 @@
 <?PHP
-function getAllShowProd(){
+function getAllShowProd() {
    $sql = "SELECT * FROM `products` WHERE `status` = 1";
    return pdo_query($sql);
 }
@@ -11,26 +11,26 @@ function getDiscountProd() {
    $sql = "SELECT * FROM `products` WHERE `discount` > 0";
    return pdo_query($sql);
 }
-function getFeaturedProd(){
+function getFeaturedProd() {
    $sql = "SELECT * FROM `products` ORDER BY `rating` DESC LIMIT 8";
    return pdo_query($sql);
 }
-function countProd($sql_sort){
+function countProd($sql_sort) {
    $sql = str_replace('SELECT *', 'SELECT COUNT(product_id) as total', $sql_sort);
    return pdo_query_one($sql)['total'];
 }
-function getProdCate($cate_id){
+function getProdCate($cate_id) {
    $sql = "SELECT category_name FROM `categories` WHERE `category_id` = ?";
    return pdo_query_one($sql, $cate_id)['category_name'];
 }
-function countFavorite($u_id){
+function countFavorite($u_id) {
    $sql = "SELECT COUNT(product_id) as total FROM `favorites` WHERE `user_id` = ?";
    return pdo_query_one($sql, $u_id)['total'];
 }
-function checkFavorite($p_id, $u_id){
+function checkFavorite($p_id, $u_id) {
    $sql = "SELECT * FROM `favorites` WHERE `product_id` = ? AND `user_id` = ?";
    $check = pdo_query_one($sql, $p_id, $u_id);
-   if($check==true){
+   if ($check == true) {
       return " liked";
    } else {
       return "";

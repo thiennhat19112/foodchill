@@ -34,6 +34,8 @@
                   </thead>
                   <tbody>
                      <?php
+
+                     //Cart session
                      $tong = 0;
                      if (isset($_SESSION["cart"])) {
                         foreach ($_SESSION["cart"] as $key => $value) {
@@ -63,6 +65,45 @@
                               </td>
                               <td class="shoping__cart__item__close">
                                  <a href="?act=cart&iddel=<?= $product_id; ?>"><span class="icon_close"></span></a>
+                              </td>
+                           </tr>
+                        <?php
+                        }
+                     }
+
+                     //Cart database
+                     if (isset($_SESSION["u_id"])) {
+                        $user_id = $_SESSION["u_id"];
+                        $productCart = showProductCart($user_id);
+                        foreach ($productCart as $key => $value) {
+                           $product_id = $value["product_id"];
+                           $product_qty = $value["quantity"];
+                           $product = getProd($product_id);
+                           $product_price = $product["price"];
+                           $thanhtien = $product_price * $product_qty;
+                           $tong += $thanhtien;
+                        ?>
+                           <tr>
+                              <td class="shoping__cart__item">
+                                 <img src="<?= $product["image"] ?>" alt="" style="height: 7vw;">
+                                 <h5><?= $product["product_name"] ?></h5>
+                              </td>
+                              <td class="shoping__cart__price">
+                                 <?= number_format($product_price) ?>
+                              </td>
+                              <td class="shoping__cart__quantity">
+                                 <div class="quantity">
+                                    <div class="pro-qty">
+                                       <input type="text" value="<?= $product_qty; ?>">
+                                    </div>
+                                 </div>
+                              </td>
+                              <td class="shoping__cart__total">
+                                 <?= number_format($thanhtien); ?>
+                              </td>
+                              <td class="shoping__cart__item__close">
+                                 <!-- <a href="?act=cart&iddel=<?= $product_id; ?>"><span class="icon_close"></span></a> -->
+                                 <button value="<?= $product_id; ?>" style="outline: none; background:none; border:none;"><span class="icon_close"></span></button>
                               </td>
                            </tr>
                      <?php
