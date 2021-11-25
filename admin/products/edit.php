@@ -2,7 +2,7 @@
     $image_old = $image;
     if (isset($_POST['editProduct']))
     {
-        $product_id = $_POST['prod_id'];
+        $product_id = $_POST['product_id'];
         $product_name = $_POST['product_name'];
         $quantity = $_POST['quantity'];
         $price = $_POST['price'];
@@ -12,14 +12,15 @@
         if($image_old ==""){
             $target = '../upload/images/';
             $image =$_FILES['image']['name'];
+            $image_data = 'upload/images/'.$image;
             //upload ảnh
             $image_tmp = $_FILES['image']['tmp_name'];
             move_uploaded_file($image_tmp,$target.$image);
         }else{
-            $image = $image_old;
+            $image_data = $image_old;
         }
         
-        $image_data = 'upload/images/'.$image;
+       
         $category_id = $_POST['category_id'];
         $discount = $_POST['discount'];
         $status = $_POST['status'];
@@ -35,7 +36,7 @@
                 <form class="forms-sample" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="prodId">ID sản phẩm</label>
-                        <input type="text" value="<?= $product_id ?>" name="prod_id" class="form-control" id="prodId" placeholder="ID sản phẩm">
+                        <input type="text" value="<?= $product_id ?>" name="product_id" class="form-control" disabled id="prodId" placeholder="ID sản phẩm">
                     </div>
                     <div class="form-group">
                         <label for="prodName">Tên sản phẩm</label>
@@ -65,7 +66,7 @@
                     </div>
                     <div class="form-group">
                         <label for="prodImage">Hình ảnh</label>
-                        <input type="file" name="image" class="dropify" data-max-file-size="2M" data-max-height="2000" data-default-file="../upload/images/<?= $image ?>" id="prodImage">
+                        <input type="file" name="image" class="dropify" data-max-file-size="2M" data-max-height="2000" data-default-file="../<?= $image ?>" id="prodImage">
                         <?php if($image!=""){
                             echo '<span name="image_old" value = "'.$image.'"></span>';
                         }?>
