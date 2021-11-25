@@ -95,9 +95,10 @@
                   <a href="#" class="primary-btn">Thêm vào giỏ hàng</a>
                   <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
                   <ul>
+                     <li><b>Đã bán</b> <span><samp><?= $prod['saled'] ?></samp> Sản phẩm</span></li>
                      <li><b>Còn lại</b> <span><samp><?= $prod['quantity'] ?></samp> Sản phẩm</span></li>
-                     <li><b>Giao hàng</b> <span>01 day shipping. <samp>No Free Shipping</samp></span></li>
                      <li><b>Cân nặng</b> <span><?= $prod['weight'] ?> kg</span></li>
+                     <li><b>Giao hàng</b> <span>01 day shipping. <samp>No Free Shipping</samp></span></li>
                      <li><b>Chia sẻ</b>
                         <div class="share">
                            <a href="#"><i class="fa fa-facebook"></i></a>

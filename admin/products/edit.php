@@ -82,7 +82,7 @@
                     </div>
                     <div class="form-group">
                         <label for="prodInfo">Thông tin</label>
-                        <textarea class="form-control" name="description"  id="prodInfo" rows="4"><?= $infomation ?></textarea>
+                        <textarea class="form-control" name="infomation"  id="prodInfo" rows="4"><?= $infomation ?></textarea>
                     </div>
                     <div class="form-group">
                         <label for="prodStatus">Tình trạng</label>
