@@ -78,12 +78,34 @@
                         <input type="number" min="0" name="discount" value="<?= $discount ?>" class="form-control" id="prodDiscount" placeholder="Giảm giá">
                     </div>
                     <div class="form-group">
-                        <label for="prodDes">Mô tả</label>
-                        <textarea class="form-control" name="description"  id="prodDes" rows="4"><?= $description ?></textarea>
+                        <label for="prodDescrip">Mô tả</label>
+                        <textarea class="form-control ck-editor__editable_inline" name="description" id="prodDescrip" rows="4"><?=$description?></textarea>
+                        <script src="https://cdn.ckeditor.com/ckeditor5/31.0.0/classic/ckeditor.js"></script>
+                        <script>
+                            ClassicEditor
+                                .create(document.querySelector('#prodDescrip'))
+                                .then(editor => {
+                                    console.log(editor);
+                                })
+                                .catch(error => {
+                                    console.error(error);
+                                });
+                        </script>
                     </div>
                     <div class="form-group">
                         <label for="prodInfo">Thông tin</label>
-                        <textarea class="form-control" name="infomation"  id="prodInfo" rows="4"><?= $infomation ?></textarea>
+                        <textarea class="form-control ck-editor__editable_inline" name="infomation" id="prodInfo" rows="4"><?=$infomation?></textarea>
+                        <script src="https://cdn.ckeditor.com/ckeditor5/31.0.0/classic/ckeditor.js"></script>
+                        <script>
+                            ClassicEditor
+                                .create(document.querySelector('#prodInfo'))
+                                .then(editor => {
+                                    console.log(editor);
+                                })
+                                .catch(error => {
+                                    console.error(error);
+                                });
+                        </script>
                     </div>
                     <div class="form-group">
                         <label for="prodStatus">Tình trạng</label>
