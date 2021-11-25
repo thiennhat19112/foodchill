@@ -141,9 +141,11 @@
                         <i class="fa fa-heart"></i>
                         <span id="showUserLike">
                            <?PHP
-                           if (isset($_SESSION['u_id'])) {
-                              echo countFavorite($_SESSION["u_id"]);
-                           }
+                              if (isset($_SESSION['u_id'])) {
+                                 echo countFavorite($_SESSION["u_id"]);
+                              } else {
+                                 echo "0";
+                              }
                            ?>
                         </span>
                      </a>
