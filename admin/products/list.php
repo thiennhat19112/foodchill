@@ -30,7 +30,7 @@
                                 <!-- Tên sản phẩm -->
                                 <div class="flex items-center text-sm">
                                     <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                                        <img class="object-cover w-full h-full rounded-full" src="../upload/images/<?= $image ?>" alt="" loading="lazy" />
+                                        <img class="object-cover w-full h-full rounded-full" src="../<?= $image ?>" alt="" loading="lazy" />
                                         <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
                                     </div>
                                     <div>
@@ -47,7 +47,7 @@
                                 <?= $quantity ?>
                             </td>
                             <!-- Khối lượng -->
-                            <td class="px-1 py-3">
+                            <td class="px-1 py-3 text-sm">
                                 <?= $weight ?>
                             </td>
                             <!-- Mô tả -->

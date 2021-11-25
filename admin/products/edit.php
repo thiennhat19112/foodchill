@@ -18,11 +18,11 @@
             $image = $image_old;
         }
         
-
+        $image_data = 'upload/images/'.$image;
         $category_id = $_POST['category_id'];
         $discount = $_POST['discount'];
         $status = $_POST['status'];
-        update_product($product_name, $quantity, $price, $weight, $descriptions, $image,  $category_id, $discount, $status, $product_id);
+        update_product($product_name, $quantity, $price, $weight, $descriptions, $image_data,  $category_id, $discount, $status, $product_id);
     }
 
 ?>

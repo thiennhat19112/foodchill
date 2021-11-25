@@ -19,7 +19,7 @@ if (isset($_POST['product_id'])) {
     $id =$_POST['product_id'];
     delete_product($id);
     $img = $_POST['img'];
-    unlink("../../upload/images/".$img."");
+    unlink("../../".$img."");
 }
 
 if(isset($_POST['comment_id'])) {

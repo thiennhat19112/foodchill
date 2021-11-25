@@ -32,6 +32,7 @@ switch ($act) {
       require("./views/cart.php");
       break;
    case "blog":
+      require("./blog/index.php");
       require("./views/blog.php");
       break;
    case "contact":
@@ -46,6 +47,7 @@ switch ($act) {
       require("./views/ship.php");
       break;
    case "blog-details":
+      require("./blog/index.php");
       require("./views/blog-details.php");
       break;
       // case 'listsp':

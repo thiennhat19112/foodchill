@@ -6,7 +6,7 @@ function load_all_products()
     return pdo_query($sql);
 }
 //thêm sản phẩm
-function insert_product($product_name, $quantity, $price, $weight, $descriptions, $image, $category_id, $discount, $saled, $view, $rating, $status)
+function insert_product($product_name, $quantity, $price, $weight, $descriptions, $image_data, $category_id, $discount, $saled, $view, $rating, $status)
 {
     $sql = "INSERT INTO `products`
             (`product_name`,
@@ -24,10 +24,10 @@ function insert_product($product_name, $quantity, $price, $weight, $descriptions
             `status`)
               VALUES 
               (?,?,?,?,?,?,CURRENT_TIMESTAMP,?,?,?,?,?,?)";
-    pdo_execute($sql,$product_name, $quantity, $price, $weight, $descriptions, $image,  $category_id, $discount, $saled, $view, $rating, $status);
+    pdo_execute($sql,$product_name, $quantity, $price, $weight, $descriptions, $image_data,  $category_id, $discount, $saled, $view, $rating, $status);
 }
 //sửa danh mục
-function  update_product($product_name, $quantity, $price, $weight, $descriptions, $image,  $category_id, $discount, $status, $product_id){
+function  update_product($product_name, $quantity, $price, $weight, $descriptions, $image_data,  $category_id, $discount, $status, $product_id){
     $sql = "UPDATE products SET 
     product_name= ?,
     quantity= ?, 
@@ -39,7 +39,7 @@ function  update_product($product_name, $quantity, $price, $weight, $description
     discount= ?,
     status=? 
     where product_id= ?";
-    pdo_execute($sql, $product_name, $quantity, $price, $weight, $descriptions, $image,  $category_id, $discount, $status , $product_id);
+    pdo_execute($sql, $product_name, $quantity, $price, $weight, $descriptions, $image_data,  $category_id, $discount, $status , $product_id);
 }
 //xóa sản phẩm
 function delete_product($id)

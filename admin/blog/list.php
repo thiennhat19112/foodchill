@@ -6,7 +6,7 @@
             </h2>
             <table class="w-full whitespace-wrap">
                 <thead>
-                    <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 whitespace-no-wrap uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                    <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                         <th class="px-1 py-3">Tiêu đề</th>
                         <th class="px-1 py-3">Mô tả</th>
                         <th class="px-1 py-3">Tác giả</th>
@@ -20,15 +20,15 @@
                     ?>
                         <tr id="blog-tr<?= $blog_id ?>" class="text-gray-700 dark:text-gray-400">
                             <!-- Tiều đề -->
-                            <td class="px-1 py-3 text-sm whitespace-no-wrap">
-                                <?= $title ?>
+                            <td class="px-1 py-3 text-sm">
+                                <p class="font-semibold"><?= $title ?></p>
                             </td>
                             <!-- Mô tả -->
-                            <td class="px-1 py-3 text-sm whitespace-no-wrap">
+                            <td class="px-1 py-3 text-sm">
                                 <?= $descriptions ?>
                             </td>
                             <!-- Tác giả -->
-                            <td class="px-1 py-3 text-sm whitespace-no-wrap">
+                            <td class="px-1 py-3 text-sm">
                             </td>
                             <!-- Trạng thái -->
                             <td class="px-1 py-3 text-xs">
