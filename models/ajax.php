@@ -26,6 +26,10 @@ if (isset($_POST["action"])) {
    $result = $statement->fetchAll();
    $total_row = $statement->rowCount();
    $output = '';
+   if (isset($_SESSION["u_id"])) {
+      $user_id = $_SESSION["u_id"];
+   } else
+      $user_id = 0;
    if ($total_row > 0) {
       foreach ($result as $v) {
          $output .= '
@@ -35,7 +39,7 @@ if (isset($_POST["action"])) {
                   <div class="product__item__pic set-bg" data-setbg="' . $v['image'] . '">
                      <ul class="product__item__pic__hover">
                         <input name="product_id" type="hidden" value="' . $v["product_id"] . '">
-                        <input name="user_id" type="hidden" value="' . $_SESSION["u_id"] . '">
+                        <input name="user_id" type="hidden" value="' . $user_id . '">
                         <input name="product_qty" type="hidden" value="1">
                         <li><button value="' . $v['product_id'] . '" class="favorite"><i class="fa fa-heart"></i></button></li>
                         <li><button type="submit"><i class="fa fa-shopping-cart"></i></button></li>
