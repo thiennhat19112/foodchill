@@ -28,8 +28,9 @@ if (isset($_POST["action"])) {
    $output = '';
    if (isset($_SESSION["u_id"])) {
       $user_id = $_SESSION["u_id"];
-   } else
+   } else {
       $user_id = 0;
+   }
    if ($total_row > 0) {
       foreach ($result as $v) {
          $output .= '
