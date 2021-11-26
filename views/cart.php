@@ -79,7 +79,7 @@
                            $product_id = $value["product_id"];
                            $product_qty = $value["quantity"];
                            $product = getProd($product_id);
-                           $product_price = $product["price"];
+                           $product_price = $product["price"] * ((100 - $product['discount']) / 100);
                            $thanhtien = $product_price * $product_qty;
                            $tong += $thanhtien;
                         ?>
@@ -89,7 +89,7 @@
                                  <h5><?= $product["product_name"] ?></h5>
                               </td>
                               <td class="shoping__cart__price">
-                                 <?= number_format($product_price) ?>
+                                 <?= number_format($product_price, 0, ',', '.') ?>
                               </td>
                               <td class="shoping__cart__quantity">
                                  <div class="quantity">
@@ -99,7 +99,7 @@
                                  </div>
                               </td>
                               <td class="shoping__cart__total">
-                                 <?= number_format($thanhtien); ?>
+                                 <?= number_format($thanhtien, 0, ',', '.'); ?>
                               </td>
                               <td class="shoping__cart__item__close">
                                  <!-- <a href="?act=cart&iddel=<?= $product_id; ?>"><span class="icon_close"></span></a> -->

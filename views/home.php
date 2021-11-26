@@ -74,7 +74,7 @@
                            </div>
                            <div class="product__discount__item__text">
                               <span><?= getProdCate($v['category_id']) ?></span>
-                              <h5><a href="shop/product/<?= $v['product_id'] ?>-<?= stringProcessor($v['product_name']) ?>"><?= $v['product_name'] ?></a></h5>
+                              <h5 class="text-truncate"><a href="shop/product/<?= $v['product_id'] ?>-<?= stringProcessor($v['product_name']) ?>"><?= $v['product_name'] ?></a></h5>
                               <div class="product__item__price">
                                  <?= number_format($v['price'] * ((100 - $v['discount']) / 100), 0, ',', '.') ?> VND
                                  <span><?= number_format($v['price'], 0, ',', '.') ?> VND</span>
@@ -127,7 +127,7 @@
                         </ul>
                      </div>
                      <div class="featured__item__text">
-                        <h6><a href="shop/product/<?= $v['product_id'] ?>-<?= stringProcessor($v['product_name']) ?>"><?= $v['product_name'] ?></a></h6>
+                        <h6 class="text-truncate"><a href="shop/product/<?= $v['product_id'] ?>-<?= stringProcessor($v['product_name']) ?>"><?= $v['product_name'] ?></a></h6>
                         <h5><?= number_format($v['price'] * ((100 - $v['discount']) / 100), 0, ',', '.') ?> VND</h5>
                      </div>
                   </div>
@@ -180,7 +180,7 @@
                      </div>
                      <div class="blog__item__text">
                         <ul>
-                           <li><i class="fa fa-calendar-o"></i><?= $create_date ?></li>
+                           <li><i class="fa fa-calendar-o"></i> <?= shortDate($create_date) ?></li>
                         </ul>
                         <h5><a href="javacript:void(0)"><?= $title ?></a></h5>
                         <p style="max-height : 100px;" class="overflow-hidden"><?= $descriptions ?> </p>

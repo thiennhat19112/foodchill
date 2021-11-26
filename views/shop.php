@@ -223,13 +223,9 @@
                </div>
                <?PHP 
                   if(isset($_SESSION['u_id'])){
-                     echo '
-                        <input type="hidden" id="user_id" value="'.$_SESSION["u_id"].'">
-                     ';
+                     echo '<input type="hidden" id="user_id" value="'.$_SESSION["u_id"].'">';
                   } else {
-                     echo '
-                        <input type="hidden" id="user_id" value="0">
-                     ';
+                     echo '<input type="hidden" id="user_id" value="0">';
                   }
                ?> <!-- Lấy user_id cho ajax -->
                <div class="row sort--prod">

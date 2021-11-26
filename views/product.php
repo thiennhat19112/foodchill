@@ -114,27 +114,27 @@
                <div class="product__details__tab">
                   <ul class="nav nav-tabs" role="tablist">
                      <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab" aria-selected="true">Mô tả</a>
+                        <a class="nav-link active" data-toggle="tab" href="#product-description" role="tab" aria-selected="true">Mô tả</a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab" aria-selected="false">Thông tin</a>
+                        <a class="nav-link" data-toggle="tab" href="#product-infomation" role="tab" aria-selected="false">Thông tin</a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab" aria-selected="false">Đánh giá <span>(1)</span></a>
+                        <a class="nav-link" data-toggle="tab" href="#product-reviews" role="tab" aria-selected="false">Đánh giá <span>(1)</span></a>
                      </li>
                   </ul>
                   <div class="tab-content">
-                     <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                     <div class="tab-pane active" id="product-description" role="tabpanel">
                         <div class="product__details__tab__desc">
                            <?=$prod['description']?>
                         </div>
                      </div>
-                     <div class="tab-pane" id="tabs-2" role="tabpanel">
+                     <div class="tab-pane" id="product-infomation" role="tabpanel">
                         <div class="product__details__tab__desc">
                            <?=$prod['infomation']?>
                         </div>
                      </div>
-                     <div class="tab-pane" id="tabs-3" role="tabpanel">
+                     <div class="tab-pane" id="product-reviews" role="tabpanel">
                         <div class="product__details__tab__desc">
                            <p>Hiển thị đánh giá</p>
                         </div>

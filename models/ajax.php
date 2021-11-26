@@ -51,7 +51,7 @@ if (isset($_POST["action"])) {
                      </ul>
                   </div>
                   <div class="product__item__text">
-                     <h6><a href="shop/product/' . $v['product_id'] . '-' . stringProcessor($v['product_name']) . '">' . $v['product_name'] . '</a></h6>
+                     <h6 class="text-truncate"><a href="shop/product/' . $v['product_id'] . '-' . stringProcessor($v['product_name']) . '">' . $v['product_name'] . '</a></h6>
                      <h5>' . number_format($v['price'] * ((100 - $v['discount']) / 100), 0, ',', '.') . ' VND</h5>
                   </div>
                </div>
