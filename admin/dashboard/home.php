@@ -7,7 +7,7 @@
         Hóa đơn
     </h2>
     <div class="w-full overflow-x-auto">
-        <table class="w-full  whitespace-no-wrap orders-table">
+        <table class="w-full  whitespace-no-wrap orders-table myTable">
             <thead>
                 <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                     <th class="px-1 py-3">Khách hàng</th>

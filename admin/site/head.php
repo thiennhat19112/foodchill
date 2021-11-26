@@ -9,8 +9,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/tailwind.output.css" />
   <link rel="stylesheet" href="assets/css/dropify.min.css" />
+  <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" />
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" defer></script>
   <script src="assets/js/charts-bars.js" defer></script>
+  <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js" defer></script>
+  <script>
+    $(document).ready(function() {
+      $('.myTable').DataTable();
+    });
+  </script>
 </head>
