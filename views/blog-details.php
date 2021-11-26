@@ -10,8 +10,8 @@
                 <div class="col-lg-6">
                     <div class="blog__details__author">
                         <div class="blog__details__author__text">
-                            <h6><?= $user_name ?></h6>
-                            <span>Admin</span>
+                            <h5><?= $user_name ?></h5>
+                            <span><?=shortDate($create_date)?></span>
                         </div>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                </div>
                <div class="blog__item__text">
                   <ul>
-                     <li><i class="fa fa-calendar-o"></i><?=$create_date?></li>
+                     <li><i class="fa fa-calendar-o"></i> <?=shortDate($create_date)?></li>
                   </ul>
                   <h5><a href="#"><?=$title?></a></h5>
                   <p><?=$descriptions?> </p>
