@@ -353,7 +353,6 @@ $(document).ready(function () {
             data: { "product_cart_remove": p_id, "tongtienhang": tongtienhang, "thanhtien": thanhtien },
             success: function (result) {
                 var data = $.parseJSON(result);
-                console.log(data[0], data[1], data[2]);
                 $("#showUserCart").html(data[0]);
                 $("#cart-tongtienhang").html(data[1]);
                 $("#cart-thanhtien").html(data[2]);
