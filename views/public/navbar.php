@@ -4,39 +4,6 @@
       <div class="humberger__menu__logo">
          <a href="#"><img src="./assets/img/logo.png" alt=""></a>
       </div>
-      <div class="humberger__menu__cart">
-         <ul>
-            <li>
-               <a href="favorite/">
-                  <i class="fa fa-heart"></i>
-                  <?php
-                     if (isset($_SESSION['u_id'])) {
-                        echo '
-                           <span class="cart-item" id="showUserLike">'.
-                              countFavorite($_SESSION['u_id'])
-                           .'</span>
-                        ';
-                     }
-                  ?>
-               </a>
-            </li>
-            <li>
-               <a href="cart/">
-                  <i class="fa fa-shopping-bag"></i>
-                  <?php
-                     if (isset($_SESSION['u_id'])) {
-                        echo '
-                           <span class="cart-item" id="showUserCart">'.
-                              countCart($_SESSION['u_id'])
-                           .'</span>
-                        ';
-                     }
-                  ?>
-               </a>
-            </li>
-         </ul>
-         <!-- <div class="header__cart__price">item: <span>$150.00</span></div> -->
-      </div>
       <div class="humberger__menu__widget">
          <?php
             if (!isset($_SESSION["username"])) {
@@ -185,7 +152,7 @@
                            <?php
                               if (isset($_SESSION['u_id'])) {
                                  echo '
-                                    <span class="cart-item" id="showUserLike">'.
+                                    <span id="showUserLike">'.
                                        countFavorite($_SESSION['u_id'])
                                     .'</span>
                                  ';

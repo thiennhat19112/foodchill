@@ -61,173 +61,171 @@
    <!-- Hero Section End -->
 
    <!-- Product Details Section Begin -->
-   <section class="product-details spad">
-      <div class="container">
-         <div class="row">
-            <div class="col-lg-6 col-md-6">
-               <div class="product__details__pic">
-                  <div class="product__details__pic__item">
-                     <img class="product__details__pic__item--large" src="<?= $prod['image'] ?>" alt="">
-                  </div>
-                  <div class="product__details__pic__slider owl-carousel">
-                     <img data-imgbigurl="./assets/img/product/details/product-details-2.jpg" src="./assets/img/product/details/thumb-1.jpg" alt="">
-                     <img data-imgbigurl="./assets/img/product/details/product-details-3.jpg" src="./assets/img/product/details/thumb-2.jpg" alt="">
-                     <img data-imgbigurl="./assets/img/product/details/product-details-5.jpg" src="./assets/img/product/details/thumb-3.jpg" alt="">
-                     <img data-imgbigurl="./assets/img/product/details/product-details-4.jpg" src="./assets/img/product/details/thumb-4.jpg" alt="">
+      <section class="product-details spad">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-6 col-md-6">
+                  <div class="product__details__pic">
+                     <div class="product__details__pic__item">
+                        <img class="product__details__pic__item--large" src="<?= $prod['image'] ?>" alt="">
+                     </div>
+                     <div class="product__details__pic__slider owl-carousel">
+                        <img data-imgbigurl="./assets/img/product/details/product-details-2.jpg" src="./assets/img/product/details/thumb-1.jpg" alt="">
+                        <img data-imgbigurl="./assets/img/product/details/product-details-3.jpg" src="./assets/img/product/details/thumb-2.jpg" alt="">
+                        <img data-imgbigurl="./assets/img/product/details/product-details-5.jpg" src="./assets/img/product/details/thumb-3.jpg" alt="">
+                        <img data-imgbigurl="./assets/img/product/details/product-details-4.jpg" src="./assets/img/product/details/thumb-4.jpg" alt="">
+                     </div>
                   </div>
                </div>
-            </div>
-            <div class="col-lg-6 col-md-6">
-               <div class="product__details__text">
-                  <h3><?= $prod['product_name'] ?></h3>
-                  <div class="product__details__rating">
-                     <i class="fa fa-star"></i>
-                     <i class="fa fa-star"></i>
-                     <i class="fa fa-star"></i>
-                     <i class="fa fa-star"></i>
-                     <i class="fa fa-star-half-o"></i>
-                     <span>(18 reviews)</span>
-                  </div>
-                  <div class="product__details__price">
-                     <?= number_format($prod['price'] * ((100 - $prod['discount']) / 100), 0, ',', '.') ?> VND
-                  </div>
-                  <p>Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam
-                     vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet
-                     quam vehicula elementum sed sit amet dui. Proin eget tortor risus.</p>
-                  <div class="product__details__quantity">
-                     <div class="quantity">
-                        <div class="pro-qty">
-                           <input type="text" value="1">
+               <div class="col-lg-6 col-md-6">
+                  <div class="product__details__text">
+                     <h3><?= $prod['product_name'] ?></h3>
+                     <div class="product__details__rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+                        <span>(18 reviews)</span>
+                     </div>
+                     <div class="product__details__price">
+                        <?= number_format($prod['price'] * ((100 - $prod['discount']) / 100), 0, ',', '.') ?> VND
+                     </div>
+                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid non, repellendus saepe illo et modi distinctio ducimus nemo aspernatur quo iure dolorum dolor? Repudiandae est magnam illum et numquam. Perferendis!</p>
+                     <div class="product__details__quantity">
+                        <div class="quantity">
+                           <div class="pro-qty">
+                              <input type="text" value="1">
+                           </div>
                         </div>
                      </div>
+                     <button value="<?= $prod['product_id'] ?>" class="addToCart primary-btn"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</button>
+                     <button id="like_<?=$prod['product_id']?>" value="<?= $prod['product_id'] ?>" class="favorite heart-icon"><span class="icon_heart_alt"></span></button>
+                     <ul>
+                        <li><b>Đã bán</b> <span><samp><?= $prod['saled'] ?></samp> Sản phẩm</span></li>
+                        <li><b>Còn lại</b> <span><samp><?= $prod['quantity'] ?></samp> Sản phẩm</span></li>
+                        <li><b>Cân nặng</b> <span><?= $prod['weight'] ?> kg</span></li>
+                        <li><b>Giao hàng</b> <span>01 day shipping. <samp>No Free Shipping</samp></span></li>
+                        <li><b>Chia sẻ</b>
+                           <div class="share">
+                              <a href="#"><i class="fa fa-facebook"></i></a>
+                              <a href="#"><i class="fa fa-twitter"></i></a>
+                              <a href="#"><i class="fa fa-instagram"></i></a>
+                              <a href="#"><i class="fa fa-pinterest"></i></a>
+                           </div>
+                        </li>
+                     </ul>
                   </div>
-                  <button value="<?= $prod['product_id'] ?>" class="addToCart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</button>
-                  <button id="like_<?=$prod['product_id']?>" value="<?= $prod['product_id'] ?>" class="favorite"><i class="fa fa-heart"></i></button>
-                  <ul>
-                     <li><b>Đã bán</b> <span><samp><?= $prod['saled'] ?></samp> Sản phẩm</span></li>
-                     <li><b>Còn lại</b> <span><samp><?= $prod['quantity'] ?></samp> Sản phẩm</span></li>
-                     <li><b>Cân nặng</b> <span><?= $prod['weight'] ?> kg</span></li>
-                     <li><b>Giao hàng</b> <span>01 day shipping. <samp>No Free Shipping</samp></span></li>
-                     <li><b>Chia sẻ</b>
-                        <div class="share">
-                           <a href="#"><i class="fa fa-facebook"></i></a>
-                           <a href="#"><i class="fa fa-twitter"></i></a>
-                           <a href="#"><i class="fa fa-instagram"></i></a>
-                           <a href="#"><i class="fa fa-pinterest"></i></a>
-                        </div>
-                     </li>
-                  </ul>
                </div>
-            </div>
-            <div class="col-lg-12">
-               <div class="product__details__tab">
-                  <ul class="nav nav-tabs" role="tablist">
-                     <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#product-description" role="tab" aria-selected="true">Mô tả</a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#product-infomation" role="tab" aria-selected="false">Thông tin</a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#product-reviews" role="tab" aria-selected="false">Đánh giá <span>(1)</span></a>
-                     </li>
-                  </ul>
-                  <div class="tab-content">
-                     <div class="tab-pane active" id="product-description" role="tabpanel">
-                        <div class="product__details__tab__desc">
-                           <?=$prod['description']?>
+               <div class="col-lg-12">
+                  <div class="product__details__tab">
+                     <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                           <a class="nav-link active" data-toggle="tab" href="#product-description" role="tab" aria-selected="true">Mô tả</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" data-toggle="tab" href="#product-infomation" role="tab" aria-selected="false">Thông tin</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" data-toggle="tab" href="#product-reviews" role="tab" aria-selected="false">Đánh giá <span>(1)</span></a>
+                        </li>
+                     </ul>
+                     <div class="tab-content">
+                        <div class="tab-pane active" id="product-description" role="tabpanel">
+                           <div class="product__details__tab__desc">
+                              <?=$prod['description']?>
+                           </div>
                         </div>
-                     </div>
-                     <div class="tab-pane" id="product-infomation" role="tabpanel">
-                        <div class="product__details__tab__desc">
-                           <?=$prod['infomation']?>
+                        <div class="tab-pane" id="product-infomation" role="tabpanel">
+                           <div class="product__details__tab__desc">
+                              <?=$prod['infomation']?>
+                           </div>
                         </div>
-                     </div>
-                     <div class="tab-pane" id="product-reviews" role="tabpanel">
-                        <div class="product__details__tab__desc">
-                           <p>Hiển thị đánh giá</p>
+                        <div class="tab-pane" id="product-reviews" role="tabpanel">
+                           <div class="product__details__tab__desc">
+                              <p>Hiển thị đánh giá</p>
+                           </div>
                         </div>
                      </div>
                   </div>
                </div>
             </div>
          </div>
-      </div>
-   </section>
+      </section>
    <!-- Product Details Section End -->
 
    <!-- Related Product Section Begin -->
-   <section class="related-product">
-      <div class="container">
-         <div class="row">
-            <div class="col-lg-12">
-               <div class="section-title related__product__title">
-                  <h2>Sản phẩm liên quan</h2>
+      <section class="related-product">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-12">
+                  <div class="section-title related__product__title">
+                     <h2>Sản phẩm liên quan</h2>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-lg-3 col-md-4 col-sm-6">
+                  <div class="product__item">
+                     <div class="product__item__pic set-bg" data-setbg="./assets/img/product/product-1.jpg">
+                        <ul class="product__item__pic__hover">
+                           <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                           <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                           <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                        </ul>
+                     </div>
+                     <div class="product__item__text">
+                        <h6><a href="#">Crab Pool Security</a></h6>
+                        <h5>$30.00</h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-3 col-md-4 col-sm-6">
+                  <div class="product__item">
+                     <div class="product__item__pic set-bg" data-setbg="./assets/img/product/product-2.jpg">
+                        <ul class="product__item__pic__hover">
+                           <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                           <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                           <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                        </ul>
+                     </div>
+                     <div class="product__item__text">
+                        <h6><a href="#">Crab Pool Security</a></h6>
+                        <h5>$30.00</h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-3 col-md-4 col-sm-6">
+                  <div class="product__item">
+                     <div class="product__item__pic set-bg" data-setbg="./assets/img/product/product-3.jpg">
+                        <ul class="product__item__pic__hover">
+                           <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                           <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                           <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                        </ul>
+                     </div>
+                     <div class="product__item__text">
+                        <h6><a href="#">Crab Pool Security</a></h6>
+                        <h5>$30.00</h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-3 col-md-4 col-sm-6">
+                  <div class="product__item">
+                     <div class="product__item__pic set-bg" data-setbg="./assets/img/product/product-7.jpg">
+                        <ul class="product__item__pic__hover">
+                           <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                           <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                           <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                        </ul>
+                     </div>
+                     <div class="product__item__text">
+                        <h6><a href="#">Crab Pool Security</a></h6>
+                        <h5>$30.00</h5>
+                     </div>
+                  </div>
                </div>
             </div>
          </div>
-         <div class="row">
-            <div class="col-lg-3 col-md-4 col-sm-6">
-               <div class="product__item">
-                  <div class="product__item__pic set-bg" data-setbg="./assets/img/product/product-1.jpg">
-                     <ul class="product__item__pic__hover">
-                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                     </ul>
-                  </div>
-                  <div class="product__item__text">
-                     <h6><a href="#">Crab Pool Security</a></h6>
-                     <h5>$30.00</h5>
-                  </div>
-               </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-               <div class="product__item">
-                  <div class="product__item__pic set-bg" data-setbg="./assets/img/product/product-2.jpg">
-                     <ul class="product__item__pic__hover">
-                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                     </ul>
-                  </div>
-                  <div class="product__item__text">
-                     <h6><a href="#">Crab Pool Security</a></h6>
-                     <h5>$30.00</h5>
-                  </div>
-               </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-               <div class="product__item">
-                  <div class="product__item__pic set-bg" data-setbg="./assets/img/product/product-3.jpg">
-                     <ul class="product__item__pic__hover">
-                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                     </ul>
-                  </div>
-                  <div class="product__item__text">
-                     <h6><a href="#">Crab Pool Security</a></h6>
-                     <h5>$30.00</h5>
-                  </div>
-               </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-               <div class="product__item">
-                  <div class="product__item__pic set-bg" data-setbg="./assets/img/product/product-7.jpg">
-                     <ul class="product__item__pic__hover">
-                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                     </ul>
-                  </div>
-                  <div class="product__item__text">
-                     <h6><a href="#">Crab Pool Security</a></h6>
-                     <h5>$30.00</h5>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-   </section>
+      </section>
    <!-- Related Product Section End -->
