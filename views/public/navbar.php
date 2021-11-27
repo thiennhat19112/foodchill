@@ -136,7 +136,7 @@
                <ul>
                   <!-- <li class="active"><a href="home/">Home</a></li> -->
                   <li class="<?php echo $act == "home" ? 'active' : '' ?>"><a href="home/">Home</a></li>
-                  <li class="<?php echo $act == "shop" ? 'active' : '' ?>"><a href="shop/">Shop</a></li>
+                  <li class="<?php echo $act == "shop" || $act == "prod_detail" ? 'active' : '' ?>"><a href="shop/">Shop</a></li>
                   <!-- <li><a href="#">Pages</a>
                         <ul class="header__menu__dropdown">
                            <li><a href="./shop-details.html">Shop Details</a></li>
@@ -145,7 +145,7 @@
                            <li><a href="./blog-details.html">Blog Details</a></li>
                         </ul>
                      </li> -->
-                  <li class="<?php echo $act == "blog" ? 'active' : '' ?>"><a href="blog/">Blog</a></li>
+                  <li class="<?php echo $act == "blog" || $act == "blog_detail" ? 'active' : '' ?>"><a href="blog/">Blog</a></li>
                   <li class="<?php echo $act == "contact" ? 'active' : '' ?>"><a href="contact/">Liên hệ</a></li>
                </ul>
             </nav>
