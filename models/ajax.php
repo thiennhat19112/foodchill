@@ -64,8 +64,7 @@ if (isset($_POST["action"])) {
    $output .= '
       <script>
          $("button.favorite").click(function() {
-            var prod_id = $(this).val();
-            var u_id = $("#user_id").val();
+           ee
             if(u_id == "0"){
                alert("Vui lòng đăng nhập để sử dụng chức năng này");
             }else{
@@ -123,6 +122,15 @@ if (isset($_POST["product_id"])) {
    } else {
       updateCartQty($product_qty, $user_id, $product_id);
    }
+   $total_product = countCart($user_id);
+   die(json_encode(array('products' => $total_product)));
+}
+
+// Xoa san pham khoi gio hang
+if (isset($_GET["product_cart_remove"]) && isset($_SESSION["u_id"])) {
+   $user_id = $_SESSION["u_id"];
+   $product_id  = filter_var($_GET["product_cart_remove"], FILTER_SANITIZE_STRING);
+   deleteItemCart($user_id, $product_id);
    $total_product = countCart($user_id);
    die(json_encode(array('products' => $total_product)));
 }
