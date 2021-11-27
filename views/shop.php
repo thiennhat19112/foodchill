@@ -55,7 +55,7 @@
                <div class="breadcrumb__text">
                   <h2>FoodChill Shop</h2>
                   <div class="breadcrumb__option">
-                     <a href="?act=home">Home</a>
+                     <a href="home/">Home </a>
                      <span>Shop</span>
                   </div>
                </div>
@@ -78,8 +78,8 @@
                         foreach ($cates as $key => $v) {
                         ?>
                            <div class="form-check">
-                              <label><input class="form-check-input common_selector category" type="checkbox" value="<?=$v['category_id']?>">
-                              <?=$v['category_name']?>
+                              <label><input class="form-check-input common_selector category" type="checkbox" value="<?= $v['category_id'] ?>">
+                                 <?= $v['category_name'] ?>
                               </label>
                            </div>
                         <?PHP
@@ -221,13 +221,14 @@
                      </div>
                   </div>
                </div>
-               <?PHP 
-                  if(isset($_SESSION['u_id'])){
-                     echo '<input type="hidden" id="user_id" value="'.$_SESSION["u_id"].'">';
-                  } else {
-                     echo '<input type="hidden" id="user_id" value="0">';
-                  }
-               ?> <!-- Lấy user_id cho ajax -->
+               <?PHP
+               if (isset($_SESSION['u_id'])) {
+                  echo '<input type="hidden" id="user_id" value="' . $_SESSION["u_id"] . '">';
+               } else {
+                  echo '<input type="hidden" id="user_id" value="0">';
+               }
+               ?>
+               <!-- Lấy user_id cho ajax -->
                <div class="row sort--prod">
                   <!-- Show các sản phẩm -->
                </div>
