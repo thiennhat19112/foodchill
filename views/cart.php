@@ -86,7 +86,7 @@
                            <tr>
                               <td class="shoping__cart__item">
                                  <img src="<?= $product["image"] ?>" alt="" style="height: 7vw;">
-                                 <h5 class="text-truncate"><a href="shop/product/<?= $product['product_id'] ?>-<?= stringProcessor($product['product_name']) ?>"><?= $product['product_name'] ?></a></h5>
+                                 <h5 class="text-truncate"><a href="shop/product/<?= stringProcessor($product['product_name']) ?>-<?= $product['product_id'] ?>"><?= $product['product_name'] ?></a></h5>
                               </td>
                               <td class="shoping__cart__price">
                                  <?= number_format($product_price, 0, ',', '.') ?>
