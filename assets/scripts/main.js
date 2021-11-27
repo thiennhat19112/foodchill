@@ -346,28 +346,7 @@ $(document).ready(function () {
 		var p_id = $(this).val();
         var tongtienhang = $("#hidden-tongtienhang").val();
         var thanhtien = $("#hidden-thanhtien").val();
-        // console.log(p_id, tongtienhang, thanhtien);
 		$(this).parent().parent().fadeOut();
-        // $.ajax({
-        //     url:"./models/ajax.php",
-        //     method:"POST",
-        //     data:{
-        //         "product_cart_remove": p_id, 
-        //         "tongtienhang": tongtienhang, 
-        //         "thanhtien": thanhtien,
-        //     },
-        //     success:function(result){
-        //         var jsonResult = $.parseJSON(result);
-        //         var data1 = jsonResult[0];
-        //         var data2 = jsonResult[1];
-        //         var data3 = jsonResult[2];
-        //         // $("#showUserCart").html(data.products);
-        //         console.log(data1);
-        //         // $("#cart-tongtienhang").html(data.tongtienhang);
-        //         // $("#cart-thanhtien").html(data.thanhtien);
-        //         console.log(data2+"--"+data3);
-        //     }
-        // });
         $.ajax({
             url: "./models/ajax.php",
             method: "POST",
