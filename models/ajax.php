@@ -40,7 +40,7 @@ if (isset($_POST["action"])) {
                   <div class="product__item__pic set-bg" data-setbg="' . $v['image'] . '">
                      <ul class="product__item__pic__hover">
                         <li><button value="' . $v['product_id'] . '" class="favorite"><i class="fa fa-heart"></i></button></li>
-                        <li><button value="'. $v['product_id'] .'" class="addToCart"><i class="fa fa-shopping-cart"></i></button></li>
+                        <li><button value="' . $v['product_id'] . '" class="addToCart"><i class="fa fa-shopping-cart"></i></button></li>
                      </ul>
                   </div>
                   <div class="product__item__text">
@@ -124,5 +124,15 @@ if (isset($_POST["addToCart"])) {
       $prod_qty = pdo_query_one("SELECT `quantity` FROM `carts` WHERE `product_id` = $prod_id AND `user_id` = $user_id")['quantity'];
       changeQty($prod_qty + 1, $user_id, $prod_id);
    }
-   echo countCart($user_id);
-}  //Add to cart
+   $total_product = countCart($user_id);
+   die(json_encode(array('products' => $total_product)));
+}
+
+// Xoa san pham khoi gio hang
+if (isset($_GET["product_cart_remove"]) && isset($_SESSION["u_id"])) {
+   $user_id = $_SESSION["u_id"];
+   $product_id  = filter_var($_GET["product_cart_remove"], FILTER_SANITIZE_STRING);
+   deleteItemCart($user_id, $product_id);
+   $total_product = countCart($user_id);
+   die(json_encode(array('products' => $total_product)));
+}

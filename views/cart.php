@@ -22,7 +22,7 @@
       <div class="row">
          <div class="col-lg-12">
             <div class="shoping__cart__table">
-               <table>
+               <table class="cart-table">
                   <thead>
                      <tr>
                         <th class="shoping__product">Sản phẩm</th>
@@ -103,7 +103,7 @@
                               </td>
                               <td class="shoping__cart__item__close">
                                  <!-- <a href="?act=cart&iddel=<?= $product_id; ?>"><span class="icon_close"></span></a> -->
-                                 <button value="<?= $product_id; ?>" style="outline: none; background:none; border:none;"><span class="icon_close"></span></button>
+                                 <button class="delete_item_cart" value="<?= $product_id; ?>" style="outline: none; background:none; border:none;"><span class="icon_close"></span></button>
                               </td>
                            </tr>
                      <?php

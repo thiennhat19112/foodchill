@@ -33,3 +33,8 @@ function showProductCart($u_id) {
     $sql = "SELECT * FROM `carts` WHERE `user_id` = ?";
     return pdo_query($sql, $u_id);
 }
+
+function deleteItemCart($u_id, $p_id) {
+    $sql = "DELETE FROM `carts` WHERE `carts`.`user_id` = ? AND `carts`.`product_id` = ?";
+    pdo_execute($sql, $u_id, $p_id);
+}

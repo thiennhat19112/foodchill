@@ -322,5 +322,15 @@ $(document).ready(function () {
             });
 
         });
-    }
+    };
+
+    $("table.cart-table").on('click', 'button.delete_item_cart', function (e) {
+        e.preventDefault();
+		let p_id = $(this).val();
+		$(this).parent().parent().fadeOut();
+		$.getJSON("./models/ajax.php", { "product_cart_remove": p_id }, function (data) {
+			$("#cart-container").html(data.products);
+			// window.location.reload();
+		});
+	});
 });
