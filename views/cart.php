@@ -33,68 +33,32 @@
                      </tr>
                   </thead>
                   <tbody>
-                     <?php
-
-                     //Cart session
-                     $tong = 0;
-                     if (isset($_SESSION["cart"])) {
-                        foreach ($_SESSION["cart"] as $key => $value) {
-                           $product = getProd($key);
-                           extract($product);
-                           $thanhtien = ($product["price"] * $value["sl"]);
-                           $tong += $thanhtien;
-                           $giasp = number_format($product["price"]);
-                     ?>
-                           <tr>
-                              <td class="shoping__cart__item">
-                                 <img src="<?= $image; ?>" alt="" style="height: 7vw;">
-                                 <h5><?= $product["product_name"] ?></h5>
-                              </td>
-                              <td class="shoping__cart__price">
-                                 <?= $giasp; ?>
-                              </td>
-                              <td class="shoping__cart__quantity">
-                                 <div class="quantity">
-                                    <div class="pro-qty">
-                                       <input type="text" value="<?= $value["sl"]; ?>">
-                                    </div>
-                                 </div>
-                              </td>
-                              <td class="shoping__cart__total">
-                                 <?= number_format($thanhtien); ?>
-                              </td>
-                              <td class="shoping__cart__item__close">
-                                 <a href="?act=cart&iddel=<?= $product_id; ?>"><span class="icon_close"></span></a>
-                              </td>
-                           </tr>
-                        <?php
-                        }
-                     }
-
+                     <?PHP
                      //Cart database
-                     if (isset($_SESSION["u_id"])) {
-                        $user_id = $_SESSION["u_id"];
-                        $productCart = showProductCart($user_id);
-                        foreach ($productCart as $key => $value) {
-                           $product_id = $value["product_id"];
-                           $product_qty = $value["quantity"];
-                           $product = getProd($product_id);
-                           $product_price = $product["price"] * ((100 - $product['discount']) / 100);
-                           $thanhtien = $product_price * $product_qty;
-                           $tong += $thanhtien;
-                        ?>
+                        $tong = 0;
+                        if (isset($_SESSION["u_id"])) {
+                           $user_id = $_SESSION["u_id"];
+                           $productCart = showProductCart($user_id);
+                           foreach ($productCart as $key => $value) {
+                              $prod_id = $value["product_id"];
+                              $prod_qty = $value["quantity"];
+                              $product = getProd($prod_id);
+                              $prod_price = $product["price"] * ((100 - $product['discount']) / 100);
+                              $thanhtien = $prod_price * $prod_qty;
+                              $tong += $thanhtien;
+                     ?>
                            <tr>
                               <td class="shoping__cart__item">
                                  <img src="<?= $product["image"] ?>" alt="" style="height: 7vw;">
                                  <h5 class="text-truncate"><a href="shop/product/<?= stringProcessor($product['product_name']) ?>-<?= $product['product_id'] ?>"><?= $product['product_name'] ?></a></h5>
                               </td>
                               <td class="shoping__cart__price">
-                                 <?= number_format($product_price, 0, ',', '.') ?>
+                                 <?= number_format($prod_price, 0, ',', '.') ?>
                               </td>
                               <td class="shoping__cart__quantity">
                                  <div class="quantity">
                                     <div class="pro-qty">
-                                       <input type="text" value="<?= $product_qty; ?>">
+                                       <input type="text" value="<?= $prod_qty; ?>">
                                     </div>
                                  </div>
                               </td>
@@ -102,13 +66,12 @@
                                  <?= number_format($thanhtien, 0, ',', '.'); ?>
                               </td>
                               <td class="shoping__cart__item__close">
-                                 <!-- <a href="?act=cart&iddel=<?= $product_id; ?>"><span class="icon_close"></span></a> -->
-                                 <button class="delete_item_cart" value="<?= $product_id; ?>" style="outline: none; background:none; border:none;"><span class="icon_close"></span></button>
+                                 <button class="delete_item_cart" value="<?= $prod_id; ?>" style="outline: none; background:none; border:none;"><span class="icon_close"></span></button>
                               </td>
                            </tr>
                      <?php
+                           }
                         }
-                     }
                      ?>
                   </tbody>
                </table>
