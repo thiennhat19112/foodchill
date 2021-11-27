@@ -24,6 +24,9 @@
                <div><?= $usernameDisplay ?></div>
                <span class="arrow_carrot-down"></span>
                <ul style="width:120px;">
+                  <?php if ($_SESSION["phanquyen"] == 1) {
+                     echo '<li><a href="admin/">Admin</a></li>';
+                  } ?>
                   <li><a href="#">Tài khoản</a></li>
                   <li><a href="#">Đổi mật khẩu</a></li>
                   <li><a href="#">Đơn hàng</a></li>
@@ -101,6 +104,9 @@
                            <div><?= $usernameDisplay ?></div>
                            <span class="arrow_carrot-down"></span>
                            <ul style="width:120px;">
+                              <?php if ($_SESSION["phanquyen"] == 1) {
+                                 echo '<li><a href="admin/">Admin</a></li>';
+                              } ?>
                               <li><a href="#">Tài khoản</a></li>
                               <li><a href="#">Đổi mật khẩu</a></li>
                               <li><a href="#">Đơn hàng</a></li>
