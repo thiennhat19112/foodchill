@@ -52,7 +52,7 @@ if (isset($_POST["action"])) {
          ';
       }
    } else {
-      $output = '<h3>No Data Found</h3>';
+      $output = '<h3>Không tìm thấy sản phẩm phù hợp!</h3>';
    }
    $output .= '
       <script>
@@ -112,22 +112,22 @@ if (isset($_POST["favorite"])) {
    pdo_execute($sql2);
    echo countFavorite($user_id);
 }  //Add to favorite
+
 if (isset($_POST["addToCart"])) {
    $prod_id = $_POST["addToCart"];
    $user_id = $_POST['user_id'];
-   $sql = "SELECT `product_id` FROM `carts` WHERE `product_id` = $prod_id AND`user_id` = $user_id";
-   $check = pdo_query_one($sql);
-   if ($check == false) {
+
+   if (checkCart($user_id, $prod_id) == false) {
       $prod_qty = 1;
       insertCart($user_id, $prod_id, $prod_qty);
    } else {
-      $prod_qty = pdo_query_one("SELECT `quantity` FROM `carts` WHERE `product_id` = $prod_id AND `user_id` = $user_id")['quantity'];
+      $prod_qty = getQty($user_id, $prod_id);
       changeQty($prod_qty + 1, $user_id, $prod_id);
    }
    echo countCart($user_id);
 }
 
-// Xoa san pham khoi gio hang
+// Delete product from Cart
 if (isset($_GET["product_cart_remove"]) && isset($_SESSION["u_id"])) {
    $user_id = $_SESSION["u_id"];
    $product_id  = filter_var($_GET["product_cart_remove"], FILTER_SANITIZE_STRING);

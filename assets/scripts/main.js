@@ -191,7 +191,7 @@
         if ($button.hasClass('inc')) {
             var newVal = parseFloat(oldValue) + 1;
         } else {
-            // Don't allow decrementing below zero
+            // Don't allow decrementing below one
             if (oldValue > 1) {
                 var newVal = parseFloat(oldValue) - 1;
             } else {
@@ -213,8 +213,6 @@ $(document).ready(function () {
         var maximum_price = $('#hidden_maximum_price').val();
         var category = get_filter('category');
         var sort = get_filter('sort');
-        // console.log(category);
-        // console.log(sort);
         $.ajax({
             url: "./models/ajax.php",
             method: "POST",
