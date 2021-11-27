@@ -79,19 +79,19 @@ if (isset($_POST["action"])) {
             var prod_id = $(this).val();
             var u_id = $("#user_id").val();
             if (u_id == "0") {
-                alert("Vui lòng đăng nhập để sử dụng chức năng này");
+               alert("Vui lòng đăng nhập để sử dụng chức năng này");
             } else {
-                $.ajax({
-                    url:"./models/ajax.php",
-                    method:"POST",
-                    data:{
-                        "addToCart": prod_id,
-                        "user_id": u_id,
-                    },
-                    success:function(data){
-                        $("#showUserCart").html(data);
-                    }
-                });
+               $.ajax({
+                  url:"./models/ajax.php",
+                  method:"POST",
+                  data:{
+                     "addToCart": prod_id,
+                     "user_id": u_id,
+                  },
+                  success:function(data){
+                     $("#showUserCart").html(data);
+                  }
+               });
             }
          });
       </script>
@@ -124,8 +124,7 @@ if (isset($_POST["addToCart"])) {
       $prod_qty = pdo_query_one("SELECT `quantity` FROM `carts` WHERE `product_id` = $prod_id AND `user_id` = $user_id")['quantity'];
       changeQty($prod_qty + 1, $user_id, $prod_id);
    }
-   $total_product = countCart($user_id);
-   die(json_encode(array('products' => $total_product)));
+   echo countCart($user_id);
 }
 
 // Xoa san pham khoi gio hang
