@@ -159,7 +159,7 @@
                         </ul>
                         <h5><a href="javacript:void(0)"><?= $title ?></a></h5>
                         <p style="max-height : 100px;" class="overflow-hidden"><?= $descriptions ?> </p>
-                        <a href="?act=blog-details&id=<?= $blog_id ?>" class="blog__btn">Xem tiếp<span class="arrow_right"></span></a>
+                        <a href="blog/<?= stringProcessor($title); ?>-<?= $blog_id ?>" class="blog__btn">Xem tiếp<span class="arrow_right"></span></a>
                      </div>
                   </div>
                </div>
