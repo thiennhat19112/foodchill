@@ -1,3 +1,12 @@
+   <?PHP
+      if(isset($_SESSION['u_id'])){
+         echo '<input type="hidden" id="user_id" value="'.$_SESSION["u_id"].'">';
+      } else {
+         echo '<input type="hidden" id="user_id" value="0">';
+      }
+   ?> 
+   <!-- Lấy user_id cho ajax -->
+
    <!-- Hero Section Begin -->
       <section class="hero hero-normal">
          <div class="container">
@@ -92,8 +101,8 @@
                         </div>
                      </div>
                   </div>
-                  <a href="#" class="primary-btn">Thêm vào giỏ hàng</a>
-                  <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                  <button value="<?= $prod['product_id'] ?>" class="addToCart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</button>
+                  <button id="like_<?=$prod['product_id']?>" value="<?= $prod['product_id'] ?>" class="favorite"><i class="fa fa-heart"></i></button>
                   <ul>
                      <li><b>Đã bán</b> <span><samp><?= $prod['saled'] ?></samp> Sản phẩm</span></li>
                      <li><b>Còn lại</b> <span><samp><?= $prod['quantity'] ?></samp> Sản phẩm</span></li>

@@ -40,14 +40,7 @@ if (isset($_POST["action"])) {
                   <div class="product__item__pic set-bg" data-setbg="' . $v['image'] . '">
                      <ul class="product__item__pic__hover">
                         <li><button value="' . $v['product_id'] . '" class="favorite"><i class="fa fa-heart"></i></button></li>
-                        <li>
-                           <form class="product-form" onsubmit="return false">
-                              <input name="product_id" type="hidden" value="' . $v["product_id"] . '">
-                              <input name="user_id" type="hidden" value="' . $user_id . '">
-                              <input name="product_qty" type="hidden" value="1">
-                              <button type="submit"><i class="fa fa-shopping-cart"></i></button>
-                           </form>
-                        </li>
+                        <li><button value="'. $v['product_id'] .'" class="addToCart"><i class="fa fa-shopping-cart"></i></button></li>
                      </ul>
                   </div>
                   <div class="product__item__text">
@@ -82,20 +75,27 @@ if (isset($_POST["action"])) {
                });
             }
          });
-         $(".product-form").submit(function (e) {
-            let form_data = $(this).serialize();
-            $.ajax({
-               url: "./models/ajax.php",
-               type: "POST",
-               dataType: "json",
-               data: form_data
-            }).done(function (data) {
-               $("#cart-container").html(data.products);
-            })
-            e.preventDefault();
+         $("button.addToCart").click(function() {
+            var prod_id = $(this).val();
+            var u_id = $("#user_id").val();
+            if (u_id == "0") {
+                alert("Vui lòng đăng nhập để sử dụng chức năng này");
+            } else {
+                $.ajax({
+                    url:"./models/ajax.php",
+                    method:"POST",
+                    data:{
+                        "addToCart": prod_id,
+                        "user_id": u_id,
+                    },
+                    success:function(data){
+                        $("#showUserCart").html(data);
+                    }
+                });
+            }
          });
       </script>
-   ';
+   '; // Script for Favorite and Cart
    echo json_encode(array($output, $tProd));
 }  //Sort products on Shop
 
@@ -111,18 +111,18 @@ if (isset($_POST["favorite"])) {
    }
    pdo_execute($sql2);
    echo countFavorite($user_id);
-}
-
-//  Them san pham vao gio hang
-if (isset($_POST["product_id"])) {
-   $product_id = $_POST["product_id"];
-   $product_qty = $_POST["product_qty"];
-   $user_id = $_POST["user_id"];
-   if (checkCart($user_id, $product_id) == 0) {
-      insertCart($user_id, $product_id, $product_qty);
+}  //Add to favorite
+if (isset($_POST["addToCart"])) {
+   $prod_id = $_POST["addToCart"];
+   $user_id = $_POST['user_id'];
+   $sql = "SELECT `product_id` FROM `carts` WHERE `product_id` = $prod_id AND`user_id` = $user_id";
+   $check = pdo_query_one($sql);
+   if ($check == false) {
+      $prod_qty = 1;
+      insertCart($user_id, $prod_id, $prod_qty);
    } else {
-      updateCartQty($product_qty, $user_id, $product_id);
+      $prod_qty = pdo_query_one("SELECT `quantity` FROM `carts` WHERE `product_id` = $prod_id AND `user_id` = $user_id")['quantity'];
+      changeQty($prod_qty + 1, $user_id, $prod_id);
    }
-   $total_product = countCart($user_id);
-   die(json_encode(array('products' => $total_product)));
-}
+   echo countCart($user_id);
+}  //Add to cart

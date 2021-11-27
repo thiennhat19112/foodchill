@@ -43,7 +43,7 @@
                               <div class="product__discount__item__pic categories__item set-bg" data-setbg="<?= $v['image'] ?>">
                                  <div class="product__discount__percent">-<?= $v['discount'] ?>%</div>
                                  <ul class="product__item__pic__hover">
-                                    <li><button id="like_<?=$v['product_id']?>" value="<?= $v['product_id'] ?>" class="favorite"><i class="fa fa-heart <?PHP if(isset($_SESSION["u_id"])){checkFavorite($v['product_id'], $_SESSION['u_id']);}?>"></i></button></li>
+                                    <li><button id="like_<?=$v['product_id']?>" value="<?= $v['product_id'] ?>" class="favorite"><i class="fa fa-heart"></i></button></li>
                                     <li><button value="<?= $v['product_id'] ?>" class="addToCart"><i class="fa fa-shopping-cart"></i></button></li>
                                  </ul>
                               </div>

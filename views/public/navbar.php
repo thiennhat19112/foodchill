@@ -139,29 +139,29 @@
                   <li>
                      <a href="favorite/">
                         <i class="fa fa-heart"></i>
-                        <span id="showUserLike">
-                           <?PHP
+                        <?php
                            if (isset($_SESSION['u_id'])) {
-                              echo countFavorite($_SESSION["u_id"]);
-                           } else {
-                              echo 0;
+                              echo '
+                                 <span class="cart-item" id="showUserLike">'.
+                                    countFavorite($_SESSION['u_id'])
+                                 .'</span>
+                              ';
                            }
-                           ?>
-                        </span>
+                        ?>
                      </a>
                   </li>
                   <li>
                      <a href="cart/">
                         <i class="fa fa-shopping-bag"></i>
-                        <span class="cart-item" id="cart-container">
-                           <?php
+                        <?php
                            if (isset($_SESSION['u_id'])) {
-                              echo countCart($_SESSION['u_id']);
-                           } else {
-                              echo 0;
+                              echo '
+                                 <span class="cart-item" id="showUserCart">'.
+                                    countCart($_SESSION['u_id'])
+                                 .'</span>
+                              ';
                            }
-                           ?>
-                        </span>
+                        ?>
                      </a>
                   </li>
                </ul>
