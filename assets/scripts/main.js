@@ -191,10 +191,10 @@
             var newVal = parseFloat(oldValue) + 1;
         } else {
             // Don't allow decrementing below zero
-            if (oldValue > 0) {
+            if (oldValue > 1) {
                 var newVal = parseFloat(oldValue) - 1;
             } else {
-                newVal = 0;
+                newVal = 1;
             }
         }
         $button.parent().find('input').val(newVal);
@@ -264,19 +264,6 @@ $(document).ready(function () {
     });
 });
 $(document).ready(function () {
-    // $("button.addToCart").click(function() {
-    //     var prod_id = $(this).val();
-    //     $.ajax({
-    //         url:"./models/ajax.php",
-    //         method:"POST",
-    //         data:{
-    //             "addToCart": prod_id,
-    //         },
-    //         success:function(data){
-    //             console.log(data);
-    //         }
-    //     });
-    // });
     $("button.favorite").click(function () {
         var prod_id = $(this).val();
         var u_id = $("#user_id").val();
@@ -296,6 +283,25 @@ $(document).ready(function () {
             });
         }
     }); //Not for shop
+    $("button.addToCart").click(function() {
+        var prod_id = $(this).val();
+        var u_id = $("#user_id").val();
+        if (u_id == "0") {
+            alert("Vui lòng đăng nhập để sử dụng chức năng này");
+        } else {
+            $.ajax({
+                url:"./models/ajax.php",
+                method:"POST",
+                data:{
+                    "addToCart": prod_id,
+                    "user_id": u_id,
+                },
+                success:function(data){
+                    $("#showUserCart").html(data);
+                }
+            });
+        }
+     });
 
     //tải lại bảng hóa đơn cho Shipper
     setInterval(reload_table_shipper, 1000);
