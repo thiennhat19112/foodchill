@@ -57,7 +57,8 @@ if (isset($_POST["action"])) {
    $output .= '
       <script>
          $("button.favorite").click(function() {
-           ee
+            var prod_id = $(this).val();
+            var u_id = $("#user_id").val();
             if(u_id == "0"){
                alert("Vui lòng đăng nhập để sử dụng chức năng này");
             }else{
