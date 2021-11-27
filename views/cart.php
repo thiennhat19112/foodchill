@@ -101,8 +101,10 @@
             <div class="shoping__checkout">
                <h5>Thanh toán</h5>
                <ul>
-                  <li>Tổng tiền hàng <span><?= number_format($tong, 0, ',', '.') ?></span></li>
-                  <li>Thành tiền <span><?= number_format($tong, 0, ',', '.') ?></span></li>
+                  <input type="hidden" id="hidden-tongtienhang" value="<?=$tong?>">
+                  <input type="hidden" id="hidden-thanhtien" value="<?=$tong?>">
+                  <li>Tổng tiền hàng <span id="cart-tongtienhang"><?= number_format($tong, 0, ',', '.') ?></span></li>
+                  <li>Thành tiền <span id="cart-thanhtien"><?= number_format($tong, 0, ',', '.') ?></span></li>
                </ul>
                <a href="#" class="primary-btn">Thanh toán</a>
             </div>

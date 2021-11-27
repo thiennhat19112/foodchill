@@ -128,10 +128,22 @@ if (isset($_POST["addToCart"])) {
 }
 
 // Delete product from Cart
-if (isset($_GET["product_cart_remove"]) && isset($_SESSION["u_id"])) {
+if (isset($_POST["product_cart_remove"]) && isset($_SESSION["u_id"])) {
    $user_id = $_SESSION["u_id"];
-   $product_id  = filter_var($_GET["product_cart_remove"], FILTER_SANITIZE_STRING);
+   $product_id  = filter_var($_POST["product_cart_remove"], FILTER_SANITIZE_STRING);
    deleteItemCart($user_id, $product_id);
    $total_product = countCart($user_id);
-   die(json_encode(array('products' => $total_product)));
+
+   $productCart = showProductCart($user_id);
+   $tong = 0;
+   foreach ($productCart as $key => $value) {
+      $prod_id = $value["product_id"];
+      $prod_qty = $value["quantity"];
+      $product = getProd($prod_id);
+      $prod_price = $product["price"] * ((100 - $product['discount']) / 100);
+      $thanhtien = $prod_price * $prod_qty;
+      $tong += $thanhtien;
+   }  // Tính lại tiền
+
+   echo json_encode(array($total_product, number_format($tong, 0, ',', '.'), number_format($tong, 0, ',', '.')));
 }
