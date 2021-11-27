@@ -1,6 +1,6 @@
 <?php
 $image_old = $image;
-if (isset($_POST['addBlog'])) {
+if (isset($_POST['editBlog'])) {
     $blog_id = $_POST['blog_id'];
     $title = $_POST['title'];
     $target = '../upload/images/blog/';
@@ -68,7 +68,7 @@ if (isset($_POST['addBlog'])) {
                             <option value="0">Ẩn</option>
                         </select>
                     </div>
-                    <input type="submit" name="addBlog" class="btn btn-primary mr-2" value="Sửa">
+                    <input type="submit" name="editBlog" class="btn btn-primary mr-2" value="Sửa">
                     <a href="?v=blogs&act=listBlogs" class="btn btn-light">Hủy</a>
                 </form>
             </div>
