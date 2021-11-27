@@ -282,7 +282,7 @@ $(document).ready(function () {
                 }
             });
         }
-    }); //Not for shop
+    }); //Add to Favorite, Not for shop
 
     $("button.addToCart").click(function() {
         var prod_id = $(this).val();
@@ -302,9 +302,8 @@ $(document).ready(function () {
                 }
             });
         }
-     });
+     }); //Add to Cart, Not for shop
 
-    //tải lại bảng hóa đơn cho Shipper
     setInterval(reload_table_shipper, 1000);
     function reload_table_shipper() {
         $('.shipping-table').load('ship/reload_table.php', function () {
@@ -320,37 +319,17 @@ $(document).ready(function () {
                 });
             });
         });
-    };
+    };  //tải lại bảng hóa đơn cho Shipper
 
-    //Xoa sp khoi gio hang
-    // $("table.cart-table").on('click', 'button.delete_item_cart', function (e) {
-    //     e.preventDefault();
-	// 	let p_id = $(this).val();
-    //     var tongtienhang = $("#hidden-tongtienhang").val();
-    //     var thanhtien = $("#hidden-thanhtien").val();
-	// 	$(this).parent().parent().fadeOut();
-	// 	$.getJSON("./models/ajax.php", { 
-    //         "product_cart_remove": p_id, 
-    //         "tongtienhang": tongtienhang, 
-    //         "thanhtien": thanhtien 
-    //     }, function (data) {
-    //         var gg = $.parseJSON(data);
-	// 		$("#showUserCart").html(gg.products);
-	// 		console.log(gg.products);
-	// 		$("#cart-tongtienhang").html(data.tongtienhang);
-	// 		$("#cart-thanhtien").html(data.thanhtien);
-    //         console.log(gg.tongtienhang+"--"+gg.thanhtien);
-	// 	});
-	// });
     $("table.cart-table button.delete_item_cart").click( function() {
 		var p_id = $(this).val();
-        var tongtienhang = $("#hidden-tongtienhang").val();
-        var thanhtien = $("#hidden-thanhtien").val();
+        var tthang = $("#hidden-tongtienhang").val();
+        var ttien = $("#hidden-thanhtien").val();
 		$(this).parent().parent().fadeOut();
         $.ajax({
             url: "./models/ajax.php",
             method: "POST",
-            data: { "product_cart_remove": p_id, "tongtienhang": tongtienhang, "thanhtien": thanhtien },
+            data: { "product_cart_remove": p_id, "tongtienhang": tthang, "thanhtien": ttien },
             success: function (result) {
                 var data = $.parseJSON(result);
                 $("#showUserCart").html(data[0]);
@@ -358,5 +337,5 @@ $(document).ready(function () {
                 $("#cart-thanhtien").html(data[2]);
             }
         });
-	});
+	}); //Xóa sản phẩm trong giỏ hàng
 });
