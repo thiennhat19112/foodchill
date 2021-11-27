@@ -48,7 +48,7 @@ switch ($act) {
       require("./ship/index.php");
       require("./views/ship.php");
       break;
-   case "blog-details":
+   case "blog_detail":
       require("./views/blog-details.php");
       break;
       // case 'listsp':

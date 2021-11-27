@@ -325,6 +325,7 @@ $(document).ready(function () {
         });
     };
 
+    //Xoa sp khoi gio hang
     $("table.cart-table").on('click', 'button.delete_item_cart', function (e) {
         e.preventDefault();
 		let p_id = $(this).val();

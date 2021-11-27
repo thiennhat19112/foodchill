@@ -37,6 +37,7 @@ function checkFavorite($p_id, $u_id) {
    }
 }
 function stringProcessor($str) {
+   $str = strtolower($str);
    $unicode = array(
       'a' => 'á|à|ả|ã|ạ|ă|ắ|ặ|ằ|ẳ|ẵ|â|ấ|ầ|ẩ|ẫ|ậ',
       'd' => 'đ',
@@ -56,6 +57,6 @@ function stringProcessor($str) {
    foreach ($unicode as $nonUnicode => $uni) {
       $str = preg_replace("/($uni)/i", $nonUnicode, $str);
    }
-   $str = strtolower(str_replace(' ', '-', $str));
-   return $str;
+   $str = str_replace(' ', '-', $str);
+   return preg_replace('/[^A-Za-z0-9\-]/', '', $str);
 }

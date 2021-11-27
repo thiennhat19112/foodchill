@@ -32,9 +32,9 @@
                      <ul>
                         <li><i class="fa fa-calendar-o"></i> <?= shortDate($create_date) ?></li>
                      </ul>
-                     <h5><a href="?act=blog-details&id=<?= $blog_id ?>"><?= $title ?></a></h5>
+                     <h5><a href="blog/<?= stringProcessor($title); ?>-<?= $blog_id ?>"><?= $title ?></a></h5>
                      <p><?= $descriptions ?> </p>
-                     <a href="?act=blog-details&id=<?= $blog_id ?>" class="blog__btn">Xem tiếp<span class="arrow_right"></span></a>
+                     <a href="blog/<?= stringProcessor($title); ?>-<?= $blog_id ?>" class="blog__btn">Xem tiếp<span class="arrow_right"></span></a>
                   </div>
                </div>
             </div>
