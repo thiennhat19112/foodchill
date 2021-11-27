@@ -40,7 +40,7 @@ if (isset($_POST['addBlog'])) {
                     </div>
                     <div class="form-group">
                         <label for="descriptions">Mô tả</label>
-                        <textarea  name="descriptions" value="<?=$descriptions?>" class="form-control" id="descriptions" placeholder="Mô tả"></textarea>
+                        <textarea  name="descriptions" class="form-control" id="descriptions" placeholder="Mô tả"><?=$descriptions?></textarea>
                     </div>
                     <div class="form-group">
                         <label for="Image">Hình ảnh</label>
