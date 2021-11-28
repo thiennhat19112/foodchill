@@ -208,7 +208,6 @@
             var user_id = id.split("_")[0];
             var prod_id = id.split("_")[1];
             var new_qty = $("#"+id).val();
-            console.log($("#itemPrice_"+user_id+"_"+prod_id).text());
             $.ajax({
                 url:"./models/ajax.php",
                 method:"POST",
