@@ -351,5 +351,5 @@ $(document).ready(function () {
             $(this).val($(this).attr('max'));
             alert("Chỉ còn " + $(this).attr('max') + " sản phẩm này!");
         }
-    }); //Cập nhật số lượng sản phẩm trong giỏ hàng
+    });
 });

@@ -119,17 +119,16 @@ if (isset($_POST["favorite"])) {
 if (isset($_POST["addToCart"])) {
    $user_id = $_POST["user_id"];
    $prod_id = $_POST["addToCart"];
-   $add_qty = 1;
-   if(isset($POST["qty"])){
-      $add_qty = $_POST["qty"];
-   }
+   $add_qty = $_POST["qty"];
 
    if (checkCart($user_id, $prod_id) == false) {
-      $prod_qty = 1;
-      insertCart($user_id, $prod_id, $prod_qty);
+      insertCart($user_id, $prod_id, $add_qty);
    } else {
-      $prod_qty = getQty($user_id, $prod_id);
-      changeQty($prod_qty + $add_qty, $user_id, $prod_id);
+      $prod_qty = getQty($user_id, $prod_id) + $add_qty;
+      if($prod_qty > getProdQty($prod_id)){
+         $prod_qty = getProdQty($prod_id);
+      }
+      changeQty($prod_qty, $user_id, $prod_id);
    }
    echo countCart($user_id);
 }

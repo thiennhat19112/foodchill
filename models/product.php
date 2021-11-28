@@ -23,6 +23,10 @@ function getProdCate($cate_id) {
    $sql = "SELECT category_name FROM `categories` WHERE `category_id` = ?";
    return pdo_query_one($sql, $cate_id)['category_name'];
 }
+function getProdQty($prod_id) {
+   $sql = "SELECT `quantity` FROM `products` WHERE `product_id` = ?";
+   return pdo_query_one($sql, $prod_id)['quantity'];
+}
 function countFavorite($u_id) {
    $sql = "SELECT COUNT(product_id) as total FROM `favorites` WHERE `user_id` = ?";
    return pdo_query_one($sql, $u_id)['total'];
