@@ -201,6 +201,30 @@
             }   // Don't allow decrementing below one
         }
         $button.parent().find('input').val(newVal);
+
+        // Change Quantity of Product in Cart
+        var id = $(this).parent().find('input').attr('id');
+        if(id != 'add_qty'){
+            var user_id = id.split("_")[0];
+            var prod_id = id.split("_")[1];
+            var new_qty = $("#"+id).val();
+            console.log($("#itemPrice_"+user_id+"_"+prod_id).text());
+            $.ajax({
+                url:"./models/ajax.php",
+                method:"POST",
+                data:{
+                    "changeQtyProd": prod_id,
+                    "user_id": user_id,
+                    "qty": new_qty,
+                },
+                success: function (result) {
+                    var data = $.parseJSON(result);
+                    $("#itemPrice_"+user_id+"_"+prod_id).html(data[0]);
+                    $("#cart-tongtienhang").html(data[1]);
+                    $("#cart-thanhtien").html(data[2]);
+                }
+            });
+        }
     });
 })(jQuery);
 
@@ -284,7 +308,7 @@ $(document).ready(function () {
                 }
             });
         }
-    }); //Add to Favorite, Not for shop
+    }); // Add to Favorite, Not for shop
 
     $("button.addToCart").click(function() {
         var prod_id = $(this).val();
@@ -307,7 +331,7 @@ $(document).ready(function () {
                 }
             });
         }
-     }); //Add to Cart, Not for shop
+     }); // Add to Cart, Not for shop
 
     setInterval(reload_table_shipper, 1000);
     function reload_table_shipper() {
@@ -324,7 +348,7 @@ $(document).ready(function () {
                 });
             });
         });
-    };  //Tải lại bảng hóa đơn cho Shipper
+    };  // Tải lại bảng hóa đơn cho Shipper
 
     $("table.cart-table button.delete_item_cart").click( function() {
 		var p_id = $(this).val();
@@ -342,7 +366,7 @@ $(document).ready(function () {
                 $("#cart-thanhtien").html(data[2]);
             }
         });
-	}); //Xóa sản phẩm trong giỏ hàng
+	}); // Xóa sản phẩm trong giỏ hàng
 
     $(".input-prod-qty").change(function () {
         if($(this).val() <= 0 || $(this).val() == ""){

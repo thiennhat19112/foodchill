@@ -100,7 +100,7 @@ if (isset($_POST["action"])) {
       </script>
    '; // Script for Favorite and Cart
    echo json_encode(array($output, $tProd));
-}  //Sort products on Shop
+}  // Sort products on Shop
 
 if (isset($_POST["favorite"])) {
    $prod_id = $_POST["favorite"];
@@ -133,7 +133,38 @@ if (isset($_POST["addToCart"])) {
    echo countCart($user_id);
 }
 
-// Delete product from Cart
+if (isset($_POST["changeQtyProd"])) {
+   $user_id = $_POST["user_id"];
+   $change_prod_id = $_POST["changeQtyProd"];
+   $change_qty = $_POST["qty"];
+
+   changeQty($change_qty, $user_id, $change_prod_id);  // Change new item Qty of Cart to database
+
+   $productCart = showProductCart($user_id);
+   $tong = 0;
+   foreach ($productCart as $key => $value) {
+      $prod_id = $value["product_id"];
+      $prod_qty = $value["quantity"];
+      $product = getProd($prod_id);
+      $prod_price = $product["price"] * ((100 - $product['discount']) / 100);
+      $thanhtien = $prod_price * $prod_qty;
+      $tong += $thanhtien;
+   }  // Tính lại tổng tiền
+   
+   $prodChange = getProd($change_prod_id);
+      $priceChange = $prodChange["price"] * ((100 - $prodChange['discount']) / 100);
+      $thanhtienProd = $priceChange * $change_qty;
+   // Tính thành tiền sản phẩm được thay đổi
+
+   echo json_encode(
+      array(
+         number_format($thanhtienProd, 0, ',', '.'), 
+         number_format($tong, 0, ',', '.'), 
+         number_format($tong, 0, ',', '.')
+      )
+   );
+}
+
 if (isset($_POST["product_cart_remove"]) && isset($_SESSION["u_id"])) {
    $user_id = $_SESSION["u_id"];
    $product_id  = filter_var($_POST["product_cart_remove"], FILTER_SANITIZE_STRING);
@@ -149,7 +180,13 @@ if (isset($_POST["product_cart_remove"]) && isset($_SESSION["u_id"])) {
       $prod_price = $product["price"] * ((100 - $product['discount']) / 100);
       $thanhtien = $prod_price * $prod_qty;
       $tong += $thanhtien;
-   }  // Tính lại tiền
+   }  // Tính lại tổng tiền
 
-   echo json_encode(array($total_product, number_format($tong, 0, ',', '.'), number_format($tong, 0, ',', '.')));
-}
+   echo json_encode(
+      array(
+         $total_product, 
+         number_format($tong, 0, ',', '.'), 
+         number_format($tong, 0, ',', '.')
+      )
+   );
+}  // Delete product from Cart
