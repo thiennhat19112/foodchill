@@ -78,20 +78,23 @@ if (isset($_POST["action"])) {
          $("button.addToCart").click(function() {
             var prod_id = $(this).val();
             var u_id = $("#user_id").val();
+            var qty = $("#add_qty").val();
+            console.log(qty);
             if (u_id == "0") {
-               alert("Vui lòng đăng nhập để sử dụng chức năng này");
+                  alert("Vui lòng đăng nhập để sử dụng chức năng này");
             } else {
-               $.ajax({
-                  url:"./models/ajax.php",
-                  method:"POST",
-                  data:{
-                     "addToCart": prod_id,
-                     "user_id": u_id,
-                  },
-                  success:function(data){
-                     $("#showUserCart").html(data);
-                  }
-               });
+                  $.ajax({
+                     url:"./models/ajax.php",
+                     method:"POST",
+                     data:{
+                        "addToCart": prod_id,
+                        "user_id": u_id,
+                        "qty": qty,
+                     },
+                     success:function(data){
+                        $("#showUserCart").html(data);
+                     }
+                  });
             }
          });
       </script>
@@ -114,15 +117,19 @@ if (isset($_POST["favorite"])) {
 }  //Add to favorite
 
 if (isset($_POST["addToCart"])) {
+   $user_id = $_POST["user_id"];
    $prod_id = $_POST["addToCart"];
-   $user_id = $_POST['user_id'];
+   $add_qty = 1;
+   if(isset($POST["qty"])){
+      $add_qty = $_POST["qty"];
+   }
 
    if (checkCart($user_id, $prod_id) == false) {
       $prod_qty = 1;
       insertCart($user_id, $prod_id, $prod_qty);
    } else {
       $prod_qty = getQty($user_id, $prod_id);
-      changeQty($prod_qty + 1, $user_id, $prod_id);
+      changeQty($prod_qty + $add_qty, $user_id, $prod_id);
    }
    echo countCart($user_id);
 }

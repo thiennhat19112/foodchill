@@ -188,15 +188,17 @@
     proQty.on('click', '.qtybtn', function () {
         var $button = $(this);
         var oldValue = $button.parent().find('input').val();
+        var minValue = $button.parent().find('input').attr("min");
+        var maxValue = $button.parent().find('input').attr("max");
         if ($button.hasClass('inc')) {
-            var newVal = parseFloat(oldValue) + 1;
+            var newVal = parseInt(oldValue) + 1;
+            if(newVal >= maxValue) { newVal = maxValue;}
         } else {
-            // Don't allow decrementing below one
             if (oldValue > 1) {
-                var newVal = parseFloat(oldValue) - 1;
+                var newVal = parseInt(oldValue) - 1;
             } else {
                 newVal = 1;
-            }
+            }   // Don't allow decrementing below one
         }
         $button.parent().find('input').val(newVal);
     });
@@ -287,6 +289,8 @@ $(document).ready(function () {
     $("button.addToCart").click(function() {
         var prod_id = $(this).val();
         var u_id = $("#user_id").val();
+        var qty = $("#add_qty").val();
+        console.log(qty);
         if (u_id == "0") {
             alert("Vui lòng đăng nhập để sử dụng chức năng này");
         } else {
@@ -296,6 +300,7 @@ $(document).ready(function () {
                 data:{
                     "addToCart": prod_id,
                     "user_id": u_id,
+                    "qty": qty,
                 },
                 success:function(data){
                     $("#showUserCart").html(data);
@@ -319,7 +324,7 @@ $(document).ready(function () {
                 });
             });
         });
-    };  //tải lại bảng hóa đơn cho Shipper
+    };  //Tải lại bảng hóa đơn cho Shipper
 
     $("table.cart-table button.delete_item_cart").click( function() {
 		var p_id = $(this).val();
@@ -338,4 +343,13 @@ $(document).ready(function () {
             }
         });
 	}); //Xóa sản phẩm trong giỏ hàng
+
+    $(".input-prod-qty").change(function () {
+        if($(this).val() <= 0 || $(this).val() == ""){
+            $(this).val(1);
+        } else if($(this).val() > $(this).attr('max')){
+            $(this).val($(this).attr('max'));
+            alert("Chỉ còn " + $(this).attr('max') + " sản phẩm này!");
+        }
+    }); //Cập nhật số lượng sản phẩm trong giỏ hàng
 });

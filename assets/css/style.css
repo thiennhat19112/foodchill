@@ -3460,3 +3460,10 @@ ol {
 		font-size: 24px;
 	}
 }
+
+.input-prod-qty::-webkit-inner-spin-button, 
+.input-prod-qty::-webkit-outer-spin-button { 
+	-webkit-appearance: none;
+	
+	margin: 0; 
+}	/* 	 */
