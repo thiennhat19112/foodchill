@@ -169,7 +169,6 @@
         Single Product
     --------------------*/
     $('.product__details__pic__slider img').on('click', function () {
-
         var imgurl = $(this).data('imgbigurl');
         var bigImg = $('.product__details__pic__item--large').attr('src');
         if (imgurl != bigImg) {
@@ -181,7 +180,7 @@
 
     /*-------------------
         Quantity change
-    --------------------- */
+    ---------------------*/
     var proQty = $('.pro-qty');
     proQty.prepend('<span class="dec qtybtn">-</span>');
     proQty.append('<span class="inc qtybtn">+</span>');
@@ -202,7 +201,9 @@
         }
         $button.parent().find('input').val(newVal);
 
-        // Change Quantity of Product in Cart
+        /*------------------
+            Change Price
+        --------------------*/
         var id = $(this).parent().find('input').attr('id');
         if(id != 'add_qty'){
             var user_id = id.split("_")[0];
@@ -231,17 +232,21 @@ $(document).ready(function () {
 
     filter_data();
 
+    /*------------------
+        Sort Product
+    --------------------*/
     function filter_data() {
         $('.sort--prod').html('<div id="loading" style="" ></div>');
         var action = 'fetch_data';
-        var minimum_price = $('#hidden_minimum_price').val();
-        var maximum_price = $('#hidden_maximum_price').val();
+        var min_price = $('#hidden_minimum_price').val();
+        var max_price = $('#hidden_maximum_price').val();
         var category = get_filter('category');
-        var sort = get_filter('sort');
+        var sort = get_sort();
+        var page = get_filter('page');
         $.ajax({
             url: "./models/ajax.php",
             method: "POST",
-            data: { "action": action, "minimum_price": minimum_price, "maximum_price": maximum_price, "category": category, "sort": sort },
+            data: { "action": action, "min_price": min_price, "max_price": max_price, "category": category, "sort": sort, "page": page },
             success: function (result) {
                 var jsonResult = $.parseJSON(result);
                 var data1 = jsonResult[0];
@@ -255,7 +260,10 @@ $(document).ready(function () {
             }
         });
     }
-
+    
+    /*---------------------
+        Get filter value
+    -----------------------*/
     function get_filter(class_name) {
         var filter = [];
         $('.' + class_name + ':checked').each(function () {
@@ -263,12 +271,23 @@ $(document).ready(function () {
         });
         return filter;
     }
+    function get_sort() {
+        return $("#sort_option option:selected").val();
+    }
 
+    /*------------------
+        Start Sort
+    --------------------*/
+    $('#sort_option').change(function () {
+        filter_data();
+    });
     $('.common_selector').click(function () {
-        // console.log('clicked');
         filter_data();
     });
 
+    /*------------------
+        Price Slider
+    --------------------*/
     var minPrice = $(".price-range").data('min'),
         maxPrice = $(".price-range").data('max');
     $(".price-range").slider({
@@ -376,7 +395,7 @@ $(document).ready(function () {
         }
         var input_id = $(this).attr('id');
         changeQtyProdInCart(input_id);
-    });
+    }); // Thay đổi số lượng sản phẩm trong giỏ hàng
 
     function changeQtyProdInCart(id){
         if(id != 'add_qty'){
@@ -399,5 +418,5 @@ $(document).ready(function () {
                 }
             });
         }
-    }
+    }   // For upper function
 });

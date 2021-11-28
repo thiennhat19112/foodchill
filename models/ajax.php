@@ -6,31 +6,24 @@ require_once('./cart.php');
 
 if (isset($_POST["action"])) {
    $sql = "SELECT * FROM products WHERE `status` = '1'";
-   if (isset($_POST["minimum_price"], $_POST["maximum_price"]) && !empty($_POST["minimum_price"]) && !empty($_POST["maximum_price"])) {
-      $sql .= " AND price BETWEEN '" . $_POST["minimum_price"] . "' AND '" . $_POST["maximum_price"] . "'";
-   }
    if (isset($_POST["category"])) {
       $category_filter = implode("','", $_POST["category"]);
-      $sql .= " AND category_id IN('" . $category_filter . "')";
+      $sql .= " AND `category_id` IN('" . $category_filter . "')";
    }
-   if (isset($_POST["ram"])) {
-      $ram_filter = implode("','", $_POST["ram"]);
-      $sql .= " AND product_ram IN('" . $ram_filter . "')";
+   if (isset($_POST["min_price"], $_POST["max_price"]) && !empty($_POST["min_price"]) && !empty($_POST["max_price"])) {
+      $sql .= " AND `price` BETWEEN '" . $_POST["min_price"] . "' AND '" . $_POST["max_price"] . "'";
    }
    if (isset($_POST["sort"])) {
-      $sql .= " ORDER BY " . $_POST["sort"][0];
+      $sql .= " ORDER BY " . $_POST["sort"];
    }
+
    $tProd = countProd($sql);
    $statement = pdo_get_connection()->prepare($sql);
    $statement->execute();
    $result = $statement->fetchAll();
    $total_row = $statement->rowCount();
    $output = '';
-   if (isset($_SESSION["u_id"])) {
-      $user_id = $_SESSION["u_id"];
-   } else {
-      $user_id = 0;
-   }
+
    if ($total_row > 0) {
       foreach ($result as $v) {
          $output .= '
@@ -100,7 +93,7 @@ if (isset($_POST["action"])) {
       </script>
    '; // Script for Favorite and Cart
    echo json_encode(array($output, $tProd));
-}  // Sort products on Shop
+}  // Sort Products on Shop
 
 if (isset($_POST["favorite"])) {
    $prod_id = $_POST["favorite"];
@@ -114,7 +107,7 @@ if (isset($_POST["favorite"])) {
    }
    pdo_execute($sql2);
    echo countFavorite($user_id);
-}  //Add to favorite
+}  // Add to Favorite
 
 if (isset($_POST["addToCart"])) {
    $user_id = $_POST["user_id"];
@@ -131,7 +124,7 @@ if (isset($_POST["addToCart"])) {
       changeQty($prod_qty, $user_id, $prod_id);
    }
    echo countCart($user_id);
-}
+}  // Add to Cart
 
 if (isset($_POST["changeQtyProd"])) {
    $user_id = $_POST["user_id"];
@@ -163,7 +156,7 @@ if (isset($_POST["changeQtyProd"])) {
          number_format($tong, 0, ',', '.')
       )
    );
-}
+}  // Change Quantity of Cart
 
 if (isset($_POST["product_cart_remove"]) && isset($_SESSION["u_id"])) {
    $user_id = $_SESSION["u_id"];

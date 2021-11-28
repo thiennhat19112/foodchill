@@ -107,22 +107,6 @@
                         </div>
                      </div>
 
-                     <div class="sidebar__item">
-                        <h4>Sắp xếp</h4>
-                        <div class="form-check">
-                           <label><input type="radio" name="sort" class="form-check-input common_selector sort" value="create_date DESC" checked>Mới nhất</label>
-                        </div>
-                        <div class="form-check">
-                           <label><input type="radio" name="sort" class="form-check-input common_selector sort" value="saled DESC">Đã bán</label>
-                        </div>
-                        <div class="form-check">
-                           <label><input type="radio" name="sort" class="form-check-input common_selector sort" value="price">Giá thấp</label>
-                        </div>
-                        <div class="form-check">
-                           <label><input type="radio" name="sort" class="form-check-input common_selector sort" value="price DESC">Giá cao</label>
-                        </div>
-                     </div>
-
                      <!-- <div class="sidebar__item sidebar__item__color--option">
                            <h4>Màu sắc</h4>
                            <div class="sidebar__item__color sidebar__item__color--white">
@@ -199,18 +183,16 @@
                            <div class="filter__sort">
                               <span>Sắp xếp theo</span>
                               <select id="sort_option">
-                                 <option class="" value="">Chưa xài được</option>
-                                 <option class="" value="">Dùng ở bên trái</option>
-                                 <!-- <option class="common_selector sort" value="create_date DESC">Mới nhất</option>
+                                 <option class="common_selector sort" value="create_date DESC" selected>Mới nhất</option>
                                  <option class="common_selector sort" value="saled DESC">Bán chạy</option>
                                  <option class="common_selector sort" value="price">Giá thấp</option>
-                                 <option class="common_selector sort" value="price DESC">Giá cao</option> -->
+                                 <option class="common_selector sort" value="price DESC">Giá cao</option>
                               </select>
                            </div>
                         </div>
                         <div class="col-lg-4 col-md-4">
                            <div class="filter__found">
-                              <h6>Tìm thấy <span id="foundedProd"><?= $totalProd ?></span>sản phẩm</h6>
+                              <h6>Tìm thấy <span id="foundedProd">?</span>sản phẩm</h6>
                            </div>
                         </div>
                         <div class="col-lg-4 col-md-3">
