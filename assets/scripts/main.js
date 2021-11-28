@@ -191,11 +191,11 @@
         var minValue = $button.parent().find('input').attr("min");
         var maxValue = $button.parent().find('input').attr("max");
         if ($button.hasClass('inc')) {
-            var newVal = parseInt(oldValue) + 1;
+            var newVal = parseFloat(oldValue) + 1;
             if(newVal >= maxValue) { newVal = maxValue;}
         } else {
             if (oldValue > 1) {
-                var newVal = parseInt(oldValue) - 1;
+                var newVal = parseFloat(oldValue) - 1;
             } else {
                 newVal = 1;
             }   // Don't allow decrementing below one
@@ -313,7 +313,6 @@ $(document).ready(function () {
         var prod_id = $(this).val();
         var u_id = $("#user_id").val();
         var qty = $("#add_qty").val();
-        console.log(qty);
         if (u_id == "0") {
             alert("Vui lòng đăng nhập để sử dụng chức năng này");
         } else {
@@ -368,11 +367,37 @@ $(document).ready(function () {
 	}); // Xóa sản phẩm trong giỏ hàng
 
     $(".input-prod-qty").change(function () {
+        var maxQty = $(this).attr('max');
         if($(this).val() <= 0 || $(this).val() == ""){
             $(this).val(1);
-        } else if($(this).val() > $(this).attr('max')){
-            $(this).val($(this).attr('max'));
-            alert("Chỉ còn " + $(this).attr('max') + " sản phẩm này!");
+        } else if($(this).val() > parseInt(maxQty)){
+            $(this).val(maxQty);
+            alert("Chỉ còn " + maxQty + " sản phẩm này!");
         }
+        var input_id = $(this).attr('id');
+        changeQtyProdInCart(input_id);
     });
+
+    function changeQtyProdInCart(id){
+        if(id != 'add_qty'){
+            var user_id = id.split("_")[0];
+            var prod_id = id.split("_")[1];
+            var new_qty = $("#"+id).val();
+            $.ajax({
+                url:"./models/ajax.php",
+                method:"POST",
+                data:{
+                    "changeQtyProd": prod_id,
+                    "user_id": user_id,
+                    "qty": new_qty,
+                },
+                success: function (result) {
+                    var data = $.parseJSON(result);
+                    $("#itemPrice_"+user_id+"_"+prod_id).html(data[0]);
+                    $("#cart-tongtienhang").html(data[1]);
+                    $("#cart-thanhtien").html(data[2]);
+                }
+            });
+        }
+    }
 });

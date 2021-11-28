@@ -57,8 +57,8 @@
                               </td>
                               <td class="shoping__cart__quantity">
                                  <div class="quantity">
-                                    <div class="pro-qty cart-pro-qty">
-                                       <input type="number" id="<?=$user_id?>_<?=$prod_id?>" class="input-prod-qty cart-inp-prod-qty" value="<?= $prod_qty; ?>" min="1" max="<?=$product['quantity']?>">
+                                    <div class="pro-qty">
+                                       <input type="number" id="<?=$user_id?>_<?=$prod_id?>" class="input-prod-qty" value="<?= $prod_qty; ?>" min="1" max="<?=$product['quantity']?>">
                                     </div>
                                  </div>
                               </td>
