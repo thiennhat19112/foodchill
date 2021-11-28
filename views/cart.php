@@ -57,12 +57,12 @@
                               </td>
                               <td class="shoping__cart__quantity">
                                  <div class="quantity">
-                                    <div class="pro-qty">
-                                       <input type="number" class="input-prod-qty" value="<?= $prod_qty; ?>" min="1" max="<?=$product['quantity']?>">
+                                    <div class="pro-qty cart-pro-qty">
+                                       <input type="number" id="<?=$user_id?>_<?=$prod_id?>" class="input-prod-qty cart-inp-prod-qty" value="<?= $prod_qty; ?>" min="1" max="<?=$product['quantity']?>">
                                     </div>
                                  </div>
                               </td>
-                              <td class="shoping__cart__total">
+                              <td class="shoping__cart__total" id="itemPrice_<?=$user_id?>_<?=$prod_id?>">
                                  <?= number_format($thanhtien, 0, ',', '.'); ?>
                               </td>
                               <td class="shoping__cart__item__close">
