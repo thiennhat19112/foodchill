@@ -62,7 +62,7 @@ if (isset($_POST['addBlog'])) {
                         </select>
                     </div>
                     <input type="submit" name="addBlog" class="btn btn-primary mr-2" value="Thêm">
-                    <a href="?v=v=blogs&act=listBlogs" class="btn btn-light">Hủy</a>
+                    <a href="?v=blogs&act=listBlogs" class="btn btn-light">Hủy</a>
                 </form>
             </div>
         </div>

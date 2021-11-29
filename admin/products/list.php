@@ -4,7 +4,7 @@
             <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
                 Sản phẩm
             </h2>
-            <table  class="w-full whitespace-wrap table-bordered text-center myTable">
+            <table class="w-full whitespace-wrap table-bordered text-center myTable">
                 <thead>
                     <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 whitespace-no-wrap uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                         <th class="px-1 py-3">Tên sản phẩm</th>
@@ -114,21 +114,40 @@
                 <script>
                     $(document).ready(function() {
                         $('.delete-product').click(function() {
-                            if (confirm('Are you sure you want to delete')) {
                                 var id = $(this).data('product_id')
                                 var img = $(this).data('image')
-                                $.ajax({
-                                    type: 'POST',
-                                    url: 'models/ajax_action.php',
-                                    data: {
-                                        'product_id': id,
-                                        'img': img
-                                    },
-                                    success: function(data) {
-                                        $('#product-tr' + id).hide()
-                                    }
-                                })
-                            }
+                                swal({
+                                        title: "Bạn có muôn xóa?",
+                                        text: "",
+                                        icon: "warning",
+                                        buttons: true,
+                                        dangerMode: true,
+                                    })
+                                    .then((willDelete) => {
+                                        if (willDelete) {
+                                            $.ajax({
+                                                type: 'POST',
+                                                url: 'models/ajax_action.php',
+                                                data: {
+                                                    'product_id': id,
+                                                    'img': img
+                                                },
+                                                success: function(data) {
+                                                    swal({
+                                                        title: 'Bạn đã xóa thành công',
+                                                        icon: 'success',
+                                                        buttons: 'Đóng',
+                                                    }).then(() => {
+                                                        $('#product-tr' + id).hide()
+                                                    })
+
+                                                }
+                                            })
+
+                                        } else {
+                                            swal("Lỗi!")
+                                        }
+                                    })
 
                         })
 

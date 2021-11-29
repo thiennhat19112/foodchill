@@ -69,16 +69,37 @@
                     $('.delete-comment').click(function() {
                         if (confirm('Are you sure you want to delete')) {
                             var id = $(this).data('comment_id')
-                            $.ajax({
-                                type: 'POST',
-                                url: 'models/ajax_action.php',
-                                data: {
-                                    'comment_id': id,
-                                },
-                                success: function(data) {
-                                    $('#comment-tr' + id).hide()
-                                }
-                            })
+                            swal({
+                                    title: "Bạn có muôn xóa?",
+                                    text: "",
+                                    icon: "warning",
+                                    buttons: true,
+                                    dangerMode: true,
+                                })
+                                .then((willDelete) => {
+                                    if (willDelete) {
+                                        $.ajax({
+                                            type: 'POST',
+                                            url: 'models/ajax_action.php',
+                                            data: {
+                                                'comment_id': id,
+                                            },
+                                            success: function(data) {
+                                                swal({
+                                                    title: 'Bạn đã xóa thành công',
+                                                    icon: 'success',
+                                                    buttons: 'Đóng',
+                                                }).then(() => {
+                                                    $('#comment-tr' + id).hide()
+                                                })
+
+                                            }
+                                        })
+
+                                    } else {
+                                        swal("Lỗi!")
+                                    }
+                                })
                         }
 
                     })

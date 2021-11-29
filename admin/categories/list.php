@@ -22,7 +22,7 @@
                     foreach ($items as $item) {
                         extract($item);
                     ?>
-                        <tr id ="category-tr<?=$category_id?>" class=" text-gray-700 dark:text-gray-400">
+                        <tr id="category-tr<?= $category_id ?>" class=" text-gray-700 dark:text-gray-400">
                             <td class="px-4 py-3 text-sm">
                                 <?= $category_id ?>
                             </td>
@@ -68,25 +68,42 @@
             <script>
                 $(document).ready(function() {
                     $('.delete-category').click(function() {
-                        if (confirm('Are you sure you want to delete')) {
-                            var id = $(this).data('catrgoty_id')
-                            $.ajax({
-                                type: 'POST',
-                                url: 'models/ajax_action.php',
-                                data: {
-                                    'category_id': id
-                                },
-                                success: function(data) {
-                                    $('#category-tr'+id).hide()
+                        var id = $(this).data('catrgoty_id')
+                        swal({
+                                title: "Bạn có muôn xóa?",
+                                text: "",
+                                icon: "warning",
+                                buttons: true,
+                                dangerMode: true,
+                            })
+                            .then((willDelete) => {
+                                if (willDelete) {
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: 'models/ajax_action.php',
+                                        data: {
+                                            'category_id': id
+                                        },
+                                        success: function(data) {
+                                            swal({
+                                                title : 'Bạn đã xóa thành công',
+                                                icon : 'success',
+                                                buttons : 'Đóng',
+                                            }).then(()=>{
+                                                $('#category-tr' + id).hide()
+                                            })
+                                            
+                                        }
+                                    })
+
+                                } else {
+                                    swal("Lỗi!")
                                 }
                             })
-                        }
-
                     })
-
                 })
             </script>
         </div>
-        </div>
     </div>
+</div>
 </div>

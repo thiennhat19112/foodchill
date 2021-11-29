@@ -65,10 +65,18 @@
                 <script>
                     $(document).ready(function() {
                         $('.delete-blog').click(function() {
-                            if (confirm('Are you sure you want to delete')) {
                                 var id = $(this).data('blog-id')
                                 var img = $(this).data('image')
-                                $.ajax({
+                                swal({
+                                title: "Bạn có muôn xóa?",
+                                text: "",
+                                icon: "warning",
+                                buttons: true,
+                                dangerMode: true,
+                            })
+                            .then((willDelete) => {
+                                if (willDelete) {
+                                    $.ajax({
                                     type: 'POST',
                                     url: 'models/ajax_action.php',
                                     data: {
@@ -76,10 +84,22 @@
                                         'img': img
                                     },
                                     success: function(data) {
-                                        $('#blog-tr' + id).hide()
-                                    }
+                                            swal({
+                                                title : 'Bạn đã xóa thành công',
+                                                icon : 'success',
+                                                buttons : 'Đóng',
+                                            }).then(()=>{
+                                                $('#blog-tr' + id).hide()
+                                            })
+                                            
+                                        }
                                 })
-                            }
+                                        
+                                } else {
+                                    swal("Lỗi!")
+                                }
+                            })
+                                
 
                         })
 

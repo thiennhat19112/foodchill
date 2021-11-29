@@ -20,7 +20,7 @@
                     <?php
                     foreach ($items as $item) {
                         extract($item);
-                        
+
 
                     ?>
                         <tr id="user-tr<?= $user_id ?>" class="text-gray-700 dark:text-gray-400">
@@ -94,22 +94,39 @@
     <script>
         $(document).ready(function() {
             $('.delete-user').click(function() {
-                if (confirm('Are you sure you want to delete')) {
-                    var id = $(this).data('user_id')
-                    $.ajax({
-                        type: 'POST',
-                        url: 'models/ajax_action.php',
-                        data: {
-                            'user_id': id
-                        },
-                        success: function(data) {
-                            $('#user-tr' + id).hide()
+                var id = $(this).data('user_id')
+                swal({
+                        title: "Bạn có muôn xóa?",
+                        text: "",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            $.ajax({
+                                type: 'POST',
+                                url: 'models/ajax_action.php',
+                                data: {
+                                    'user_id': id
+                                },
+                                success: function(data) {
+                                    swal({
+                                        title: 'Bạn đã xóa thành công',
+                                        icon: 'success',
+                                        buttons: 'Đóng',
+                                    }).then(() => {
+                                        $('#user-tr' + id).hide()
+                                    })
+
+                                }
+                            })
+
+                        } else {
+                            swal("Lỗi!")
                         }
                     })
-                }
-
             })
-
         })
     </script>
     </div>
