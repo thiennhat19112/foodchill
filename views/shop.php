@@ -107,6 +107,22 @@
                         </div>
                      </div>
 
+                     <div class="sidebar__item">
+                        <h4>Trang</h4>
+                        <div class="form-check">
+                           <label><input type="radio" name="page" class="form-check-input common_selector page" value="1" checked>1</label>
+                        </div>
+                        <div class="form-check">
+                           <label><input type="radio" name="page" class="form-check-input common_selector page" value="2">2</label>
+                        </div>
+                        <div class="form-check">
+                           <label><input type="radio" name="page" class="form-check-input common_selector page" value="3">3</label>
+                        </div>
+                        <div class="form-check">
+                           <label><input type="radio" name="page" class="form-check-input common_selector page" value="4">4</label>
+                        </div>
+                     </div>
+
                      <!-- <div class="sidebar__item sidebar__item__color--option">
                            <h4>Màu sắc</h4>
                            <div class="sidebar__item__color sidebar__item__color--white">

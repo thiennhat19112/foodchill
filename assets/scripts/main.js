@@ -242,12 +242,12 @@ $(document).ready(function () {
         var max_price = $('#hidden_maximum_price').val();
         var category = get_filter('category');
         var sort = get_sort();
-        var page = get_filter('page');
+        var page = get_filter('page')[0];
         $.ajax({
             url: "./models/ajax.php",
             method: "POST",
             data: { "action": action, "min_price": min_price, "max_price": max_price, "category": category, "sort": sort, "page": page },
-            success: function (result) {
+            success: function(result) {
                 var jsonResult = $.parseJSON(result);
                 var data1 = jsonResult[0];
                 var data2 = jsonResult[1];

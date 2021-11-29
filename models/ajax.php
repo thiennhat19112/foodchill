@@ -11,19 +11,27 @@ if (isset($_POST["action"])) {
       $sql .= " AND `category_id` IN('" . $category_filter . "')";
    }
    if (isset($_POST["min_price"], $_POST["max_price"]) && !empty($_POST["min_price"]) && !empty($_POST["max_price"])) {
-      $sql .= " AND `price` BETWEEN '" . $_POST["min_price"] . "' AND '" . $_POST["max_price"] . "'";
+      $sql .= " AND `price` BETWEEN " . $_POST["min_price"] . " AND " . $_POST["max_price"];
    }
    if (isset($_POST["sort"])) {
       $sql .= " ORDER BY " . $_POST["sort"];
    }
-
    $tProd = countProd($sql);
+
+   $limit = 12;
+   $start = 0;
+   if (isset($_POST["page"])){ 
+      $pageNum = $_POST["page"];
+      $start = ($pageNum - 1) * $limit;
+   } 
+   $sql .= " LIMIT " . $start . ", " . $limit;
+
    $statement = pdo_get_connection()->prepare($sql);
    $statement->execute();
    $result = $statement->fetchAll();
    $total_row = $statement->rowCount();
    $output = '';
-
+   
    if ($total_row > 0) {
       foreach ($result as $v) {
          $output .= '
