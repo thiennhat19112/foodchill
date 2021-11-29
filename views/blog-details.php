@@ -1,4 +1,4 @@
-<div class="row justify-content-center text-justify" style="width: 99.99vw;">
+<div class="row justify-content-center text-justify ">
     <div class="col-lg-8 col-md-7 order-md-1 order-1">
         <div class="blog__details__text text-center">
             <h1 class="my-5"><?= $title ?></h1>

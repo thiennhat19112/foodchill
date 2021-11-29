@@ -94,7 +94,9 @@
           $(document).ready(function(){
             setInterval(reload_status,1000)
             function reload_status() {
-              $(".orders-table").load("ajax/ajax_reload_ordersTable.php")
+              $(".orders-table").load("ajax/ajax_reload_ordersTable.php",function(){
+                $('.myTable').DataTable();
+              })
             }
            
           })
