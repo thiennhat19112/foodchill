@@ -242,7 +242,7 @@ $(document).ready(function () {
         var max_price = $('#hidden_maximum_price').val();
         var category = get_filter('category');
         var sort = get_sort();
-        var page = get_filter('page')[0];
+        var page = $("#page_number").val();
         $.ajax({
             url: "./models/ajax.php",
             method: "POST",
@@ -257,6 +257,9 @@ $(document).ready(function () {
                     var bg = $(this).data('setbg');
                     $(this).css('background-image', 'url(' + bg + ')');
                 });
+
+                // data3 = jsonResult[2];
+                // $('.sort-page').html(data3);
             }
         });
     }
@@ -284,7 +287,17 @@ $(document).ready(function () {
     $('.common_selector').click(function () {
         filter_data();
     });
-
+    $('.sort--page button').click(function () {
+        $("#page_number").val($(this).val());
+        filter_data();
+        function myFunction() {
+            document.getElementById("aaaa").scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+        myFunction();
+        $("#page_number").val(1);
+    });
     /*------------------
         Price Slider
     --------------------*/

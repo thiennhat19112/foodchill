@@ -66,7 +66,7 @@
    <!-- Breadcrumb Section End -->
 
    <!-- Product Section Begin -->
-      <section class="product spad">
+      <section class="product spad" id="aaaa">
          <div class="container">
             <div class="row">
                <div class="col-lg-3 col-md-4">
@@ -104,22 +104,6 @@
                            <div class="range-slider">
                               <span id="minimum_price">1000</span>₫ - <span id="maximum_price"><?= $maxPrice ?></span>₫
                            </div>
-                        </div>
-                     </div>
-
-                     <div class="sidebar__item">
-                        <h4>Trang</h4>
-                        <div class="form-check">
-                           <label><input type="radio" name="page" class="form-check-input common_selector page" value="1" checked>1</label>
-                        </div>
-                        <div class="form-check">
-                           <label><input type="radio" name="page" class="form-check-input common_selector page" value="2">2</label>
-                        </div>
-                        <div class="form-check">
-                           <label><input type="radio" name="page" class="form-check-input common_selector page" value="3">3</label>
-                        </div>
-                        <div class="form-check">
-                           <label><input type="radio" name="page" class="form-check-input common_selector page" value="4">4</label>
                         </div>
                      </div>
 
@@ -232,11 +216,13 @@
                   <div class="row sort--prod">
                      <!-- Show các sản phẩm -->
                   </div>
-                  <div class="product__pagination">
-                     <a href="#">1</a>
-                     <a href="#">2</a>
-                     <a href="#">3</a>
-                     <a href="#"><i class="fa fa-long-arrow-right"></i></a>
+                  <input type="hidden" id="page_number" value="1">
+                  <div class="product__pagination sort--page">
+                     <button value="1">1</button>
+                     <button value="2">2</button>
+                     <button value="3">3</button>
+                     <button value="4">4</button>
+                     <!-- <button ><i class="fa fa-long-arrow-right"></i></button> -->
                   </div>
                </div>
             </div>

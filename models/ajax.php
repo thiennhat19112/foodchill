@@ -26,6 +26,8 @@ if (isset($_POST["action"])) {
    } 
    $sql .= " LIMIT " . $start . ", " . $limit;
 
+   $sortPage = '';
+
    $statement = pdo_get_connection()->prepare($sql);
    $statement->execute();
    $result = $statement->fetchAll();

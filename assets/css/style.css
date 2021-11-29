@@ -1623,7 +1623,7 @@ ol {
 	padding-top: 10px;
 }
 
-.product__pagination a,
+.product__pagination button,
 .blog__pagination a {
 	display: inline-block;
 	width: 30px;
