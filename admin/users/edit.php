@@ -7,6 +7,12 @@ if (isset($_POST['btnsua'])==true){
     $permission = $_POST['phanquyen'];
     $status = $_POST['status'];
     update_user($user_name, $email, $password,$permission,$status,$user_id);
+
+    echo '<script>swal({
+        title: "Sửa thành công",
+        icon: "success",
+        button: "Đóng",
+      });</script>';
 }
 
 ?>

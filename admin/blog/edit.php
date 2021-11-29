@@ -21,6 +21,12 @@ if (isset($_POST['editBlog'])) {
     $content = $_POST['content'];
     $status = $_POST['status'];
     update_blog($title, $image, $descriptions,$user_id,$content ,$status,$blog_id);
+
+    echo '<script>swal({
+        title: "Sửa thành công",
+        icon: "success",
+        button: "Đóng",
+      });</script>';
 }
 
 ?>

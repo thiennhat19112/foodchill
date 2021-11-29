@@ -12,6 +12,12 @@ if (isset($_POST['addBlog'])) {
     $content = $_POST['content'];
     $status = $_POST['status'];
     insert_blog($title, $image, $descriptions,$user_id,$content ,$status);
+
+    echo '<script>swal({
+        title: "Thêm thành công",
+        icon: "success",
+        button: "Đóng",
+      });</script>';
 }
 
 ?>

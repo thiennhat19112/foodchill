@@ -20,6 +20,12 @@ if (isset($_POST['addProduct'])) {
     $rating = 0;
     $status = $_POST['status'];
     insert_product($product_name, $quantity, $price, $weight, $description, $infomation, $image_data,  $category_id, $discount, $saled, $view, $rating, $status);
+    echo '<script>swal({
+        title: "Thêm thành công",
+        icon: "success",
+        button: "Đóng",
+      });</script>';
+    
 }
 
 ?>

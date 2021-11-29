@@ -4,6 +4,12 @@ if (isset($_POST['btnthem'])) {
   $ordinal_numbers = $_POST['vitri'];
   $status = $_POST['trangthai'];
   insert_categories($category_name, $ordinal_numbers, $status);
+
+  echo '<script>swal({
+    title: "Thêm thành công",
+    icon: "success",
+    button: "Đóng",
+  });</script>';
 }
 ?>
 <div class="col-12 grid-margin stretch-card">

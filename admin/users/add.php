@@ -6,6 +6,12 @@ if (isset($_POST['btnthem']) == true) {
     $permission = $_POST['phanquyen'];
     $status = $_POST['status'];
     insert_user($user_name, $email, $password, $permission, $status);
+
+    echo '<script>swal({
+        title: "Thêm thành công",
+        icon: "success",
+        button: "Đóng",
+      });</script>';
 }
 ?>
 <div class="container px-6 mx-auto grid">

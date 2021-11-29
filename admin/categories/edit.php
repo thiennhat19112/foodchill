@@ -5,6 +5,12 @@ if (isset($_POST['btnsua'])) {
   $ordinal_numbers = $_POST['vitri'];
   $status = $_POST['trangthai'];
   update_category($category_name, $ordinal_numbers, $status, $category_id);
+
+  echo '<script>swal({
+    title: "Sửa thành công",
+    icon: "success",
+    button: "Đóng",
+  });</script>';
 }
 ?>
 
