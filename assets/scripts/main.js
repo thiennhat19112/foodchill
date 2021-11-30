@@ -423,4 +423,53 @@ $(document).ready(function () {
             });
         }
     }   // For upper function
+
+    $(".cmtBtn").click(function(){
+        var id = this.id;   //Get button id with format: accId_cmtAjax_postId
+        $("#"+this.id).prop('disabled', true);  //Disable Send button
+        var u_id = $("#user_id").val();    //Get user_id
+        var p_id = id.split("_")[1];    //Get postId
+        var newCmt = $("[name='cmt_"+p_id+"']").serialize();   //Get content of comment from input
+        var cmt = decodeURIComponent(newCmt.split("=")[1]);
+        var textNumCmt = $("#cmts_"+p_id).text(); //Get Count Comments
+        var numCmt = parseInt(textNumCmt.split(" ")[0]) + 1;  //new Count Comments
+        if($("#cmtOf_"+p_id).hasClass("cmt-hide")){
+            $("#cmtOf_"+p_id).removeClass("cmt-hide")
+        } //Show All Comments
+        console.log(u_id, p_id, cmt);
+        if (u_id == "0") {
+            alert("Vui lòng đăng nhập để sử dụng chức năng này");
+        } else {
+            $.ajax({
+                type : "post",
+                url : "./models/ajax.php",
+                data: {
+                    'new_cmt_prod': p_id,
+                    'u_id' : u_id,
+                    'content' : cmt,
+                },
+                success: function(data){
+                    // alert(data);
+                    $("#cmts_"+p_id).text(numCmt);  //Show new Count Comments
+                    $("#newCmt_"+p_id).append(data);  //Show cmt
+                    $("[name='cmt_"+p_id+"']").trigger('reset'); //Clear text field
+                },
+            });
+        }
+    }); //Comment Function
+    $(".numCmts").click(function(){
+        var id = this.id;
+        var p_id = id.split("_")[1];
+        var textNumCmt = $("#cmts_"+p_id).text();
+        if(parseInt(textNumCmt.split(" ")[0])!=0){
+           $("#cmtOf_"+p_id).toggleClass("cmt-hide");
+        }
+    });   //Show-Hide All Comments if Comment != 0
+    $(".inpNewCmt").keyup(function(){
+        if ($("#"+this.id).val() != ''){
+           $("#"+this.id).parent().find("button").prop('disabled', false);
+        } else {
+           $("#"+this.id).parent().find("button").prop('disabled', true);
+        }
+    });   //Active Send Button While Input Not Empty
 });

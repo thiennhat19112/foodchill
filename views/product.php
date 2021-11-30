@@ -127,7 +127,10 @@
                            <a class="nav-link" data-toggle="tab" href="#product-infomation" role="tab" aria-selected="false">Thông tin</a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link" data-toggle="tab" href="#product-reviews" role="tab" aria-selected="false">Đánh giá <span>(1)</span></a>
+                           <?PHP 
+                              $total_cmts = numCmt($prod['product_id']);
+                           ?>
+                           <a class="nav-link" data-toggle="tab" href="#product-reviews" role="tab" aria-selected="false">Bình luận (<span id="cmts_<?=$prod['product_id']?>" class="numCmts"><?= $total_cmts;?></span>)</a>
                         </li>
                      </ul>
                      <div class="tab-content">
@@ -143,7 +146,25 @@
                         </div>
                         <div class="tab-pane" id="product-reviews" role="tabpanel">
                            <div class="product__details__tab__desc">
-                              <p>Hiển thị đánh giá</p>
+                              <div class="send-cmt">
+                                 <form onSubmit="return false;" name="cmt_<?=$prod['product_id']?>">
+                                    <div class="">
+                                       <input type="text" minlength="1" maxlength="200"
+                                          name="newCmtOfProd_<?=$prod['product_id']?>" id="newCmtOf_<?=$prod['product_id']?>" 
+                                          class="inpNewCmt" placeholder="Viết bình luận..." required>
+                                       <button class="cmtBtn" type="button" name="" id="cmt_<?=$prod['product_id']?>" disabled>
+                                          <i class="fas fa-rocket"></i>
+                                       </button>
+                                    </div>
+                                 </form>
+                              </div>
+                              <div class="cmt cmt-hide" id="cmtOf_<?=$prod['product_id']?>">
+                                 <?= cmtProduct($prod['product_id']);?>
+                              <!-- Show New Comment ajax -->
+                                 <div id="newCmt_<?=$prod['product_id']?>">
+
+                                 </div>
+                              </div>
                            </div>
                         </div>
                      </div>

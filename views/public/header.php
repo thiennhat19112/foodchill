@@ -18,7 +18,7 @@
    <link rel="stylesheet" href="./assets/css/owl.carousel.min.css" type="text/css">
    <link rel="stylesheet" href="./assets/css/slicknav.min.css" type="text/css">
    <link rel="stylesheet" href="./assets/css/style.css" type="text/css">
-   
+   <script src="https://kit.fontawesome.com/da5bfc135a.js" crossorigin="anonymous"></script>
 </head>
 
 <body>

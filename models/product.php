@@ -40,6 +40,56 @@ function checkFavorite($p_id, $u_id) {
       return "";
    }
 }
+function cmtProduct($prod){
+   $sql = "SELECT * FROM `comments` WHERE `product_id` = ?";
+   $result = pdo_query($sql, $prod);
+
+   if($result){
+      foreach($result as $row){
+         echo '
+            <div class="cmt-item" id="cmt_'.$row['comment_id'].'">
+               <div class="cmt-i-img">
+                  <a href="javascript:void(0)">
+                     <img src="assets/images/avt/default.jpg" class="cmt-avt-img">
+                  </a>
+               </div>
+               <div class="cmt-i-cont">
+                  <div class="cmt-i-info">
+                     <a href="javascript:void(0)">
+                        '.accCmt($row['user_id']).'</a>&emsp;
+                     <span class="shortDate">'.
+                        shortDate($row['create_date']).
+                        '<span class="longDate">'.longDate($row['create_date']).'</span>
+                     </span>
+                  </div>
+                  <span>'.$row['comment_content'] . '</span>
+               </div>';
+               if($row['user_id']==$_SESSION["u_id"] || $_SESSION["phanquyen"]==1) {
+                  echo '
+                     <div class="cmt-i-more btn-group">
+                        <a type="button" class="dropCmtBtn" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
+                           <i class="fas fa-ellipsis-h"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                           <li><a class="dropdown-item delCmtBtn" type="button" id="delCmtBtn_'.$row['comment_id'].'">
+                              Xoá
+                           </a></li>
+                        </ul>
+                     </div>
+                  ';
+               } else {
+                  echo '
+                     <div class="cmt-i-more">
+                        <a type="button"><i class="fas fa-ellipsis-h"></i></a>
+                     </div>
+                  ';
+               };
+            echo '
+            </div>
+         ';
+      }
+   }
+}
 function stringProcessor($str) {
    $str = strtolower($str);
    $unicode = array(

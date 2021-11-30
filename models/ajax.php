@@ -3,6 +3,7 @@
    require_once('./pdo.php');
    require_once('./product.php');
    require_once('./cart.php');
+   require_once('./comment.php');
 
    if (isset($_POST["action"])) {
       $sql = "SELECT * FROM products WHERE `status` = '1'";
@@ -20,6 +21,7 @@
 
       $limit = 12;
       $start = 0;
+      $pageNum = 1;
       if (isset($_POST["page"])){ 
          $pageNum = $_POST["page"];
          $start = ($pageNum - 1) * $limit;
@@ -31,7 +33,7 @@
       }else{
          $tPages = floor($tProd/$limit) + 1;
       }
-
+      
       $page_active = $_POST['page_active'];
       $prevPage = $page_active - 1;
       $nextPage = $page_active + 1;
@@ -273,3 +275,39 @@
          )
       );
    }  // Delete product from Cart
+
+   if (isset($_POST["new_cmt_prod"])) {
+      $prod_id = $_POST['new_cmt_prod'];
+      $user_id = $_POST['u_id'];
+      $content = $_POST['content'];
+
+      //Create Comment in database
+      newCmt($user_id, $prod_id, $content);
+
+      $date = date('Y-m-d H:i:s');
+
+      //Sent To Ajax
+      echo '
+         <div class="cmt-item">
+            <div class="cmt-i-img">
+               <a href="javascript:void(0)">
+                  <img src="assets/images/avt/default.jpg" class="cmt-avt-img">
+               </a>
+            </div>
+            <div class="cmt-i-cont">
+               <div class="cmt-i-info">
+                  <a href="javascript:void(0)">
+                     '.accCmt($user_id).'</a>&emsp;
+                  <span class="shortDate">'.
+                     shortDate($date).
+                     '<span class="longDate">'.longDate($date).'</span>
+                  </span>
+               </div> 
+               <span>'.$content.'</span>
+            </div>
+            <div class="cmt-i-more">
+               <i class="fas fa-ellipsis-h"></i>
+            </div>
+         </div>
+      ';
+   }  // Add new comment
