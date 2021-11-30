@@ -299,7 +299,6 @@ $(document).ready(function () {
         }
         myFunction();
         $("#page_number").val(1);
-        console.log($(this).val());
     });
     /*------------------
         Price Slider

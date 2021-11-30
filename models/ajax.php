@@ -78,7 +78,6 @@ if (isset($_POST["action"])) {
                   });
    
                   $("#sort--page").html(data3);
-                  console.log(data3);
                }
             });
          }
@@ -104,7 +103,6 @@ if (isset($_POST["action"])) {
             }
             myFunction();
             $("#page_number").val(1);
-            console.log($(this).val());
          });
       </script>
    '; // Script for Page
@@ -164,7 +162,6 @@ if (isset($_POST["action"])) {
             var prod_id = $(this).val();
             var u_id = $("#user_id").val();
             var qty = $("#add_qty").val();
-            console.log(qty);
             if (u_id == "0") {
                alert("Vui lòng đăng nhập để sử dụng chức năng này");
             } else {
