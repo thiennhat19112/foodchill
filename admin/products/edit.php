@@ -25,13 +25,14 @@
         $discount = $_POST['discount'];
         $status = $_POST['status'];
         update_product($product_name, $quantity, $price, $weight, $description, $infomation, $image_data,  $category_id, $discount, $status, $product_id);
+        echo '<script>swal({
+            title: "Sửa thành công",
+            icon: "success",
+            button: "Đóng",
+          });</script>';
     }
 
-    echo '<script>swal({
-        title: "Sửa thành công",
-        icon: "success",
-        button: "Đóng",
-      });</script>';
+    
 
 ?>
 <div class="container px-6 mx-auto grid">
