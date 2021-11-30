@@ -45,7 +45,7 @@ if (isset($_POST['addProduct'])) {
                     </div>
                     <div class="form-group">
                         <label for="prodPrice">Giá</label>
-                        <input type="number" min="0" name="price" class="form-control" id="prodPrice" placeholder="Giá">
+                        <input type="number" min="1000" name="price" class="form-control" id="prodPrice" placeholder="Giá">
                     </div>
                     <div class="form-group">
                         <label for="prodWeight">Khối lượng</label>

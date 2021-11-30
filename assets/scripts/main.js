@@ -288,18 +288,7 @@ $(document).ready(function () {
     $('.common_selector').click(function () {
         filter_data();
     });
-    $('#sort--page button').click(function () {
-        $("#page_number").val($(this).val());
-        $("#page_number_active").val($(this).val());
-        filter_data();
-        function myFunction() {
-            document.getElementById("aaaa").scrollIntoView({
-                behavior: 'smooth'
-            });
-        }
-        myFunction();
-        $("#page_number").val(1);
-    });
+
     /*------------------
         Price Slider
     --------------------*/
