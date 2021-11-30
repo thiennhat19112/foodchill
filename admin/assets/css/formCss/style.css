@@ -22586,7 +22586,6 @@ code {
   border-left: 0;
   border-bottom: 0;
   font: normal normal normal 24px/1 "themify";
-  content: "\e64b";
   width: auto;
   height: auto;
   vertical-align: middle;
@@ -26188,25 +26187,6 @@ body.avgrund-active {
   font-size: .65rem;
 }
 
-.dataTables_wrapper .dataTable thead .sorting:before,
-.dataTables_wrapper .dataTable thead .sorting_asc:before,
-.dataTables_wrapper .dataTable thead .sorting_desc:before,
-.dataTables_wrapper .dataTable thead .sorting_asc_disabled:before,
-.dataTables_wrapper .dataTable thead .sorting_desc_disabled:before {
-  content: "\e64b";
-  right: 1.2em;
-  bottom: 0;
-}
-
-.dataTables_wrapper .dataTable thead .sorting:after,
-.dataTables_wrapper .dataTable thead .sorting_asc:after,
-.dataTables_wrapper .dataTable thead .sorting_desc:after,
-.dataTables_wrapper .dataTable thead .sorting_asc_disabled:after,
-.dataTables_wrapper .dataTable thead .sorting_desc_disabled:after {
-  content: "\e648";
-  right: 1.2em;
-  top: 0;
-}
 
 .dataTables_wrapper .dataTables_paginate {
   margin-top: 20px;
@@ -26315,10 +26295,6 @@ body.avgrund-active {
   margin-right: 8px;
 }
 
-.expandable-table tr td.details-control:before {
-  content: '\e64b';
-  font-family: "themify";
-}
 
 .expandable-table tr.shown td.details-control:before {
   content: '\e648';
@@ -28594,9 +28570,6 @@ div.tagsinput span.tag a {
   color: #fff;
 }
 
-.sidebar .nav .nav-item.active > .nav-link i.menu-arrow::before {
-  content: "\e64b";
-}
 
 .sidebar .nav .nav-item:hover > .nav-link i,
 .sidebar .nav .nav-item:hover > .nav-link .menu-title,

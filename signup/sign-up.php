@@ -30,25 +30,25 @@
                         </div>
                         <div class="body">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Tên người dùng" name="username">
+                                <input type="text" class="form-control" required placeholder="Tên người dùng" name="username">
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="zmdi zmdi-account-circle"></i></span>
                                 </div>
                             </div>
                             <div class="input-group mb-3">
-                                <input type="email" class="form-control" placeholder="Hộp thư" name="email">
+                                <input type="email" class="form-control" required placeholder="Email" name="email">
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="zmdi zmdi-email"></i></span>
                                 </div>
                             </div>
                             <div class="input-group mb-3">
-                                <input type="password" class="form-control" placeholder="Mật khẩu" name="password">
+                                <input type="password" class="form-control" required placeholder="Mật khẩu" name="password">
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="zmdi zmdi-lock"></i></span>
                                 </div>
                             </div>
                             <div class="input-group mb-3">
-                                <input type="password" class="form-control" placeholder="Nhập lại mật khẩu" name="2checkpass">
+                                <input type="password" class="form-control" required placeholder="Nhập lại mật khẩu" name="2checkpass">
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="zmdi zmdi-lock"></i></span>
                                 </div>
