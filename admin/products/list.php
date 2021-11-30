@@ -53,11 +53,23 @@
                                 </td>
                                 <!-- Mô tả -->
                                 <td class="px-1 py-3">
-                                    <?= $description ?>
+                                    <?PHP 
+                                        if(strlen($description) > 50) {
+                                            echo substr($description, 0, 50) . '...';
+                                        } else {
+                                            echo $description;
+                                        }
+                                    ?>
                                 </td>
                                 <!-- Thông tin -->
                                 <td class="px-1 py-3">
-                                    <?= $infomation ?>
+                                    <?PHP 
+                                        if(strlen($description) > 0) {
+                                            echo '...';
+                                        } else {
+                                            echo 'Chưa có thông tin!';
+                                        }
+                                    ?>
                                 </td>
                                 <!-- Thêm ngày -->
                                 <td class="px-1 py-3 text-sm">
