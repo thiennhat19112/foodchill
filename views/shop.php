@@ -219,11 +219,7 @@
                   <input type="hidden" id="page_number" value="1">
                   <input type="hidden" id="page_number_active" value="1">
                   <div class="product__pagination " id="sort--page">
-                     <button class="active" value="1">1</button>
-                     <button value="2">2</button>
-                     <button value="3">3</button>
-                     <button value="4">4</button>
-                     <button ><i class="fa fa-long-arrow-right"></i></button>
+                     <!-- Show Số trang -->
                   </div>
                </div>
             </div>
