@@ -60,6 +60,6 @@ function load_one_product($id)
 //Liệt kê tất cả tên danh mục và id danh mục
 function load_all_name_categories()
 {
-    $sql = "SELECT category_name, category_id FROM categories ";
+    $sql = "SELECT `category_name`, `category_id` FROM `categories` ";
     return pdo_query($sql);
 }

@@ -61,15 +61,22 @@
                         <label for="prodWeight">Khối lượng</label>
                         <input type="text" name = "weight" value="<?= $weight ?>" class="form-control" id="prodWeight" placeholder="Khối lượng">
                     </div>
-                    <div  class="form-group categories">
+                    <div  class="form-group">
                         <label for="prodCate">Danh mục</label>
-                        <select name ="category_id" class="form-control categories" id="prodCate">
-                            <?php foreach ($items_categories as $v) {
+                        <select name ="category_id" class="form-control" id="prodCate">
+                            <?php 
+                                foreach ($items_categories as $va) {
+                                    if($va['category_id'] == $category_id){
+                                        echo '
+                                            <option value="'.$va['category_id'].'" selected>'.$va['category_name'].'</option>
+                                        ';
+                                    } else {
+                                        echo '
+                                            <option value="'.$va['category_id'].'">'.$va['category_name'].'</option>
+                                        ';
+                                    }
+                                }
                             ?>
-                                <option class="category-id-<?= $v['category_id'] ?>" value="<?= $v['category_id'] ?>" 
-                                    <?PHP if($v['category_id']=$category_id){echo "selected";}?>><?= $v['category_name'] ?>
-                                </option>
-                            <?php } ?>
                         </select>
                     </div>
                     <div class="form-group">
@@ -102,7 +109,6 @@
                     <div class="form-group">
                         <label for="prodInfo">Thông tin</label>
                         <textarea class="form-control ck-editor__editable_inline" name="infomation" id="prodInfo" rows="4"><?=$infomation?></textarea>
-                        <script src="https://cdn.ckeditor.com/ckeditor5/31.0.0/classic/ckeditor.js"></script>
                         <script>
                             ClassicEditor
                                 .create(document.querySelector('#prodInfo'))

@@ -87,7 +87,6 @@ if (isset($_POST['addProduct'])) {
                     <div class="form-group">
                         <label for="prodInfo">Thông tin</label>
                         <textarea class="form-control ck-editor__editable_inline" name="infomation" id="prodInfo" rows="4"></textarea>
-                        <script src="https://cdn.ckeditor.com/ckeditor5/31.0.0/classic/ckeditor.js"></script>
                         <script>
                             ClassicEditor
                                 .create(document.querySelector('#prodInfo'))
