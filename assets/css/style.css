@@ -1642,14 +1642,20 @@ ol {
 	transition: all, 0.3s;
 }
 
-.product__pagination a:hover,
+.product__pagination button:hover,
 .blog__pagination a:hover {
 	background: var(--color);
 	border-color: var(--color);
 	color: #ffffff;
 }
+.product__pagination button.active,
+.blog__pagination a.active {
+	background: var(--color);
+	border-color: var(--color);
+	color: #ffffff;
+}
 
-.product__pagination a:last-child,
+.product__pagination button:last-child,
 .blog__pagination a:last-child {
 	margin-right: 0;
 }

@@ -26,7 +26,88 @@ if (isset($_POST["action"])) {
    } 
    $sql .= " LIMIT " . $start . ", " . $limit;
 
+   if($tProd%$limit == 0){
+      $tPages = $tProd/$limit;
+   }else{
+      $tPages = floor($tProd/$limit) + 1;
+   }
+
+   $page_active = $_POST['page_active'];
+   $prevPage = $page_active - 1;
+   $nextPage = $page_active + 1;
+
    $sortPage = '';
+   if($page_active != 1){
+      $sortPage .= '<button value="'.$prevPage.'" ><i class="fa fa-long-arrow-left"></i></button>';
+   }
+   for($i=1; $i <= $tPages; $i++){
+      if($i == $pageNum){
+         $sortPage .= '<button class="active" value="'.$i.'">'.$i.'</button>';
+      } else {
+         $sortPage .= '<button value="'.$i.'">'.$i.'</button>';
+      }
+      $lastPage = $i;
+   }
+   if($page_active != $lastPage){
+      $sortPage .= '<button value="'.$nextPage.'" ><i class="fa fa-long-arrow-right"></i></button>';
+   }
+   $sortPage .= '
+      <script> 
+         function filter_data() {
+            var action = "fetch_data";
+            var min_price = $("#hidden_minimum_price").val();
+            var max_price = $("#hidden_maximum_price").val();
+            var category = get_filter("category");
+            var sort = get_sort();
+            var page = $("#page_number").val();
+            var page_active = $("#page_number_active").val();
+            $.ajax({
+               url: "./models/ajax.php",
+               method: "POST",
+               data: { "action": action, "min_price": min_price, "max_price": max_price, "category": category, "sort": sort, "page": page, "page_active": page_active},
+               success: function(result) {
+                  var jsonResult = $.parseJSON(result);
+                  var data1 = jsonResult[0];
+                  var data2 = jsonResult[1];
+                  var data3 = jsonResult[3];
+                  $("#foundedProd").html(data2);
+                  $(".sort--prod").html(data1);
+                  $(".set-bg").each(function () {
+                        var bg = $(this).data("setbg");
+                        $(this).css("background-image", "url(" + bg + ")");
+                  });
+   
+                  $("#sort--page").html(data3);
+                  console.log(data3);
+               }
+            });
+         }
+         function get_filter(class_name) {
+            var filter = [];
+            $("." + class_name + ":checked").each(function () {
+                filter.push($(this).val());
+            });
+            return filter;
+         }
+         function get_sort() {
+               return $("#sort_option option:selected").val();
+         }
+
+         $("#sort--page button").click(function () {
+            $("#page_number").val($(this).val());
+            $("#page_number_active").val($(this).val());
+            filter_data();
+            function myFunction() {
+               document.getElementById("aaaa").scrollIntoView({
+                  behavior: "smooth"
+               });
+            }
+            myFunction();
+            $("#page_number").val(1);
+            console.log($(this).val());
+         });
+      </script>
+   '; // Script for Page
 
    $statement = pdo_get_connection()->prepare($sql);
    $statement->execute();
@@ -78,31 +159,32 @@ if (isset($_POST["action"])) {
                });
             }
          });
+
          $("button.addToCart").click(function() {
             var prod_id = $(this).val();
             var u_id = $("#user_id").val();
             var qty = $("#add_qty").val();
             console.log(qty);
             if (u_id == "0") {
-                  alert("Vui lòng đăng nhập để sử dụng chức năng này");
+               alert("Vui lòng đăng nhập để sử dụng chức năng này");
             } else {
-                  $.ajax({
-                     url:"./models/ajax.php",
-                     method:"POST",
-                     data:{
-                        "addToCart": prod_id,
-                        "user_id": u_id,
-                        "qty": qty,
-                     },
-                     success:function(data){
-                        $("#showUserCart").html(data);
-                     }
-                  });
+               $.ajax({
+                  url:"./models/ajax.php",
+                  method:"POST",
+                  data:{
+                     "addToCart": prod_id,
+                     "user_id": u_id,
+                     "qty": qty,
+                  },
+                  success:function(data){
+                     $("#showUserCart").html(data);
+                  }
+               });
             }
          });
       </script>
    '; // Script for Favorite and Cart
-   echo json_encode(array($output, $tProd));
+   echo json_encode(array($output, $tProd, $tPages, $sortPage));
 }  // Sort Products on Shop
 
 if (isset($_POST["favorite"])) {

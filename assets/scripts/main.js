@@ -243,14 +243,16 @@ $(document).ready(function () {
         var category = get_filter('category');
         var sort = get_sort();
         var page = $("#page_number").val();
+        var page_active = $("#page_number_active").val();
         $.ajax({
             url: "./models/ajax.php",
             method: "POST",
-            data: { "action": action, "min_price": min_price, "max_price": max_price, "category": category, "sort": sort, "page": page },
+            data: { "action": action, "min_price": min_price, "max_price": max_price, "category": category, "sort": sort, "page": page, "page_active": page_active},
             success: function(result) {
                 var jsonResult = $.parseJSON(result);
                 var data1 = jsonResult[0];
                 var data2 = jsonResult[1];
+                var data3 = jsonResult[3];
                 $('#foundedProd').html(data2);
                 $('.sort--prod').html(data1);
                 $('.set-bg').each(function () {
@@ -258,8 +260,7 @@ $(document).ready(function () {
                     $(this).css('background-image', 'url(' + bg + ')');
                 });
 
-                // data3 = jsonResult[2];
-                // $('.sort-page').html(data3);
+                $('#sort--page').html(data3);
             }
         });
     }
@@ -287,8 +288,9 @@ $(document).ready(function () {
     $('.common_selector').click(function () {
         filter_data();
     });
-    $('.sort--page button').click(function () {
+    $('#sort--page button').click(function () {
         $("#page_number").val($(this).val());
+        $("#page_number_active").val($(this).val());
         filter_data();
         function myFunction() {
             document.getElementById("aaaa").scrollIntoView({
@@ -297,6 +299,7 @@ $(document).ready(function () {
         }
         myFunction();
         $("#page_number").val(1);
+        console.log($(this).val());
     });
     /*------------------
         Price Slider
