@@ -6,6 +6,9 @@
 <script src="assets/js/file-upload.js" defer></script>
 <script src="assets/js/init-alpine.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js" defer></script>
+<script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js" defer></script>
+<script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.bootstrap4.min.js" defer></script>
 
 </body>
 

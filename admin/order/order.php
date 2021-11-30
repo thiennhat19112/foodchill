@@ -4,7 +4,7 @@
         Hóa đơn
     </h2>
     <div class="w-full overflow-x-auto">
-        <table class="w-full  whitespace-wrap myTable">
+        <table class="w-full whitespace-no-wrap orders-table myTable">
             <thead>
                 <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                     <th class="px-1 py-3">Khách hàng</th>
@@ -29,11 +29,6 @@
                         <td class="px-1 py-3">
                             <!-- tên khách hàng -->
                             <div class="flex items-center text-sm">
-                                <!-- Avatar with inset shadow -->
-                                <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                                    <img class="object-cover w-full h-full rounded-full" src="../upload/images/<?= $image ?>" alt="" loading="lazy" />
-                                    <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
-                                </div>
                                 <div>
                                     <p class="font-semibold"><?= $user_name ?></p>
                                 </div>
