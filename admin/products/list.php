@@ -4,10 +4,10 @@
             <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
                 Sản phẩm
             </h2>
-                <table class="w-full whitespace-wrap table-bordered text-center myTable js-basic-example">
+                <table class="w-full whitespace-wrap table-bordered dtr-inline text-center myTable js-basic-example">
                     <thead>
                         <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 whitespace-no-wrap uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-                            <th class="px-1 py-3">Tên sản phẩm</th>
+                            <th class="px-1 py-3 ">Tên sản phẩm</th>
                             <th class="px-1 py-3">Giá</th>
                             <th class="px-1 py-3">Số lượng</th>
                             <th class="px-1 py-3">Khối lượng</th>
