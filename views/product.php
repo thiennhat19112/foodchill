@@ -70,10 +70,10 @@
                         <img class="product__details__pic__item--large" src="<?= $prod['image'] ?>" alt="">
                      </div>
                      <div class="product__details__pic__slider owl-carousel">
-                        <img data-imgbigurl="./assets/img/product/details/product-details-2.jpg" src="./assets/img/product/details/thumb-1.jpg" alt="">
-                        <img data-imgbigurl="./assets/img/product/details/product-details-3.jpg" src="./assets/img/product/details/thumb-2.jpg" alt="">
-                        <img data-imgbigurl="./assets/img/product/details/product-details-5.jpg" src="./assets/img/product/details/thumb-3.jpg" alt="">
-                        <img data-imgbigurl="./assets/img/product/details/product-details-4.jpg" src="./assets/img/product/details/thumb-4.jpg" alt="">
+                        <img data-imgbigurl="./assets/images/product/details/product-details-2.jpg" src="./assets/images/product/details/thumb-1.jpg" alt="">
+                        <img data-imgbigurl="./assets/images/product/details/product-details-3.jpg" src="./assets/images/product/details/thumb-2.jpg" alt="">
+                        <img data-imgbigurl="./assets/images/product/details/product-details-5.jpg" src="./assets/images/product/details/thumb-3.jpg" alt="">
+                        <img data-imgbigurl="./assets/images/product/details/product-details-4.jpg" src="./assets/images/product/details/thumb-4.jpg" alt="">
                      </div>
                   </div>
                </div>
@@ -188,7 +188,7 @@
             <div class="row">
                <div class="col-lg-3 col-md-4 col-sm-6">
                   <div class="product__item">
-                     <div class="product__item__pic set-bg" data-setbg="./assets/img/product/product-1.jpg">
+                     <div class="product__item__pic set-bg" data-setbg="./assets/images/product/product-1.jpg">
                         <ul class="product__item__pic__hover">
                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -203,7 +203,7 @@
                </div>
                <div class="col-lg-3 col-md-4 col-sm-6">
                   <div class="product__item">
-                     <div class="product__item__pic set-bg" data-setbg="./assets/img/product/product-2.jpg">
+                     <div class="product__item__pic set-bg" data-setbg="./assets/images/product/product-2.jpg">
                         <ul class="product__item__pic__hover">
                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -218,7 +218,7 @@
                </div>
                <div class="col-lg-3 col-md-4 col-sm-6">
                   <div class="product__item">
-                     <div class="product__item__pic set-bg" data-setbg="./assets/img/product/product-3.jpg">
+                     <div class="product__item__pic set-bg" data-setbg="./assets/images/product/product-3.jpg">
                         <ul class="product__item__pic__hover">
                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -233,7 +233,7 @@
                </div>
                <div class="col-lg-3 col-md-4 col-sm-6">
                   <div class="product__item">
-                     <div class="product__item__pic set-bg" data-setbg="./assets/img/product/product-7.jpg">
+                     <div class="product__item__pic set-bg" data-setbg="./assets/images/product/product-7.jpg">
                         <ul class="product__item__pic__hover">
                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>

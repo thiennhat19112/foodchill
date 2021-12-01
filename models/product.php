@@ -64,26 +64,28 @@ function cmtProduct($prod){
                   </div>
                   <span>'.$row['comment_content'] . '</span>
                </div>';
-               if($row['user_id']==$_SESSION["u_id"] || $_SESSION["phanquyen"]==1) {
-                  echo '
-                     <div class="cmt-i-more btn-group">
-                        <a type="button" class="dropCmtBtn" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
-                           <i class="fas fa-ellipsis-h"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                           <li><a class="dropdown-item delCmtBtn" type="button" id="delCmtBtn_'.$row['comment_id'].'">
-                              Xoá
-                           </a></li>
-                        </ul>
-                     </div>
-                  ';
-               } else {
-                  echo '
-                     <div class="cmt-i-more">
-                        <a type="button"><i class="fas fa-ellipsis-h"></i></a>
-                     </div>
-                  ';
-               };
+               if(isset($_SESSION['u_id']) || isset($_SESSION['phanquyen'])){
+                  if($row['user_id']==$_SESSION["u_id"] || $_SESSION["phanquyen"]==1) {
+                     echo '
+                        <div class="cmt-i-more btn-group">
+                           <a type="button" class="dropCmtBtn" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
+                              <i class="fas fa-ellipsis-h"></i>
+                           </a>
+                           <ul class="dropdown-menu dropdown-menu-end">
+                              <li><a class="dropdown-item delCmtBtn" type="button" id="delCmtBtn_'.$row['comment_id'].'">
+                                 Xoá
+                              </a></li>
+                           </ul>
+                        </div>
+                     ';
+                  } else {
+                     echo '
+                        <div class="cmt-i-more">
+                           <a type="button"><i class="fas fa-ellipsis-h"></i></a>
+                        </div>
+                     ';
+                  };
+               }
             echo '
             </div>
          ';

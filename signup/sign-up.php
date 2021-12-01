@@ -6,10 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="description" content="Responsive Bootstrap 4 and web Application ui kit.">
-
-    <title>:: FOODCHILL :: ĐĂNG KÝ</title>
+    <title>ĐĂNG KÝ || FOODCHILL</title>
     <!-- Favicon-->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../assets/images/fav.png" type="image/x-icon">
     <!-- Custom Css -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/style.min.css">
@@ -23,10 +22,8 @@
                 <div class="col-lg-4 col-sm-12">
                     <form class="card auth_form" action="./" method="POST">
                         <div class="header">
-                            <img class="logo" src="../assets/img/logo.png" alt="">
-                            <!-- <img class="logo" src="./logo.png" alt=""> -->
+                            <img class="logo" src="../assets/images/logo.png" alt="">
                             <h5>Đăng ký</h5>
-                            <span>Đăng ký thành viên mới</span>
                         </div>
                         <div class="body">
                             <div class="input-group mb-3">
@@ -73,7 +70,7 @@
                 </div>
                 <div class="col-lg-8 col-sm-12">
                     <div class="card">
-                        <img src="../assets/img/signup.svg" alt="Sign Up" />
+                        <img src="../assets/images/signup.svg" alt="Sign Up" />
                     </div>
                 </div>
             </div>
