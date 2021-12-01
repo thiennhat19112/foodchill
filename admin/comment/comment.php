@@ -67,7 +67,6 @@
             <script>
                 $(document).ready(function() {
                     $('.delete-comment').click(function() {
-                        if (confirm('Are you sure you want to delete')) {
                             var id = $(this).data('comment_id')
                             swal({
                                     title: "Bạn có muôn xóa?",
@@ -91,6 +90,7 @@
                                                     buttons: 'Đóng',
                                                 }).then(() => {
                                                     $('#comment-tr' + id).hide()
+                                                    window.location.reload(true)
                                                 })
 
                                             }
@@ -100,7 +100,6 @@
                                         swal("Lỗi!")
                                     }
                                 })
-                        }
 
                     })
 

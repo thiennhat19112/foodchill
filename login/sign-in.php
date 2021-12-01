@@ -28,13 +28,13 @@
                         </div>
                         <div class="body">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" name="txtEmail" placeholder="Email">
+                                <input type="text" class="form-control" required name="txtEmail" placeholder="Email">
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="zmdi zmdi-account-circle"></i></span>
                                 </div>
                             </div>
                             <div class="input-group mb-3">
-                                <input type="password" class="form-control" name="txtPassword" placeholder="Mật khẩu">
+                                <input type="password" class="form-control" required name="txtPassword" placeholder="Mật khẩu">
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="zmdi zmdi-lock"></i></span>
                                 </div>

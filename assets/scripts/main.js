@@ -25,7 +25,7 @@
             $('.featured__controls li').removeClass('active');
             $(this).addClass('active');
         });
-        
+
         if ($('.featured__filter').length > 0) {
             var containerEl = document.querySelector('.featured__filter');
             var mixer = mixitup(containerEl);
@@ -191,7 +191,7 @@
         var maxValue = $button.parent().find('input').attr("max");
         if ($button.hasClass('inc')) {
             var newVal = parseFloat(oldValue) + 1;
-            if(newVal >= maxValue) { newVal = maxValue;}
+            if (newVal >= maxValue) { newVal = maxValue; }
         } else {
             if (oldValue > 1) {
                 var newVal = parseFloat(oldValue) - 1;
@@ -205,21 +205,21 @@
             Change Price
         --------------------*/
         var id = $(this).parent().find('input').attr('id');
-        if(id != 'add_qty'){
+        if (id != 'add_qty') {
             var user_id = id.split("_")[0];
             var prod_id = id.split("_")[1];
-            var new_qty = $("#"+id).val();
+            var new_qty = $("#" + id).val();
             $.ajax({
-                url:"./models/ajax.php",
-                method:"POST",
-                data:{
+                url: "./models/ajax.php",
+                method: "POST",
+                data: {
                     "changeQtyProd": prod_id,
                     "user_id": user_id,
                     "qty": new_qty,
                 },
                 success: function (result) {
                     var data = $.parseJSON(result);
-                    $("#itemPrice_"+user_id+"_"+prod_id).html(data[0]);
+                    $("#itemPrice_" + user_id + "_" + prod_id).html(data[0]);
                     $("#cart-tongtienhang").html(data[1]);
                     $("#cart-thanhtien").html(data[2]);
                 }
@@ -247,8 +247,8 @@ $(document).ready(function () {
         $.ajax({
             url: "./models/ajax.php",
             method: "POST",
-            data: { "action": action, "min_price": min_price, "max_price": max_price, "category": category, "sort": sort, "page": page, "page_active": page_active},
-            success: function(result) {
+            data: { "action": action, "min_price": min_price, "max_price": max_price, "category": category, "sort": sort, "page": page, "page_active": page_active },
+            success: function (result) {
                 var jsonResult = $.parseJSON(result);
                 var data1 = jsonResult[0];
                 var data2 = jsonResult[1];
@@ -264,7 +264,7 @@ $(document).ready(function () {
             }
         });
     }
-    
+
     /*---------------------
         Get filter value
     -----------------------*/
@@ -332,7 +332,7 @@ $(document).ready(function () {
         }
     }); // Add to Favorite, Not for shop
 
-    $("button.addToCart").click(function() {
+    $("button.addToCart").click(function () {
         var prod_id = $(this).val();
         var u_id = $("#user_id").val();
         var qty = $("#add_qty").val();
@@ -340,14 +340,14 @@ $(document).ready(function () {
             alert("Vui lòng đăng nhập để sử dụng chức năng này");
         } else {
             $.ajax({
-                url:"./models/ajax.php",
-                method:"POST",
-                data:{
+                url: "./models/ajax.php",
+                method: "POST",
+                data: {
                     "addToCart": prod_id,
                     "user_id": u_id,
                     "qty": qty,
                 },
-                success:function(data){
+                success: function (data) {
                     $("#showUserCart").html(data);
                 }
             });
@@ -371,11 +371,11 @@ $(document).ready(function () {
         });
     };  // Tải lại bảng hóa đơn cho Shipper
 
-    $("table.cart-table button.delete_item_cart").click( function() {
-		var p_id = $(this).val();
+    $("table.cart-table button.delete_item_cart").click(function () {
+        var p_id = $(this).val();
         var tthang = $("#hidden-tongtienhang").val();
         var ttien = $("#hidden-thanhtien").val();
-		$(this).parent().parent().fadeOut();
+        $(this).parent().parent().fadeOut();
         $.ajax({
             url: "./models/ajax.php",
             method: "POST",
@@ -387,13 +387,13 @@ $(document).ready(function () {
                 $("#cart-thanhtien").html(data[2]);
             }
         });
-	}); // Xóa sản phẩm trong giỏ hàng
+    }); // Xóa sản phẩm trong giỏ hàng
 
     $(".input-prod-qty").change(function () {
         var maxQty = $(this).attr('max');
-        if($(this).val() <= 0 || $(this).val() == ""){
+        if ($(this).val() <= 0 || $(this).val() == "") {
             $(this).val(1);
-        } else if($(this).val() > parseInt(maxQty)){
+        } else if ($(this).val() > parseInt(maxQty)) {
             $(this).val(maxQty);
             alert("Chỉ còn " + maxQty + " sản phẩm này!");
         }
@@ -401,22 +401,22 @@ $(document).ready(function () {
         changeQtyProdInCart(input_id);
     }); // Thay đổi số lượng sản phẩm trong giỏ hàng
 
-    function changeQtyProdInCart(id){
-        if(id != 'add_qty'){
+    function changeQtyProdInCart(id) {
+        if (id != 'add_qty') {
             var user_id = id.split("_")[0];
             var prod_id = id.split("_")[1];
-            var new_qty = $("#"+id).val();
+            var new_qty = $("#" + id).val();
             $.ajax({
-                url:"./models/ajax.php",
-                method:"POST",
-                data:{
+                url: "./models/ajax.php",
+                method: "POST",
+                data: {
                     "changeQtyProd": prod_id,
                     "user_id": user_id,
                     "qty": new_qty,
                 },
                 success: function (result) {
                     var data = $.parseJSON(result);
-                    $("#itemPrice_"+user_id+"_"+prod_id).html(data[0]);
+                    $("#itemPrice_" + user_id + "_" + prod_id).html(data[0]);
                     $("#cart-tongtienhang").html(data[1]);
                     $("#cart-thanhtien").html(data[2]);
                 }
@@ -424,52 +424,113 @@ $(document).ready(function () {
         }
     }   // For upper function
 
-    $(".cmtBtn").click(function(){
+    $(".cmtBtn").click(function () {
         var id = this.id;   //Get button id with format: accId_cmtAjax_postId
-        $("#"+this.id).prop('disabled', true);  //Disable Send button
+        $("#" + this.id).prop('disabled', true);  //Disable Send button
         var u_id = $("#user_id").val();    //Get user_id
         var p_id = id.split("_")[1];    //Get postId
-        var newCmt = $("[name='cmt_"+p_id+"']").serialize();   //Get content of comment from input
+        var newCmt = $("[name='cmt_" + p_id + "']").serialize();   //Get content of comment from input
         var cmt = decodeURIComponent(newCmt.split("=")[1]);
-        var textNumCmt = $("#cmts_"+p_id).text(); //Get Count Comments
+        var textNumCmt = $("#cmts_" + p_id).text(); //Get Count Comments
         var numCmt = parseInt(textNumCmt.split(" ")[0]) + 1;  //new Count Comments
-        if($("#cmtOf_"+p_id).hasClass("cmt-hide")){
-            $("#cmtOf_"+p_id).removeClass("cmt-hide")
+        if ($("#cmtOf_" + p_id).hasClass("cmt-hide")) {
+            $("#cmtOf_" + p_id).removeClass("cmt-hide")
         } //Show All Comments
         console.log(u_id, p_id, cmt);
         if (u_id == "0") {
             alert("Vui lòng đăng nhập để sử dụng chức năng này");
         } else {
             $.ajax({
-                type : "post",
-                url : "./models/ajax.php",
+                type: "post",
+                url: "./models/ajax.php",
                 data: {
                     'new_cmt_prod': p_id,
-                    'u_id' : u_id,
-                    'content' : cmt,
+                    'u_id': u_id,
+                    'content': cmt,
                 },
-                success: function(data){
+                success: function (data) {
                     // alert(data);
-                    $("#cmts_"+p_id).text(numCmt);  //Show new Count Comments
-                    $("#newCmt_"+p_id).append(data);  //Show cmt
-                    $("[name='cmt_"+p_id+"']").trigger('reset'); //Clear text field
+                    $("#cmts_" + p_id).text(numCmt);  //Show new Count Comments
+                    $("#newCmt_" + p_id).append(data);  //Show cmt
+                    $("[name='cmt_" + p_id + "']").trigger('reset'); //Clear text field
                 },
             });
         }
     }); //Comment Function
-    $(".numCmts").click(function(){
+    $(".numCmts").click(function () {
         var id = this.id;
         var p_id = id.split("_")[1];
-        var textNumCmt = $("#cmts_"+p_id).text();
-        if(parseInt(textNumCmt.split(" ")[0])!=0){
-           $("#cmtOf_"+p_id).toggleClass("cmt-hide");
+        var textNumCmt = $("#cmts_" + p_id).text();
+        if (parseInt(textNumCmt.split(" ")[0]) != 0) {
+            $("#cmtOf_" + p_id).toggleClass("cmt-hide");
         }
     });   //Show-Hide All Comments if Comment != 0
-    $(".inpNewCmt").keyup(function(){
-        if ($("#"+this.id).val() != ''){
-           $("#"+this.id).parent().find("button").prop('disabled', false);
+    $(".inpNewCmt").keyup(function () {
+        if ($("#" + this.id).val() != '') {
+            $("#" + this.id).parent().find("button").prop('disabled', false);
         } else {
-           $("#"+this.id).parent().find("button").prop('disabled', true);
+            $("#" + this.id).parent().find("button").prop('disabled', true);
         }
     });   //Active Send Button While Input Not Empty
+
+    //đổi mật khẩu 
+    //kiểm tra mật khẩu hiện tại 
+    $('#password_cur').blur(function (id, passwordCurrent) {
+        var passwordCurrent = $('#password_cur').val()
+        var id = $('#user_id').val()
+        $.ajax({
+            type: "post",
+            url: "userProfile/index.php",
+            data: {
+                'id': id,
+                'password_cur': passwordCurrent
+            },
+            success: function (data) {
+                if (data == 'false') {
+                    $('#password_cur').css('border', '1px solid red')
+                } else {
+                    $('#password_cur').css('border', '1px solid green')
+                    //kiểm tra nhập lại mật khẩu
+                    $('#password_conf').keyup(function () {
+                        var passwordNew = $('#password_new').val()
+                        var passwordConf = $('#password_conf').val()
+                        if (passwordConf != passwordNew) {
+                            $('#password_conf').css('border', '1px solid red')
+                        } else {
+                            $('#password_conf').css('border', '1px solid green')
+
+                            $('#saveProfile').removeAttr('disabled')
+
+                        }
+
+                    })
+                }
+            }
+        })
+    })
+
+    //đổi mậtt khẩu
+    $('#saveProfile').click(function () {
+        var id = $('#user_id').val()
+        var passwordNew = $('#password_new').val()
+        $.ajax({
+            type: "post",
+            url: "userProfile/index.php",
+            data: {
+                'id': id,
+                'password_new': passwordNew
+            },
+            success: function (data) {
+                swal({
+                    title: "Đổi mật khẩu thành công",
+                    icon: "success",
+                    button: "Đóng",
+                }).then(() => {
+                    window.location.reload(true)
+                })
+
+            }
+        })
+    })
+
 });

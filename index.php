@@ -53,32 +53,9 @@ switch ($act) {
    case "blog_detail":
       require("./views/blog-details.php");
       break;
-      // case 'listsp':
-      //     if (isset($_POST['listok']) && ($_POST['listok'])) {
-      //         $kyw = $_POST['kyw'];
-      //         $iddm = $_POST['iddm'];
-      //         echo $kyw;
-      //         echo $iddm;
-      //     } else {
-      //         $kyw = '';
-      //         $iddm = 0;
-      //     }
-      //     $dsdm = loadall_danhmuc();
-      //     $spnew = loadall_sanpham($kyw, $iddm);
-      //     include_once("./view/home.php");
-      //     break;
-      // case "cart":
-      //     header("location: ./view/cart/cart.php");
-      //     break;
-      // case "hd":
-      //     header("location: ./view/hoadon/hoadon.php");
-      //     break;
-      // case "cthd":
-      //     header("location: ./view/hdct/hdct.php");
-      //     break;
-      // case 'taikhoan':
-      //     header("location: ./view/taikhoan/update.php");
-      //     break;
+   case "info":
+      require("./views/userProfile.php");
+      break;
    default:
       require("./views/home.php");
       break;

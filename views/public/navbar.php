@@ -107,8 +107,7 @@
                            <?php if ($_SESSION["phanquyen"] == 1) {
                               echo '<li><a href="admin/">Admin</a></li>';
                            } ?>
-                           <li><a href="#">Tài khoản</a></li>
-                           <li><a href="#">Đổi mật khẩu</a></li>
+                           <li><a href="?act=info">Thông tin</a></li>
                            <li><a href="#">Đơn hàng</a></li>
                            <li><a href="?act=logout">Đăng xuất</a></li>
                            <?php if ($_SESSION["phanquyen"] == 2) {
