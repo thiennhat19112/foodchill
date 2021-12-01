@@ -92,14 +92,24 @@
                         <?= number_format($prod['price'] * ((100 - $prod['discount']) / 100), 0, ',', '.') ?> VND
                      </div>
                      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid non, repellendus saepe illo et modi distinctio ducimus nemo aspernatur quo iure dolorum dolor? Repudiandae est magnam illum et numquam. Perferendis!</p>
-                     <div class="product__details__quantity">
-                        <div class="quantity">
-                           <div class="pro-qty">
-                              <input type="number" id="add_qty" class="input-prod-qty" value="1" min="1" max="<?=$prod['quantity']?>">
-                           </div>
-                        </div>
-                     </div>
-                     <button value="<?= $prod['product_id'] ?>" class="addToCart primary-btn"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</button>
+                     <?PHP 
+                        if($prod['quantity']==0){
+                           echo '
+                              <button class="primary-btn dis" disable>Hết hàng</button>
+                           ';
+                        } else {
+                           echo '
+                              <div class="product__details__quantity">
+                                 <div class="quantity">
+                                    <div class="pro-qty">
+                                       <input type="number" id="add_qty" class="input-prod-qty" value="1" min="1" max="'.$prod['quantity'].'">
+                                    </div>
+                                 </div>
+                              </div>
+                              <button value="'.$prod['product_id'].'" class="addToCart primary-btn"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</button>
+                           ';
+                        }
+                     ?>
                      <button id="like_<?=$prod['product_id']?>" value="<?= $prod['product_id'] ?>" class="favorite heart-icon"><span class="icon_heart_alt"></span></button>
                      <ul>
                         <li><b>Đã bán</b> <span><samp><?= $prod['saled'] ?></samp> Sản phẩm</span></li>

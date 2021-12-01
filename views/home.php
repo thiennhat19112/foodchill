@@ -100,7 +100,19 @@
                         <div class="featured__item__pic set-bg" data-setbg="<?= $v['image'] ?>">
                            <ul class="featured__item__pic__hover">
                               <li><button value="<?= $v['product_id'] ?>" class="favorite"><i class="fa fa-heart"></i></button></li>
-                              <li><button value="<?= $v['product_id'] ?>" class="addToCart"><i class="fa fa-shopping-cart"></i></button></li>
+                              <li>
+                                 <?PHP 
+                                    if($v['quantity'] == 0) {
+                                       echo '
+                                          <button class="outOfStock"><i class="fa fa-shopping-cart"></i></button>
+                                       ';
+                                    } else {
+                                       echo '
+                                          <button value="'.$v['product_id'].'" class="addToCart"><i class="fa fa-shopping-cart"></i></button>
+                                       ';
+                                    }
+                                 ?>
+                              </li>
                            </ul>
                         </div>
                         <div class="featured__item__text">

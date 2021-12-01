@@ -352,8 +352,8 @@ $(document).ready(function () {
                 }
             });
         }
-     }); // Add to Cart, Not for shop
-
+    }); // Add to Cart, Not for shop
+    
     setInterval(reload_table_shipper, 1000);
     function reload_table_shipper() {
         $('.shipping-table').load('ship/reload_table.php', function () {
