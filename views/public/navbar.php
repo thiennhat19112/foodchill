@@ -2,7 +2,7 @@
 <div class="humberger__menu__overlay"></div>
 <div class="humberger__menu__wrapper">
    <div class="humberger__menu__logo">
-      <a href="#"><img src="./assets/img/logo.png" alt=""></a>
+      <a href="#"><img src="./assets/images/logo.png" alt=""></a>
    </div>
    <div class="humberger__menu__widget">
       <?php
@@ -128,7 +128,7 @@
       <div class="row">
          <div class="col-lg-3">
             <div class="header__logo">
-               <a href="home/"><img src="./assets/img/logo.png" alt=""></a>
+               <a href="home/"><img src="./assets/images/logo.png" alt=""></a>
             </div>
          </div>
          <div class="col-lg-6">
@@ -157,13 +157,11 @@
                      <a href="favorite/">
                         <i class="fa fa-heart"></i>
                         <?php
-                        if (isset($_SESSION['u_id'])) {
-                           echo '
-                                    <span id="showUserLike">' .
-                              countFavorite($_SESSION['u_id'])
-                              . '</span>
-                                 ';
-                        }
+                           if (isset($_SESSION['u_id'])) {
+                              echo '
+                                 <span id="showUserLike">' . countFavorite($_SESSION['u_id']) . '</span>
+                              ';
+                           }
                         ?>
                      </a>
                   </li>
@@ -171,18 +169,15 @@
                      <a href="cart/">
                         <i class="fa fa-shopping-bag"></i>
                         <?php
-                        if (isset($_SESSION['u_id'])) {
-                           echo '
-                                    <span class="cart-item" id="showUserCart">' .
-                              countCart($_SESSION['u_id'])
-                              . '</span>
-                                 ';
-                        }
+                           if (isset($_SESSION['u_id'])) {
+                              echo '
+                                 <span class="cart-item" id="showUserCart">' . countCart($_SESSION['u_id']) . '</span>
+                              ';
+                           }
                         ?>
                      </a>
                   </li>
                </ul>
-               <div class="header__cart__price">item: <span>$150.00</span></div>
             </div>
          </div>
       </div>

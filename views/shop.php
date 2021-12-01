@@ -48,7 +48,7 @@
    <!-- Hero Section End -->
 
    <!-- Breadcrumb Section Begin -->
-      <section class="breadcrumb-section set-bg" data-setbg="./assets/img/breadcrumb.jpg">
+      <section class="breadcrumb-section set-bg" data-setbg="./assets/images/breadcrumb.jpg">
          <div class="container">
             <div class="row">
                <div class="col-lg-12 text-center">

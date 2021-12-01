@@ -70,10 +70,10 @@
                         <img class="product__details__pic__item--large" src="<?= $prod['image'] ?>" alt="">
                      </div>
                      <div class="product__details__pic__slider owl-carousel">
-                        <img data-imgbigurl="./assets/img/product/details/product-details-2.jpg" src="./assets/img/product/details/thumb-1.jpg" alt="">
-                        <img data-imgbigurl="./assets/img/product/details/product-details-3.jpg" src="./assets/img/product/details/thumb-2.jpg" alt="">
-                        <img data-imgbigurl="./assets/img/product/details/product-details-5.jpg" src="./assets/img/product/details/thumb-3.jpg" alt="">
-                        <img data-imgbigurl="./assets/img/product/details/product-details-4.jpg" src="./assets/img/product/details/thumb-4.jpg" alt="">
+                        <img data-imgbigurl="./assets/images/product/details/product-details-2.jpg" src="./assets/images/product/details/thumb-1.jpg" alt="">
+                        <img data-imgbigurl="./assets/images/product/details/product-details-3.jpg" src="./assets/images/product/details/thumb-2.jpg" alt="">
+                        <img data-imgbigurl="./assets/images/product/details/product-details-5.jpg" src="./assets/images/product/details/thumb-3.jpg" alt="">
+                        <img data-imgbigurl="./assets/images/product/details/product-details-4.jpg" src="./assets/images/product/details/thumb-4.jpg" alt="">
                      </div>
                   </div>
                </div>
@@ -92,14 +92,24 @@
                         <?= number_format($prod['price'] * ((100 - $prod['discount']) / 100), 0, ',', '.') ?> VND
                      </div>
                      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid non, repellendus saepe illo et modi distinctio ducimus nemo aspernatur quo iure dolorum dolor? Repudiandae est magnam illum et numquam. Perferendis!</p>
-                     <div class="product__details__quantity">
-                        <div class="quantity">
-                           <div class="pro-qty">
-                              <input type="number" id="add_qty" class="input-prod-qty" value="1" min="1" max="<?=$prod['quantity']?>">
-                           </div>
-                        </div>
-                     </div>
-                     <button value="<?= $prod['product_id'] ?>" class="addToCart primary-btn"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</button>
+                     <?PHP 
+                        if($prod['quantity']==0){
+                           echo '
+                              <button class="primary-btn dis" disable>Hết hàng</button>
+                           ';
+                        } else {
+                           echo '
+                              <div class="product__details__quantity">
+                                 <div class="quantity">
+                                    <div class="pro-qty">
+                                       <input type="number" id="add_qty" class="input-prod-qty" value="1" min="1" max="'.$prod['quantity'].'">
+                                    </div>
+                                 </div>
+                              </div>
+                              <button value="'.$prod['product_id'].'" class="addToCart primary-btn"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</button>
+                           ';
+                        }
+                     ?>
                      <button id="like_<?=$prod['product_id']?>" value="<?= $prod['product_id'] ?>" class="favorite heart-icon"><span class="icon_heart_alt"></span></button>
                      <ul>
                         <li><b>Đã bán</b> <span><samp><?= $prod['saled'] ?></samp> Sản phẩm</span></li>
@@ -188,7 +198,7 @@
             <div class="row">
                <div class="col-lg-3 col-md-4 col-sm-6">
                   <div class="product__item">
-                     <div class="product__item__pic set-bg" data-setbg="./assets/img/product/product-1.jpg">
+                     <div class="product__item__pic set-bg" data-setbg="./assets/images/product/product-1.jpg">
                         <ul class="product__item__pic__hover">
                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -203,7 +213,7 @@
                </div>
                <div class="col-lg-3 col-md-4 col-sm-6">
                   <div class="product__item">
-                     <div class="product__item__pic set-bg" data-setbg="./assets/img/product/product-2.jpg">
+                     <div class="product__item__pic set-bg" data-setbg="./assets/images/product/product-2.jpg">
                         <ul class="product__item__pic__hover">
                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -218,7 +228,7 @@
                </div>
                <div class="col-lg-3 col-md-4 col-sm-6">
                   <div class="product__item">
-                     <div class="product__item__pic set-bg" data-setbg="./assets/img/product/product-3.jpg">
+                     <div class="product__item__pic set-bg" data-setbg="./assets/images/product/product-3.jpg">
                         <ul class="product__item__pic__hover">
                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -233,7 +243,7 @@
                </div>
                <div class="col-lg-3 col-md-4 col-sm-6">
                   <div class="product__item">
-                     <div class="product__item__pic set-bg" data-setbg="./assets/img/product/product-7.jpg">
+                     <div class="product__item__pic set-bg" data-setbg="./assets/images/product/product-7.jpg">
                         <ul class="product__item__pic__hover">
                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>

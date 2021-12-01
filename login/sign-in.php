@@ -7,9 +7,9 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="description" content="Responsive Bootstrap 4 and web Application ui kit.">
     <!-- <base href="/mywebsite/foodchill/login"> -->
-    <title>:: FOODCHILL :: ĐĂNG NHẬP</title>
+    <title>ĐĂNG NHẬP || FOODCHILL</title>
     <!-- Favicon-->
-    <!-- <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
+    <link rel="icon" href="../assets/images/fav.png" type="image/x-icon">
     <!-- Custom Css -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/style.min.css">
@@ -22,7 +22,7 @@
                 <div class="col-lg-4 col-sm-12">
                     <form class="card auth_form" action="./" method="POST">
                         <div class="header">
-                            <img class="logo" src="../assets/img/logo.png" alt="">
+                            <img class="logo" src="../assets/images/logo.png" alt="">
                             <!-- <img class="logo" src="./logo.png" alt=""> -->
                             <h5>Đăng nhập</h5>
                         </div>
@@ -36,7 +36,7 @@
                             <div class="input-group mb-3">
                                 <input type="password" class="form-control" name="txtPassword" placeholder="Mật khẩu">
                                 <div class="input-group-append">
-                                    <span class="input-group-text"><a href="forgot-password.html" class="forgot" title="Forgot Password"><i class="zmdi zmdi-lock"></i></a></span>
+                                    <span class="input-group-text"><i class="zmdi zmdi-lock"></i></span>
                                 </div>
                             </div>
                             <div class="input-group mb-3" style="text-align: right;">
@@ -55,6 +55,9 @@
                                 <button class="btn btn-primary btn-icon btn-icon-mini btn-round twitter"><i class="zmdi zmdi-twitter"></i></button>
                                 <button class="btn btn-primary btn-icon btn-icon-mini btn-round google"><i class="zmdi zmdi-google-plus"></i></button>
                             </div>
+                            <div class="" style="margin-top: 10px; text-align: right;">
+                                <a href="../signup">Bạn chưa có tài khoản?</a>
+                            </div>
                         </div>
                     </form>
                     <!-- <div class="copyright text-center">
@@ -65,7 +68,7 @@
                 </div>
                 <div class="col-lg-8 col-sm-12">
                     <div class="card">
-                        <img src="../assets/img/signin.svg" alt="Sign In" />
+                        <img src="../assets/images/signin.svg" alt="Sign In" />
                     </div>
                 </div>
             </div>

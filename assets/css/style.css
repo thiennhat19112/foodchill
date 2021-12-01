@@ -175,6 +175,9 @@ ol {
 	background: var(--color);
 	letter-spacing: 2px;
 }
+.primary-btn.dis{
+	background: lightgray;
+}
 
 .site-btn {
 	font-size: 14px;

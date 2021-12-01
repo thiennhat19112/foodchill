@@ -120,6 +120,15 @@ if (isset($_POST["action"])) {
 
    if ($total_row > 0) {
       foreach ($result as $v) {
+         if ($v['quantity'] == 0) {
+            $addToCartBtn = '
+                  <button class="outOfStock"><i class="fa fa-shopping-cart"></i></button>
+               ';
+         } else {
+            $addToCartBtn = '
+                  <button value="' . $v['product_id'] . '" class="addToCart"><i class="fa fa-shopping-cart"></i></button>
+               ';
+         }
          $output .= '
                <div class="col-lg-4 col-md-6 col-sm-6">
                
@@ -127,7 +136,9 @@ if (isset($_POST["action"])) {
                      <div class="product__item__pic set-bg" data-setbg="' . $v['image'] . '">
                         <ul class="product__item__pic__hover">
                            <li><button value="' . $v['product_id'] . '" class="favorite"><i class="fa fa-heart"></i></button></li>
-                           <li><button value="' . $v['product_id'] . '" class="addToCart"><i class="fa fa-shopping-cart"></i></button></li>
+                           <li>'
+            . $addToCartBtn . '
+                           </li>
                         </ul>
                      </div>
                      <div class="product__item__text">
@@ -184,6 +195,15 @@ if (isset($_POST["action"])) {
                   });
                }
             });
+            
+            $("button.outOfStock").click(function() {
+               var u_id = $("#user_id").val();
+               if(u_id == "0"){
+                  alert("Vui lòng đăng nhập để sử dụng chức năng này");
+               } else {
+                  alert("Sản phẩm này đã hết hàng");
+               }
+            }) // Out of Stock
          </script>
       '; // Script for Favorite and Cart
    echo json_encode(array($output, $tProd, $tPages, $sortPage));

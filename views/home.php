@@ -100,7 +100,19 @@
                         <div class="featured__item__pic set-bg" data-setbg="<?= $v['image'] ?>">
                            <ul class="featured__item__pic__hover">
                               <li><button value="<?= $v['product_id'] ?>" class="favorite"><i class="fa fa-heart"></i></button></li>
-                              <li><button value="<?= $v['product_id'] ?>" class="addToCart"><i class="fa fa-shopping-cart"></i></button></li>
+                              <li>
+                                 <?PHP 
+                                    if($v['quantity'] == 0) {
+                                       echo '
+                                          <button class="outOfStock"><i class="fa fa-shopping-cart"></i></button>
+                                       ';
+                                    } else {
+                                       echo '
+                                          <button value="'.$v['product_id'].'" class="addToCart"><i class="fa fa-shopping-cart"></i></button>
+                                       ';
+                                    }
+                                 ?>
+                              </li>
                            </ul>
                         </div>
                         <div class="featured__item__text">
@@ -123,12 +135,12 @@
             <div class="row">
                <div class="col-lg-6 col-md-6 col-sm-6">
                   <div class="banner__pic">
-                     <img src="./assets/img/banner/banner-1.jpg" alt="">
+                     <img src="./assets/images/banner/banner-1.jpg" alt="">
                   </div>
                </div>
                <div class="col-lg-6 col-md-6 col-sm-6">
                   <div class="banner__pic">
-                     <img src="./assets/img/banner/banner-2.jpg" alt="">
+                     <img src="./assets/images/banner/banner-2.jpg" alt="">
                   </div>
                </div>
             </div>
