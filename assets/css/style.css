@@ -3548,3 +3548,333 @@ ol {
 .likedNum:hover .likedUser {
 	visibility: visible;
 }
+
+
+/* confirm order */
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: arial, sans-serif;
+    box-sizing: border-box;
+    color: #313a73;
+  }
+
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 90px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, .4);
+  }
+
+  .close {
+      color: #424242;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+  }
+  
+  @media screen and (min-width: 1024px) {
+    #form-wrapper {
+      left: calc(50vw - 512px);
+    }
+  }
+  @media screen and (max-width: 1023px) {
+    #form-wrapper #form-cart-menu {
+      width: auto !important;
+    }
+  
+    #form-wrapper {
+      top: 0px !important;
+    }
+  }
+  #form-wrapper {
+    width: 100vw;
+    max-width: 1024px;
+    background-color: white;
+    float: left;
+    position: relative;
+    top: 25px;
+    border-radius: 3px;
+    box-shadow: 0px 0px 36px -5px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+  }
+  #form-wrapper #form-left-wrapper {
+    width: 75%;
+    float: left;
+    height: 100%;
+    padding: 20px;
+    position: relative;
+    min-height: 278px !important;
+    clear: both;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  
+  @media screen and (max-width: 1023px) {
+    #form-left-wrapper {
+      width: 100% !important;
+    }
+  }
+  #form-tab-menu .tab-menu-item {
+    width: 33%;
+    float: left;
+    padding-top: 15px;
+    padding-bottom: 25px;
+    box-sizing: border-box;
+    color: #cfd2e4;
+    font-size: 0.9em;
+    text-align: center;
+    cursor: pointer;
+    transition: 100ms ease;
+    text-align: center;
+  }
+  #form-tab-menu .tab-menu-item:not(.current):hover {
+    color: #bec2db;
+  }
+  #form-tab-menu .current {
+    color: #313a73;
+    border-bottom: 3px solid #34a7e8;
+    cursor: default;
+    font-weight: 600;
+    box-sizing: border-box;
+  }
+  
+  #form-cart-menu {
+    width: 25%;
+    float: left;
+    background-color: #313a73;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    font-size: 0.9em;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    min-height: 278px;
+  }
+  #form-cart-menu .shopping-cart-head h6 {
+    font-weight: 600;
+    color: white;
+  }
+  
+  tr.shopping-cart-item {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height: 50px;
+    box-sizing: border-box;
+    line-height: 1.4em;
+  }
+  tr.shopping-cart-item td {
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border-top: 3px solid #313a73;
+    border-bottom: 3px solid #313a73;
+    box-sizing: border-box;
+    width: 100%;
+  }
+  
+  .cart-title {
+    color: #34a7e8;
+  }
+  
+  .shopping-cart-total {
+    color: white;
+  }
+  .shopping-cart-total td {
+    padding: 5px;
+    padding-top: 15px;
+  }
+  
+  /* .cart-price::after, .cart-price-total::after {
+    content: " đ";
+  } */
+  
+  .cart-price:not(.cart-price-total) {
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .shopping-cart-head {
+    padding-bottom: 25px;
+    padding-top: 5px;
+  }
+  
+  #shipping-body, #payment-body, #confirmation-body {
+    position: relative;
+    width: 100%;
+  }
+  
+  #payment-body, #confirmation-body {
+    display: none;
+  }
+  
+  .form-input {
+    float: left;
+    box-sizing: border-box;
+    padding-right: 10px;
+  }
+  .form-input label {
+    line-height: 30px;
+    color: #313a73;
+  }
+  .form-input input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    color: #313a73;
+  }
+
+  .form-input select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    color: #313a73;
+  }
+
+  .form-input option {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    color: #313a73;
+  }
+  
+  .input-small {
+    width: 33.33%;
+  }
+  
+  .input-medium {
+    width: 66.66%;
+  }
+
+  .input-equal {
+    width: 50%;
+  }
+
+
+
+  .input-larg {
+    width: 100%;
+  }
+  
+  @media screen and (max-width: 700px) {
+    .input-small {
+      width: 50%;
+    }
+  
+    .input-medium {
+      width: 100%;
+    }
+  }
+  @media screen and (max-width: 475px) {
+    .input-small {
+      width: 100%;
+    }
+  
+    .input-medium {
+      width: 100%;
+    }
+  }
+  .form-input-checkbox {
+    font-size: 0.8em;
+    cursor: pointer;
+    float: right;
+    margin-top: 25px;
+  }
+  .form-input-checkbox input {
+    cursor: pointer;
+  }
+  
+  .hr {
+    margin-top: 35px;
+    margin-bottom: 35px;
+    height: 2px;
+    width: calc(100% - 10px);
+    background-color: rgba(223, 225, 237, 0.7);
+    float: left;
+    box-sizing: border-box;
+  }
+  
+  .form-input input {
+    border-radius: 2px;
+    border: 2px solid #dfe1ed;
+  }
+
+  .form-input select {
+    border-radius: 2px;
+    border: 2px solid #dfe1ed;
+	background-color: transparent;
+  }
+
+  .form-input option {
+    border-radius: 2px;
+    border: 2px solid #dfe1ed;
+  }
+  
+  #contact-details {
+    float: left;
+    margin-top: 20px;
+    width: 100%;
+  }
+  
+  @media screen and (min-width: 1024px) {
+    #form-cart-menu {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+  @media screen and (max-width: 1023px) {
+    #form-cart-menu {
+      border-bottom-left-radius: 3px !important;
+      border-top-right-radius: 0px !important;
+      border-top-left-radius: 0px !important;
+      position: relative !important;
+      top: 0;
+    }
+  }
+  #form-submit {
+    padding-top: 30px;
+    float: right;
+    clear: both;
+    width: 100%;
+  }
+  #form-submit input[type=submit] {
+    background-color: #29d366;
+    border: none;
+    border-radius: 3px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 35px;
+    padding-left: 35px;
+    color: white;
+    cursor: pointer;
+    font-size: 1em;
+    width: 25%;
+    min-width: 150px;
+    float: right;
+  }
+  
+  @media screen and (max-width: 1023px) {
+    #form-submit input[type=submit] {
+      width: 33.3%;
+    }
+  }
+  @media screen and (max-width: 475px) {
+    #form-submit input[type=submit] {
+      width: 100%;
+    }
+  }

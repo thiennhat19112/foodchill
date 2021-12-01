@@ -1,59 +1,61 @@
 <?PHP
-   session_start();
-   require_once('./pdo.php');
-   require_once('./product.php');
-   require_once('./cart.php');
-   require_once('./comment.php');
+session_start();
+require_once('./pdo.php');
+require_once('./product.php');
+require_once('./cart.php');
+require_once('./comment.php');
+require_once('./order.php');
 
-   if (isset($_POST["action"])) {
-      $sql = "SELECT * FROM products WHERE `status` = '1'";
-      if (isset($_POST["category"])) {
-         $category_filter = implode("','", $_POST["category"]);
-         $sql .= " AND `category_id` IN('" . $category_filter . "')";
-      }
-      if (isset($_POST["min_price"], $_POST["max_price"]) && !empty($_POST["min_price"]) && !empty($_POST["max_price"])) {
-         $sql .= " AND `price` BETWEEN " . $_POST["min_price"] . " AND " . $_POST["max_price"];
-      }
-      if (isset($_POST["sort"])) {
-         $sql .= " ORDER BY " . $_POST["sort"];
-      }
-      $tProd = countProd($sql);
 
-      $limit = 12;
-      $start = 0;
-      $pageNum = 1;
-      if (isset($_POST["page"])){ 
-         $pageNum = $_POST["page"];
-         $start = ($pageNum - 1) * $limit;
-      } 
-      $sql .= " LIMIT " . $start . ", " . $limit;
+if (isset($_POST["action"])) {
+   $sql = "SELECT * FROM products WHERE `status` = '1'";
+   if (isset($_POST["category"])) {
+      $category_filter = implode("','", $_POST["category"]);
+      $sql .= " AND `category_id` IN('" . $category_filter . "')";
+   }
+   if (isset($_POST["min_price"], $_POST["max_price"]) && !empty($_POST["min_price"]) && !empty($_POST["max_price"])) {
+      $sql .= " AND `price` BETWEEN " . $_POST["min_price"] . " AND " . $_POST["max_price"];
+   }
+   if (isset($_POST["sort"])) {
+      $sql .= " ORDER BY " . $_POST["sort"];
+   }
+   $tProd = countProd($sql);
 
-      if($tProd%$limit == 0){
-         $tPages = $tProd/$limit;
-      }else{
-         $tPages = floor($tProd/$limit) + 1;
-      }
-      
-      $page_active = $_POST['page_active'];
-      $prevPage = $page_active - 1;
-      $nextPage = $page_active + 1;
+   $limit = 12;
+   $start = 0;
+   $pageNum = 1;
+   if (isset($_POST["page"])) {
+      $pageNum = $_POST["page"];
+      $start = ($pageNum - 1) * $limit;
+   }
+   $sql .= " LIMIT " . $start . ", " . $limit;
 
-      $sortPage = '';
-      if($page_active != 1){
-         $sortPage .= '<button value="'.$prevPage.'" ><i class="fa fa-long-arrow-left"></i></button>';
+   if ($tProd % $limit == 0) {
+      $tPages = $tProd / $limit;
+   } else {
+      $tPages = floor($tProd / $limit) + 1;
+   }
+
+   $page_active = $_POST['page_active'];
+   $prevPage = $page_active - 1;
+   $nextPage = $page_active + 1;
+
+   $sortPage = '';
+   if ($page_active != 1) {
+      $sortPage .= '<button value="' . $prevPage . '" ><i class="fa fa-long-arrow-left"></i></button>';
+   }
+   for ($i = 1; $i <= $tPages; $i++) {
+      if ($i == $pageNum) {
+         $sortPage .= '<button class="active" value="' . $i . '">' . $i . '</button>';
+      } else {
+         $sortPage .= '<button value="' . $i . '">' . $i . '</button>';
       }
-      for($i=1; $i <= $tPages; $i++){
-         if($i == $pageNum){
-            $sortPage .= '<button class="active" value="'.$i.'">'.$i.'</button>';
-         } else {
-            $sortPage .= '<button value="'.$i.'">'.$i.'</button>';
-         }
-         $lastPage = $i;
-      }
-      if($page_active != $lastPage){
-         $sortPage .= '<button value="'.$nextPage.'" ><i class="fa fa-long-arrow-right"></i></button>';
-      }
-      $sortPage .= '
+      $lastPage = $i;
+   }
+   if ($page_active != $lastPage) {
+      $sortPage .= '<button value="' . $nextPage . '" ><i class="fa fa-long-arrow-right"></i></button>';
+   }
+   $sortPage .= '
          <script> 
             function filter_data() {
                var action = "fetch_data";
@@ -110,15 +112,15 @@
          </script>
       '; // Script for Page
 
-      $statement = pdo_get_connection()->prepare($sql);
-      $statement->execute();
-      $result = $statement->fetchAll();
-      $total_row = $statement->rowCount();
-      $output = '';
-      
-      if ($total_row > 0) {
-         foreach ($result as $v) {
-            $output .= '
+   $statement = pdo_get_connection()->prepare($sql);
+   $statement->execute();
+   $result = $statement->fetchAll();
+   $total_row = $statement->rowCount();
+   $output = '';
+
+   if ($total_row > 0) {
+      foreach ($result as $v) {
+         $output .= '
                <div class="col-lg-4 col-md-6 col-sm-6">
                
                   <div class="product__item">
@@ -135,11 +137,11 @@
                   </div>
             </div>
             ';
-         }
-      } else {
-         $output = '<h3>Không tìm thấy sản phẩm phù hợp!</h3>';
       }
-      $output .= '
+   } else {
+      $output = '<h3>Không tìm thấy sản phẩm phù hợp!</h3>';
+   }
+   $output .= '
          <script>
             $("button.favorite").click(function() {
                var prod_id = $(this).val();
@@ -184,110 +186,110 @@
             });
          </script>
       '; // Script for Favorite and Cart
-      echo json_encode(array($output, $tProd, $tPages, $sortPage));
-   }  // Sort Products on Shop
+   echo json_encode(array($output, $tProd, $tPages, $sortPage));
+}  // Sort Products on Shop
 
-   if (isset($_POST["favorite"])) {
-      $prod_id = $_POST["favorite"];
-      $user_id = $_POST['user_id'];
-      $sql = "SELECT * FROM `favorites` WHERE `product_id` = $prod_id AND`user_id` = $user_id";
-      $check = pdo_query_one($sql);
-      if ($check == false) {
-         $sql2 = "INSERT INTO `favorites` (`product_id`, `user_id`) VALUES ('$prod_id', '$user_id')";
-      } else {
-         $sql2 = "DELETE FROM `favorites` WHERE `favorites`.`product_id` = $prod_id AND `favorites`.`user_id` = '$user_id'";
+if (isset($_POST["favorite"])) {
+   $prod_id = $_POST["favorite"];
+   $user_id = $_POST['user_id'];
+   $sql = "SELECT * FROM `favorites` WHERE `product_id` = $prod_id AND`user_id` = $user_id";
+   $check = pdo_query_one($sql);
+   if ($check == false) {
+      $sql2 = "INSERT INTO `favorites` (`product_id`, `user_id`) VALUES ('$prod_id', '$user_id')";
+   } else {
+      $sql2 = "DELETE FROM `favorites` WHERE `favorites`.`product_id` = $prod_id AND `favorites`.`user_id` = '$user_id'";
+   }
+   pdo_execute($sql2);
+   echo countFavorite($user_id);
+}  // Add to Favorite
+
+if (isset($_POST["addToCart"])) {
+   $user_id = $_POST["user_id"];
+   $prod_id = $_POST["addToCart"];
+   $add_qty = $_POST["qty"];
+
+   if (checkCart($user_id, $prod_id) == false) {
+      insertCart($user_id, $prod_id, $add_qty);
+   } else {
+      $prod_qty = getQty($user_id, $prod_id) + $add_qty;
+      if ($prod_qty > getProdQty($prod_id)) {
+         $prod_qty = getProdQty($prod_id);
       }
-      pdo_execute($sql2);
-      echo countFavorite($user_id);
-   }  // Add to Favorite
+      changeQty($prod_qty, $user_id, $prod_id);
+   }
+   echo countCart($user_id);
+}  // Add to Cart
 
-   if (isset($_POST["addToCart"])) {
-      $user_id = $_POST["user_id"];
-      $prod_id = $_POST["addToCart"];
-      $add_qty = $_POST["qty"];
+if (isset($_POST["changeQtyProd"])) {
+   $user_id = $_POST["user_id"];
+   $change_prod_id = $_POST["changeQtyProd"];
+   $change_qty = $_POST["qty"];
 
-      if (checkCart($user_id, $prod_id) == false) {
-         insertCart($user_id, $prod_id, $add_qty);
-      } else {
-         $prod_qty = getQty($user_id, $prod_id) + $add_qty;
-         if($prod_qty > getProdQty($prod_id)){
-            $prod_qty = getProdQty($prod_id);
-         }
-         changeQty($prod_qty, $user_id, $prod_id);
-      }
-      echo countCart($user_id);
-   }  // Add to Cart
+   changeQty($change_qty, $user_id, $change_prod_id);  // Change new item Qty of Cart to database
 
-   if (isset($_POST["changeQtyProd"])) {
-      $user_id = $_POST["user_id"];
-      $change_prod_id = $_POST["changeQtyProd"];
-      $change_qty = $_POST["qty"];
+   $productCart = showProductCart($user_id);
+   $tong = 0;
+   foreach ($productCart as $key => $value) {
+      $prod_id = $value["product_id"];
+      $prod_qty = $value["quantity"];
+      $product = getProd($prod_id);
+      $prod_price = $product["price"] * ((100 - $product['discount']) / 100);
+      $thanhtien = $prod_price * $prod_qty;
+      $tong += $thanhtien;
+   }  // Tính lại tổng tiền
 
-      changeQty($change_qty, $user_id, $change_prod_id);  // Change new item Qty of Cart to database
+   $prodChange = getProd($change_prod_id);
+   $priceChange = $prodChange["price"] * ((100 - $prodChange['discount']) / 100);
+   $thanhtienProd = $priceChange * $change_qty;
+   // Tính thành tiền sản phẩm được thay đổi
 
-      $productCart = showProductCart($user_id);
-      $tong = 0;
-      foreach ($productCart as $key => $value) {
-         $prod_id = $value["product_id"];
-         $prod_qty = $value["quantity"];
-         $product = getProd($prod_id);
-         $prod_price = $product["price"] * ((100 - $product['discount']) / 100);
-         $thanhtien = $prod_price * $prod_qty;
-         $tong += $thanhtien;
-      }  // Tính lại tổng tiền
-      
-      $prodChange = getProd($change_prod_id);
-         $priceChange = $prodChange["price"] * ((100 - $prodChange['discount']) / 100);
-         $thanhtienProd = $priceChange * $change_qty;
-      // Tính thành tiền sản phẩm được thay đổi
+   echo json_encode(
+      array(
+         number_format($thanhtienProd, 0, ',', '.'),
+         number_format($tong, 0, ',', '.'),
+         number_format($tong, 0, ',', '.')
+      )
+   );
+}  // Change Quantity of Cart
 
-      echo json_encode(
-         array(
-            number_format($thanhtienProd, 0, ',', '.'), 
-            number_format($tong, 0, ',', '.'), 
-            number_format($tong, 0, ',', '.')
-         )
-      );
-   }  // Change Quantity of Cart
+if (isset($_POST["product_cart_remove"]) && isset($_SESSION["u_id"])) {
+   $user_id = $_SESSION["u_id"];
+   $product_id  = filter_var($_POST["product_cart_remove"], FILTER_SANITIZE_STRING);
+   deleteItemCart($user_id, $product_id);
+   $total_product = countCart($user_id);
 
-   if (isset($_POST["product_cart_remove"]) && isset($_SESSION["u_id"])) {
-      $user_id = $_SESSION["u_id"];
-      $product_id  = filter_var($_POST["product_cart_remove"], FILTER_SANITIZE_STRING);
-      deleteItemCart($user_id, $product_id);
-      $total_product = countCart($user_id);
+   $productCart = showProductCart($user_id);
+   $tong = 0;
+   foreach ($productCart as $key => $value) {
+      $prod_id = $value["product_id"];
+      $prod_qty = $value["quantity"];
+      $product = getProd($prod_id);
+      $prod_price = $product["price"] * ((100 - $product['discount']) / 100);
+      $thanhtien = $prod_price * $prod_qty;
+      $tong += $thanhtien;
+   }  // Tính lại tổng tiền
 
-      $productCart = showProductCart($user_id);
-      $tong = 0;
-      foreach ($productCart as $key => $value) {
-         $prod_id = $value["product_id"];
-         $prod_qty = $value["quantity"];
-         $product = getProd($prod_id);
-         $prod_price = $product["price"] * ((100 - $product['discount']) / 100);
-         $thanhtien = $prod_price * $prod_qty;
-         $tong += $thanhtien;
-      }  // Tính lại tổng tiền
+   echo json_encode(
+      array(
+         $total_product,
+         number_format($tong, 0, ',', '.'),
+         number_format($tong, 0, ',', '.')
+      )
+   );
+}  // Delete product from Cart
 
-      echo json_encode(
-         array(
-            $total_product, 
-            number_format($tong, 0, ',', '.'), 
-            number_format($tong, 0, ',', '.')
-         )
-      );
-   }  // Delete product from Cart
+if (isset($_POST["new_cmt_prod"])) {
+   $prod_id = $_POST['new_cmt_prod'];
+   $user_id = $_POST['u_id'];
+   $content = $_POST['content'];
 
-   if (isset($_POST["new_cmt_prod"])) {
-      $prod_id = $_POST['new_cmt_prod'];
-      $user_id = $_POST['u_id'];
-      $content = $_POST['content'];
+   //Create Comment in database
+   newCmt($user_id, $prod_id, $content);
 
-      //Create Comment in database
-      newCmt($user_id, $prod_id, $content);
+   $date = date('Y-m-d H:i:s');
 
-      $date = date('Y-m-d H:i:s');
-
-      //Sent To Ajax
-      echo '
+   //Sent To Ajax
+   echo '
          <div class="cmt-item">
             <div class="cmt-i-img">
                <a href="javascript:void(0)">
@@ -297,17 +299,40 @@
             <div class="cmt-i-cont">
                <div class="cmt-i-info">
                   <a href="javascript:void(0)">
-                     '.accCmt($user_id).'</a>&emsp;
-                  <span class="shortDate">'.
-                     shortDate($date).
-                     '<span class="longDate">'.longDate($date).'</span>
+                     ' . accCmt($user_id) . '</a>&emsp;
+                  <span class="shortDate">' .
+      shortDate($date) .
+      '<span class="longDate">' . longDate($date) . '</span>
                   </span>
                </div> 
-               <span>'.$content.'</span>
+               <span>' . $content . '</span>
             </div>
             <div class="cmt-i-more">
                <i class="fas fa-ellipsis-h"></i>
             </div>
          </div>
       ';
-   }  // Add new comment
+}  // Add new comment
+
+if (isset($_POST["user_id"]) && isset($_POST["address"]) && $_POST["address"] != "" && $_POST["phone"] != "") {
+   $user_id = $_POST["user_id"];
+   $receiver = $_POST["receiver"];
+   $phone = $_POST["phone"];
+   $address = $_POST["address"];
+   $note_user = $_POST["receiver_note"];
+   $total_amount = $_POST["total_amount"];
+   insertOrder($user_id, $receiver, $phone, $address, $total_amount, $note_user);
+   $last_order_id =  getLastOrderID($user_id);
+   $order_details = getDataToInsertOrderDetail($user_id);
+   foreach ($order_details as $key => $value) {
+      $pro_qty = $value["quantity"];
+      $pro_price = $value["price"];
+      $pro_id = $value["product_id"];
+      $total_price = $pro_qty * $pro_price;
+      insertOrderDetail($last_order_id, $pro_id, $pro_qty, $pro_price, $total_price);
+      updateProductQty(-$pro_qty, $pro_id);
+   }
+   deleteCartByUserID($user_id);
+   // $total_product = count($_SESSION["products"]);
+   // die(json_encode(array('products' => $total_product)));
+} //Payment function

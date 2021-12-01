@@ -12,6 +12,8 @@ switch ($act) {
       break;
 }
 require("./models/pdo.php");
+require("./models/account.php");
+require("./models/order.php");
 require("./models/category.php");
 require("./models/product.php");
 require("./models/cart.php");

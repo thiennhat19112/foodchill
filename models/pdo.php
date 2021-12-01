@@ -66,24 +66,24 @@ function pdo_query_value($sql) {
    }
 }
 
-function longDate($time){
+function longDate($time) {
    //Time settings   
-      $timeEng = ['Sun','Mon','Tue','Wed', 'Thu', 'Fri', 'Sat'];
-      $timeVie = ['Chủ nhật', 'Thứ hai', 'Thứ ba', 'Thứ tư', 'Thứ năm', 'Thứ sáu', 'Thứ bảy'];
-      date_default_timezone_set('Asia/Ho_Chi_Minh');
+   $timeEng = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+   $timeVie = ['Chủ nhật', 'Thứ hai', 'Thứ ba', 'Thứ tư', 'Thứ năm', 'Thứ sáu', 'Thứ bảy'];
+   date_default_timezone_set('Asia/Ho_Chi_Minh');
 
-   return str_replace( $timeEng, $timeVie, date_format(date_create($time), 'D, d \t\h\á\n\g m, Y \l\ú\c H:i'));
+   return str_replace($timeEng, $timeVie, date_format(date_create($time), 'D, d \t\h\á\n\g m, Y \l\ú\c H:i'));
 }
-function shortDate($time){
+function shortDate($time) {
    //Time settings   
-      date_default_timezone_set('Asia/Ho_Chi_Minh');
+   date_default_timezone_set('Asia/Ho_Chi_Minh');
 
    return date_format(date_create($time), 'd \t\h\á\n\g m, Y');
 }
-function adminTime($time){
+function adminTime($time) {
    //Time settings   
-      $timeEng = ['Sun','Mon','Tue','Wed', 'Thu', 'Fri', 'Sat'];
-      $timeVie = ['Chủ nhật', 'Thứ hai', 'Thứ ba', 'Thứ tư', 'Thứ năm', 'Thứ sáu', 'Thứ bảy'];
-      date_default_timezone_set('Asia/Ho_Chi_Minh');
-   return str_replace( $timeEng, $timeVie, date_format(date_create($time), 'D, d-m-Y \l\ú\c H:i:s'));
+   $timeEng = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+   $timeVie = ['Chủ nhật', 'Thứ hai', 'Thứ ba', 'Thứ tư', 'Thứ năm', 'Thứ sáu', 'Thứ bảy'];
+   date_default_timezone_set('Asia/Ho_Chi_Minh');
+   return str_replace($timeEng, $timeVie, date_format(date_create($time), 'D, d-m-Y \l\ú\c H:i:s'));
 }

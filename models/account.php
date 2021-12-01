@@ -13,6 +13,11 @@ function checkuser($email, $password) {
     $user = pdo_query_one($sql);
     return $user;
 }
+
+function getUserById($u_id) {
+    $sql = "SELECT * FROM `users` WHERE `user_id`= ?";
+    return pdo_query_one($sql, $u_id);
+}
 // function checkemail($email)
 // {
 //     $sql = "select * from taikhoan where email='" . $email . "'";
