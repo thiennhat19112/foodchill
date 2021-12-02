@@ -5,20 +5,20 @@
                <div class="col-lg-3 col-md-6 col-sm-6">
                   <div class="footer__about">
                      <div class="footer__about__logo">
-                        <a href="../home"><img src="./assets/images/logo.png" alt=""></a>
+                        <a href="home/"><img src="./assets/images/logo.png" alt=""></a>
                      </div>
                      <ul>
                         <li>Địa chỉ: Việt Nam</li>
                         <li>Điện thoại: +84 123.456.789</li>
-                        <li>Email: contact@example.com</li>
+                        <li>Email: contact@foodchill.com</li>
                      </ul>
                   </div>
                   <div class="footer__widget">
                      <div class="footer__widget__social">
-                        <a href="#1" target="_blank"><i class="fa fa-facebook"></i></a>
-                        <a href="#1" target="_blank"><i class="fa fa-instagram"></i></a>
-                        <a href="#1" target="_blank"><i class="fa fa-twitter"></i></a>
-                        <a href="#1" target="_blank"><i class="fa fa-pinterest"></i></a>
+                        <a href="https://github.com/thiennhat19112/foodchill" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a href="#" target="_blank"><i class="fa fa-instagram"></i></a>
+                        <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
                      </div>
                   </div>
                </div>

@@ -216,10 +216,21 @@ if (isset($_POST["favorite"])) {
    $check = pdo_query_one($sql);
    if ($check == false) {
       $sql2 = "INSERT INTO `favorites` (`product_id`, `user_id`) VALUES ('$prod_id', '$user_id')";
+      echo '<script>swal({
+         title: "Đã thêm sản phẩm vào yêu thích",
+         icon: "success",
+         button: "Đóng",
+      });</script>';
    } else {
       $sql2 = "DELETE FROM `favorites` WHERE `favorites`.`product_id` = $prod_id AND `favorites`.`user_id` = '$user_id'";
+      echo '<script>swal({
+         title: "Đã xoá sản phẩm khỏi yêu thích",
+         icon: "success",
+         button: "Đóng",
+      });</script>';
    }
    pdo_execute($sql2);
+   
    echo countFavorite($user_id);
 }  // Add to Favorite
 
@@ -237,6 +248,11 @@ if (isset($_POST["addToCart"])) {
       }
       changeQty($prod_qty, $user_id, $prod_id);
    }
+   echo '<script>swal({
+      title: "Đã thêm sản phẩm vào giỏ hàng",
+      icon: "success",
+      button: "Đóng",
+   });</script>';
    echo countCart($user_id);
 }  // Add to Cart
 
