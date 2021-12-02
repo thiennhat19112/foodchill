@@ -137,7 +137,7 @@ if (isset($_POST["action"])) {
                         <ul class="product__item__pic__hover">
                            <li><button value="' . $v['product_id'] . '" class="favorite"><i class="fa fa-heart"></i></button></li>
                            <li>'
-                              . $addToCartBtn . '
+            . $addToCartBtn . '
                            </li>
                         </ul>
                      </div>
@@ -230,7 +230,7 @@ if (isset($_POST["favorite"])) {
       });</script>';
    }
    pdo_execute($sql2);
-   
+
    echo countFavorite($user_id);
 }  // Add to Favorite
 
@@ -357,18 +357,19 @@ if (isset($_POST["user_id"]) && isset($_POST["address"]) && $_POST["address"] !=
    $address = $_POST["address"];
    $note_user = $_POST["receiver_note"];
    $total_amount = $_POST["total_amount"];
-   insertOrder($user_id, $receiver, $phone, $address, $total_amount, $note_user);
-   $last_order_id =  getLastOrderID($user_id);
-   $order_details = getDataToInsertOrderDetail($user_id);
-   foreach ($order_details as $key => $value) {
-      $pro_qty = $value["quantity"];
-      $pro_price = $value["price"];
-      $pro_id = $value["product_id"];
-      $total_price = $pro_qty * $pro_price;
-      insertOrderDetail($last_order_id, $pro_id, $pro_qty, $pro_price, $total_price);
-      updateProductQty(-$pro_qty, $pro_id);
+   if ($total_amount > 0) {
+      insertOrder($user_id, $receiver, $phone, $address, $total_amount, $note_user);
+      $last_order_id =  getLastOrderID($user_id);
+      $order_details = getDataToInsertOrderDetail($user_id);
+      foreach ($order_details as $key => $value) {
+         $pro_qty = $value["quantity"];
+         $pro_price = $value["price"];
+         $pro_id = $value["product_id"];
+         $total_price = $pro_qty * $pro_price;
+         insertOrderDetail($last_order_id, $pro_id, $pro_qty, $pro_price, $total_price);
+         updateProductQty(-$pro_qty, $pro_id);
+      }
+      deleteCartByUserID($user_id);
+      die(json_encode(array('exit' => 0)));
    }
-   deleteCartByUserID($user_id);
-   // $total_product = count($_SESSION["products"]);
-   // die(json_encode(array('products' => $total_product)));
 } //Payment function
