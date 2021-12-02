@@ -1,7 +1,7 @@
 <?php
 function pdo_get_connection()
 {
-   $serverName = "localhost";
+   $serverName = "localhost:3325";
    $databaseName = "foodchill";
    $username = "root";
    $password = "";
