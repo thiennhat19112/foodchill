@@ -1,7 +1,7 @@
 <?php
 function showProductCart($u_id) {
    $sql = "SELECT * FROM `carts` WHERE `user_id` = ?";
-   return pdo_query($sql, $u_id);
+   return array_reverse(pdo_query($sql, $u_id));
 }
 
 function deleteCartByUserID($u_id) {

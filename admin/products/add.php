@@ -6,7 +6,7 @@ if (isset($_POST['addProduct'])) {
     $description = $_POST['description'];
     $infomation = $_POST['infomation'];
     $weight = $_POST['weight'];
-    $target = '../upload/images/';
+    $target = '../upload/images/products/';
     $image = $_FILES['image']['name'];
     //upload ảnh
     $image_tmp = $_FILES['image']['tmp_name'];
@@ -24,7 +24,7 @@ if (isset($_POST['addProduct'])) {
         title: "Thêm thành công",
         icon: "success",
         button: "Đóng",
-      });</script>';
+    });</script>';
     
 }
 

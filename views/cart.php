@@ -1,4 +1,5 @@
 <!-- Breadcrumb Section Begin -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <section class="breadcrumb-section set-bg" data-setbg="./assets/images/breadcrumb.jpg">
    <div class="container">
       <div class="row">
@@ -141,13 +142,13 @@
                      </div>
                      <div class='form-input input-small'>
                         <label>Quận (huyện)</label><br />
-                        <select name="destrict" id="destrict-select" disabled>
+                        <select name="destrict" id="destrict-select">
                            <option selected value="0" hidden disabled>Chọn quận, huyện...</option>
                         </select>
                      </div>
                      <div class='form-input input-small'>
                         <label>Phường (xã)</label><br />
-                        <select name="ward" id="ward-select" disabled>
+                        <select name="ward" id="ward-select">
                            <option selected value="0" hidden disabled>Chọn phường, xã...</option>
                         </select>
                      </div>
@@ -172,14 +173,11 @@
             </div>
             <table id="shopping-cart-menu">
                <?php
-               $tong = 0;
                foreach ($productCart as $key => $value) {
                   $prod_id = $value["product_id"];
                   $prod_qty = $value["quantity"];
                   $product = getProd($prod_id);
                   $prod_price = $product["price"] * ((100 - $product['discount']) / 100);
-                  $thanhtien = $prod_price * $prod_qty;
-                  $tong += $thanhtien;
                ?>
                   <tr class='shopping-cart-item'>
                      <td class='cart-title'><?= $product['product_name'] . ' (SL: ' . $prod_qty . ')' ?></td>
@@ -205,7 +203,7 @@
          let btn_close = $('.close-modal');
 
          btn_payment.click(function() {
-            modal.fadeIn("slow").show();
+            modal.fadeIn().show();
             body.style.overflow = "hidden";
             $.ajax({
                type: "GET",
@@ -222,7 +220,7 @@
          $("#province-select").change(function() {
             $("#destrict-select").empty();
             $("#ward-select").empty();
-            id_province = $("#province-select").val();
+            let id_province = $("#province-select").val();
             $.ajax({
                type: "GET",
                dataType: "json",
@@ -240,7 +238,7 @@
 
          $("#destrict-select").change(function() {
             $("#ward-select").empty();
-            id_destrict = $("#destrict-select").val();
+            let id_destrict = $("#destrict-select").val();
             $.ajax({
                type: "GET",
                dataType: "json",
@@ -256,14 +254,33 @@
             });
          });
 
+         $("#ward-select").mouseover(function() {
+            let id_destrict = $("#destrict-select").val();
+            if (id_destrict != null) {
+               $("#ward-select").empty();
+               $.ajax({
+                  type: "GET",
+                  dataType: "json",
+                  url: "https://provinces.open-api.vn/api/w/",
+                  success: function(data) {
+                     $.each(data, function(key, value) {
+                        if (value.district_code == id_destrict) {
+                           $('#ward-select').append(`<option value="${value.code}">${value.name}</option>`);
+                        }
+                     });
+                  }
+               });
+            }
+         });
+
          btn_close.click(function() {
-            modal.fadeOut("slow").hide();
+            modal.fadeOut();
             body.style.overflow = "auto";
          });
 
          $(window).on('click', function(e) {
             if ($(e.target).is('.modal')) {
-               modal.fadeOut("slow").hide();
+               modal.fadeOut();
                body.style.overflow = "auto";
             }
          });
@@ -288,8 +305,18 @@
                   "total_amount": total_amount,
                },
             }).done(function(data) {
-               // console.log(data);
-               location.reload();
+               Swal.fire({
+                  title: 'Cảm ơn bạn đã mua hàng!',
+                  html: 'Đang chuyển hướng về trang chủ ...',
+                  timer: 3000,
+                  timerProgressBar: true,
+                  didOpen: () => {
+                     Swal.showLoading()
+                  },
+               });
+               setTimeout(function() {
+                  location.href = 'home/';
+               }, 3000);
             })
             e.preventDefault();
          });

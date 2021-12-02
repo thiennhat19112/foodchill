@@ -216,10 +216,21 @@ if (isset($_POST["favorite"])) {
    $check = pdo_query_one($sql);
    if ($check == false) {
       $sql2 = "INSERT INTO `favorites` (`product_id`, `user_id`) VALUES ('$prod_id', '$user_id')";
+      echo '<script>swal({
+         title: "Đã thêm sản phẩm vào yêu thích",
+         icon: "success",
+         button: "Đóng",
+      });</script>';
    } else {
       $sql2 = "DELETE FROM `favorites` WHERE `favorites`.`product_id` = $prod_id AND `favorites`.`user_id` = '$user_id'";
+      echo '<script>swal({
+         title: "Đã xoá sản phẩm khỏi yêu thích",
+         icon: "success",
+         button: "Đóng",
+      });</script>';
    }
    pdo_execute($sql2);
+
    echo countFavorite($user_id);
 }  // Add to Favorite
 
@@ -237,6 +248,11 @@ if (isset($_POST["addToCart"])) {
       }
       changeQty($prod_qty, $user_id, $prod_id);
    }
+   echo '<script>swal({
+      title: "Đã thêm sản phẩm vào giỏ hàng",
+      icon: "success",
+      button: "Đóng",
+   });</script>';
    echo countCart($user_id);
 }  // Add to Cart
 
@@ -341,18 +357,19 @@ if (isset($_POST["user_id"]) && isset($_POST["address"]) && $_POST["address"] !=
    $address = $_POST["address"];
    $note_user = $_POST["receiver_note"];
    $total_amount = $_POST["total_amount"];
-   insertOrder($user_id, $receiver, $phone, $address, $total_amount, $note_user);
-   $last_order_id =  getLastOrderID($user_id);
-   $order_details = getDataToInsertOrderDetail($user_id);
-   foreach ($order_details as $key => $value) {
-      $pro_qty = $value["quantity"];
-      $pro_price = $value["price"];
-      $pro_id = $value["product_id"];
-      $total_price = $pro_qty * $pro_price;
-      insertOrderDetail($last_order_id, $pro_id, $pro_qty, $pro_price, $total_price);
-      updateProductQty(-$pro_qty, $pro_id);
+   if ($total_amount > 0) {
+      insertOrder($user_id, $receiver, $phone, $address, $total_amount, $note_user);
+      $last_order_id =  getLastOrderID($user_id);
+      $order_details = getDataToInsertOrderDetail($user_id);
+      foreach ($order_details as $key => $value) {
+         $pro_qty = $value["quantity"];
+         $pro_price = $value["price"];
+         $pro_id = $value["product_id"];
+         $total_price = $pro_qty * $pro_price;
+         insertOrderDetail($last_order_id, $pro_id, $pro_qty, $pro_price, $total_price);
+         updateProductQty(-$pro_qty, $pro_id);
+      }
+      deleteCartByUserID($user_id);
+      die(json_encode(array('exit' => 0)));
    }
-   deleteCartByUserID($user_id);
-   // $total_product = count($_SESSION["products"]);
-   // die(json_encode(array('products' => $total_product)));
 } //Payment function

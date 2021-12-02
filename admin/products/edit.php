@@ -10,7 +10,7 @@
         $infomation = $_POST['infomation'];
         $weight = $_POST['weight'];
         if($image_old ==""){
-            $target = '../upload/images/';
+            $target = '../upload/images/products/';
             $image =$_FILES['image']['name'];
             //upload ảnh
             $image_tmp = $_FILES['image']['tmp_name'];
@@ -28,7 +28,7 @@
             title: "Sửa thành công",
             icon: "success",
             button: "Đóng",
-          });</script>';
+        });</script>';
     }
 
     

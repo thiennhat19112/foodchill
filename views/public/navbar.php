@@ -50,15 +50,15 @@
    </nav>
    <div id="mobile-menu-wrap"></div>
    <div class="header__top__right__social">
-      <a href="https://vi-vn.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a>
+      <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
       <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
       <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
       <a href="#" target="_blank"><i class="fa fa-pinterest-p"></i></a>
    </div>
    <div class="humberger__menu__contact">
       <ul>
-         <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-         <li>No Free Shipping For All Orders</li>
+         <li><i class="fa fa-envelope"></i> contact@foodchill.com</li>
+         <li>Miễn phí vận chuyển cho tất cả đơn hàng</li>
       </ul>
    </div>
 </div>
@@ -72,15 +72,15 @@
             <div class="col-lg-6 col-md-6">
                <div class="header__top__left">
                   <ul>
-                     <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-                     <li>No Free Shipping For All Orders</li>
+                     <li><i class="fa fa-envelope"></i> contact@foodchill.com</li>
+                     <li>Miễn phí vận chuyển cho tất cả đơn hàng</li>
                   </ul>
                </div>
             </div>
             <div class="col-lg-6 col-md-6">
                <div class="header__top__right">
                   <div class="header__top__right__social">
-                     <a href="https://vi-vn.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a>
+                     <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
                      <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
                      <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
                      <a href="#" target="_blank"><i class="fa fa-pinterest-p"></i></a>
