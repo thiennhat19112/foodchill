@@ -1593,6 +1593,19 @@ ol {
 	-o-transition: all, 0.5s;
 	transition: all, 0.5s;
 }
+button.favorite:hover {
+	background: pink !important;
+	border-color: pink !important;
+}
+button.liked {
+	background: pink !important;
+	border-color: pink !important;
+	color: #ffffff !important;
+}
+button.favorite.liked:hover {
+	background: var(--color) !important;
+	border-color: var(--color) !important;
+}
 
 .product__item__pic__hover li button i {
 	position: relative;
@@ -3559,7 +3572,6 @@ ol {
   }
   
   body {
-    font-family: arial, sans-serif;
     box-sizing: border-box;
     color: #313a73;
   }
@@ -3568,7 +3580,6 @@ ol {
     display: none;
     position: fixed;
     z-index: 1;
-    padding-top: 90px;
     left: 0;
     top: 0;
     width: 100%;

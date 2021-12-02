@@ -179,7 +179,7 @@
     });
 
     /*-------------------
-        Quantity change
+        Change Quantity
     ---------------------*/
     var proQty = $('.pro-qty');
     proQty.prepend('<span class="dec qtybtn">-</span>');
@@ -230,8 +230,9 @@
 
 $(document).ready(function () {
 
-    filter_data();
-
+    if($('#thisIsShop').val() == 1){
+        filter_data();
+    }
     /*------------------
         Sort Product
     --------------------*/
@@ -312,7 +313,11 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
+
+// For each Product item
     $("button.favorite").click(function () {
+        $(this).toggleClass("liked"); // Change color
+
         var prod_id = $(this).val();
         var u_id = $("#user_id").val();
         if (u_id == "0") {
@@ -353,7 +358,8 @@ $(document).ready(function () {
             });
         }
     }); // Add to Cart, Not for shop
-    
+
+// For Ship
     setInterval(reload_table_shipper, 1000);
     function reload_table_shipper() {
         $('.shipping-table').load('ship/reload_table.php', function () {
@@ -371,6 +377,7 @@ $(document).ready(function () {
         });
     };  // Tải lại bảng hóa đơn cho Shipper
 
+// For Cart
     $("table.cart-table button.delete_item_cart").click(function () {
         var p_id = $(this).val();
         var tthang = $("#hidden-tongtienhang").val();
@@ -424,6 +431,7 @@ $(document).ready(function () {
         }
     }   // For upper function
 
+// For Comments
     $(".cmtBtn").click(function () {
         var id = this.id;   //Get button id with format: accId_cmtAjax_postId
         $("#" + this.id).prop('disabled', true);  //Disable Send button
@@ -457,6 +465,7 @@ $(document).ready(function () {
             });
         }
     }); //Comment Function
+
     $(".numCmts").click(function () {
         var id = this.id;
         var p_id = id.split("_")[1];
@@ -465,6 +474,7 @@ $(document).ready(function () {
             $("#cmtOf_" + p_id).toggleClass("cmt-hide");
         }
     });   //Show-Hide All Comments if Comment != 0
+
     $(".inpNewCmt").keyup(function () {
         if ($("#" + this.id).val() != '') {
             $("#" + this.id).parent().find("button").prop('disabled', false);
@@ -473,8 +483,7 @@ $(document).ready(function () {
         }
     });   //Active Send Button While Input Not Empty
 
-    //đổi mật khẩu 
-    //kiểm tra mật khẩu hiện tại 
+// For User Infomation
     $('#password_cur').blur(function (id, passwordCurrent) {
         var passwordCurrent = $('#password_cur').val()
         var id = $('#user_id').val()
@@ -500,16 +509,13 @@ $(document).ready(function () {
                             $('#password_conf').css('border', '1px solid green')
 
                             $('#saveProfile').removeAttr('disabled')
-
                         }
-
                     })
                 }
             }
         })
-    })
+    })  //Check Password Current
 
-    //đổi mậtt khẩu
     $('#saveProfile').click(function () {
         var id = $('#user_id').val()
         var passwordNew = $('#password_new').val()
@@ -528,9 +534,8 @@ $(document).ready(function () {
                 }).then(() => {
                     window.location.reload(true)
                 })
-
             }
         })
-    })
+    })  // Change Password
 
 });

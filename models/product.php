@@ -41,9 +41,9 @@ function checkFavorite($p_id, $u_id) {
    $sql = "SELECT * FROM `favorites` WHERE `product_id` = ? AND `user_id` = ?";
    $check = pdo_query_one($sql, $p_id, $u_id);
    if ($check == true) {
-      return " liked";
+      echo " liked";
    } else {
-      return "";
+      echo "";
    }
 }
 function cmtProduct($prod) {

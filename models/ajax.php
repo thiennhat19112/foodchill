@@ -137,7 +137,7 @@ if (isset($_POST["action"])) {
                         <ul class="product__item__pic__hover">
                            <li><button value="' . $v['product_id'] . '" class="favorite"><i class="fa fa-heart"></i></button></li>
                            <li>'
-            . $addToCartBtn . '
+                              . $addToCartBtn . '
                            </li>
                         </ul>
                      </div>

@@ -1,3 +1,4 @@
+   <input type="hidden" name="" id="thisIsShop" value="1">
    <!-- Hero Section Begin -->
       <section class="hero hero-normal">
          <div class="container">
