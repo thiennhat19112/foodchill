@@ -9,12 +9,14 @@
         $description = $_POST['description'];
         $infomation = $_POST['infomation'];
         $weight = $_POST['weight'];
-        if($image_old ==""){
+        $image = $_FILES['image']['name'];
+        if($image_old != $image){
             $target = '../upload/images/products/';
             $image =$_FILES['image']['name'];
             //upload ảnh
             $image_tmp = $_FILES['image']['tmp_name'];
             move_uploaded_file($image_tmp,$target.$image);
+            $image = 'upload/images/products/'.$image;
         }else{
             $image = $image_old;
         }
