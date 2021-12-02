@@ -86,10 +86,10 @@ function cmtProduct($prod) {
                      ';
             } else {
                echo '
-                        <div class="cmt-i-more">
-                           <a type="button"><i class="fas fa-ellipsis-h"></i></a>
-                        </div>
-                     ';
+                  <div class="cmt-i-more">
+                     <a type="button"><i class="fas fa-ellipsis-h"></i></a>
+                  </div>
+               ';
             };
          }
          echo '

@@ -483,6 +483,13 @@ $(document).ready(function () {
         }
     });   //Active Send Button While Input Not Empty
 
+    $(".delCmtBtn").click(function(e){
+        e.preventDefault();
+        var newid = this.id.split("_")[1];
+        var p_id = $("#"+this.id).parents('.cmt').attr("id").split("_")[1];
+        $(".delCmtConfirm").attr("id", newid+"Of"+p_id);
+        $("#delCmtModal").modal('show');
+    });   //Show Delete Comment Modal
 // For User Infomation
     $('#password_cur').blur(function (id, passwordCurrent) {
         var passwordCurrent = $('#password_cur').val()

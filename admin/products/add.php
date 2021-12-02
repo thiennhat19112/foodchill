@@ -6,13 +6,13 @@ if (isset($_POST['addProduct'])) {
     $description = $_POST['description'];
     $infomation = $_POST['infomation'];
     $weight = $_POST['weight'];
-    $target = '../upload/images/';
+    $target = '../upload/images/products/';
     $image = $_FILES['image']['name'];
     //upload ảnh
     $image_tmp = $_FILES['image']['tmp_name'];
     move_uploaded_file($image_tmp, $target . $image);
 
-    $image_data = 'upload/images/'.$image;
+    $image_data = 'upload/images/products/'.$image;
     $category_id = $_POST['category_id'];
     $discount = $_POST['discount'];
     $saled = 0;
@@ -24,7 +24,7 @@ if (isset($_POST['addProduct'])) {
         title: "Thêm thành công",
         icon: "success",
         button: "Đóng",
-      });</script>';
+    });</script>';
     
 }
 
