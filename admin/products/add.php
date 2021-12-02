@@ -12,7 +12,7 @@ if (isset($_POST['addProduct'])) {
     $image_tmp = $_FILES['image']['tmp_name'];
     move_uploaded_file($image_tmp, $target . $image);
 
-    $image = 'upload/images/'.$image;
+    $image = 'upload/images/products/'.$image;
     $category_id = $_POST['category_id'];
     $discount = $_POST['discount'];
     $saled = 0;
