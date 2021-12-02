@@ -149,13 +149,13 @@
                      </div>
                      <div class='form-input input-small'>
                         <label>Quận (huyện)</label><br />
-                        <select name="destrict" id="destrict-select" disabled>
+                        <select name="destrict" id="destrict-select">
                            <option selected value="0" hidden disabled>Chọn quận, huyện...</option>
                         </select>
                      </div>
                      <div class='form-input input-small'>
                         <label>Phường (xã)</label><br />
-                        <select name="ward" id="ward-select" disabled>
+                        <select name="ward" id="ward-select">
                            <option selected value="0" hidden disabled>Chọn phường, xã...</option>
                         </select>
                      </div>
@@ -213,7 +213,7 @@
          let btn_close = $('.close-modal');
 
          btn_payment.click(function() {
-            modal.fadeIn("slow").show();
+            modal.fadeIn().show();
             body.style.overflow = "hidden";
             $.ajax({
                type: "GET",
@@ -264,14 +264,30 @@
             });
          });
 
+         $("#ward-select").hover(function() {
+            let id_destrict = $("#destrict-select").val();
+            $.ajax({
+               type: "GET",
+               dataType: "json",
+               url: "https://provinces.open-api.vn/api/w/",
+               success: function(data) {
+                  $.each(data, function(key, value) {
+                     if (value.district_code == id_destrict) {
+                        $('#ward-select').append(`<option value="${value.code}">${value.name}</option>`);
+                     }
+                  });
+               }
+            });
+         });
+
          btn_close.click(function() {
-            modal.fadeOut("slow").hide();
+            modal.fadeOut();
             body.style.overflow = "auto";
          });
 
          $(window).on('click', function(e) {
             if ($(e.target).is('.modal')) {
-               modal.fadeOut("slow").hide();
+               modal.fadeOut();
                body.style.overflow = "auto";
             }
          });

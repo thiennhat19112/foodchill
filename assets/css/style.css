@@ -3573,6 +3573,7 @@ button.favorite.liked:hover {
   .modal {
     display: none;
     position: fixed;
+	padding-top: 11.5vh;
     z-index: 1;
     left: 0;
     top: 0;
@@ -3736,7 +3737,8 @@ button.favorite.liked:hover {
     padding-right: 10px;
   }
   .form-input label {
-    line-height: 30px;
+    line-height: 20px;
+	font-weight: bold;
     color: #313a73;
   }
   .form-input input {
@@ -3862,6 +3864,7 @@ button.favorite.liked:hover {
   }
   #form-submit input[type=submit] {
     background-color: #29d366;
+	font-weight: bold;
     border: none;
     border-radius: 3px;
     padding-top: 10px;
