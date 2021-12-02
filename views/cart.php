@@ -227,7 +227,7 @@
             });
          });
 
-         $("#province-select").change(function() {
+         $("#province-select").click(function() {
             $("#destrict-select").empty();
             $("#ward-select").empty();
             let id_province = $("#province-select").val();
@@ -246,7 +246,7 @@
             });
          });
 
-         $("#destrict-select").change(function() {
+         $("#destrict-select").click(function() {
             $("#ward-select").empty();
             let id_destrict = $("#destrict-select").val();
             $.ajax({
