@@ -230,7 +230,7 @@
          $("#province-select").change(function() {
             $("#destrict-select").empty();
             $("#ward-select").empty();
-            id_province = $("#province-select").val();
+            let id_province = $("#province-select").val();
             $.ajax({
                type: "GET",
                dataType: "json",
@@ -248,7 +248,7 @@
 
          $("#destrict-select").change(function() {
             $("#ward-select").empty();
-            id_destrict = $("#destrict-select").val();
+            let id_destrict = $("#destrict-select").val();
             $.ajax({
                type: "GET",
                dataType: "json",
@@ -297,9 +297,9 @@
                },
             }).done(function(data) {
                // console.log(data);
-               location.reload();
             })
             e.preventDefault();
+            location.reload(true);
          });
       });
    </script>
