@@ -110,7 +110,13 @@
                            ';
                         }
                      ?>
-                     <button id="like_<?=$prod['product_id']?>" value="<?= $prod['product_id'] ?>" class="favorite heart-icon"><span class="icon_heart_alt"></span></button>
+                     <button id="like_<?=$prod['product_id']?>" value="<?= $prod['product_id'] ?>" class="favorite heart-icon 
+                        <?PHP 
+                           if(isset($_SESSION['u_id'])) {
+                              checkFavorite($v['product_id'], $_SESSION['u_id']);
+                           }
+                        ?>
+                     "><span class="icon_heart_alt"></span></button>
                      <ul>
                         <li><b>Đã bán</b> <span><samp><?= $prod['saled'] ?></samp> Sản phẩm</span></li>
                         <li><b>Còn lại</b> <span><samp><?= $prod['quantity'] ?></samp> Sản phẩm</span></li>
