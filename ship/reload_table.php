@@ -20,6 +20,7 @@ $items = select_all_orders(); ?>
             foreach ($items as $item) {
                 extract($item);
             ?>
+            <tr>
                 <td><?= $receiver ?></td>
                 <td><?= $phone ?></td>
                 <td><?= $address ?></td>
@@ -35,6 +36,7 @@ $items = select_all_orders(); ?>
                         echo '<a href="javascript:void(0)" disabled="true" class="btn waves-effect waves-light btn-block btn-success">Đã hủy</a>';
                     }
                     ?></td>
+            </tr>
             <?php } ?>
         </tbody>
     </table>

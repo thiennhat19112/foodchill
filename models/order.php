@@ -1,6 +1,6 @@
 <?php
 function insertOrder($user_id, $receiver, $phone, $address, $total_amount, $receiver_note) {
-    $sql = "INSERT INTO `orders` (`order_id`, `user_id`, `receiver`, `phone`, `address`, `total_amount`, `order_date`, `shipping_date`, `receiver_note`, `admin_note`, `status`) VALUES (NULL, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, NULL, ?, NULL, '1');";
+    $sql = "INSERT INTO `orders` (`order_id`, `user_id`, `receiver`, `phone`, `address`, `total_amount`, `order_date`, `shipping_date`, `receiver_note`, `admin_note`, `status`) VALUES (NULL, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, NULL, ?, NULL, '0');";
     pdo_execute($sql, $user_id, $receiver, $phone, $address, $total_amount, $receiver_note);
 }
 

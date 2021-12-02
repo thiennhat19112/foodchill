@@ -4,7 +4,7 @@ require_once('../models/orders.php');
 $items = select_all_orders();
 ?>
     <!-- Table order-->
-        <table class="w-full  whitespace-no-wrap orders-table myTable">
+        <table class="w-full  orders-table myTable">
             <thead>
                 <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                     <th class="px-1 py-3">Khách hàng</th>
@@ -41,7 +41,7 @@ $items = select_all_orders();
                             <?= $receiver ?>
                         </td>
                         <!-- Địa điểm -->
-                        <td class="px-1 py-3 text-sm">
+                        <td class="px-1 py-3 text-sm whitespace-wrap">
                             <?= $address ?>
                         </td>
                         <!-- sdt -->
