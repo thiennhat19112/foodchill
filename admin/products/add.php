@@ -12,14 +12,14 @@ if (isset($_POST['addProduct'])) {
     $image_tmp = $_FILES['image']['tmp_name'];
     move_uploaded_file($image_tmp, $target . $image);
 
-    $image_data = 'upload/images/'.$image;
+    $image = 'upload/images/'.$image;
     $category_id = $_POST['category_id'];
     $discount = $_POST['discount'];
     $saled = 0;
     $view = 0;
     $rating = 0;
     $status = $_POST['status'];
-    insert_product($product_name, $quantity, $price, $weight, $description, $infomation, $image_data,  $category_id, $discount, $saled, $view, $rating, $status);
+    insert_product($product_name, $quantity, $price, $weight, $description, $infomation, $image,  $category_id, $discount, $saled, $view, $rating, $status);
     echo '<script>swal({
         title: "Thêm thành công",
         icon: "success",

@@ -12,19 +12,18 @@
         if($image_old ==""){
             $target = '../upload/images/';
             $image =$_FILES['image']['name'];
-            $image_data = 'upload/images/'.$image;
             //upload ảnh
             $image_tmp = $_FILES['image']['tmp_name'];
             move_uploaded_file($image_tmp,$target.$image);
         }else{
-            $image_data = $image_old;
+            $image = $image_old;
         }
         
        
         $category_id = $_POST['category_id'];
         $discount = $_POST['discount'];
         $status = $_POST['status'];
-        update_product($product_name, $quantity, $price, $weight, $description, $infomation, $image_data,  $category_id, $discount, $status, $product_id);
+        update_product($product_name, $quantity, $price, $weight, $description, $infomation, $image,  $category_id, $discount, $status, $product_id);
         echo '<script>swal({
             title: "Sửa thành công",
             icon: "success",

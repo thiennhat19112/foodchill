@@ -88,15 +88,7 @@
             </div>
          </div>
          <div class="col-lg-6">
-            <div class="shoping__continue">
-               <div class="shoping__discount">
-                  <h5>Mã giảm giá</h5>
-                  <form action="#">
-                     <input type="text" placeholder="Nhập mã giảm giá của bạn">
-                     <button type="submit" class="site-btn">Áp dụng</button>
-                  </form>
-               </div>
-            </div>
+           
          </div>
          <div class="col-lg-6">
             <div class="shoping__checkout">
