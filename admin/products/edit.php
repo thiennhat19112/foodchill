@@ -13,10 +13,10 @@
         if($image_old != $image){
             $target = '../upload/images/products/';
             $image =$_FILES['image']['name'];
-            //upload ảnh
+            // Upload new image
             $image_tmp = $_FILES['image']['tmp_name'];
             move_uploaded_file($image_tmp,$target.$image);
-            //xóa ảnh cũ
+            // Delete old image
             unlink("../".$image_old);
 
             $image = 'upload/images/products/'.$image;
@@ -35,9 +35,7 @@
             button: "Đóng",
         });</script>';
     }
-
     
-
 ?>
 <div class="container px-6 mx-auto grid">
     <div class="col-12 grid-margin stretch-card">
