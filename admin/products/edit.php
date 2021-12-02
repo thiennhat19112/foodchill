@@ -16,6 +16,9 @@
             //upload ảnh
             $image_tmp = $_FILES['image']['tmp_name'];
             move_uploaded_file($image_tmp,$target.$image);
+            //xóa ảnh cũ
+            unlink($target.$image_old);
+            
             $image = 'upload/images/products/'.$image;
         }else{
             $image = $image_old;
