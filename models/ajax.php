@@ -157,7 +157,11 @@ if (isset($_POST["action"])) {
                var prod_id = $(this).val();
                var u_id = $("#user_id").val();
                if(u_id == "0"){
-                  alert("Vui lòng đăng nhập để sử dụng chức năng này");
+                  swal({
+                     title: "Vui lòng đăng nhập để sử dụng chức năng này!",
+                     icon: "warning",
+                     button: "Đóng",
+                  })
                }else{
                   $.ajax({
                      url:"./models/ajax.php",
@@ -178,7 +182,11 @@ if (isset($_POST["action"])) {
                var u_id = $("#user_id").val();
                var qty = $("#add_qty").val();
                if (u_id == "0") {
-                  alert("Vui lòng đăng nhập để sử dụng chức năng này");
+                  swal({
+                     title: "Vui lòng đăng nhập để sử dụng chức năng này!",
+                     icon: "warning",
+                     button: "Đóng",
+                  })
                } else {
                   $.ajax({
                      url:"./models/ajax.php",
@@ -198,9 +206,17 @@ if (isset($_POST["action"])) {
             $("button.outOfStock").click(function() {
                var u_id = $("#user_id").val();
                if(u_id == "0"){
-                  alert("Vui lòng đăng nhập để sử dụng chức năng này");
+                  swal({
+                     title: "Vui lòng đăng nhập để sử dụng chức năng này!",
+                     icon: "warning",
+                     button: "Đóng",
+                  })
                } else {
-                  alert("Sản phẩm này đã hết hàng");
+                  swal({
+                     title: "Sản phẩm này đã hết hàng",
+                     icon: "warning",
+                     button: "Đóng",
+                  })
                }
             }) // Out of Stock
          </script>
