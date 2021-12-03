@@ -39,12 +39,12 @@
                      <div class="product__details__pic__item">
                         <img class="product__details__pic__item--large" src="<?= $prod['image'] ?>" alt="">
                      </div>
-                     <div class="product__details__pic__slider owl-carousel">
+                     <!-- <div class="product__details__pic__slider owl-carousel">
                         <img data-imgbigurl="./assets/images/product/details/product-details-2.jpg" src="./assets/images/product/details/thumb-1.jpg" alt="">
                         <img data-imgbigurl="./assets/images/product/details/product-details-3.jpg" src="./assets/images/product/details/thumb-2.jpg" alt="">
                         <img data-imgbigurl="./assets/images/product/details/product-details-5.jpg" src="./assets/images/product/details/thumb-3.jpg" alt="">
                         <img data-imgbigurl="./assets/images/product/details/product-details-4.jpg" src="./assets/images/product/details/thumb-4.jpg" alt="">
-                     </div>
+                     </div> -->
                   </div>
                </div>
                <div class="col-lg-6 col-md-6">
