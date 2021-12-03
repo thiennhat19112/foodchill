@@ -46,6 +46,10 @@ function checkFavorite($p_id, $u_id) {
       echo "";
    }
 }
+function updateView($p_id) {
+   $sql = "UPDATE `products` SET `view` = `view` + 1 WHERE `products`.`product_id` = ?";
+   return pdo_execute($sql, $p_id);
+}
 function searchProducts($filter) {
    $sql = "SELECT `product_id`,`product_name` FROM `products` WHERE `product_name` LIKE '%$filter%'";
    return pdo_query($sql);
