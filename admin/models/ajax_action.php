@@ -37,3 +37,11 @@ if (isset($_POST['blog-id'])) {
     $img = $_POST['img'];
     unlink("../../upload/images/blog/".$img."");
 }
+
+if(isset($_POST['order_id'])) {
+    require("orders.php");
+    require("pdo.php");
+    $id =$_POST['order_id'];
+    $items = select_once_order_detail($id);
+   echo(json_encode($items));
+}

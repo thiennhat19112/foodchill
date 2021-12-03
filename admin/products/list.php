@@ -158,7 +158,7 @@
                                         }
                                     })
                                 } else {
-                                    swal("Lỗi!")
+                                    swal("Hoàn tác")
                                 }
                             })
                         })
