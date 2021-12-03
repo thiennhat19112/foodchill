@@ -7,8 +7,14 @@ if (isset($_POST['addProduct'])) {
     $infomation = $_POST['infomation'];
     $weight = $_POST['weight'];
     $target = '../upload/images/products/';
-    $image = $_FILES['image']['name'];
-    //upload ảnh
+
+    // New file name
+    $newName = stringProcessor($product_name)."-".time();
+    $imageFileType = strtolower(pathinfo(basename($_FILES["image"]["name"]), PATHINFO_EXTENSION));
+
+    $image = $newName .".". $imageFileType;
+    
+    //Upload Image
     $image_tmp = $_FILES['image']['tmp_name'];
     move_uploaded_file($image_tmp, $target . $image);
 
