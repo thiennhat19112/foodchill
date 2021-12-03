@@ -181,66 +181,46 @@
                </div>
             </div>
             <div class="row">
-               <div class="col-lg-3 col-md-4 col-sm-6">
-                  <div class="product__item">
-                     <div class="product__item__pic set-bg" data-setbg="./assets/images/product/product-1.jpg">
-                        <ul class="product__item__pic__hover">
-                           <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                           <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                           <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                     </div>
-                     <div class="product__item__text">
-                        <h6><a href="#">Crab Pool Security</a></h6>
-                        <h5>$30.00</h5>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-lg-3 col-md-4 col-sm-6">
-                  <div class="product__item">
-                     <div class="product__item__pic set-bg" data-setbg="./assets/images/product/product-2.jpg">
-                        <ul class="product__item__pic__hover">
-                           <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                           <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                           <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                     </div>
-                     <div class="product__item__text">
-                        <h6><a href="#">Crab Pool Security</a></h6>
-                        <h5>$30.00</h5>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-lg-3 col-md-4 col-sm-6">
-                  <div class="product__item">
-                     <div class="product__item__pic set-bg" data-setbg="./assets/images/product/product-3.jpg">
-                        <ul class="product__item__pic__hover">
-                           <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                           <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                           <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                     </div>
-                     <div class="product__item__text">
-                        <h6><a href="#">Crab Pool Security</a></h6>
-                        <h5>$30.00</h5>
+               <?PHP
+                  $sql = "SELECT * FROM `products` WHERE category_id = '$prod[category_id]' AND product_id != '$prod[product_id]' ORDER BY RAND() LIMIT 4";
+                  $relatedProds = pdo_query($sql);
+                  foreach ($relatedProds as $key => $v) {
+               ?>
+                  <div class="col-lg-3 col-md-4 col-sm-6">
+                     <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="<?=$v['image']?>">
+                           <ul class="product__item__pic__hover">
+                              <li><button value="<?= $v['product_id'] ?>" class="favorite 
+                                 <?PHP 
+                                    if(isset($_SESSION['u_id'])) {
+                                       checkFavorite($v['product_id'], $_SESSION['u_id']);
+                                    }
+                                 ?>
+                              "><i class="fa fa-heart"></i></button></li>
+                              <li>
+                                 <?PHP 
+                                    if($v['quantity'] == 0) {
+                                       echo '
+                                          <button class="outOfStock"><i class="fa fa-shopping-cart"></i></button>
+                                       ';
+                                    } else {
+                                       echo '
+                                          <button value="'.$v['product_id'].'" class="addToCart"><i class="fa fa-shopping-cart"></i></button>
+                                       ';
+                                    }
+                                 ?>
+                              </li>
+                           </ul>
+                        </div>
+                        <div class="product__item__text">
+                           <h6 class="text-truncate"><a href="shop/product/<?=stringProcessor($v['product_name']) . '-' . $v['product_id'] ?>"><?=$v['product_name']?></a></h6>
+                           <h5><?= number_format($v['price'] * ((100 - $v['discount']) / 100), 0, ',', '.')?> VND</h5>
+                        </div>
                      </div>
                   </div>
-               </div>
-               <div class="col-lg-3 col-md-4 col-sm-6">
-                  <div class="product__item">
-                     <div class="product__item__pic set-bg" data-setbg="./assets/images/product/product-7.jpg">
-                        <ul class="product__item__pic__hover">
-                           <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                           <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                           <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                     </div>
-                     <div class="product__item__text">
-                        <h6><a href="#">Crab Pool Security</a></h6>
-                        <h5>$30.00</h5>
-                     </div>
-                  </div>
-               </div>
+               <?PHP
+                  }
+               ?>
             </div>
          </div>
       </section>
