@@ -4,6 +4,11 @@ function insertOrder($user_id, $receiver, $phone, $address, $total_amount, $rece
     pdo_execute($sql, $user_id, $receiver, $phone, $address, $total_amount, $receiver_note);
 }
 
+function getOrdersByUser($user_id) {
+    $sql = "SELECT `order_id`, `total_amount`, `order_date`, `status` FROM `orders` WHERE `user_id` = ?";
+    return array_reverse(pdo_query($sql, $user_id));
+}
+
 function insertOrderDetail($order_id, $product_id, $quantity, $price, $total_price) {
     $sql = "INSERT INTO `order_details` (`order_detail_id`, `order_id`, `product_id`, `quantity`, `price`, `total_price`) VALUES (NULL, ?, ?, ?, ?, ?)";
     pdo_execute($sql, $order_id, $product_id, $quantity, $price, $total_price);

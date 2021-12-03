@@ -373,3 +373,10 @@ if (isset($_POST["user_id"]) && isset($_POST["address"]) && $_POST["address"] !=
       die(json_encode(array('exit' => 0)));
    }
 } //Payment function
+
+
+if (isset($_POST["load_order"])) {
+   $user_id = $_SESSION["u_id"];
+   $orders = getOrdersByUser($user_id);
+   die(json_encode($orders));
+}
