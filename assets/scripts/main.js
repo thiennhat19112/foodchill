@@ -317,25 +317,18 @@ $(document).ready(function () {
 // Search
     $("#searchInput").keyup(function () {
         var search = $(this).val();
-        if(search != ''){
-            console.log(search);
+        if (search != '') {
             $.ajax({
                 url: "./models/ajax.php",
                 method: "POST",
                 data: { "search": search },
                 success: function (result) {
-                    var jsonResult = $.parseJSON(result);
-                    if(jsonResult.length == 0){
-                        console.log('Không tìm thấy sản phẩm');
-                    } else {
-                        for (var i = 0; i < jsonResult.length; i++) {
-                            var prod_id = jsonResult[i].split("-")[0];
-                            var prod_name = jsonResult[i].split("-")[1];
-                            console.log(prod_id, prod_name);
-                        }
-                    }
+                    $("#searchOut").attr('style', 'display: block');
+                    $("#searchOut").html(result);
                 }
             });
+        } else {
+            $("#searchOut").attr('style', 'display: none');
         }
     });
 

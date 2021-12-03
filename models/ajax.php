@@ -122,32 +122,31 @@ if (isset($_POST["action"])) {
       foreach ($result as $v) {
          if ($v['quantity'] == 0) {
             $addToCartBtn = '
-                  <button class="outOfStock"><i class="fa fa-shopping-cart"></i></button>
-               ';
+               <button class="outOfStock"><i class="fa fa-shopping-cart"></i></button>
+            ';
          } else {
             $addToCartBtn = '
-                  <button value="' . $v['product_id'] . '" class="addToCart"><i class="fa fa-shopping-cart"></i></button>
-               ';
+               <button value="' . $v['product_id'] . '" class="addToCart"><i class="fa fa-shopping-cart"></i></button>
+            ';
          }
          $output .= '
-               <div class="col-lg-4 col-md-6 col-sm-6">
-               
-                  <div class="product__item">
-                     <div class="product__item__pic set-bg" data-setbg="' . $v['image'] . '">
-                        <ul class="product__item__pic__hover">
-                           <li><button value="' . $v['product_id'] . '" class="favorite"><i class="fa fa-heart"></i></button></li>
-                           <li>'
-            . $addToCartBtn . '
-                           </li>
-                        </ul>
-                     </div>
-                     <div class="product__item__text">
-                        <h6 class="text-truncate"><a href="shop/product/' . stringProcessor($v['product_name']) . '-' . $v['product_id'] . '">' . $v['product_name'] . '</a></h6>
-                        <h5>' . number_format($v['price'] * ((100 - $v['discount']) / 100), 0, ',', '.') . ' VND</h5>
-                     </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+               <div class="product__item">
+                  <div class="product__item__pic set-bg" data-setbg="' . $v['image'] . '">
+                     <ul class="product__item__pic__hover">
+                        <li><button value="' . $v['product_id'] . '" class="favorite"><i class="fa fa-heart"></i></button></li>
+                        <li>'
+                           . $addToCartBtn . '
+                        </li>
+                     </ul>
                   </div>
+                  <div class="product__item__text">
+                     <h6 class="text-truncate"><a href="shop/product/' . stringProcessor($v['product_name']) . '-' . $v['product_id'] . '">' . $v['product_name'] . '</a></h6>
+                     <h5>' . number_format($v['price'] * ((100 - $v['discount']) / 100), 0, ',', '.') . ' VND</h5>
+                  </div>
+               </div>
             </div>
-            ';
+         ';
       }
    } else {
       $output = '<h3>Không tìm thấy sản phẩm phù hợp!</h3>';
@@ -376,9 +375,17 @@ if (isset($_POST["user_id"]) && isset($_POST["address"]) && $_POST["address"] !=
 
 if(isset($_POST["search"])){
    $product = searchProducts($_POST["search"]);
+   $output = "";
    $r = array();
-   foreach($product as $key => $value) {
-      $r[] = $value["product_id"]."-".$value["product_name"];
+   if($product){
+      foreach($product as $key => $v) {
+         $r[] = $v["product_id"]."-".$v["product_name"];
+         $output .= '
+            <p><a href="shop/product/'.stringProcessor($v['product_name'])."-".$v['product_id'].'">'.$v['product_name'].'</a></p>
+         ';
+      }
+   } else {
+      $output = '<p>Không tìm thấy sản phẩm phù hợp!</p>';
    }
-   echo json_encode($r);
+   echo $output;
 }

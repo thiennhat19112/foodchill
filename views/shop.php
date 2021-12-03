@@ -10,22 +10,12 @@
                   <div class="hero__search">
                      <div class="hero__search__form">
                         <form action="#">
-                           <input id="searchInput" type="text" placeholder="What do yo u need?">
-                           <button type="submit" class="site-btn">SEARCH</button>
+                           <input id="searchInput" type="text" placeholder="Bạn cần gì?">
+                           <button id="searchBtn" type="button" class="site-btn" disabled>Tìm kiếm</button>
                         </form>
-                        <div id="searchOut" style="
-    position: absolute;
-    height: 50px;
-    z-index: 10;
-    color: red;
-">
-                           <p>hahaha</p>
-                           <a href="">aaaaaaaa</a>
-                           <a href="">bbbbbbbb</a>
-                           <a href="">cccccccc</a>
-                        </div>
                      </div>
                   </div>
+                  <div id="searchOut"></div>
                </div>
             </div>
          </div>
