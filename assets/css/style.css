@@ -1682,7 +1682,7 @@ button.favorite.liked:hover {
 -----------------------*/
 
 .product-details {
-	padding-top: 80px;
+	padding-top: 40px;
 }
 
 .product__details__pic__item {
@@ -1896,6 +1896,26 @@ button.favorite.liked:hover {
 	margin-bottom: 70px;
 }
 
+#searchOut {
+	width: auto;
+	position: absolute;
+	z-index: 10;
+	padding: 20px;
+	background-color: lightgray;
+	font-weight: bold;
+	display: none;
+}
+#searchOut p, 
+#searchOut a {
+	font-weight: bold;
+	color: coral;
+}
+#searchOut a:hover {
+	color: white;
+}
+#searchOut p:last-child {
+	margin-bottom: 0;
+}
 /*---------------------
   Shop Cart
 -----------------------*/

@@ -314,15 +314,36 @@ $(document).ready(function () {
 
 $(document).ready(function () {
 
+// Search
+    $("#searchInput").keyup(function () {
+        var search = $(this).val();
+        if (search != '') {
+            $.ajax({
+                url: "./models/ajax.php",
+                method: "POST",
+                data: { "search": search },
+                success: function (result) {
+                    $("#searchOut").attr('style', 'display: block');
+                    $("#searchOut").html(result);
+                }
+            });
+        } else {
+            $("#searchOut").attr('style', 'display: none');
+        }
+    });
+
 // For each Product item
     $("button.favorite").click(function () {
-        $(this).toggleClass("liked"); // Change color
-
         var prod_id = $(this).val();
         var u_id = $("#user_id").val();
         if (u_id == "0") {
-            alert("Vui lòng đăng nhập để sử dụng chức năng này");
+            swal({
+                title: "Vui lòng đăng nhập để sử dụng chức năng này!",
+                icon: "warning",
+                button: "Đóng",
+            })
         } else {
+            $(this).toggleClass("liked"); // Change color
             $.ajax({
                 url: "./models/ajax.php",
                 method: "POST",
@@ -342,7 +363,11 @@ $(document).ready(function () {
         var u_id = $("#user_id").val();
         var qty = $("#add_qty").val();
         if (u_id == "0") {
-            alert("Vui lòng đăng nhập để sử dụng chức năng này");
+            swal({
+                title: "Vui lòng đăng nhập để sử dụng chức năng này!",
+                icon: "warning",
+                button: "Đóng",
+            })
         } else {
             $.ajax({
                 url: "./models/ajax.php",
@@ -402,7 +427,11 @@ $(document).ready(function () {
             $(this).val(1);
         } else if ($(this).val() > parseInt(maxQty)) {
             $(this).val(maxQty);
-            alert("Chỉ còn " + maxQty + " sản phẩm này!");
+            swal({
+                title: "Chỉ còn " + maxQty + " sản phẩm này!",
+                icon: "warning",
+                button: "Đóng",
+            });
         }
         var input_id = $(this).attr('id');
         changeQtyProdInCart(input_id);
@@ -446,7 +475,11 @@ $(document).ready(function () {
         } //Show All Comments
         console.log(u_id, p_id, cmt);
         if (u_id == "0") {
-            alert("Vui lòng đăng nhập để sử dụng chức năng này");
+            swal({
+                title: "Vui lòng đăng nhập để sử dụng chức năng này!",
+                icon: "warning",
+                button: "Đóng",
+            })
         } else {
             $.ajax({
                 type: "post",
@@ -457,7 +490,6 @@ $(document).ready(function () {
                     'content': cmt,
                 },
                 success: function (data) {
-                    // alert(data);
                     $("#cmts_" + p_id).text(numCmt);  //Show new Count Comments
                     $("#newCmt_" + p_id).append(data);  //Show cmt
                     $("[name='cmt_" + p_id + "']").trigger('reset'); //Clear text field
@@ -490,6 +522,7 @@ $(document).ready(function () {
         $(".delCmtConfirm").attr("id", newid+"Of"+p_id);
         $("#delCmtModal").modal('show');
     });   //Show Delete Comment Modal
+
 // For User Infomation
     $('#password_cur').blur(function (id, passwordCurrent) {
         var passwordCurrent = $('#password_cur').val()

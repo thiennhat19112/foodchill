@@ -4,44 +4,18 @@
          <div class="container">
             <div class="row">
                <div class="col-lg-3">
-                  <div class="hero__categories">
-                     <div class="hero__categories__all">
-                        <i class="fa fa-bars"></i>
-                        <span>Danh mục</span>
-                     </div>
-                     <ul>
-                        <?PHP
-                        foreach ($cates as $key => $value) {
-                        ?>
-                           <li><a href="#"><?= $value['category_name'] ?></a></li>
-                        <?PHP
-                        }
-                        ?>
-                     </ul>
-                  </div>
+                  
                </div>
                <div class="col-lg-9">
                   <div class="hero__search">
                      <div class="hero__search__form">
                         <form action="#">
-                           <div class="hero__search__categories">
-                              Tất cả danh mục
-                              <span class="arrow_carrot-down"></span>
-                           </div>
-                           <input type="text" placeholder="What do yo u need?">
-                           <button type="submit" class="site-btn">SEARCH</button>
+                           <input id="searchInput" type="text" placeholder="Bạn cần gì?">
+                           <button id="searchBtn" type="button" class="site-btn" disabled>Tìm kiếm</button>
                         </form>
                      </div>
-                     <div class="hero__search__phone">
-                        <div class="hero__search__phone__icon">
-                           <i class="fa fa-phone"></i>
-                        </div>
-                        <div class="hero__search__phone__text">
-                           <h5>+65 11.188.888</h5>
-                           <span>support 24/7 time</span>
-                        </div>
-                     </div>
                   </div>
+                  <div id="searchOut"></div>
                </div>
             </div>
          </div>

@@ -122,32 +122,31 @@ if (isset($_POST["action"])) {
       foreach ($result as $v) {
          if ($v['quantity'] == 0) {
             $addToCartBtn = '
-                  <button class="outOfStock"><i class="fa fa-shopping-cart"></i></button>
-               ';
+               <button class="outOfStock"><i class="fa fa-shopping-cart"></i></button>
+            ';
          } else {
             $addToCartBtn = '
-                  <button value="' . $v['product_id'] . '" class="addToCart"><i class="fa fa-shopping-cart"></i></button>
-               ';
+               <button value="' . $v['product_id'] . '" class="addToCart"><i class="fa fa-shopping-cart"></i></button>
+            ';
          }
          $output .= '
-               <div class="col-lg-4 col-md-6 col-sm-6">
-               
-                  <div class="product__item">
-                     <div class="product__item__pic set-bg" data-setbg="' . $v['image'] . '">
-                        <ul class="product__item__pic__hover">
-                           <li><button value="' . $v['product_id'] . '" class="favorite"><i class="fa fa-heart"></i></button></li>
-                           <li>'
+            <div class="col-lg-4 col-md-6 col-sm-6">
+               <div class="product__item">
+                  <div class="product__item__pic set-bg" data-setbg="' . $v['image'] . '">
+                     <ul class="product__item__pic__hover">
+                        <li><button value="' . $v['product_id'] . '" class="favorite"><i class="fa fa-heart"></i></button></li>
+                        <li>'
             . $addToCartBtn . '
-                           </li>
-                        </ul>
-                     </div>
-                     <div class="product__item__text">
-                        <h6 class="text-truncate"><a href="shop/product/' . stringProcessor($v['product_name']) . '-' . $v['product_id'] . '">' . $v['product_name'] . '</a></h6>
-                        <h5>' . number_format($v['price'] * ((100 - $v['discount']) / 100), 0, ',', '.') . ' VND</h5>
-                     </div>
+                        </li>
+                     </ul>
                   </div>
+                  <div class="product__item__text">
+                     <h6 class="text-truncate"><a href="shop/product/' . stringProcessor($v['product_name']) . '-' . $v['product_id'] . '">' . $v['product_name'] . '</a></h6>
+                     <h5>' . number_format($v['price'] * ((100 - $v['discount']) / 100), 0, ',', '.') . ' VND</h5>
+                  </div>
+               </div>
             </div>
-            ';
+         ';
       }
    } else {
       $output = '<h3>Không tìm thấy sản phẩm phù hợp!</h3>';
@@ -158,7 +157,11 @@ if (isset($_POST["action"])) {
                var prod_id = $(this).val();
                var u_id = $("#user_id").val();
                if(u_id == "0"){
-                  alert("Vui lòng đăng nhập để sử dụng chức năng này");
+                  swal({
+                     title: "Vui lòng đăng nhập để sử dụng chức năng này!",
+                     icon: "warning",
+                     button: "Đóng",
+                  })
                }else{
                   $.ajax({
                      url:"./models/ajax.php",
@@ -179,7 +182,11 @@ if (isset($_POST["action"])) {
                var u_id = $("#user_id").val();
                var qty = $("#add_qty").val();
                if (u_id == "0") {
-                  alert("Vui lòng đăng nhập để sử dụng chức năng này");
+                  swal({
+                     title: "Vui lòng đăng nhập để sử dụng chức năng này!",
+                     icon: "warning",
+                     button: "Đóng",
+                  })
                } else {
                   $.ajax({
                      url:"./models/ajax.php",
@@ -199,9 +206,17 @@ if (isset($_POST["action"])) {
             $("button.outOfStock").click(function() {
                var u_id = $("#user_id").val();
                if(u_id == "0"){
-                  alert("Vui lòng đăng nhập để sử dụng chức năng này");
+                  swal({
+                     title: "Vui lòng đăng nhập để sử dụng chức năng này!",
+                     icon: "warning",
+                     button: "Đóng",
+                  })
                } else {
-                  alert("Sản phẩm này đã hết hàng");
+                  swal({
+                     title: "Sản phẩm này đã hết hàng",
+                     icon: "warning",
+                     button: "Đóng",
+                  })
                }
             }) // Out of Stock
          </script>
@@ -286,7 +301,7 @@ if (isset($_POST["changeQtyProd"])) {
          number_format($tong, 0, ',', '.')
       )
    );
-}  // Change Quantity of Cart
+}  // Change Quantity of Product in Cart
 
 if (isset($_POST["product_cart_remove"]) && isset($_SESSION["u_id"])) {
    $user_id = $_SESSION["u_id"];
@@ -379,4 +394,20 @@ if (isset($_POST["load_order"])) {
    $user_id = $_SESSION["u_id"];
    $orders = getOrdersByUser($user_id);
    die(json_encode($orders));
+}
+if (isset($_POST["search"])) {
+   $product = searchProducts($_POST["search"]);
+   $output = "";
+   $r = array();
+   if ($product) {
+      foreach ($product as $key => $v) {
+         $r[] = $v["product_id"] . "-" . $v["product_name"];
+         $output .= '
+            <p><a href="shop/product/' . stringProcessor($v['product_name']) . "-" . $v['product_id'] . '">' . $v['product_name'] . '</a></p>
+         ';
+      }
+   } else {
+      $output = '<p>Không tìm thấy sản phẩm phù hợp!</p>';
+   }
+   echo $output;
 }

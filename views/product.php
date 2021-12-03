@@ -8,52 +8,22 @@
    <!-- Lấy user_id cho ajax -->
 
    <!-- Hero Section Begin -->
-      <section class="hero hero-normal">
+   <section class="hero hero-normal">
          <div class="container">
             <div class="row">
                <div class="col-lg-3">
-                  <div class="hero__categories">
-                     <div class="hero__categories__all">
-                        <i class="fa fa-bars"></i>
-                        <span>All departments</span>
-                     </div>
-                     <ul>
-                        <li><a href="#">Fresh Meat</a></li>
-                        <li><a href="#">Vegetables</a></li>
-                        <li><a href="#">Fruit & Nut Gifts</a></li>
-                        <li><a href="#">Fresh Berries</a></li>
-                        <li><a href="#">Ocean Foods</a></li>
-                        <li><a href="#">Butter & Eggs</a></li>
-                        <li><a href="#">Fastfood</a></li>
-                        <li><a href="#">Fresh Onion</a></li>
-                        <li><a href="#">Papayaya & Crisps</a></li>
-                        <li><a href="#">Oatmeal</a></li>
-                        <li><a href="#">Fresh Bananas</a></li>
-                     </ul>
-                  </div>
+                  
                </div>
                <div class="col-lg-9">
                   <div class="hero__search">
                      <div class="hero__search__form">
                         <form action="#">
-                           <div class="hero__search__categories">
-                              All Categories
-                              <span class="arrow_carrot-down"></span>
-                           </div>
-                           <input type="text" placeholder="What do yo u need?">
-                           <button type="submit" class="site-btn">SEARCH</button>
+                           <input id="searchInput" type="text" placeholder="Bạn cần gì?">
+                           <button id="searchBtn" type="button" class="site-btn" disabled>Tìm kiếm</button>
                         </form>
                      </div>
-                     <div class="hero__search__phone">
-                        <div class="hero__search__phone__icon">
-                           <i class="fa fa-phone"></i>
-                        </div>
-                        <div class="hero__search__phone__text">
-                           <h5>+65 11.188.888</h5>
-                           <span>support 24/7 time</span>
-                        </div>
-                     </div>
                   </div>
+                  <div id="searchOut"></div>
                </div>
             </div>
          </div>
@@ -162,25 +132,34 @@
                         </div>
                         <div class="tab-pane" id="product-reviews" role="tabpanel">
                            <div class="product__details__tab__desc">
-                              <div class="send-cmt">
-                                 <form onSubmit="return false;" name="cmt_<?=$prod['product_id']?>">
-                                    <div class="">
-                                       <input type="text" minlength="1" maxlength="200"
-                                          name="newCmtOfProd_<?=$prod['product_id']?>" id="newCmtOf_<?=$prod['product_id']?>" 
-                                          class="inpNewCmt" placeholder="Viết bình luận..." required>
-                                       <button class="cmtBtn" type="button" name="" id="cmt_<?=$prod['product_id']?>" disabled>
-                                          <i class="fas fa-rocket"></i>
-                                       </button>
-                                    </div>
-                                 </form>
-                              </div>
                               <div class="cmt cmt-hide" id="cmtOf_<?=$prod['product_id']?>">
-                                 <?= cmtProduct($prod['product_id']);?>
-                              <!-- Show New Comment ajax -->
-                                 <div id="newCmt_<?=$prod['product_id']?>">
+                                    <?= cmtProduct($prod['product_id']);?>
+                                 <!-- Show New Comment ajax -->
+                                    <div id="newCmt_<?=$prod['product_id']?>">
 
+                                    </div>
                                  </div>
-                              </div>
+                              <?PHP 
+                                 if(isset($_SESSION['u_id'])) {
+                              ?>
+                                 <div class="send-cmt">
+                                    <form onSubmit="return false;" name="cmt_<?=$prod['product_id']?>">
+                                       <div class="">
+                                          <input type="text" minlength="1" maxlength="200"
+                                             name="newCmtOfProd_<?=$prod['product_id']?>" id="newCmtOf_<?=$prod['product_id']?>" 
+                                             class="inpNewCmt" placeholder="Viết bình luận..." required>
+                                          <button class="cmtBtn" type="button" name="" id="cmt_<?=$prod['product_id']?>" disabled>
+                                             <i class="fas fa-rocket"></i>
+                                          </button>
+                                       </div>
+                                    </form>
+                                 </div>
+                                 
+                              <?PHP
+                                 } else {
+                                    echo '<h4 style="text-align: center; font-weight: bold; color: coral">Vui lòng đăng nhập để bình luận!<h4>';
+                                 }
+                              ?>
                            </div>
                         </div>
                      </div>
