@@ -46,6 +46,10 @@ function checkFavorite($p_id, $u_id) {
       echo "";
    }
 }
+function searchProducts($filter) {
+   $sql = "SELECT `product_id`,`product_name` FROM `products` WHERE `product_name` LIKE '%$filter%'";
+   return pdo_query($sql);
+}
 function cmtProduct($prod) {
    $sql = "SELECT * FROM `comments` WHERE `product_id` = ?";
    $result = pdo_query($sql, $prod);

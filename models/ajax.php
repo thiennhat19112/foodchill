@@ -286,7 +286,7 @@ if (isset($_POST["changeQtyProd"])) {
          number_format($tong, 0, ',', '.')
       )
    );
-}  // Change Quantity of Cart
+}  // Change Quantity of Product in Cart
 
 if (isset($_POST["product_cart_remove"]) && isset($_SESSION["u_id"])) {
    $user_id = $_SESSION["u_id"];
@@ -373,3 +373,12 @@ if (isset($_POST["user_id"]) && isset($_POST["address"]) && $_POST["address"] !=
       die(json_encode(array('exit' => 0)));
    }
 } //Payment function
+
+if(isset($_POST["search"])){
+   $product = searchProducts($_POST["search"]);
+   $r = array();
+   foreach($product as $key => $value) {
+      $r[] = $value["product_id"]."-".$value["product_name"];
+   }
+   echo json_encode($r);
+}

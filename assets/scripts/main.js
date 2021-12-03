@@ -314,6 +314,31 @@ $(document).ready(function () {
 
 $(document).ready(function () {
 
+// Search
+    $("#searchInput").keyup(function () {
+        var search = $(this).val();
+        if(search != ''){
+            console.log(search);
+            $.ajax({
+                url: "./models/ajax.php",
+                method: "POST",
+                data: { "search": search },
+                success: function (result) {
+                    var jsonResult = $.parseJSON(result);
+                    if(jsonResult.length == 0){
+                        console.log('Không tìm thấy sản phẩm');
+                    } else {
+                        for (var i = 0; i < jsonResult.length; i++) {
+                            var prod_id = jsonResult[i].split("-")[0];
+                            var prod_name = jsonResult[i].split("-")[1];
+                            console.log(prod_id, prod_name);
+                        }
+                    }
+                }
+            });
+        }
+    });
+
 // For each Product item
     $("button.favorite").click(function () {
         $(this).toggleClass("liked"); // Change color
@@ -490,6 +515,7 @@ $(document).ready(function () {
         $(".delCmtConfirm").attr("id", newid+"Of"+p_id);
         $("#delCmtModal").modal('show');
     });   //Show Delete Comment Modal
+
 // For User Infomation
     $('#password_cur').blur(function (id, passwordCurrent) {
         var passwordCurrent = $('#password_cur').val()
