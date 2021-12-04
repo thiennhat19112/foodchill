@@ -32,7 +32,7 @@
                             <td class="px-4 py-3 text-sm">
                                 <?= $comment_content ?> </td>
                             <td class="px-4 py-3 text-sm">
-                                <?= $create_date ?>
+                                <?= date('d-m-Y', strtotime($create_date)); ?>
                             </td>
                             <td class="px-4 py-3 text-sm">
                                 <?= $product_name ?>
@@ -97,7 +97,7 @@
                                         })
 
                                     } else {
-                                        swal("Lỗi!")
+                                       
                                     }
                                 })
 

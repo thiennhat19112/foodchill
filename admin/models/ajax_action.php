@@ -45,3 +45,11 @@ if(isset($_POST['order_id'])) {
     $items = select_once_order_detail($id);
    echo(json_encode($items));
 }
+
+if(isset($_POST['admin_note'])) {
+    require("orders.php");
+    require("pdo.php");
+    $id =$_POST['id'];
+    $admin_note = $_POST['admin_note'];
+    update_admin_note($admin_note, $id);
+}

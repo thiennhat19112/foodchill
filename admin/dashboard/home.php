@@ -89,7 +89,7 @@
                                     <?= $receiver_note ?>
                                 </td>
                                 <!-- ghi chú admin -->
-                                <td class="px-2 py-3 text-sm">
+                                <td data-order-id="<?= $order_id ?>" contenteditable="true" class="px-2 py-3 text-sm admin_note">
                                     <?= $admin_note ?>
                                 </td>
                                 <td>
@@ -110,18 +110,28 @@
             </div>
         </div>
         <div class=" overflow-x-auto modal">
-            <table class="order-details inset-1/2">
-                <thead>
-                    <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-                        <th class="px-2 py-3">Tên sản phẩm</th>
-                        <th class="px-2 py-3">Số lượng</th>
-                        <th class="px-2 py-3">Giá sản phẩm</th>
-                        <th class="px-2 py-3">Tổng giá sản phẩm</th>
-                    </tr>
-                </thead>
-                <tbody class="bg-white divide-y " id="table-order-details">
-                </tbody>
-            </table>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <table class="order-details p-5 w-2/4 ">
+                        <thead>
+                            <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                                <th class="px-2 py-3">Tên sản phẩm</th>
+                                <th class="px-2 py-3">Số lượng</th>
+                                <th class="px-2 py-3">Giá sản phẩm</th>
+                                <th class="px-2 py-3">Tổng giá</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y " id="table-order-details">
+                        </tbody>
+
+
+
+                    </table>
+                    <div class="modal-footer">
+                        <input type="button" data-dismiss="modal" class="btn btn-danger close-orderDetails" value="Đóng">
+                    </div>
+                </div>
+            </div>
         </div>
         <script>
             $(document).ready(function() {
@@ -157,6 +167,26 @@
                                 $('#table-order-details').append(orderDetails_str)
                             }
                             $('.modal').fadeIn().show()
+                        }
+                    })
+                })
+
+                $('.close-orderDetails').click(function() {
+                    $('.modal').hide()
+                })
+
+                $('.admin_note').blur(function() {
+                    var admin_note = $(this).html()
+                    var id = $(this).data('order-id')
+                    $.ajax({
+                        type: 'POST',
+                        url: 'models/ajax_action.php',
+                        data: {
+                            'admin_note': admin_note,
+                            'id': id
+                        },
+                        success: function(data) {
+                            window.location.reload(true)
                         }
                     })
                 })
