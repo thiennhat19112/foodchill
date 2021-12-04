@@ -1,7 +1,7 @@
 <?php
 function select_all_orders()
 {
-    $sql = "SELECT users.user_name,receiver,address,phone,total_amount,order_date,shipping_date,receiver_note,admin_note, orders.status
+    $sql = "SELECT users.user_name,receiver,address,phone,total_amount,order_date,shipping_date,receiver_note,admin_note, orders.status,order_id
     FROM orders INNER JOIN users on orders.user_id = users.user_id order by orders.order_id desc;";
     return pdo_query($sql);
 }

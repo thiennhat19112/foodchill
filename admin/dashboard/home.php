@@ -187,7 +187,8 @@
                             'id': id
                         },
                         success: function(data) {
-                            window.location.reload(true)
+                            console.log(data)
+                        //    location.reload(true)
                         }
                     })
                 })
