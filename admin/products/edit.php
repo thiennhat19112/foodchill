@@ -1,14 +1,15 @@
 <?php
     $image_old = $image;
+
     if (isset($_POST['editProduct']))
     {
         $product_id = $_POST['product_id'];
         $product_name = $_POST['product_name'];
         $quantity = $_POST['quantity'];
         $price = $_POST['price'];
+        $weight = $_POST['weight'];
         $description = $_POST['description'];
         $infomation = $_POST['infomation'];
-        $weight = $_POST['weight'];
         $image = $_FILES['image']['name'];
         if($image_old != $image){
             $target = '../upload/images/products/';
@@ -24,7 +25,6 @@
             $image = $image_old;
         }
         
-       
         $category_id = $_POST['category_id'];
         $discount = $_POST['discount'];
         $status = $_POST['status'];

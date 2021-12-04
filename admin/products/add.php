@@ -3,9 +3,9 @@ if (isset($_POST['addProduct'])) {
     $product_name = $_POST['product_name'];
     $quantity = $_POST['quantity'];
     $price = $_POST['price'];
+    $weight = $_POST['weight'];
     $description = $_POST['description'];
     $infomation = $_POST['infomation'];
-    $weight = $_POST['weight'];
     $target = '../upload/images/products/';
 
     // New file name
