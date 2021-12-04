@@ -1,8 +1,6 @@
 <?php
-    $image_old = $image;
-
-    if (isset($_POST['editProduct']))
-    {
+    $image_old = $image; // Set old image
+    if (isset($_POST['editProduct'])) {
         $product_id = $_POST['product_id'];
         $product_name = $_POST['product_name'];
         $quantity = $_POST['quantity'];
@@ -10,16 +8,23 @@
         $weight = $_POST['weight'];
         $description = $_POST['description'];
         $infomation = $_POST['infomation'];
-        $image = $_FILES['image']['name'];
-        if($image_old != $image){
+
+        $image = $_FILES['image']['name']; // Get file's name
+        if($image != ""){   // If have new file => not empty
             $target = '../upload/images/products/';
-            $image =$_FILES['image']['name'];
-            // Upload new image
+            
+            // Rename file
+            $newName = stringProcessor($product_name)."-".time();
+            $imageFileType = strtolower(pathinfo(basename($_FILES["image"]["name"]), PATHINFO_EXTENSION));
+            $image = $newName .".". $imageFileType;
+            
+            // Upload Image
             $image_tmp = $_FILES['image']['tmp_name'];
-            move_uploaded_file($image_tmp,$target.$image);
+            move_uploaded_file($image_tmp, $target . $image);
+
             // Delete old image
             unlink("../".$image_old);
-
+            
             $image = 'upload/images/products/'.$image;
         }else{
             $image = $image_old;
@@ -28,13 +33,17 @@
         $category_id = $_POST['category_id'];
         $discount = $_POST['discount'];
         $status = $_POST['status'];
+
         update_product($product_name, $quantity, $price, $weight, $description, $infomation, $image,  $category_id, $discount, $status, $product_id);
-        echo '<script>swal({
-            title: "Sửa thành công",
-            icon: "success",
-            button: "Đóng",
-        });</script>';
-    }
+
+        echo '
+            <script>swal({
+                title: "Sửa thành công",
+                icon: "success",
+                button: "Đóng",
+            });</script>
+        ';
+    }   // Edit product
     
 ?>
 <div class="container px-6 mx-auto grid">
@@ -83,7 +92,7 @@
                     </div>
                     <div class="form-group">
                         <label for="prodImage">Hình ảnh</label>
-                        <input type="file" name="image" class="dropify" data-max-file-size="2M" data-max-height="2000" data-default-file="../<?= $image ?>" id="prodImage">
+                        <input type="file" name="image" class="dropify" data-max-file-size="2M" data-max-height="2000" data-default-file="../<?= $image ?>" value="<?=$image?>">
                         <?php if($image!=""){
                             echo '<span name="image_old" value = "'.$image.'"></span>';
                         }?>
