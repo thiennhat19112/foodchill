@@ -19427,7 +19427,7 @@ input:focus {
 /* Typography */
 body {
   font-size: 1rem;
-  font-family: "Nunito", sans-serif;
+  /* font-family: "Nunito", sans-serif; */
   font-weight: initial;
   line-height: normal;
   -webkit-font-smoothing: antialiased;
@@ -19685,7 +19685,7 @@ pre {
 code {
   padding: 5px;
   color: #FF4747;
-  font-family: "Nunito", sans-serif;
+  /* font-family: "Nunito", sans-serif; */
   font-weight: 300;
   font-size: 0.875rem;
   border-radius: 4px;
@@ -19700,7 +19700,7 @@ code {
   -webkit-transition: all 0.25s ease;
   -ms-transition: all 0.25s ease;
   font-size: calc(0.875rem - 0.05rem);
-  font-family: "Nunito", sans-serif;
+  /* font-family: "Nunito", sans-serif; */
   font-weight: 400;
   border-top: 1px solid rgba(0, 0, 0, 0.06);
 }
@@ -23743,7 +23743,7 @@ dl li {
   padding-left: 0;
   position: relative;
   margin-bottom: 0;
-  font-family: "Nunito", sans-serif;
+  /* font-family: "Nunito", sans-serif; */
 }
 
 .icon-data-list li {
@@ -26373,7 +26373,7 @@ table.dataTable tbody td.select-checkbox:after {
 
 .datepicker.datepicker-dropdown .datepicker-days table.table-condensed thead tr th.dow,
 .datepicker.datepicker-inline .datepicker-days table.table-condensed thead tr th.dow {
-  font-family: "Nunito", sans-serif;
+  /* font-family: "Nunito", sans-serif; */
   color: #1F1F1F;
   font-size: 0.875rem;
   font-weight: initial;
@@ -28438,7 +28438,7 @@ div.tagsinput span.tag a {
 .sidebar {
   min-height: calc(100vh - 60px);
   background: #fff;
-  font-family: "Nunito", sans-serif;
+  /* font-family: "Nunito", sans-serif; */
   font-weight: 500;
   padding: 0;
   width: 235px;
@@ -30272,7 +30272,7 @@ div.tagsinput span.tag a {
 .settings-panel .settings-heading {
   padding: 16px 0 13px 35px;
   font-size: 0.875rem;
-  font-family: "Nunito", sans-serif;
+  /* font-family: "Nunito", sans-serif; */
   font-weight: 500;
   line-height: 1;
   color: rgba(0, 0, 0, 0.9);
@@ -30467,7 +30467,7 @@ div.tagsinput span.tag a {
 }
 
 .settings-panel .events p {
-  font-family: "Nunito", sans-serif;
+  /* font-family: "Nunito", sans-serif; */
   font-weight: 400;
 }
 
