@@ -2,7 +2,8 @@
       <footer class="footer spad">
          <div class="container">
             <div class="row">
-               <div class="col-lg-3 col-md-6 col-sm-6">
+               <div class="col-lg-2 col-md-1 col-sm-1"></div>
+               <div class="col-lg-4 col-md-5 col-sm-5">
                   <div class="footer__about">
                      <div class="footer__about__logo">
                         <a href="home/"><img src="./assets/images/logo.png" alt=""></a>
@@ -13,16 +14,8 @@
                         <li>Email: contact@foodchill.com</li>
                      </ul>
                   </div>
-                  <div class="footer__widget">
-                     <div class="footer__widget__social">
-                        <a href="https://github.com/thiennhat19112/foodchill" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
-                        <a href="#" target="_blank"><i class="fa fa-instagram"></i></a>
-                        <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-                     </div>
-                  </div>
                </div>
-               <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
+               <!-- <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
                   <div class="footer__widget">
                      <h6>Liên kết hữu ích</h6>
                      <ul>
@@ -42,14 +35,22 @@
                         <li><a href="#">Testimonials</a></li>
                      </ul>
                   </div>
-               </div>
-               <div class="col-lg-4 col-md-12">
-               <div class="footer__copyright">
+               </div> -->
+               <div class="col-lg-4 col-md-5 col-sm-5">
+                  <div class="footer__widget">
+                     <div class="footer__widget__social">
+                        <a href="https://github.com/thiennhat19112/foodchill" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a href="#" target="_blank"><i class="fa fa-instagram"></i></a>
+                        <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+                     </div>
+                  </div>
+                  <div class="footer__copyright">
                      <div class="footer__copyright__text"><p>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-   Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+   Copyright FoodChill&copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></div>
-                     <div class="footer__copyright__payment"><img src="./assets/images/payment-item.png" alt=""></div>
+                     <!-- <div class="footer__copyright__payment"><img src="./assets/images/payment-item.png" alt=""></div> -->
                   </div>
                </div>
             </div>

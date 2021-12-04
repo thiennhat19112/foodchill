@@ -24,28 +24,28 @@
                <div class="contact__widget">
                   <span class="icon_phone"></span>
                   <h4>Điện thoại</h4>
-                  <p>+01-3-8888-6868</p>
+                  <p>+84 123.456.789</p>
                </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 text-center">
                <div class="contact__widget">
                   <span class="icon_pin_alt"></span>
                   <h4>Địa chỉ</h4>
-                  <p>60-49 Road 11378 New York</p>
+                  <p>Cao đẳng FPT Polytechnic CS3</p>
                </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 text-center">
                <div class="contact__widget">
                   <span class="icon_clock_alt"></span>
                   <h4>Giờ mở cửa</h4>
-                  <p>10:00 am to 23:00 pm</p>
+                  <p>Cả ngày</p>
                </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 text-center">
                <div class="contact__widget">
                   <span class="icon_mail_alt"></span>
                   <h4>Email</h4>
-                  <p>hello@colorlib.com</p>
+                  <p>contact@foodchill.com</p>
                </div>
             </div>
          </div>
