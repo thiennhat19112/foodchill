@@ -163,7 +163,6 @@ if (isset($_POST["action"])) {
                      button: "Đóng",
                   })
                }else{
-                  $(this).toggleClass("liked");
                   $.ajax({
                      url:"./models/ajax.php",
                      method:"POST",
