@@ -230,7 +230,7 @@
 
 $(document).ready(function () {
 
-    if($('#thisIsShop').val() == 1){
+    if ($('#thisIsShop').val() == 1) {
         filter_data();
     }
     /*------------------
@@ -314,7 +314,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
 
-// Search
+    // Search
     $("#searchInput").keyup(function () {
         var search = $(this).val();
         if (search != '') {
@@ -332,7 +332,7 @@ $(document).ready(function () {
         }
     });
 
-// For each Product item
+    // For each Product item
     $("button.favorite").click(function () {
         var prod_id = $(this).val();
         var u_id = $("#user_id").val();
@@ -384,7 +384,7 @@ $(document).ready(function () {
         }
     }); // Add to Cart, Not for shop
 
-// For Ship
+    // For Ship
     setInterval(reload_table_shipper, 1000);
     function reload_table_shipper() {
         $('.shipping-table').load('ship/reload_table.php', function () {
@@ -402,7 +402,7 @@ $(document).ready(function () {
         });
     };  // Tải lại bảng hóa đơn cho Shipper
 
-// For Cart
+    // For Cart
     $("table.cart-table button.delete_item_cart").click(function () {
         var p_id = $(this).val();
         var tthang = $("#hidden-tongtienhang").val();
@@ -460,7 +460,7 @@ $(document).ready(function () {
         }
     }   // For upper function
 
-// For Comments
+    // For Comments
     $(".cmtBtn").click(function () {
         var id = this.id;   //Get button id with format: accId_cmtAjax_postId
         $("#" + this.id).prop('disabled', true);  //Disable Send button
@@ -515,15 +515,15 @@ $(document).ready(function () {
         }
     });   //Active Send Button While Input Not Empty
 
-    $(".delCmtBtn").click(function(e){
+    $(".delCmtBtn").click(function (e) {
         e.preventDefault();
         var newid = this.id.split("_")[1];
-        var p_id = $("#"+this.id).parents('.cmt').attr("id").split("_")[1];
-        $(".delCmtConfirm").attr("id", newid+"Of"+p_id);
+        var p_id = $("#" + this.id).parents('.cmt').attr("id").split("_")[1];
+        $(".delCmtConfirm").attr("id", newid + "Of" + p_id);
         $("#delCmtModal").modal('show');
     });   //Show Delete Comment Modal
 
-// For User Infomation
+    // For User Infomation
     $('#password_cur').blur(function (id, passwordCurrent) {
         var passwordCurrent = $('#password_cur').val()
         var id = $('#user_id').val()
@@ -578,4 +578,70 @@ $(document).ready(function () {
         })
     })  // Change Password
 
+    new jBox('Modal', {
+        attach: '#load-order',
+        height: 300,
+        width: 700,
+        closeButton: 'title',
+        animation: 'zoomIn',
+        title: 'Đơn hàng của bạn',
+        ajax: {
+            url: './models/ajax.php',
+            data: {
+                'load_order': true,
+            },
+            method: 'post',
+            reload: 'strict',
+            setContent: false,
+            beforeSend: function () {
+                $(".jBox-content").empty();
+                $(".order-tbody").empty();
+                this.setContent('');
+                this.setTitle(
+                    '<b class="ajax-sending">Đang tải đơn hàng...</b>'
+                );
+            },
+            complete: function () {
+                this.setTitle('<b class="ajax-complete">Đơn hàng của bạn</b>');
+            },
+            success: function (data) {
+                $(".jBox-content").append("<table class='table widget-26'> <tbody class='order-tbody'> </tbody> </table>");
+                data = jQuery.parseJSON(data);
+                console.log(data);
+                $.each(data, function (key, value) {
+                    $('.order-tbody').append(`
+                        <tr>
+                            <td>
+                                <div class="widget-26-job-emp-img">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="Company" />
+                                </div>
+                            </td>
+                            <td>
+                                <div class="widget-26-job-title">
+                                    <a href="#">Senior Software Engineer / Developer</a>
+                                    <p class="m-0"><a href="#" class="employer-name">Đơn hàng #${value.order_id}</a> <span class="text-muted time"> ${value.order_date}</span></p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="widget-26-job-info">
+                                    <p class="type m-0">Tổng đơn hàng:</p>
+                                    <p class="text-muted m-0"><span class="location">${value.total_amount}</span></p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="widget-26-job-category bg-soft-base">
+                                    <span>${value.status}Đã tiếp nhận</span>
+                                </div>
+                            </td>
+                        </tr>
+                    `);
+                });
+            },
+            error: function () {
+                this.setContent(
+                    '<div class="ajax-error">Có lỗi xảy ra</div>'
+                );
+            }
+        }
+    });
 });

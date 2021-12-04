@@ -3583,12 +3583,10 @@ button.favorite.liked:hover {
 }
 
 
-/* confirm order */
-* {
-    box-sizing: border-box;
-  }
-  
-  
+	/* confirm order */
+	* {
+		box-sizing: border-box;
+	}
 
   .modal {
     display: none;
@@ -3908,4 +3906,145 @@ button.favorite.liked:hover {
     #form-submit input[type=submit] {
       width: 100%;
     }
+  }
+
+
+/* Show order */
+.widget-26 {
+	color: #3c4142;
+	font-weight: 400;
+	border-bottom: 0;
+	margin-bottom: 0;
+}
+
+.widget-26 tr:first-child td {
+	border: 0;
+}
+
+.widget-26 .widget-26-job-emp-img img {
+	width: 35px;
+	height: 35px;
+	border-radius: 50%;
+}
+
+.widget-26 .widget-26-job-title {
+	min-width: 200px;
+}
+
+.widget-26 .widget-26-job-title a {
+	font-weight: 400;
+	font-size: 0.875rem;
+	color: #3c4142;
+	line-height: 1.5;
+}
+
+.widget-26 .widget-26-job-title a:hover {
+	color: #68CBD7;
+	text-decoration: none;
+}
+
+.widget-26 .widget-26-job-title .employer-name {
+	margin: 0;
+	line-height: 1.5;
+	font-weight: 400;
+	color: #3c4142;
+	font-size: 0.8125rem;
+	color: #3c4142;
+}
+
+.widget-26 .widget-26-job-title .employer-name:hover {
+	color: #68CBD7;
+	text-decoration: none;
+}
+
+.widget-26 .widget-26-job-title .time {
+	font-size: 12px;
+	font-weight: 400;
+}
+
+.widget-26 .widget-26-job-info {
+	min-width: 100px;
+	font-weight: 400;
+}
+
+.widget-26 .widget-26-job-info p {
+	line-height: 1.5;
+	color: #3c4142;
+	font-size: 0.8125rem;
+}
+
+.widget-26 .widget-26-job-info .location {
+	color: #3c4142;
+}
+
+.widget-26 .widget-26-job-salary {
+	min-width: 70px;
+	font-weight: 400;
+	color: #3c4142;
+	font-size: 0.8125rem;
+}
+
+.widget-26 .widget-26-job-category {
+	padding: .5rem;
+	display: inline-flex;
+	white-space: nowrap;
+	border-radius: 15px;
+}
+
+.widget-26 .widget-26-job-category .indicator {
+	width: 13px;
+	height: 13px;
+	margin-right: .5rem;
+	float: left;
+	border-radius: 50%;
+}
+
+.widget-26 .widget-26-job-category span {
+	font-size: 0.8125rem;
+	color: #3c4142;
+	font-weight: 600;
+}
+
+.bg-soft-base {
+	background-color: #e1f5f7;
+}
+
+.bg-soft-warning {
+	background-color: #fff4e1;
+}
+
+.bg-soft-success {
+	background-color: #d1f6f2;
+}
+
+.bg-soft-danger {
+	background-color: #fedce0;
+}
+
+.bg-soft-info {
+	background-color: #d7efff;
+}
+
+.ajax-sending {
+	color: #49d;
+  }
+  
+  .ajax-complete {
+	color: #390;
+  }
+  
+  .ajax-success tt {
+	color: #666;
+	display: block;
+	padding-top: 10px;
+	font-size: 14px;
+  }
+  
+  .ajax-error {
+	color: #d00;
+  }
+
+  #jBox1 {
+	  max-width: 50%;
+	  margin: auto;
   }

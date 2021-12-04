@@ -108,7 +108,7 @@
                               echo '<li><a href="admin/">Admin</a></li>';
                            } ?>
                            <li><a href="?act=info">Thông tin</a></li>
-                           <li><a href="#">Đơn hàng</a></li>
+                           <li><a id="load-order">Đơn hàng</a></li>
                            <li><a href="?act=logout">Đăng xuất</a></li>
                            <?php if ($_SESSION["phanquyen"] == 2) {
                               echo '<li><a href="ship/">Giao hàng</a></li>';
@@ -156,11 +156,11 @@
                      <a href="favorite/">
                         <i class="fa fa-heart"></i>
                         <?php
-                           if (isset($_SESSION['u_id'])) {
-                              echo '
+                        if (isset($_SESSION['u_id'])) {
+                           echo '
                                  <span id="showUserLike">' . countFavorite($_SESSION['u_id']) . '</span>
                               ';
-                           }
+                        }
                         ?>
                      </a>
                   </li>
@@ -168,11 +168,11 @@
                      <a href="cart/">
                         <i class="fa fa-shopping-bag"></i>
                         <?php
-                           if (isset($_SESSION['u_id'])) {
-                              echo '
+                        if (isset($_SESSION['u_id'])) {
+                           echo '
                                  <span class="cart-item" id="showUserCart">' . countCart($_SESSION['u_id']) . '</span>
                               ';
-                           }
+                        }
                         ?>
                      </a>
                   </li>

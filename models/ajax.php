@@ -395,7 +395,9 @@ if (isset($_POST["load_order"])) {
    $user_id = $_SESSION["u_id"];
    $orders = getOrdersByUser($user_id);
    die(json_encode($orders));
-}
+} // Load order
+
+
 if (isset($_POST["search"])) {
    $product = searchProducts($_POST["search"]);
    $output = "";
