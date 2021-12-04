@@ -89,7 +89,6 @@
             </div>
          </div>
          <div class="col-lg-6">
-           
          </div>
          <div class="col-lg-6">
             <div class="shoping__checkout">
@@ -216,8 +215,9 @@
                }
             });
          });
-
+         let flag = true;
          $("#province-select").change(function() {
+            flag = true;
             $("#destrict-select").empty();
             $("#ward-select").empty();
             let id_province = $("#province-select").val();
@@ -256,7 +256,8 @@
 
          $("#ward-select").mouseover(function() {
             let id_destrict = $("#destrict-select").val();
-            if (id_destrict != null) {
+            if (id_destrict != null && flag == true) {
+               flag = false;
                $("#ward-select").empty();
                $.ajax({
                   type: "GET",

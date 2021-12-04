@@ -4030,7 +4030,7 @@ button.favorite.liked:hover {
   }
   
   .ajax-complete {
-	color: #390;
+	color: #4cdaf2;
   }
   
   .ajax-success tt {
@@ -4042,9 +4042,4 @@ button.favorite.liked:hover {
   
   .ajax-error {
 	color: #d00;
-  }
-
-  #jBox1 {
-	  max-width: 50%;
-	  margin: auto;
   }
