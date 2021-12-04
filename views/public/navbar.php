@@ -80,10 +80,10 @@
             <div class="col-lg-6 col-md-6">
                <div class="header__top__right">
                   <div class="header__top__right__social">
+                     <a href="https://github.com/thiennhat19112/foodchill" target="_blank"><i class="fab fa-github"></i></a>
                      <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
                      <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
                      <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
-                     <a href="#" target="_blank"><i class="fa fa-pinterest-p"></i></a>
                   </div>
                   <?php
                   if (!isset($_SESSION["username"])) {
