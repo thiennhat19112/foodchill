@@ -25,14 +25,10 @@ if (isset($_GET['v'])) {
         require("categories/index.php");
     } else if ($v == "product") {
         require("products/index.php");
-    } else if ($v == "order") {
-        require("order/index.php");
     } else if ($v == "user") {
         require("users/index.php");
     } else if ($v == "comment") {
         require("comment/index.php");
-    } else if ($v == "order_detail") {
-        require("order_details/order_details.php");
     } else if ($v == "blogs"){
         require("blog/index.php");
     }

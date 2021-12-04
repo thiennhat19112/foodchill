@@ -1,7 +1,7 @@
 <?php
 function select_all_comments()
 {
-    $sql = "SELECT * FROM ((comments INNER JOIN products ON comments.product_id = products.product_id) INNER JOIN users ON comments.user_id = users.user_id)";
+    $sql = "SELECT * FROM ((comments INNER JOIN products ON comments.product_id = products.product_id) INNER JOIN users ON comments.user_id = users.user_id) order by comment_id desc";
     return pdo_query($sql);
 }
 

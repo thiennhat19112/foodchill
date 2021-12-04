@@ -23,7 +23,22 @@
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script>
     $(document).ready(function() {
-     $('.myTable').DataTable();
+      $('.myTable').DataTable({
+        "language": {
+          "lengthMenu": "Hiển thị _MENU_ trên trang",
+          "zeroRecords": "Không tìm thấy dữ liệu!",
+          "info": "Đang hiện trang _PAGE_ / _PAGES_",
+          "infoEmpty": "Không tìm thấy dữ liệu!",
+          "infoFiltered": "(lọc từ _MAX_ hồ sơ)",
+          "search": "Tìm kiếm:",
+          "paginate": {
+            "first": "Trang đầu",
+            "last": "Trang cuối",
+            "next": "Trước",
+            "previous": "Sau"
+          },
+        }
+      });
     });
   </script>
 </head>
