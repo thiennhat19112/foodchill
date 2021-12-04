@@ -92,7 +92,7 @@
                     </div>
                     <div class="form-group">
                         <label for="prodImage">Hình ảnh</label>
-                        <input type="file" name="image" class="dropify" data-max-file-size="2M" data-max-height="2000" data-default-file="../<?= $image ?>" value="<?=$image?>">
+                        <input type="file" name="image" class="dropify" data-max-file-size="2M" data-max-height="2000" data-default-file="../<?= $image ?>" id="prodImage">
                         <?php if($image!=""){
                             echo '<span name="image_old" value = "'.$image.'"></span>';
                         }?>
