@@ -6,12 +6,17 @@ if (isset($_POST['editBlog'])) {
     $target = '../upload/images/blog/';
     $image = $_FILES['image']['name'];
     //upload ảnh
-    if($image_old ==""){
+    if($image !=""){
         $target = '../upload/images/blog/';
-        $image =$_FILES['image']['name'];
+        // Rename file
+        $newName = stringProcessor($product_name)."-".time();
+        $imageFileType = strtolower(pathinfo(basename($_FILES["image"]["name"]), PATHINFO_EXTENSION));
+        $image = $newName .".". $imageFileType;
         //upload ảnh
         $image_tmp = $_FILES['image']['tmp_name'];
-        move_uploaded_file($image_tmp,$target.$image);
+        move_uploaded_file($image_tmp, $target . $image);
+        // Delete old image
+        unlink("../upload/images/blog/".$image_old);
     }else{
         $image = $image_old;
     }
@@ -51,6 +56,9 @@ if (isset($_POST['editBlog'])) {
                     <div class="form-group">
                         <label for="Image">Hình ảnh</label>
                         <input type="file" name="image" data-max-file-size="2M" data-max-height="2000" class="dropify" data-default-file="../upload/images/blog/<?= $image ?>" id="Image">
+                        <?php if($image!=""){
+                            echo '<span name="image_old" value = "'.$image.'"></span>';
+                        }?>
                     </div>
                     <div class="form-group">
                         <label for="exampleTextarea1">Nội dung chi tiết</label>
