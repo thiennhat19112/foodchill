@@ -16,6 +16,7 @@ require("./models/account.php");
 require("./models/order.php");
 require("./models/category.php");
 require("./models/product.php");
+require("./blog/index.php");
 $cates = getAllShowCate();
 $discProds = getDiscountProd();
 $featuredProds = getFeaturedProd();
@@ -38,7 +39,6 @@ switch ($act) {
       require("./views/favorite.php");
       break;
    case "blog":
-      require("./blog/index.php");
       require("./views/blog.php");
       break;
    case "contact":
