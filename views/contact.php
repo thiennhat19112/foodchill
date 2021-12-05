@@ -7,7 +7,7 @@
                   <h2>Liên hệ với chúng tôi</h2>
                   <div class="breadcrumb__option">
                      <a href="home/">Trang chủ</a>
-                     <span>Liên hệ với chúng tôi</span>
+                     <span>Liên hệ</span>
                   </div>
                </div>
             </div>

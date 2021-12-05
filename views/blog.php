@@ -4,10 +4,10 @@
       <div class="row">
          <div class="col-lg-12 text-center">
             <div class="breadcrumb__text">
-               <h2>Blog</h2>
+               <h2>Bài viết</h2>
                <div class="breadcrumb__option">
-                  <a href="home/">Home</a>
-                  <span>Blog</span>
+                  <a href="home/">Trang chủ</a>
+                  <span>Bài viết</span>
                </div>
             </div>
          </div>

@@ -179,7 +179,7 @@
             <div class="row">
                <div class="col-lg-12">
                   <div class="section-title from-blog__title">
-                     <h2>Một chút Blog</h2>
+                     <h2>Bài viết nổi bật</h2>
                   </div>
                </div>
             </div>
