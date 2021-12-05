@@ -5,8 +5,13 @@ function insertOrder($user_id, $receiver, $phone, $address, $total_amount, $rece
 }
 
 function getOrdersByUser($user_id) {
-    $sql = "SELECT `order_id`, `total_amount`, `order_date`, `status` FROM `orders` WHERE `user_id` = ?";
-    return array_reverse(pdo_query($sql, $user_id));
+    $sql = "SELECT `order_id`, `total_amount`, `order_date`, `status` FROM `orders` WHERE `user_id` = ? ORDER BY `order_id` DESC";
+    return pdo_query($sql, $user_id);
+}
+
+function getDataToShowOrderDetail($order_id) {
+    $sql = "SELECT `order_details`.*, `products`.`product_id`, `products`.`product_name`, `products`.`image` FROM `order_details` INNER JOIN `products` ON `order_details`.`product_id` = `products`.`product_id` WHERE `order_details`.`order_id` = ?";
+    return pdo_query($sql, $order_id);
 }
 
 function insertOrderDetail($order_id, $product_id, $quantity, $price, $total_price) {

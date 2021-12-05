@@ -308,7 +308,7 @@
                Swal.fire({
                   title: 'Cảm ơn bạn đã mua hàng!',
                   html: 'Đang chuyển hướng về trang chủ ...',
-                  timer: 3000,
+                  timer: 2000,
                   timerProgressBar: true,
                   didOpen: () => {
                      Swal.showLoading()
@@ -316,7 +316,7 @@
                });
                setTimeout(function() {
                   location.href = 'home/';
-               }, 3000);
+               }, 2000);
             })
             e.preventDefault();
          });

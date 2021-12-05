@@ -395,9 +395,16 @@ if (isset($_POST["load_order"])) {
    sleep(1);
    $user_id = $_SESSION["u_id"];
    $orders = getOrdersByUser($user_id);
-   // foreach ($orders as $key => $value) {
-   //    $value['order_id'];
-   // }
+   foreach ($orders as $key_order => $value_order) {
+      $order_details = getDataToShowOrderDetail($value_order['order_id']);
+      $orders["$key_order"]["image"] = $order_details[0]["image"];
+      if (count($order_details) > 1) {
+         $orders["$key_order"]["order_name"] = mb_strimwidth($order_details[0]["product_name"], 0, 20, "...");
+      } else {
+         $orders["$key_order"]["order_name"] = mb_strimwidth($order_details[0]["product_name"], 0, 40, "...");
+      }
+      $orders["$key_order"]["order_product"] = count($order_details);
+   }
    die(json_encode($orders));
 } // Load order
 

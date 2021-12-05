@@ -613,19 +613,30 @@ $(document).ready(function () {
                 $(".jBox-content").append("<table class='table widget-26'> <tbody class='order-tbody'> </tbody> </table>");
                 data = jQuery.parseJSON(data);
                 console.log(data);
-                console.log(typeof (data));
                 $.each(data, function (key, value) {
+                    let orderStatus = "";
+                    if (value.status == 0) {
+                        orderStatus = "Đã đặt hàng";
+                    } else if (value.status == 1) {
+                        orderStatus = "Đã tiếp nhận";
+                    } else if (value.status == 2) {
+                        orderStatus = "Đang vận chuyển";
+                    } else if (value.status == 3) {
+                        orderStatus = "Đã giao hàng";
+                    } else {
+                        orderStatus = "Đã hủy";
+                    }
                     $('.order-tbody').append(`
                         <tr>
                             <td>
                                 <div class="widget-26-job-emp-img">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="Company" />
+                                    <img src="${value.image}" alt="Company" />
                                 </div>
                             </td>
                             <td>
                                 <div class="widget-26-job-title">
-                                    <a >Senior Software Engineer / Developer</a>
-                                    <p class="m-0"><a  class="employer-name">Đơn hàng #${value.order_id}</a> <span class="text-muted time"> ${value.order_date}</span></p>
+                                    <a>${value.order_name} ${value.order_product > 1 ? (' và ' + (value.order_product - 1) + ' sản phẩm khác') : ""} </a>
+                                    <p class="m-0"><a class="employer-name">Đơn hàng #${value.order_id}</a> <span class="text-muted time"> ${value.order_date}</span></p>
                                 </div>
                             </td>
                             <td>
@@ -636,7 +647,7 @@ $(document).ready(function () {
                             </td>
                             <td>
                                 <div class="widget-26-job-category bg-soft-base">
-                                    <span>${value.status}Đã tiếp nhận</span>
+                                    <span>${orderStatus}</span>
                                 </div>
                             </td>
                         </tr>
