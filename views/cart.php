@@ -98,7 +98,7 @@
                   <li>Tổng tiền hàng <span id="cart-tongtienhang"><?= number_format($tong, 0, ',', '.') ?></span></li>
                   <li>Thành tiền <span id="cart-thanhtien"><?= number_format($tong, 0, ',', '.') ?></span></li>
                </ul>
-               <a style="Cursor:pointer" class="primary-btn btn-payment">Thanh toán</a>
+               <a style="Cursor:pointer" class="primary-btn btn-payment">Đặt hàng</a>
             </div>
          </div>
       </div>

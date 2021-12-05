@@ -4154,7 +4154,7 @@ tr.shopping-cart-item td {
 }
 
 .widget-26 .widget-26-job-title a {
-	font-weight: 400;
+	font-weight: bold;
 	font-size: 0.875rem;
 	color: #3c4142;
 	line-height: 1.5;
@@ -4188,6 +4188,10 @@ tr.shopping-cart-item td {
 .widget-26 .widget-26-job-info {
 	min-width: 100px;
 	font-weight: 400;
+}
+
+.widget-26 .widget-26-job-info .m-0 {
+	font-weight: bold;
 }
 
 .widget-26 .widget-26-job-info p {

@@ -614,6 +614,8 @@ $(document).ready(function () {
                 data = jQuery.parseJSON(data);
                 console.log(data);
                 $.each(data, function (key, value) {
+                    let totalAmount = parseInt(value.total_amount);
+                    totalAmount = totalAmount.toLocaleString('en-US', { style: 'currency', currency: 'VND' });
                     let orderStatus = "";
                     if (value.status == 0) {
                         orderStatus = "Đã đặt hàng";
@@ -641,8 +643,8 @@ $(document).ready(function () {
                             </td>
                             <td>
                                 <div class="widget-26-job-info">
-                                    <p class="type m-0">Tổng đơn hàng:</p>
-                                    <p class="text-muted m-0"><span class="location">${value.total_amount}</span></p>
+                                    <p class="type m-0">Tổng cộng:</p>
+                                    <p class="text-muted m-0"><span class="location">${totalAmount}</span></p>
                                 </div>
                             </td>
                             <td>
