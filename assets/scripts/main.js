@@ -612,7 +612,7 @@ $(document).ready(function () {
             success: function (data) {
                 $(".jBox-content").append("<table class='table widget-26'> <tbody class='order-tbody'> </tbody> </table>");
                 data = jQuery.parseJSON(data);
-                console.log(data);
+                // console.log(data);
                 $.each(data, function (key, value) {
                     let totalAmount = parseInt(value.total_amount);
                     totalAmount = totalAmount.toLocaleString('en-US', { style: 'currency', currency: 'VND' });
