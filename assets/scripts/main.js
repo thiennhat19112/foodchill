@@ -417,11 +417,6 @@ $(document).ready(function () {
                 $("#showUserCart").html(data[0]);
                 $("#cart-tongtienhang").html(data[1]);
                 $("#cart-thanhtien").html(data[2]);
-                swal({
-                    title: "Đã xoá sản phẩm khỏi giỏ hàng!",
-                    icon: "success",
-                    button: "Đóng",
-                });
             }
         });
     }); // Xóa sản phẩm trong giỏ hàng
@@ -613,6 +608,7 @@ $(document).ready(function () {
                 $(".jBox-content").append("<table class='table widget-26'> <tbody class='order-tbody'> </tbody> </table>");
                 data = jQuery.parseJSON(data);
                 console.log(data);
+                console.log(typeof (data));
                 $.each(data, function (key, value) {
                     $('.order-tbody').append(`
                         <tr>

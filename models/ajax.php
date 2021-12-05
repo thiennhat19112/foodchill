@@ -395,6 +395,9 @@ if (isset($_POST["load_order"])) {
    sleep(1);
    $user_id = $_SESSION["u_id"];
    $orders = getOrdersByUser($user_id);
+   // foreach ($orders as $key => $value) {
+   //    $value['order_id'];
+   // }
    die(json_encode($orders));
 } // Load order
 
