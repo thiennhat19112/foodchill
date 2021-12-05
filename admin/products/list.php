@@ -1,10 +1,49 @@
+<script>
+    $(document).ready(function() {
+        $('#xxtable').on('click','.delete-product',function () {
+        // $('.delete-product').click(function() {
+            var id = $(this).data('product_id')
+            var img = $(this).data('image')
+            swal({
+                title: "Bạn có muôn xóa?",
+                text: "",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    $.ajax({
+                        type: 'POST',
+                        url: 'models/ajax_action.php',
+                        data: {
+                            'product_id': id,
+                            'img': img
+                        },
+                        success: function(data) {
+                            swal({
+                                title: 'Bạn đã xóa thành công',
+                                icon: 'success',
+                                buttons: 'Đóng',
+                            }).then(() => {
+                                $('#product-tr' + id).hide()
+                            })
+                        }
+                    })
+                } else {
+                    
+                }
+            })
+        })
+    })
+</script>
 <div class="container mx-auto grid">
     <div class="w-full overflow-hidden rounded-lg ">
         <div class="w-full overflow-x-auto">
             <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
                 Sản phẩm
             </h2>
-            <table class="w-full whitespace-wrap table-bordered dtr-inline text-center myTable js-basic-example">
+            <table id="xxtable" class="w-full whitespace-wrap table-bordered dtr-inline text-center myTable js-basic-example">
                 <thead>
                     <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 whitespace-no-wrap uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                         <th class="px-1 py-3 ">Tên sản phẩm</th>
@@ -125,45 +164,6 @@
                         } 
                     ?>
                 </tbody>
-            </table>
-                <script>
-                    $(document).ready(function() {
-                        $('.delete-product').click(function() {
-                            var id = $(this).data('product_id')
-                            var img = $(this).data('image')
-                            swal({
-                                title: "Bạn có muôn xóa?",
-                                text: "",
-                                icon: "warning",
-                                buttons: true,
-                                dangerMode: true,
-                            })
-                            .then((willDelete) => {
-                                if (willDelete) {
-                                    $.ajax({
-                                        type: 'POST',
-                                        url: 'models/ajax_action.php',
-                                        data: {
-                                            'product_id': id,
-                                            'img': img
-                                        },
-                                        success: function(data) {
-                                            swal({
-                                                title: 'Bạn đã xóa thành công',
-                                                icon: 'success',
-                                                buttons: 'Đóng',
-                                            }).then(() => {
-                                                $('#product-tr' + id).hide()
-                                            })
-                                        }
-                                    })
-                                } else {
-                                  
-                                }
-                            })
-                        })
-                    })
-                </script>
             </table>
         </div>
     </div>
