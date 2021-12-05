@@ -576,7 +576,7 @@ $(document).ready(function () {
                 })
             }
         })
-    })  // Change Password
+    });  // Change Password
 
     new jBox('Modal', {
         attach: '#load-order',
@@ -618,8 +618,8 @@ $(document).ready(function () {
                             </td>
                             <td>
                                 <div class="widget-26-job-title">
-                                    <a href="#">Senior Software Engineer / Developer</a>
-                                    <p class="m-0"><a href="#" class="employer-name">Đơn hàng #${value.order_id}</a> <span class="text-muted time"> ${value.order_date}</span></p>
+                                    <a >Senior Software Engineer / Developer</a>
+                                    <p class="m-0"><a  class="employer-name">Đơn hàng #${value.order_id}</a> <span class="text-muted time"> ${value.order_date}</span></p>
                                 </div>
                             </td>
                             <td>
@@ -643,5 +643,5 @@ $(document).ready(function () {
                 );
             }
         }
-    });
+    }); //Show orders
 });

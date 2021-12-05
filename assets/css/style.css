@@ -3941,6 +3941,7 @@ button.favorite.liked:hover {
 .widget-26 .widget-26-job-title a:hover {
 	color: #68CBD7;
 	text-decoration: none;
+	cursor: pointer;
 }
 
 .widget-26 .widget-26-job-title .employer-name {

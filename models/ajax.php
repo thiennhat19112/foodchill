@@ -392,6 +392,7 @@ if (isset($_POST["user_id"]) && isset($_POST["address"]) && $_POST["address"] !=
 
 
 if (isset($_POST["load_order"])) {
+   sleep(1);
    $user_id = $_SESSION["u_id"];
    $orders = getOrdersByUser($user_id);
    die(json_encode($orders));
