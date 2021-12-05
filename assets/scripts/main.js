@@ -417,6 +417,11 @@ $(document).ready(function () {
                 $("#showUserCart").html(data[0]);
                 $("#cart-tongtienhang").html(data[1]);
                 $("#cart-thanhtien").html(data[2]);
+                swal({
+                    title: "Đã xoá sản phẩm khỏi giỏ hàng!",
+                    icon: "success",
+                    button: "Đóng",
+                });
             }
         });
     }); // Xóa sản phẩm trong giỏ hàng
