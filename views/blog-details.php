@@ -3,7 +3,9 @@
         <div class="blog__details__text text-center">
             <h1 class="my-5"><?= $title ?></h1>
             <img src="./upload/images/blog/<?= $image ?>" alt="">
-            <?= $content ?>
+            <div class="blog__details__text content  text-justify">
+                <?= $content ?>
+            </div>
         </div>
         <div class="blog__details__content">
             <div class="row">
