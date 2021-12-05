@@ -34,6 +34,7 @@
 :root { 
    --color: #4cdaf2;
 	--bg-cmt-cl: lightgray;
+	--dark-color: #333;
 }
 
 html,
@@ -82,7 +83,7 @@ h6 {
 p {
 	font-size: 16px;
 	font-family: "Quicksand", sans-serif;
-	color: #333;
+	color: var(--dark-color);
 	font-weight: 400;
 	line-height: 26px;
 	margin: 0 0 15px 0;
@@ -547,7 +548,7 @@ ol {
 
 .header__cart .header__cart__price {
 	font-size: 14px;
-	color: #333;
+	color: var(--dark-color);
 	display: inline-block;
 }
 
@@ -731,7 +732,7 @@ ol {
 
 .hero__search__phone__text span {
 	font-size: 14px;
-	color: #333;
+	color: var(--dark-color);
 }
 
 .hero__item {
@@ -1185,7 +1186,7 @@ ol {
 }
 
 .sidebar__item__color.sidebar__item__color--white label:after {
-	border: 2px solid #333333;
+	border: 2px solid var(--dark-color);
 	background: transparent;
 }
 
@@ -1211,7 +1212,7 @@ ol {
 
 .sidebar__item__color label {
 	font-size: 16px;
-	color: #333333;
+	color: var(--dark-color);
 	position: relative;
 	padding-left: 32px;
 	cursor: pointer;
@@ -1241,7 +1242,7 @@ ol {
 
 .sidebar__item__size label {
 	font-size: 12px;
-	color: #333;
+	color: var(--dark-color);
 	display: inline-block;
 	padding: 8px 25px 6px;
 	background: #f5f5f5;
@@ -1373,7 +1374,7 @@ ol {
 
 .product__discount__item__text span {
 	font-size: 14px;
-	color: #333;
+	color: var(--dark-color);
 	display: block;
 	margin-bottom: 4px;
 }
@@ -1418,7 +1419,7 @@ ol {
 
 .product__discount__slider.owl-carousel .owl-dots button.active {
 	background: #707070;
-	border-color: #333;
+	border-color: var(--dark-color);
 }
 
 .product__discount__slider.owl-carousel .owl-dots button:last-child {
@@ -1435,7 +1436,7 @@ ol {
 
 .filter__sort span {
 	font-size: 16px;
-	color: #333;
+	color: var(--dark-color);
 	display: inline-block;
 }
 
@@ -1743,7 +1744,7 @@ button.favorite.liked:hover {
 .product__details__text .heart-icon {
 	display: inline-block;
 	font-size: 16px;
-	color: #333;
+	color: var(--dark-color);
 	padding: 13px 16px 13px;
 	background: #f5f5f5;
 	border: none;
@@ -1806,7 +1807,7 @@ button.favorite.liked:hover {
 	height: 100%;
 	width: 100%;
 	font-size: 16px;
-	color: #333;
+	color: var(--dark-color);
 	width: 50px;
 	border: none;
 	background: #f5f5f5;
@@ -1816,7 +1817,7 @@ button.favorite.liked:hover {
 .pro-qty .qtybtn {
 	width: 35px;
 	font-size: 16px;
-	color: #333;
+	color: var(--dark-color);
 	cursor: pointer;
 	display: inline-block;
 }
@@ -1876,7 +1877,7 @@ button.favorite.liked:hover {
 
 .product__details__tab .product__details__tab__desc h6 {
 	font-weight: 700;
-	color: #333333;
+	color: var(--dark-color)333;
 	margin-bottom: 26px;
 }
 
@@ -2016,7 +2017,7 @@ button.favorite.liked:hover {
 }
 
 .primary-btn.cart-btn {
-	color: #333;
+	color: var(--dark-color);
 	padding: 14px 30px 12px;
 	background: #f5f5f5;
 }
@@ -2059,7 +2060,7 @@ button.favorite.liked:hover {
 	padding: 15px 30px 11px;
 	font-size: 12px;
 	letter-spacing: 4px;
-	background: #333;
+	background: var(--dark-color);
 }
 
 .shoping__checkout {
@@ -2263,7 +2264,7 @@ button.favorite.liked:hover {
 
 .checkout__order ul li {
 	font-size: 16px;
-	color: #333;
+	color: var(--dark-color);
 	line-height: 40px;
 	list-style: none;
 }
@@ -2441,19 +2442,19 @@ button.favorite.liked:hover {
 	width: 100%;
 	height: 46px;
 	font-size: 16px;
-	color: #333;
+	color: var(--dark-color);
 	padding-left: 15px;
 	border: 1px solid #e1e1e1;
 	border-radius: 20px;
 }
 
 .blog__sidebar__search form input::placeholder {
-	color: #333;
+	color: var(--dark-color);
 }
 
 .blog__sidebar__search form button {
 	font-size: 16px;
-	color: #333;
+	color: var(--dark-color);
 	background: transparent;
 	border: none;
 	position: absolute;
@@ -2487,7 +2488,7 @@ button.favorite.liked:hover {
 
 .blog__sidebar__recent__item__text h6 {
 	font-weight: 700;
-	color: #333333;
+	color: var(--dark-color);
 	line-height: 20px;
 	margin-bottom: 5px;
 }
@@ -2500,7 +2501,7 @@ button.favorite.liked:hover {
 
 .blog__sidebar__item__tags a {
 	font-size: 16px;
-	color: #333;
+	color: var(--dark-color);
 	background: #f5f5f5;
 	display: inline-block;
 	padding: 7px 26px 5px;
@@ -2585,14 +2586,14 @@ button.favorite.liked:hover {
 }
 
 .blog__details__text h3 {
-	color: #333333;
+	color: var(--dark-color);
 	font-weight: 700;
 	line-height: 30px;
 	margin-bottom: 30px;
 }
 
 .blog__details__text h1{
-	color: #333333;
+	color: var(--dark-color);
 	font-weight: 700;
 	font-size: 3rem;
 }
@@ -2620,7 +2621,7 @@ button.favorite.liked:hover {
 
 .blog__details__author__text span {
 	font-size: 16px;
-	color: #333;
+	color: var(--dark-color);
 }
 
 .blog__details__widget ul {
@@ -2629,7 +2630,7 @@ button.favorite.liked:hover {
 
 .blog__details__widget ul li {
 	font-size: 16px;
-	color: #333;
+	color: var(--dark-color);
 	list-style: none;
 	line-height: 30px;
 }
@@ -2646,7 +2647,7 @@ button.favorite.liked:hover {
 .blog__details__widget .blog__details__social a {
 	display: inline-block;
 	font-size: 20px;
-	color: #333;
+	color: var(--dark-color);
 	margin-right: 24px;
 	-webkit-transition: all, 0.3s;
 	-moz-transition: all, 0.3s;
@@ -2916,7 +2917,7 @@ button.favorite.liked:hover {
 	width: 100%;
 	height: 50px;
 	font-size: 16px;
-	color: #333;
+	color: var(--dark-color);
 	padding-left: 20px;
 	margin-bottom: 30px;
 	border: 1px solid #ebebeb;
@@ -2924,14 +2925,14 @@ button.favorite.liked:hover {
 }
 
 .contact-form form input::placeholder {
-	color: #333;
+	color: var(--dark-color);
 }
 
 .contact-form form textarea {
 	width: 100%;
 	height: 150px;
 	font-size: 16px;
-	color: #333;
+	color: var(--dark-color);
 	padding-left: 20px;
 	margin-bottom: 24px;
 	border: 1px solid #ebebeb;
@@ -2941,7 +2942,7 @@ button.favorite.liked:hover {
 }
 
 .contact-form form textarea::placeholder {
-	color: #333;
+	color: var(--dark-color);
 }
 
 .contact-form form button {
@@ -3117,7 +3118,7 @@ button.favorite.liked:hover {
 	}
 	.humberger__menu__cart .header__cart__price {
 		font-size: 14px;
-		color: #333;
+		color: var(--dark-color);
 		display: inline-block;
 	}
 	.humberger__menu__cart .header__cart__price span {
@@ -3375,7 +3376,7 @@ button.favorite.liked:hover {
 	}
 	.humberger__menu__cart .header__cart__price {
 		font-size: 14px;
-		color: #333;
+		color: var(--dark-color);
 		display: inline-block;
 	}
 	.humberger__menu__cart .header__cart__price span {
@@ -4054,3 +4055,17 @@ button.favorite.liked:hover {
   .ajax-error {
 	color: #d00;
   }
+
+  	.favorite button {
+		display: inline-block;
+		font-size: 16px;
+		color: var(--dark-color);
+		padding: 13px 16px 12px 16px;
+		background: #f5f5f5;
+		border: none;
+		border-radius: 10px;
+	}
+	.favorite.addToCart button {
+		background: var(--color);
+		color: #ffffff;
+	}

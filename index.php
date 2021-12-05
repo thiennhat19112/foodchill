@@ -33,8 +33,10 @@ switch ($act) {
       require("./views/shop.php");
       break;
    case "cart":
-      require("./cart/index.php");
       require("./views/cart.php");
+      break;
+   case "favorite":
+      require("./views/favorite.php");
       break;
    case "blog":
       require("./views/blog.php");

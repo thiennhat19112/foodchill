@@ -46,6 +46,11 @@ function checkFavorite($p_id, $u_id) {
       echo "";
    }
 }
+function getFavorite($u_id) {
+   $sql = "SELECT * FROM `favorites` WHERE `user_id` = ?";
+   return pdo_query($sql, $u_id);
+}
+
 function updateView($p_id) {
    $sql = "UPDATE `products` SET `view` = `view` + 1 WHERE `products`.`product_id` = ?";
    return pdo_execute($sql, $p_id);
