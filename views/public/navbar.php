@@ -57,7 +57,7 @@
    </div>
    <div class="humberger__menu__contact">
       <ul>
-         <li><i class="fa fa-envelope"></i> contact@foodchill.com</li>
+         <li><i class="fa fa-envelope"></i> contact@foodchill.tk</li>
          <li>Miễn phí vận chuyển cho tất cả đơn hàng</li>
       </ul>
    </div>
@@ -72,7 +72,7 @@
             <div class="col-lg-6 col-md-6">
                <div class="header__top__left">
                   <ul>
-                     <li><i class="fa fa-envelope"></i> contact@foodchill.com</li>
+                     <li><i class="fa fa-envelope"></i> contact@foodchill.tk</li>
                      <li>Miễn phí vận chuyển cho tất cả đơn hàng</li>
                   </ul>
                </div>
@@ -108,7 +108,7 @@
                               echo '<li><a href="admin/">Admin</a></li>';
                            } ?>
                            <li><a href="?act=info">Thông tin</a></li>
-                           <li><a id="load-order">Đơn hàng</a></li>
+                           <li><a href="#" onclick="return false" id="load-order">Đơn hàng</a></li>
                            <li><a href="?act=logout">Đăng xuất</a></li>
                            <?php if ($_SESSION["phanquyen"] == 2) {
                               echo '<li><a href="ship/">Giao hàng</a></li>';
