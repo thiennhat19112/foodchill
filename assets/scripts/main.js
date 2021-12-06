@@ -619,16 +619,22 @@ $(document).ready(function () {
                     let totalAmount = parseInt(value.total_amount);
                     totalAmount = totalAmount.toLocaleString('en-US', { style: 'currency', currency: 'VND' });
                     let orderStatus = "";
+                    let sttBgColor = "";
                     if (value.status == 0) {
                         orderStatus = "Đã đặt hàng";
+                        sttBgColor = "bg-soft-warning";
                     } else if (value.status == 1) {
                         orderStatus = "Đã tiếp nhận";
+                        sttBgColor = "bg-soft-base";
                     } else if (value.status == 2) {
-                        orderStatus = "Đang vận chuyển";
+                        orderStatus = "Vận chuyển";
+                        sttBgColor = "bg-soft-info";
                     } else if (value.status == 3) {
                         orderStatus = "Đã giao hàng";
+                        sttBgColor = "bg-soft-success";
                     } else {
                         orderStatus = "Đã hủy";
+                        sttBgColor = "bg-soft-disable";
                     }
                     $('.order-tbody').append(`
                         <tr>
@@ -650,13 +656,13 @@ $(document).ready(function () {
                                 </div>
                             </td>
                             <td>
-                                <div class="widget-26-job-category bg-soft-base">
+                                <div class="widget-26-job-category ${sttBgColor}">
                                     <span class="order-status${value.order_id}">${orderStatus}</span>
                                 </div>
                             </td>
                             <td>
                                 <div>
-                                    <button class="button-18 button-cancel-order" ${value.status == 4 ? 'disabled' : ''} role="button" data-order-id="${value.order_id}">Hủy</button>
+                                    <button class="button-18 button-cancel-order" ${(value.status == 4 || value.status == 2 || value.status == 3) ? 'disabled' : ''} role="button" data-order-id="${value.order_id}">Hủy</button>
                                 </div>
                             </td>
                         </tr>

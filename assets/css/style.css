@@ -4230,12 +4230,17 @@ tr.shopping-cart-item td {
 	background-color: #e1f5f7;
 }
 
+.bg-soft-disable {
+	background: rgba(0, 0, 0, .08);
+	color: rgba(0, 0, 0, .3);
+}
+
 .bg-soft-warning {
 	background-color: #fff4e1;
 }
 
 .bg-soft-success {
-	background-color: #d1f6f2;
+	background-color: #50ff50;
 }
 
 .bg-soft-danger {
