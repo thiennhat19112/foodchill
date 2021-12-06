@@ -5,7 +5,7 @@ function insertOrder($user_id, $receiver, $phone, $address, $total_amount, $rece
 }
 
 function getOrdersByUser($user_id) {
-    $sql = "SELECT `order_id`, `total_amount`, `order_date`, `status` FROM `orders` WHERE `user_id` = ? ORDER BY `order_id` DESC";
+    $sql = "SELECT `order_id`, `receiver`, `phone`, `address`, `total_amount`, `order_date`, `shipping_date`, `receiver_note`, `status` FROM `orders` WHERE `user_id` = ? ORDER BY `order_id` DESC";
     return pdo_query($sql, $user_id);
 }
 

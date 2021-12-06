@@ -392,19 +392,32 @@ if (isset($_POST["user_id"]) && isset($_POST["address"]) && $_POST["address"] !=
 
 
 if (isset($_POST["load_order"])) {
-   sleep(1);
    $user_id = $_SESSION["u_id"];
    $orders = getOrdersByUser($user_id);
    foreach ($orders as $key_order => $value_order) {
-      $order_details = getDataToShowOrderDetail($value_order['order_id']);
-      $orders["$key_order"]["image"] = $order_details[0]["image"];
-      if (count($order_details) > 1) {
-         $orders["$key_order"]["order_name"] = mb_strimwidth($order_details[0]["product_name"], 0, 20, "...");
+      if (isset($_POST["order_id"]) && ($_POST["order_id"] == $value_order['order_id'])) {
+         $order_id = $_POST["order_id"];
+         $order_details = getDataToShowOrderDetail($order_id);
+         $order_details[0]['receiver_name'] = $value_order['receiver'];
+         $order_details[0]['address'] = $value_order['address'];
+         $order_details[0]['phone'] = $value_order['phone'];
+         $order_details[0]['order_date'] = $value_order['order_date'];
+         $order_details[0]['total_amount'] = $value_order['total_amount'];
+         $order_details[0]['receiver_note'] = $value_order['receiver_note'];
+         die(json_encode($order_details));
+         break;
       } else {
-         $orders["$key_order"]["order_name"] = mb_strimwidth($order_details[0]["product_name"], 0, 40, "...");
+         $order_details = getDataToShowOrderDetail($value_order['order_id']);
+         $orders["$key_order"]["image"] = $order_details[0]["image"];
+         if (count($order_details) > 1) {
+            $orders["$key_order"]["order_name"] = mb_strimwidth($order_details[0]["product_name"], 0, 20, "...");
+         } else {
+            $orders["$key_order"]["order_name"] = mb_strimwidth($order_details[0]["product_name"], 0, 40, "...");
+         }
+         $orders["$key_order"]["order_product"] = count($order_details);
       }
-      $orders["$key_order"]["order_product"] = count($order_details);
    }
+   sleep(1);
    die(json_encode($orders));
 } // Load order
 

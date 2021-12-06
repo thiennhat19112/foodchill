@@ -4271,6 +4271,66 @@ tr.shopping-cart-item td {
 	color: #d00;
 }
 
+
+/* Order-detail */
+.order-detail-table {
+	width: 100%;
+	line-height: inherit;
+	text-align: left;
+}
+
+.order-detail-table td {
+	padding: 5px;
+	vertical-align: top;
+}
+
+.order-detail-table tr.heading th {
+	background: #eee;
+	border-bottom: 1px solid #ddd;
+	font-weight: bold;
+}
+
+.order-detail-table tr.details td {
+	padding-bottom: 20px;
+}
+
+.order-detail-table tr.item td {
+	border-bottom: 1px solid #eee;
+}
+
+.order-detail-table tr.item.last td {
+	border-bottom: none;
+}
+
+.order-detail-table tr.total td:nth-child(2) {
+	border-top: 2px solid #eee;
+	font-weight: bold;
+}
+
+.order-detail-table img {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+}
+
+.order-detail-tbody tr {
+	line-height: 50px;
+}
+
+.head-order_detail {
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+}
+
+.order-detail-information {
+	text-align: right;
+}
+
+.order-detail-table tr,
+.order-detail-table th {
+	text-align: center;
+}
+
 .favorite button {
 	display: inline-block;
 	font-size: 16px;

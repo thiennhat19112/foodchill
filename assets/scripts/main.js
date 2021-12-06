@@ -583,6 +583,10 @@ $(document).ready(function () {
         })
     });  // Change Password
 
+    function curencyFormat(x) {
+        return parseInt(x).toLocaleString('en-US', { style: 'currency', currency: 'VND' })
+    }
+
     new jBox('Modal', {
         attach: '#load-order',
         height: 300,
@@ -599,8 +603,6 @@ $(document).ready(function () {
             reload: 'strict',
             setContent: false,
             beforeSend: function () {
-                $(".jBox-content").empty();
-                $(".order-tbody").empty();
                 this.setContent('');
                 this.setTitle(
                     '<b class="ajax-sending">Đang tải đơn hàng...</b>'
@@ -612,7 +614,6 @@ $(document).ready(function () {
             success: function (data) {
                 $(".jBox-content").append("<table class='table widget-26'> <tbody class='order-tbody'> </tbody> </table>");
                 data = jQuery.parseJSON(data);
-                // console.log(data);
                 $.each(data, function (key, value) {
                     let totalAmount = parseInt(value.total_amount);
                     totalAmount = totalAmount.toLocaleString('en-US', { style: 'currency', currency: 'VND' });
@@ -632,13 +633,13 @@ $(document).ready(function () {
                         <tr>
                             <td>
                                 <div class="widget-26-job-emp-img">
-                                    <img src="${value.image}" alt="Company" />
+                                    <a id="load-order-detail2" data-order-id="${value.order_id}"><img src="${value.image}" alt="Company" /></a>
                                 </div>
                             </td>
                             <td>
                                 <div class="widget-26-job-title">
-                                    <a>${value.order_name} ${value.order_product > 1 ? (' và ' + (value.order_product - 1) + ' sản phẩm khác') : ""} </a>
-                                    <p class="m-0"><a class="employer-name">Đơn hàng #${value.order_id}</a> <span class="text-muted time"> ${value.order_date}</span></p>
+                                    <a id="load-order-detail" data-order-id="${value.order_id}">${value.order_name} ${value.order_product > 1 ? (' và ' + (value.order_product - 1) + ' sản phẩm khác') : ""} </a>
+                                    <p class="m-0"><a id="load-order-detail1" class="employer-name" data-order-id="${value.order_id}">Đơn hàng #${value.order_id}</a> <span class="text-muted time"> ${value.order_date}</span></p>
                                 </div>
                             </td>
                             <td>
@@ -655,6 +656,10 @@ $(document).ready(function () {
                         </tr>
                     `);
                 });
+                $('#load-order-detail, #load-order-detail1, #load-order-detail2').on('click', function () {
+                    let orderId = $(this).data("order-id");
+                    openInceptionModal(orderId);
+                });
             },
             error: function () {
                 this.setContent(
@@ -663,4 +668,103 @@ $(document).ready(function () {
             }
         }
     }); //Show orders
+
+    function openInceptionModal(orderId) {
+        new jBox('Modal', {
+            width: 800,
+            height: 500,
+            addClass: 'inception-modal',
+            overlayClass: 'inception-overlay',
+            zIndex: 'auto',
+            draggable: 'title',
+            closeOnClick: false,
+            closeButton: 'title',
+            title: 'Chi tiết đơn hàng',
+            animation: 'pulse',
+            ajax: {
+                url: './models/ajax.php',
+                data: {
+                    'load_order': false,
+                    'order_id': orderId,
+                },
+                method: 'post',
+                reload: 'strict',
+                setContent: false,
+                beforeSend: function () {
+                    this.setContent('');
+                    this.setTitle(
+                        '<b class="ajax-sending">Đang tải chi tiết đơn hàng...</b>'
+                    );
+                },
+                complete: function () {
+                    this.setTitle('<b class="ajax-complete">Chi tiết đơn hàng</b>');
+                },
+                success: function (data) {
+                    data = jQuery.parseJSON(data);
+                    $(".inception-modal > .jBox-container > .jBox-content").append(`
+                        <div class="head-order_detail">
+                            <div>
+                                <span>
+                                    <b>Người gửi: </b>Food Chill<br>
+                                    Địa chỉ: Toà nhà Innovation, Công viên phần mềm Quang Trung<br>
+                                    Số điện thoại: 028 6252 3434<br>
+                                </span>
+                            </div>
+                            <div class="order-detail-information">Hóa đơn: #${orderId}<br />
+                                Đã tạo: ${data[0].order_date}<br />
+                            </div>
+                        </div>
+                        <div>
+                            <span>
+                                <b>Người nhận: </b>${data[0].receiver_name}<br>
+                                Địa chỉ: ${data[0].address}<br>
+                                Số điện thoại: ${data[0].phone}<br>
+                                <i>Ghi chú của bạn: ${data[0].receiver_note}</i>
+                            </span>
+                        </div>
+                        <br>
+                        <table class="order-detail-table" cellpadding="0" cellspacing="0">
+                            <thead>
+                                <tr class="heading">
+                                    <th>#</th>
+                                    <th colspan="2">Sản phẩm</th>
+                                    <th>Số lượng</th>
+                                    <th>Đơn giá</th>
+                                    <th>Thành tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody class="order-detail-tbody">
+                            </tbody>
+                        </table>
+                    `);
+                    $.each(data, function (key, value) {
+                        $('.order-detail-tbody').append(`
+                            <tr class="${key == (data.length - 1) ? 'item last last-order-detail-item' : 'item'}">
+                                <td>${key + 1}</td>
+                                <td style="text-align: center;"><img src="${value.image}" alt="Hình sản phẩm"></td>
+                                <td style="text-align: left;">${value.product_name}</td>
+                                <td>${value.quantity}</td>
+                                <td>${curencyFormat(value.price)}</td>
+                                <td>${curencyFormat(value.total_price)}</td>
+                            </tr>
+                        `);
+                    });
+                    $('.last-order-detail-item').after(`
+                        <tr class="total">
+                            <td colspan="5"></td>
+                            <td style="text-align: center;">Tổng cộng: ${curencyFormat(data[0].total_amount)}</td>
+                        </tr>
+                    `);
+                },
+                error: function () {
+                    this.setContent(
+                        '<div class="ajax-error">Có lỗi xảy ra</div>'
+                    );
+                }
+            },
+            onCloseComplete: function () {
+                this.destroy();
+            }
+        }).open();
+    } //Show order details
 });
