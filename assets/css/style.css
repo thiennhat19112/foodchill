@@ -4343,7 +4343,7 @@ tr.shopping-cart-item td {
 /* Cancel order button */
 .button-18 {
 	align-items: center;
-	background-color: #ffffff;
+	background-color: var(--color);
 	border: 0;
 	border-radius: 100px;
 	box-sizing: border-box;
@@ -4376,7 +4376,7 @@ tr.shopping-cart-item td {
 .button-18:hover,
 .button-18:focus {
 	background-color: var(--color);
-	color: #ffffff;
+	color: #000000;
 }
 
 .button-18:active {

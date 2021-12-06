@@ -697,7 +697,7 @@ $(document).ready(function () {
                             });
                         }
                     });
-                });
+                }); // Cancel order
             },
             error: function () {
                 this.setContent(
@@ -706,11 +706,6 @@ $(document).ready(function () {
             }
         }
     }); //Show orders
-
-    function conFirmDeleteOrder(orderId, e) {
-        console.log(orderId);
-
-    }
 
     function openInceptionModal(orderId) {
         new jBox('Modal', {
