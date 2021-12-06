@@ -1,8 +1,14 @@
 <main class="h-full overflow-y-auto">
     <div class="container px-6 mx-auto grid">
-    <script>
+        <script>
             $(document).ready(function() {
-                $('#order-table').on('click','.order-details',function () {
+                function curencyFormat(x) {
+                    return parseInt(x).toLocaleString('en-US', {
+                        style: 'currency',
+                        currency: 'VND'
+                    })
+                }
+                $('#order-table').on('click', '.order-details', function() {
                     var id = $(this).data('order-id')
                     $.ajax({
                         type: 'POST',
@@ -25,10 +31,10 @@
                                             ${val['quantity']}
                                         </td>
                                         <td class="px-2 py-3 text-sm">
-                                            ${val['price']}
+                                            ${curencyFormat(val['price'])}
                                         </td>
                                         <td class="px-2 py-3 text-sm">
-                                            ${val['total_price']}
+                                            ${curencyFormat(val['total_price'])}
                                         </td>
                                     </tr>`
                                 $('#table-order-details').append(orderDetails_str)
@@ -54,7 +60,7 @@
                         },
                         success: function(data) {
                             console.log(data)
-                        //    location.reload(true)
+                            //    location.reload(true)
                         }
                     })
                 })
@@ -116,7 +122,7 @@
                                 </td>
                                 <!-- tình trạng -->
                                 <td class="px-2 py-3 text-xs status whitespace-no-wrap">
-                                    <?php 
+                                    <?php
                                     if ($status == '0') {
                                         echo ' <span class="px-2 py-1 font-semibold leading-tight text-orange-700 bg-orange-100 rounded-full dark:text-white dark:bg-orange-600">
                                             Đang giao
@@ -194,7 +200,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Charts -->
         <h2 class="my-6 text-2xl font-semibold text-gray-700 ">
             Thống kê
