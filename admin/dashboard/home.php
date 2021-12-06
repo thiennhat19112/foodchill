@@ -1,13 +1,73 @@
 <main class="h-full overflow-y-auto">
     <div class="container px-6 mx-auto grid">
+    <script>
+            $(document).ready(function() {
+                $('#order-table').on('click','.order-details',function () {
+                    var id = $(this).data('order-id')
+                    $.ajax({
+                        type: 'POST',
+                        url: 'models/ajax_action.php',
+                        dataType: "json",
+                        data: {
+                            'order_id': id
+                        },
+                        success: function(data) {
+                            console.log(data)
+                            $('#table-order-details').html('')
+                            for (var i = 0; i < data.length; i++) {
+                                val = data[i]
+                                var orderDetails_str =
+                                    `<tr class="text-gray-700 dark:text-gray-400">
+                                        <td class="px-2 py-3 text-sm">
+                                            ${val['product_name']}
+                                        </td>
+                                        <td class="px-2 py-3 text-sm">
+                                            ${val['quantity']}
+                                        </td>
+                                        <td class="px-2 py-3 text-sm">
+                                            ${val['price']}
+                                        </td>
+                                        <td class="px-2 py-3 text-sm">
+                                            ${val['total_price']}
+                                        </td>
+                                    </tr>`
+                                $('#table-order-details').append(orderDetails_str)
+                            }
+                            $('.modal').fadeIn().show()
+                        }
+                    })
+                })
 
+                $('.close-orderDetails').click(function() {
+                    $('.modal').hide()
+                })
+
+                $('.admin_note').blur(function() {
+                    var admin_note = $(this).html()
+                    var id = $(this).data('order-id')
+                    $.ajax({
+                        type: 'POST',
+                        url: 'models/ajax_action.php',
+                        data: {
+                            'admin_note': admin_note,
+                            'id': id
+                        },
+                        success: function(data) {
+                            console.log(data)
+                        //    location.reload(true)
+                        }
+                    })
+                })
+
+            })
+        </script>
         <!-- Table order-->
         <div class="w-full mx-3 overflow-hidden rounded-lg">
             <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
                 Hóa đơn
             </h2>
             <div class="w-full overflow-x-auto">
-                <table class="w-full orders-table myTable">
+                <table id="order-table" class="w-full orders-table myTable">
                     <thead>
                         <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                             <th class="px-2 py-3">Khách hàng</th>
@@ -134,67 +194,7 @@
                 </div>
             </div>
         </div>
-        <script>
-            $(document).ready(function() {
-                $('.order-details').click(function() {
-                    var id = $(this).data('order-id')
-                    $.ajax({
-                        type: 'POST',
-                        url: 'models/ajax_action.php',
-                        dataType: "json",
-                        data: {
-                            'order_id': id
-                        },
-                        success: function(data) {
-                            console.log(data)
-                            $('#table-order-details').html('')
-                            for (var i = 0; i < data.length; i++) {
-                                val = data[i]
-                                var orderDetails_str =
-                                    `<tr class="text-gray-700 dark:text-gray-400">
-                                        <td class="px-2 py-3 text-sm">
-                                            ${val['product_name']}
-                                        </td>
-                                        <td class="px-2 py-3 text-sm">
-                                            ${val['quantity']}
-                                        </td>
-                                        <td class="px-2 py-3 text-sm">
-                                            ${val['price']}
-                                        </td>
-                                        <td class="px-2 py-3 text-sm">
-                                            ${val['total_price']}
-                                        </td>
-                                    </tr>`
-                                $('#table-order-details').append(orderDetails_str)
-                            }
-                            $('.modal').fadeIn().show()
-                        }
-                    })
-                })
-
-                $('.close-orderDetails').click(function() {
-                    $('.modal').hide()
-                })
-
-                $('.admin_note').blur(function() {
-                    var admin_note = $(this).html()
-                    var id = $(this).data('order-id')
-                    $.ajax({
-                        type: 'POST',
-                        url: 'models/ajax_action.php',
-                        data: {
-                            'admin_note': admin_note,
-                            'id': id
-                        },
-                        success: function(data) {
-                            console.log(data)
-                        //    location.reload(true)
-                        }
-                    })
-                })
-
-            })
-        </script>
+        
         <!-- Charts -->
         <h2 class="my-6 text-2xl font-semibold text-gray-700 ">
             Thống kê
