@@ -589,8 +589,9 @@ $(document).ready(function () {
 
     new jBox('Modal', {
         attach: '#load-order',
+        zIndex: 1000,
         height: 300,
-        width: 700,
+        width: 760,
         closeButton: 'title',
         animation: 'zoomIn',
         title: 'Đơn hàng của bạn',
@@ -650,7 +651,12 @@ $(document).ready(function () {
                             </td>
                             <td>
                                 <div class="widget-26-job-category bg-soft-base">
-                                    <span>${orderStatus}</span>
+                                    <span class="order-status${value.order_id}">${orderStatus}</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <button class="button-18 button-cancel-order" ${value.status == 4 ? 'disabled' : ''} role="button" data-order-id="${value.order_id}">Hủy</button>
                                 </div>
                             </td>
                         </tr>
@@ -659,6 +665,38 @@ $(document).ready(function () {
                 $('#load-order-detail, #load-order-detail1, #load-order-detail2').on('click', function () {
                     let orderId = $(this).data("order-id");
                     openInceptionModal(orderId);
+                });
+                $('.button-cancel-order').on('click', function () {
+                    let orderId = $(this).data("order-id");
+                    let button = $(this);
+                    Swal.fire({
+                        title: 'Bạn muốn hủy đơn hàng?',
+                        text: "Đơn hàng sẽ không thể khôi phục lại!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Có, hủy đơn hàng này!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            button.attr("disabled", true);
+                            $(`.order-status${orderId}`).text("Đã hủy");
+                            $.ajax({
+                                url: "./models/ajax.php",
+                                type: "POST",
+                                dataType: "json",
+                                data: {
+                                    "cancel_order": orderId,
+                                },
+                            }).done(function (data) {
+                                Swal.fire(
+                                    'Đã hủy!',
+                                    'Bạn đã hủy đơn hàng #' + orderId + '.',
+                                    'success'
+                                );
+                            });
+                        }
+                    });
                 });
             },
             error: function () {
@@ -669,8 +707,14 @@ $(document).ready(function () {
         }
     }); //Show orders
 
+    function conFirmDeleteOrder(orderId, e) {
+        console.log(orderId);
+
+    }
+
     function openInceptionModal(orderId) {
         new jBox('Modal', {
+            zIndex: 1100,
             width: 800,
             height: 500,
             addClass: 'inception-modal',

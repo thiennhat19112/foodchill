@@ -45,7 +45,7 @@
                <div class="contact__widget">
                   <span class="icon_mail_alt"></span>
                   <h4>Email</h4>
-                  <p>contact@foodchill.com</p>
+                  <p>contact@foodchill.tk</p>
                </div>
             </div>
          </div>

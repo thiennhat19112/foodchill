@@ -28,3 +28,8 @@ function getDataToInsertOrderDetail($user_id) {
     $sql = "SELECT `carts`.`product_id`, `carts`.`quantity`, `products`.`price` FROM `carts` INNER JOIN `products` ON `carts`.`product_id` = `products`.`product_id` WHERE `carts`.`user_id` = ?";
     return pdo_query($sql, $user_id);
 }
+
+function cancelOrder($order_id) {
+    $sql = "UPDATE `orders` SET `status` = '4' WHERE `orders`.`order_id` = ?";
+    pdo_execute($sql, $order_id);
+}

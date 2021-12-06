@@ -4215,18 +4215,12 @@ tr.shopping-cart-item td {
 	padding: .5rem;
 	display: inline-flex;
 	white-space: nowrap;
-	border-radius: 15px;
-}
-
-.widget-26 .widget-26-job-category .indicator {
-	width: 13px;
-	height: 13px;
-	margin-right: .5rem;
-	float: left;
-	border-radius: 50%;
+	border-radius: 20px;
 }
 
 .widget-26 .widget-26-job-category span {
+	width: 80px;
+	text-align: center;
 	font-size: 0.8125rem;
 	color: #3c4142;
 	font-weight: 600;
@@ -4335,7 +4329,7 @@ tr.shopping-cart-item td {
 	display: inline-block;
 	font-size: 16px;
 	color: var(--dark-color);
-	padding: 13px 16px 12px 16px;
+	padding: 5px;
 	background: #f5f5f5;
 	border: none;
 	border-radius: 10px;
@@ -4344,4 +4338,54 @@ tr.shopping-cart-item td {
 .favorite.addToCart button {
 	background: var(--color);
 	color: #ffffff;
+}
+
+/* Cancel order button */
+.button-18 {
+	align-items: center;
+	background-color: #ffffff;
+	border: 0;
+	border-radius: 100px;
+	box-sizing: border-box;
+	color: #000000;
+	cursor: pointer;
+	display: inline-flex;
+	/* font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen,
+		"Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande",
+		Helvetica, Arial, sans-serif; */
+	font-size: 14px;
+	font-weight: 600;
+	justify-content: center;
+	line-height: 20px;
+	max-width: 480px;
+	min-height: 35px;
+	min-width: 0px;
+	overflow: hidden;
+	padding: 0px;
+	padding-left: 20px;
+	padding-right: 20px;
+	text-align: center;
+	touch-action: manipulation;
+	transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s,
+		color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+	user-select: none;
+	-webkit-user-select: none;
+	vertical-align: middle;
+}
+
+.button-18:hover,
+.button-18:focus {
+	background-color: var(--color);
+	color: #ffffff;
+}
+
+.button-18:active {
+	background: #5b758f;
+	color: rgba(255, 255, 255, 0.7);
+}
+
+.button-18:disabled {
+	cursor: not-allowed;
+	background: rgba(0, 0, 0, .08);
+	color: rgba(0, 0, 0, .3);
 }
