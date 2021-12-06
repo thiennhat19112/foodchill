@@ -2,10 +2,51 @@
     <h2 class="my-6 text-2xl font-semibold text-gray-700 ">
         Bình luận
     </h2>
+    <script>
+        $(document).ready(function() {
+            $('#comment-table').on('click', '.delete-comment', function() {
+                var id = $(this).data('comment_id')
+                swal({
+                        title: "Bạn có muôn xóa?",
+                        text: "",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            $.ajax({
+                                type: 'POST',
+                                url: 'models/ajax_action.php',
+                                data: {
+                                    'comment_id': id,
+                                },
+                                success: function(data) {
+                                    swal({
+                                        title: 'Bạn đã xóa thành công',
+                                        icon: 'success',
+                                        buttons: 'Đóng',
+                                    }).then(() => {
+                                        $('#comment-tr' + id).hide()
+                                        window.location.reload(true)
+                                    })
+
+                                }
+                            })
+
+                        } else {
+
+                        }
+                    })
+
+            })
+
+        })
+    </script>
     <!-- New Table -->
     <div class="w-full overflow-hidden rounded-lg shadow-xs">
         <div class="w-full overflow-x-auto">
-            <table class="w-full whitespace-wrap myTable">
+            <table id = "comment-table" class="w-full whitespace-wrap myTable">
                 <thead>
                     <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800 whitespace-no-wrap">
                         <th class="px-4 py-3">Khách hàng</th>
@@ -64,47 +105,7 @@
                     <?php } ?>
                 </tbody>
             </table>
-            <script>
-                $(document).ready(function() {
-                    $('.delete-comment').click(function() {
-                            var id = $(this).data('comment_id')
-                            swal({
-                                    title: "Bạn có muôn xóa?",
-                                    text: "",
-                                    icon: "warning",
-                                    buttons: true,
-                                    dangerMode: true,
-                                })
-                                .then((willDelete) => {
-                                    if (willDelete) {
-                                        $.ajax({
-                                            type: 'POST',
-                                            url: 'models/ajax_action.php',
-                                            data: {
-                                                'comment_id': id,
-                                            },
-                                            success: function(data) {
-                                                swal({
-                                                    title: 'Bạn đã xóa thành công',
-                                                    icon: 'success',
-                                                    buttons: 'Đóng',
-                                                }).then(() => {
-                                                    $('#comment-tr' + id).hide()
-                                                    window.location.reload(true)
-                                                })
 
-                                            }
-                                        })
-
-                                    } else {
-                                       
-                                    }
-                                })
-
-                    })
-
-                })
-            </script>
         </div>
     </div>
 </div>
