@@ -687,6 +687,7 @@ $(document).ready(function () {
                         if (result.isConfirmed) {
                             button.attr("disabled", true);
                             $(`.order-status${orderId}`).text("Đã hủy");
+                            $(`.order-status${orderId}`).parent().removeClass("bg-soft-warning bg-soft-base").addClass("bg-soft-disable");
                             $.ajax({
                                 url: "./models/ajax.php",
                                 type: "POST",
