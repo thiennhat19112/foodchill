@@ -717,7 +717,7 @@ $(document).ready(function () {
     function openInceptionModal(orderId) {
         new jBox('Modal', {
             zIndex: 1100,
-            width: 800,
+            width: 850,
             height: 500,
             addClass: 'inception-modal',
             overlayClass: 'inception-overlay',
@@ -813,4 +813,38 @@ $(document).ready(function () {
             }
         }).open();
     } //Show order details
+
+    $('.btn-payment').click(function () {
+        $('#shopping-cart-menu').empty();
+        $.ajax({
+            url: "./models/ajax.php",
+            type: "POST",
+            data: {
+                "get-cart": 0,
+            },
+        }).done(function (data) {
+            data = jQuery.parseJSON(data);
+            let totalAmount = 0;
+            let price = 0;
+            let quantity = 0;
+            $.each(data, function (key, value) {
+                price = value.price * (1 - (value.discount / 100));
+                quantity = value.quantity;
+                totalAmount += (price * quantity);
+                $('#shopping-cart-menu').append(`
+                 <tr class='shopping-cart-item'>
+                    <td class='cart-title'>${value.product_name} (SL: ${quantity})</td>
+                    <td class='cart-price'>${curencyFormat(price * quantity)}</td>
+                 </tr>
+              `);
+            });
+            $('#shopping-cart-menu').append(`
+              <tr class='shopping-cart-total'>
+                 <td class='cart-total'>Tổng cộng</td>
+                 <td class='cart-price-total'>${curencyFormat(totalAmount)}</td>
+                 <input type="hidden" name="total-amount" id="total-amount" value="${totalAmount}">
+              </tr>
+           `);
+        });
+    }); // Cart on confirm order
 });

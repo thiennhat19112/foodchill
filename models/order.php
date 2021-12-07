@@ -30,7 +30,7 @@ function getLastOrderID($user_id) {
 }
 
 function getDataToInsertOrderDetail($user_id) {
-    $sql = "SELECT `carts`.`product_id`, `carts`.`quantity`, `products`.`price` FROM `carts` INNER JOIN `products` ON `carts`.`product_id` = `products`.`product_id` WHERE `carts`.`user_id` = ?";
+    $sql = "SELECT `carts`.`product_id`, `carts`.`quantity`, `products`.`price`, `products`.`discount` FROM `carts` INNER JOIN `products` ON `carts`.`product_id` = `products`.`product_id` WHERE `carts`.`user_id` = ?";
     return pdo_query($sql, $user_id);
 }
 

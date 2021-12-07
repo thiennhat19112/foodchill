@@ -214,6 +214,7 @@
                }
             });
          });
+
          let flag = true;
          $("#province-select").change(function() {
             flag = true;

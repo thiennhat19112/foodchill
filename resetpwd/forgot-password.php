@@ -23,7 +23,7 @@
                 <div class="col-lg-4 col-sm-12">
                     <form class="card auth_form">
                         <div class="header">
-                            <img class="logo" src="../assets/img/logo.png" alt="">
+                            <img class="logo" src="../assets/images/logo.png" alt="">
                             <h5>Quên mật khẩu?</h5>
                             <span>Nhập email của bạn để khôi phục mật khẩu.</span>
                         </div>
@@ -48,7 +48,7 @@
                 </div>
                 <div class="col-lg-8 col-sm-12">
                     <div class="card">
-                        <img src="../assets/img/signin.svg" alt="Forgot Password" />
+                        <img src="../assets/images/signup.svg" alt="Forgot Password" />
                     </div>
                 </div>
             </div>

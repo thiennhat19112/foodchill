@@ -366,6 +366,19 @@ if (isset($_POST["new_cmt_prod"])) {
       ';
 }  // Add new comment
 
+if (isset($_POST["get-cart"])) {
+   $user_id = $_SESSION["u_id"];
+   $productCarts = showProductCart($user_id);
+   foreach ($productCarts as $key => $value) {
+      $product_id = $value["product_id"];
+      $product = getProd($product_id);
+      $productCarts[$key]["product_name"] = $product["product_name"];
+      $productCarts[$key]["price"] = $product["price"];
+      $productCarts[$key]["discount"] = $product["discount"];
+   }
+   die(json_encode($productCarts));
+}
+
 if (isset($_POST["user_id"]) && isset($_POST["address"]) && $_POST["address"] != "" && $_POST["phone"] != "") {
    $user_id = $_POST["user_id"];
    $receiver = $_POST["receiver"];
@@ -379,7 +392,7 @@ if (isset($_POST["user_id"]) && isset($_POST["address"]) && $_POST["address"] !=
       $order_details = getDataToInsertOrderDetail($user_id);
       foreach ($order_details as $key => $value) {
          $pro_qty = $value["quantity"];
-         $pro_price = $value["price"];
+         $pro_price = ($value["price"] * ((100 - $value['discount']) / 100));
          $pro_id = $value["product_id"];
          $total_price = $pro_qty * $pro_price;
          insertOrderDetail($last_order_id, $pro_id, $pro_qty, $pro_price, $total_price);

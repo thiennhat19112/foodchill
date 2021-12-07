@@ -49,13 +49,13 @@
                             <button class="btn btn-primary btn-block waves-effect waves-light" name="btnLogin">Đăng nhập</button>
                             <!-- <a href="index.html" class="btn btn-primary btn-block waves-effect waves-light" name="btnLogin">ĐĂNG
                                 NHẬP</a> -->
-                            <div class="signin_with mt-3">
+                            <!-- <div class="signin_with mt-3">
                                 <p class="mb-0">hoặc đăng nhập với</p>
                                 <button class="btn btn-primary btn-icon btn-icon-mini btn-round facebook"><i class="zmdi zmdi-facebook"></i></button>
                                 <button class="btn btn-primary btn-icon btn-icon-mini btn-round twitter"><i class="zmdi zmdi-twitter"></i></button>
                                 <button class="btn btn-primary btn-icon btn-icon-mini btn-round google"><i class="zmdi zmdi-google-plus"></i></button>
-                            </div>
-                            <div class="" style="margin-top: 10px; text-align: right;">
+                            </div> -->
+                            <div class="" style="margin-top: 10px; text-align:center;">
                                 <a href="../signup">Bạn chưa có tài khoản?</a>
                             </div>
                         </div>
