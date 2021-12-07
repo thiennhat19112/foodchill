@@ -424,6 +424,12 @@ if (isset($_POST["load_order"])) {
 if (isset($_POST["cancel_order"])) {
    $order_id = $_POST["cancel_order"];
    cancelOrder($order_id);
+   $order_detail = getOrderDetail($order_id);
+   foreach ($order_detail as $key => $value) {
+      $qty_change = $value["quantity"];
+      $p_id = $value["product_id"];
+      updateProductQty($qty_change, $p_id);
+   }
    die(0);
 } // Cancel order
 

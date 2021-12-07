@@ -9,6 +9,11 @@ function getOrdersByUser($user_id) {
     return pdo_query($sql, $user_id);
 }
 
+function getOrderDetail($order_id) {
+    $sql = "SELECT * FROM `order_details` WHERE `order_id` = ?";
+    return pdo_query($sql, $order_id);
+}
+
 function getDataToShowOrderDetail($order_id) {
     $sql = "SELECT `order_details`.*, `products`.`product_id`, `products`.`product_name`, `products`.`image` FROM `order_details` INNER JOIN `products` ON `order_details`.`product_id` = `products`.`product_id` WHERE `order_details`.`order_id` = ?";
     return pdo_query($sql, $order_id);
