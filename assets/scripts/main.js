@@ -695,10 +695,10 @@ $(document).ready(function () {
                                 data: {
                                     "cancel_order": orderId,
                                 },
-                            }).done(function (data) {
+                            }).done(function (data1) {
                                 Swal.fire(
                                     'Đã hủy!',
-                                    'Bạn đã hủy đơn hàng #' + orderId + '.',
+                                    'Bạn đã hủy đơn hàng #' + data1 + '.',
                                     'success'
                                 );
                             });

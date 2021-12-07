@@ -443,7 +443,7 @@ if (isset($_POST["cancel_order"])) {
       $p_id = $value["product_id"];
       updateProductQty($qty_change, $p_id);
    }
-   die(0);
+   die($order_id);
 } // Cancel order
 
 
